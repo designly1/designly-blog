@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Host Your Next.js Site on CloudFlare Pages With Next/Image Support For Free | Designly</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="This tutorial will focus on deploying a Next.js website to CloudFlare Pages  + Workers, complete with Next/Image support via a custom image loader." />
+        <meta property="og:title" content="Host Your Next.js Site on CloudFlare Pages With Next/Image Support For Free" />
+        <meta property="og:description" content="This tutorial will focus on deploying a Next.js website to CloudFlare Pages  + Workers, complete with Next/Image support via a custom image loader." />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/cover.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz/host-your-next-js-site-on-cloudflare-pages-with-next-image-support" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <article class="flex flex-col gap-10">
+            <section class="post-header flex flex-col gap-4">
+                <h1 class="text-colors text-xl md:text-3xl font-bold">Host Your Next.js Site on CloudFlare Pages With Next/Image Support For Free</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/nextjs">#Next.js</a>
+<a href="/tag/cloudflare">#Cloudflare</a></div>
+                <img
+                    class="rounded-md shadow-lg"
+                    src="https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/cover.jpg?w=1024&q=75 1024w, https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/cover.jpg?w=320&q=75 320w"
+                    alt="Host Your Next.js Site on CloudFlare Pages With Next/Image Support For Free"
+                    width="1200"
+                    height="675"
+                />
+                <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </section>
+            <section class="post-content flex flex-col gap-6"><p>Cloudflare Pages is a cloud-based platform that enables developers to build, deploy, and scale modern web applications and websites. It is a serverless platform, meaning that it allows developers to build and deploy applications without worrying about managing servers or infrastructure.</p>
+<p>With Cloudflare Pages, developers can connect their code repositories and build their applications using their preferred tools and languages. The platform supports a wide range of static site generators, frameworks, and programming languages, including React, Next.js, Gatsby, Vue.js, and more.</p>
+<p>Once the application is built, Cloudflare Pages automatically builds and deploys the application to a global network of servers, ensuring fast and reliable access for users around the world. The platform also provides built-in performance optimizations, including caching, automatic minification, and image optimization, to ensure that applications load quickly and efficiently.</p>
+<p>In addition to its core functionality, Cloudflare Pages integrates with other Cloudflare services, including Cloudflare Workers, which enables developers to create powerful serverless applications that can be run on the edge of the network. Overall, Cloudflare Pages provides developers with a powerful, flexible, and scalable platform for building and deploying modern web applications.</p>
+<p>This tutorial will focus on deploying a Next.js website to CloudFlare pages complete with Next/Image support via a custom image loader. This tutorial also assumes you have the following things:</p>
+<ol>
+<li>A ready-to-deploy Next.js project hosted on GitHub</li>
+<li>A CloudFlare account</li>
+<li>DNS hosted on CloudFlare</li>
+</ol>
+<p>It's actually not absolutely required to host your DNS on CloudFlare, but if you're going to host your site there, you should strongly consider using their other features like scrape protection, DDOS protection and automatic edge server caching of resources. It's all offered completely free with generous quotas. See <a href="https://developers.cloudflare.com/workers/platform/limits/" rel="noreferrer noopener" target="_blank">this page</a> for more information on CloudFlare's service limits.</p>
+<h2>Caveats</h2>
+<p>Now CloudFlare may have free tier limits far greater than that of Vercel's, but remember, the Vercel platform is <em>made</em> for Next.js. It's a one hundred percent turn-key solution. You can deploy a site on Vercel in literally a couple minutes with <code>create-next-app</code> and GitHub.</p>
+<p>Things aren't so simple when it comes to CloudFlare Pages, though. It will require some additional configuration and the enabling of experimental, not fully tested features. That said, I think the rewards of going through these extra steps is well worth the effort, because CloudFlare is a great environment to host any site, from a simple static web page, to a full-fledged progressive web app.</p>
+<h2>Key Differences Between CloudFlare and Vercel</h2>
+<p>There are two key services that Vercel provides Next.js sites automatically. The first is automatic image optimization via the Next/Image package. The other are the automatic creation of serverless functions when using server-dependent functions such as API routes and <code>getServerSideProps()</code>.</p>
+<p>CloudFlare will do these things for you automatically, too, but require additional configuration. And, unfortunately, as of yet I am unable to get <code>getServerSideProps()</code> to function properly with experimental-edge enabled globally in <code>next.config.js</code>. There are still too many bugs. However, you can still use API routes for dynamic content as well as <code>getStaticProps()</code> for less frequently updated dynamic content. If anyone is successfully using CloudFlare Pages with all features working together, please leave a comment!</p>
+<h2>Preparing Your Project for Deployment</h2>
+<p>Ok, let's get on with it! Assuming you already have a Next.js project, the first thing we need to do is create our custom image loader. I've opted to create the one in this tutorial in the root directory and called it <code>cfImageLoader.js</code>.</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">// cfImageLoader.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">cfImageLoader</span>(<span class="hljs-params">{ src, width, quality }</span>) </span>{
+    <span class="hljs-keyword">const</span> params = [<span class="hljs-string">`width=<span class="hljs-subst">${width}</span>`</span>, <span class="hljs-string">`quality=<span class="hljs-subst">${quality || <span class="hljs-number">75</span>}</span>`</span>, <span class="hljs-string">'format=auto'</span>]
+    <span class="hljs-keyword">return</span> <span class="hljs-string">`https://cfnext.designly.biz/cdn-cgi/image/<span class="hljs-subst">${params.join(<span class="hljs-string">','</span>)}</span>/<span class="hljs-subst">${src}</span>`</span>
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Pretty basic. It simply maps the received parameters from Next/Image to an API endpoint. The domain name of the URL is the custom domain I assigned to the <a href="https://cfnext.designly.biz" rel="noreferrer noopener" target="_blank">demo project</a> I created for this tutorial. The <code>cdn-cgi</code> route is automatically available for any deployed CloudFlare Pages site! &eth;&#159;&#152;&#129;</p>
+<p>Next, we need to tell Next.js to use this as the default loader for all <code>&lt;Image&gt;</code> components:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">// next.config.js</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@type <span class="hljs-type">{import('next').NextConfig}</span> </span>*/</span>
+<span class="hljs-keyword">const</span> { PHASE_DEVELOPMENT_SERVER } = <span class="hljs-built_in">require</span>(<span class="hljs-string">'next/constants'</span>)
+<span class="hljs-built_in">module</span>.exports = <span class="hljs-function">(<span class="hljs-params">phase, { defaultConfig }</span>) =&gt;</span> {
+  <span class="hljs-keyword">if</span> (phase === PHASE_DEVELOPMENT_SERVER) {
+    <span class="hljs-keyword">return</span> {
+      <span class="hljs-attr">reactStrictMode</span>: <span class="hljs-literal">true</span>,
+    }
+  }
+  <span class="hljs-comment">// Production config</span>
+  <span class="hljs-keyword">return</span> {
+    <span class="hljs-attr">swcMinify</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">images</span>: {
+      <span class="hljs-attr">loader</span>: <span class="hljs-string">'custom'</span>,
+      <span class="hljs-attr">loaderFile</span>: <span class="hljs-string">'./cfImageLoader.js'</span>
+    },
+  }
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>With this set, image optimization should work once the site is deployed. You can verify it's working by inspecting an image on the deployed site and downloading it. If it downloads as an <code>.avif</code> file, it's working. By default CloudFlare Images auto-detects the best image format based on browser capabilities to maximize the file size reduction, but you can override this by appending <code>format=webp</code> to the URL parameters, for example.</p>
+<p>That's takes care of images. Next, we're going to set up an API route to fetch some data from a fake products API. This is a little different than what you're used to using the Node Express server. API routes on CloudFlare require the use of Next's edge runtime and CloudFlare will automatically create a web worker for each of these routes. So if you're familiar with CloudFlare workers, you'll be right at home!</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">// @/pages/api/product/index.js</span>
+<span class="hljs-comment">// Next.js Edge API Routes: https://nextjs.org/docs/api-routes/edge-api-routes</span>
+<span class="hljs-comment">// Tell Next.js to use the edge runtime</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> config = {
+    <span class="hljs-attr">runtime</span>: <span class="hljs-string">'edge'</span>,
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handler</span>(<span class="hljs-params">req</span>) </span>{ <span class="hljs-comment">// notice we don't receive a 'res' prop</span>
+    <span class="hljs-comment">/**
+     * CloudFlare does not yet support path to query param redirects,
+     * so we must use traditional query params
+     */</span>
+    <span class="hljs-keyword">const</span> { searchParams } = <span class="hljs-keyword">new</span> URL(req.url)
+    <span class="hljs-keyword">const</span> pid = searchParams.get(<span class="hljs-string">'pid'</span>);
+    <span class="hljs-keyword">const</span> url = <span class="hljs-string">`https://dummyjson.com/products/<span class="hljs-subst">${pid}</span>`</span>;
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> fetch(url);
+        <span class="hljs-keyword">const</span> json = <span class="hljs-keyword">await</span> result.json();
+        <span class="hljs-comment">/**
+         * Instead of the 'res' ojbect from express, we
+         * instantiate a new fetch API Response object
+         */</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(
+            <span class="hljs-built_in">JSON</span>.stringify(json),
+            {
+                <span class="hljs-attr">status</span>: <span class="hljs-number">200</span>,
+                <span class="hljs-attr">headers</span>: {
+                    <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>
+                }
+            }
+        )
+    } <span class="hljs-keyword">catch</span> (err) {
+        <span class="hljs-built_in">console</span>.error(err);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(
+            <span class="hljs-literal">null</span>,
+            {
+                <span class="hljs-attr">status</span>: <span class="hljs-number">500</span>,
+                <span class="hljs-attr">statusText</span>: <span class="hljs-string">'Error fetching product data'</span>
+            }
+        )
+    }
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>That should be it for the changes you'll need to make to your project. As I said before, unfortunately, <code>getServerSideProps()</code> does not work currently (at least I am unable to get it to work with custom image loader enabled as well). You can, however, still use <code>getStaticProps()</code>.</p>
+<p>Lastly, you'll want to commit your changes to GitHub.</p>
+<h2>Deploying Your Site to CloudFlare</h2>
+<p>Assuming you are already logged into the <a href="https://dash.cloudflare.com" rel="noreferrer noopener" target="_blank">CloudFlare Dashboard</a>, you'll want to click <code>Pages</code> on the left sidebar, then click the <code>Create a project</code> button and select <code>Connect to Git</code>:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image1.jpg?w=1200&amp;q=75" alt="Create a project" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image1.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image1.jpg?w=320&amp;q=75 320w"></p>
+<p>On the next screen, choose a name for your project, then select <code>Next.js</code> for the framework, and then set an environment variable <code>NODE_VERSION=16.17.1</code>, which is the current LTS version of node at the time of writing this article. Finally, click <code>Save and deploy</code>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image2.jpg?w=1200&amp;q=75" alt="Create a project" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image2.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image2.jpg?w=320&amp;q=75 320w"></p>
+<p>The initial build will take some time, but you don't have to wait for it to complete. You can just click <code>continue to deployment</code> to move on because we want to go ahead and assign a custom domain name for our site.</p>
+<p>From the details page of our deployment, click the <code>Custom domains</code> tab and then click <code>Set up a custom domain</code>:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image3.jpg?w=1200&amp;q=75" alt="Set up a custom domain" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image3.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image3.jpg?w=320&amp;q=75 320w"></p>
+<p>Enter in your desired domain name and then click continue. If you're DNS is hosted through CloudFlare (recommended), then it will automatically create a new CNAME record for that points to the assigned domain for the production branch of your deployment. If your DNS is not hosted through CloudFlare, then you're screwed... no j/k, but you'll need to manually create a CNAME record with your provider. CloudFlare will periodically check the validity of the DNS record and notify you when it's ready. The whole process typically takes less than a minute.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image4.jpg?w=1200&amp;q=75" alt="Create a project" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image4.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/host-your-next-js-site-on-cloudflare-pages-with-next-image-support/image4.jpg?w=320&amp;q=75 320w"></p>
+<h2>Wrapping it Up</h2>
+<p>Well that just about does 'er for this one. I hope you, as have I find that it's worth the extra effort to use CloudFlare over Vercel (unless you want to give Vercel lots of money). You can just do so much more with CloudFlare, but it requires some additional technical know-how. CloudFlare Workers is also a fantastic tool and using the edge API for middleware calls will greatly speed up dynamic fetching of site content. CloudFlare is among the top services for serverless functions in regards to cost vs benefit as well as function response time.</p>
+<p>If you want to check out the demo project I created:</p>
+<ol>
+<li>
+<a href="https://github.com/designly1/cloudflare-nextjs" rel="noreferrer noopener" target="_blank">Demo Project Repo</a>
+</li>
+<li>
+<a href="https://cfnext.designly.biz" rel="noreferrer noopener" target="_blank">Demo Project Site</a>
+</li>
+</ol>
+<p>Thank you for taking the time to read my article and I hope you found it useful (or at the very least, mildly entertaining). For more great information about web dev, systems administration and cloud computing, please read the <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Designly Blog</a>. Also, please leave your comments! I love to hear thoughts from my readers.</p>
+<p>Looking for a web developer? I'm available for hire! To inquire, please fill out a <a href="https://designly.biz/contact" rel="noreferrer noopener" target="_blank">contact form</a>.</p>
+<h2>Further Reading</h2>
+<ol>
+<li>
+<a href="https://developers.cloudflare.com/images/cloudflare-images/api-request/" rel="noreferrer noopener" target="_blank">CloudFlare Images Docs</a>
+</li>
+<li>
+<a href="https://developer.mozilla.org/en-US/docs/Web/API/Response" rel="noreferrer noopener" target="_blank">MDN Fetch API Docs</a>
+</li>
+<li>
+<a href="https://blog.cloudflare.com/next-on-pages/" rel="noreferrer noopener" target="_blank">CloudFlare next-on-pages Blog Post | 10/24/22</a>
+</li>
+<li>
+<a href="https://nextjs.org/docs/api-routes/edge-api-routes" rel="noreferrer noopener" target="_blank">Next.js Edge API Docs</a>
+</li>
+<li>
+<a href="https://webo.digital/blog/which-is-better-vercel-or-cloudflare/" rel="noreferrer noopener" target="_blank">Which Is Better: Vercel or Cloudflare (Pages + Workers) For Jamstack Deployment? | EBO Digital</a>
+</li>
+<li>
+<a href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-nextjs-site/" rel="noreferrer noopener" target="_blank">Deploy a Next.js site | CloudFlare Docs</a>
+</li>
+</ol>
+</section>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <div class="share-buttons text-2xl flex gap-4 mx-auto">
+                <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
+                <a
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fhost-your-next-js-site-on-cloudflare-pages-with-next-image-support"
+                    target="_blank"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook text-blue-700"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fhost-your-next-js-site-on-cloudflare-pages-with-next-image-support"
+                    target="_blank"
+                    aria-label="Share on LinkedIn"
+                >
+                    <i class="fab fa-linkedin text-indigo-700"></i>
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fhost-your-next-js-site-on-cloudflare-pages-with-next-image-support" target="_blank">
+                    <i class="fab fa-twitter text-sky-700"></i>
+                </a>
+            </div>
+            <hr />
+            <div class="bg-white dark:bg-zinc-800 border-1 rounded-lg flex flex-col shadow p-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4">
+                    <div class="col-span-1 flex items-center">
+                        <img
+                            src="https://cdn.designly.biz/imgr/jay.jpg?w=200&q=75"
+                            alt="Jay"
+                            width="200"
+                            height="200"
+                            class="rounded-full shadow-md border-4 border-blue-700/20 w-32 h-32 mx-auto"
+                        />
+                    </div>
+                    <div class="col-span-3 px-6 flex flex-col gap-4">
+                        <h3 class="text-2xl font-semibold text-center text-colors">About The Author</h3>
+                        <p class="text-zinc-700 dark:text-zinc-300">
+                            Jay is a full-stack developer, electrical engineer, writer and music producer. He currently
+                            resides in the Madison, WI area.
+                        </p>
+                        <a
+                            href="https://jay.designly.biz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-hover flex gap-2 items-center"
+                        >
+                            <div>Portfolio Site</div>
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-2xl font-bold text-center border-b-2 border-dashed pb-1 text-colors">Comments</h2>
+            <div id="comments" class="text-colors">
+                <!-- Comments will be generated here -->
+                <p>No Comments Yet</p>
+            </div>
+            <button id="btn-post-comment" class="btn btn-primary btn-outline flex gap-2 items-center max-w-md mx-auto">
+                <i class="fas fa-comment-medical"></i>
+                <div>Post Comment</div>
+            </button>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <template id="comment-template" class="text-colors">
+                <div
+                    class="comment flex flex-col gap-4 p-4 border rounded shadow mb-4 bg-white dark:bg-zinc-800 text-colors"
+                >
+                    <div class="flex gap-2 items-center">
+                        <img
+                            class="comment-avatar rounded-full w-10 h-10"
+                            src="/assets/img/pixel-black.png"
+                            width="100"
+                            height="100"
+                            alt="Commenter Avatar"
+                        />
+                        <div class="comment-display-name text-2xl text-cyan-700"></div>
+                    </div>
+                    <p class="comment-text"></p>
+                    <div class="replies ml-4">
+                        <!-- Replies will be generated here -->
+                    </div>
+                    <button class="reply-button mt-2 text-hover flex gap-2 items-center">
+                        <i class="fas fa-comment-dots"></i>
+                        <div>Reply</div>
+                    </button>
+                </div>
+            </template>
+        </article>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl text-hover"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-create-a-verification-code-input-component-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-create-a-verification-code-input-component-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Create a Verification Code Input Component in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create a Verification Code Input Component in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'll show you how to create a robust OTP code input component for React.js, using no other dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, I'll show you how to create a modal dialog overlay and disable the body scroll bars when it is open using Next.js 13 / React.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div>
+<input id="post-id" type="hidden" value="2C86iQAoGDYBGJagpijYa8" />
+<input id="reply-to" type="hidden" value="" />
+<script>
+    function generateComment(commentData) {
+        const template = document.querySelector("#comment-template");
+        const clone = template.content.cloneNode(true);
+        const displayName = clone.querySelector(".comment-display-name");
+        displayName.textContent = commentData.displayName;
+        const commentAvatar = clone.querySelector(".comment-avatar");
+        commentAvatar.setAttribute("src", commentData.avatar);
+        const commentText = clone.querySelector(".comment-text");
+        commentText.textContent = commentData.comment;
+        const repliesContainer = clone.querySelector(".replies");
+        commentData.replies.forEach((reply) => {
+            const replyElement = generateComment(reply);
+            repliesContainer.appendChild(replyElement);
+        });
+        const replyButton = clone.querySelector(".reply-button");
+        replyButton.addEventListener("click", () => {
+            document.getElementById("reply-to").value = commentData._id;
+            loadUrl("/comment");
+        });
+        return clone;
+    }
+    const fetchComments = async () => {
+        const postId = document.getElementById("post-id").value;
+        try {
+            const result = await fetch(`https://blog-comments.designly.workers.dev/?postId=${postId}`);
+            const comments = await result.json();
+            const commentsContainer = document.querySelector("#comments");
+            if (Array.isArray(comments) && comments.length) {
+                commentsContainer.innerHTML = "";
+                comments.forEach((comment) => {
+                    const commentElement = generateComment(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    setTimeout(async () => {
+        fetchComments();
+        document.getElementById("btn-post-comment").addEventListener("click", () => {
+            loadUrl(`/comment`);
+        });
+    }, 0);
+</script>
+</div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>

@@ -1,0 +1,40 @@
+{
+  "name": "blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "postcss styles/style.css -o public_html/assets/css/style.css --verbose && npx webpack",
+    "dev": "postcss styles/style.css -o public_html/assets/css/style.css --watch --verbose"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^10.4.14",
+    "daisyui": "^2.51.6",
+    "he": "^1.2.0",
+    "lodash": "^4.17.21",
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.3.2"
+  },
+  "devDependencies": {
+    "terser-webpack-plugin": "^5.3.8",
+    "webpack": "^5.82.0",
+    "webpack-cli": "^5.1.0"
+  },
+  "prettier": {
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "tabWidth": 4,
+          "printWidth": 120
+        }
+      }
+    ]
+  }
+}

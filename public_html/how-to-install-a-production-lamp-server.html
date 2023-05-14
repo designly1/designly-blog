@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>How to Install a Production LAMP Server | Designly</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="In this video, I show you step-by-step how to install a production LAMP stack, that's Linux-Apache-Mysql-PHP, on a Google Cloud Compute Engine E2-Micro VM instance." />
+        <meta property="og:title" content="How to Install a Production LAMP Server" />
+        <meta property="og:description" content="In this video, I show you step-by-step how to install a production LAMP stack, that's Linux-Apache-Mysql-PHP, on a Google Cloud Compute Engine E2-Micro VM instance." />
+        <meta property="og:image" content="https://d340jo5zum8tsx.cloudfront.net/blog_files/lamp-server-banner.webp" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz/how-to-install-a-production-lamp-server" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <article class="flex flex-col gap-10">
+            <section class="post-header flex flex-col gap-4">
+                <h1 class="text-colors text-xl md:text-3xl font-bold">How to Install a Production LAMP Server</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/apache">#Apache</a>
+<a href="/tag/mysql">#MySQL</a>
+<a href="/tag/php">#PHP</a></div>
+                <img
+                    class="rounded-md shadow-lg"
+                    src="https://d340jo5zum8tsx.cloudfront.net/blog_files/lamp-server-banner.webp?w=1200&q=75"
+                    srcset="https://d340jo5zum8tsx.cloudfront.net/blog_files/lamp-server-banner.webp?w=1024&q=75 1024w, https://d340jo5zum8tsx.cloudfront.net/blog_files/lamp-server-banner.webp?w=640&q=75 640w, https://d340jo5zum8tsx.cloudfront.net/blog_files/lamp-server-banner.webp?w=320&q=75 320w"
+                    alt="How to Install a Production LAMP Server"
+                    width="1200"
+                    height="675"
+                />
+                <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </section>
+            <section class="post-content flex flex-col gap-6"><p>You may have heard the term before: <em>LAMP</em>. It stands for Linux-Apache-Mysql-PHP, where Linux is the server operating system, Apache is the HTTP server, Mysql is the database server, and PHP is the hypertext pre-processor / scripting interpreter. These applications work together in unison to create dynamic, data-driven web applications and is sometimes referred to as the <em>LAMP Stack</em>.</p>
+<p>You can deploy your own LAMP server in just under a half an hour using Google's Compute Engine. You'll need a valid Google account and you'll also need to setup an organization and billing account on <a href="https://console.cloud.google.com/" rel="noreferrer noopener" target="_blank">Google Cloud</a>.</p>
+<p>So, without further ado, here is the tutorial video. A full explanation can be found below.</p>
+<iframe allow="autoplay; fullscreen" allowfullscreen="" frameborder="0" height="564" src="https://player.vimeo.com/video/677310710?h=b2ddad37f2" width="640"></iframe>
+<h4>Create a new Google Cloud Project</h4>
+<p>First, we need to create a new project in the Cloud Console. Click the project drop down near the upper left of the screen. This will bring up a list of projects.</p>
+<p>Then click <em>Create Project</em></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/lamp-server1.webp?w=1200&amp;q=75" alt="Create New Project" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/lamp-server1.webp" srcset="https://cdn.designly.biz/imgr/blog_files/lamp-server1.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/lamp-server1.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/lamp-server1.webp?w=320&amp;q=75 320w"></p>
+<p>Now click on the left menu bar and scroll down to <em>Compute Engine</em> and then select <em>VM Instances</em>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/lamp-server2.webp?w=1200&amp;q=75" alt="Go to VM Instances" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/lamp-server2.webp" srcset="https://cdn.designly.biz/imgr/blog_files/lamp-server2.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/lamp-server2.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/lamp-server2.webp?w=320&amp;q=75 320w"></p>
+<p>Enable the <em>Compute Engine</em>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/lamp-server3.webp?w=1200&amp;q=75" alt="Enable Compute Engine" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/lamp-server3.webp" srcset="https://cdn.designly.biz/imgr/blog_files/lamp-server3.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/lamp-server3.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/lamp-server3.webp?w=320&amp;q=75 320w"></p>
+<p>Go back to <em>VM Instances</em>and launch a new <em>Instance</em>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/lamp-server4.webp?w=1200&amp;q=75" alt="Launch New Instance" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/lamp-server4.webp" srcset="https://cdn.designly.biz/imgr/blog_files/lamp-server4.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/lamp-server4.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/lamp-server4.webp?w=320&amp;q=75 320w"></p>
+<p>Name your instance and then scroll down to <em>Boot Disk</em> and click <em>Change</em>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/lamp-server5.webp?w=1200&amp;q=75" alt="Change Boot Disk" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/lamp-server5.webp" srcset="https://cdn.designly.biz/imgr/blog_files/lamp-server5.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/lamp-server5.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/lamp-server5.webp?w=320&amp;q=75 320w"></p>
+<p>Select <em>Ubuntu</em> for operating system and <em>Ubuntu 20.04 LTS</em> for version.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/lamp-server6.webp?w=1200&amp;q=75" alt="Select OS and Version" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/lamp-server6.webp" srcset="https://cdn.designly.biz/imgr/blog_files/lamp-server6.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/lamp-server6.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/lamp-server6.webp?w=320&amp;q=75 320w"></p>
+<p>Then scroll down to <em>Firewall</em> and check <em>Allow HTTP</em> and <em>Allow HTTPS</em>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/lamp-server7.webp?w=1200&amp;q=75" alt="Allow HTTP and HTTPS" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/lamp-server7.webp" srcset="https://cdn.designly.biz/imgr/blog_files/lamp-server7.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/lamp-server7.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/lamp-server7.webp?w=320&amp;q=75 320w"></p>
+<p>Now, save your instance and wait for it to launch. A green circle-check will appear once it's live. Notice the public IP address to the right. You'll want to copy that and create an A record with your DNS provider so our server can have a public hostname. Once that's set up, click the <em>SSH</em> button to launch the web-based <em>Secure Shell</em>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/lamp-server8.webp?w=1200&amp;q=75" alt="Copy IP and Launch SSH" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/lamp-server8.webp" srcset="https://cdn.designly.biz/imgr/blog_files/lamp-server8.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/lamp-server8.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/lamp-server8.webp?w=320&amp;q=75 320w"></p>
+<h4>Upgrade the server software</h4>
+<p>Run the following command:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo apt-get update; sudo apt-get upgrade -y; sudo apt-get dist-upgrade -y
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>This will take some time to complete.</p>
+<h4>Install tasksel and the LAMP stack</h4>
+<p>Run:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo apt install -y tasksel
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Then:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo tasksel install lamp-server
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Tasksel is an app that will automate the installation and configuration of our LAMP stack.</p>
+<h4>Set up MySQL for production</h4>
+<p>Run:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo mysql_secure_installation
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Enter <em>n</em> for the first question. Then choose a <em>root password</em>and confirm. Then enter <em>y</em> for the remaining questions.</p>
+<h4>Create a MySQL superuser</h4>
+<p>Run:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo mysql
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Enter the following queries:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-sql hljs sql" data-lang="sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">'your-name'</span>@<span class="hljs-string">'localhost'</span> <span class="hljs-keyword">IDENTIFIED</span> <span class="hljs-keyword">BY</span> <span class="hljs-string">'your-password'</span>;
+<span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> <span class="hljs-keyword">PRIVILEGES</span> <span class="hljs-keyword">ON</span> *.* <span class="hljs-keyword">TO</span> <span class="hljs-string">'your-name'</span>@<span class="hljs-string">'localhost'</span> <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">OPTION</span>;
+<span class="hljs-keyword">FLUSH</span> <span class="hljs-keyword">PRIVILEGES</span>;
+quit
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Now let's see if our server is working. Type the hostname you chose for the IP address in the address bar of your web browser. You should see the default Apache <em>It Works</em> page:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/lamp-server9.webp?w=1200&amp;q=75" alt="Default Apache Page" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/lamp-server9.webp" srcset="https://cdn.designly.biz/imgr/blog_files/lamp-server9.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/lamp-server9.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/lamp-server9.webp?w=320&amp;q=75 320w"></p>
+<h4>Set up Apache VirtualHost</h4>
+<p>Go to:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash"><span class="hljs-built_in">cd</span> /etc/apache2/sites-enabled/
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Remove the default configuration file:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo rm -f 000-default.conf
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Then go to:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash"><span class="hljs-built_in">cd</span> ../sites-available/
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>And create a new configuration file:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo nano your-host-name.conf
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Copy the following configuration and paste it into the SSH session:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-apache hljs apache" data-lang="apache"><span class="hljs-section">&lt;VirtualHost *:80&gt;</span>
+    <span class="hljs-attribute"><span class="hljs-nomarkup">ServerName</span></span> example.com
+    <span class="hljs-attribute">ServerAdmin</span> webmaster@example.com
+    <span class="hljs-attribute"><span class="hljs-nomarkup">DocumentRoot</span></span> /home//wwwroot/pub
+    <span class="hljs-attribute">ErrorLog</span> <span class="hljs-variable">${APACHE_LOG_DIR}</span>/example.com-error.log
+    <span class="hljs-attribute">CustomLog</span> <span class="hljs-variable">${APACHE_LOG_DIR}</span>/example.com-access.log combined
+    <span class="hljs-section">&lt;Directory "/home//wwwroot/pub"&gt;</span>
+        <span class="hljs-attribute"><span class="hljs-nomarkup">Options</span></span> FollowSymLinks
+        <span class="hljs-attribute">AllowOverride</span> None
+        <span class="hljs-attribute">Require</span> <span class="hljs-literal">all</span> granted
+    <span class="hljs-section">&lt;/Directory&gt;</span>
+<span class="hljs-section">&lt;/VirtualHost&gt;</span>
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>To save, hit <em>CTRL-X</em>, then <em>Y</em>, then <em>ENTER</em>.</p>
+<p>Now we need to enable some Apache modules:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo a2enmod rewrite
+sudo a2enmod ssl
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Then reload the Apache configuration:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo systemctl reload apache2
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<h4>Create Our Root Directory</h4>
+<p>Type:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash"><span class="hljs-built_in">cd</span>
+mkdir wwwroot
+<span class="hljs-built_in">cd</span> wwwroot
+mkdir pub
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Now let's make our default index page:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">nano index.php
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Enter the following code:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-php hljs php" data-lang="php"><span class="hljs-meta">&lt;?php</span>
+phpinfo();
+<span class="hljs-meta">?&gt;</span>
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Then hit <em>CTRL-X</em>, <em>Y</em>, <em>ENTER</em>.</p>
+<p>Now reload your page and you should see the PHP info page:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/lamp-server10.webp?w=1200&amp;q=75" alt="Default PHP Page" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/lamp-server10.webp" srcset="https://cdn.designly.biz/imgr/blog_files/lamp-server10.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/lamp-server10.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/lamp-server10.webp?w=320&amp;q=75 320w"></p>
+<h4>Secure With Let's Encrypt's Certbot</h4>
+<p>Run:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo snap install core; sudo snap refresh core
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Then:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo snap install --classic certbot
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Now we need to create a symlink so we can run the command from our execute path:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo ln -s /snap/bin/certbot /usr/bin/certbot
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Now run certbot:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo certbot --apache
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Enter your admin email address, then hit <em>Y</em>if you accept the <em>Terms and Conditions</em>. You can opt to receive news from the <em>Electronic Frontier Foundation</em>by hitting <em>Y</em>or <em>N</em>. Personally, I get enough spam, so I chose no.</p>
+<p>Now a list of Apache virtualhosts will appear. You can simply hit enter to select the all, or chose the number associated with the list. You can choose multiple numbers by separating them by a space, but we should only have one at this point.</p>
+<p>Hit enter and <em>certbot</em> will work it's magic. It will verify your site automaticall by creating a token in your web server public directory, download it, and then issue you an <em>SSL certificate</em> valid for 45 days. This is a much shorter period than commercial SSL certificates, and that's for two reasons: One, they want to reduce the number of orphaned certificates in their database, and Two, they want to continually verify that your site is in good standing.</p>
+<p>Now refresh your page and it should automatically redirect you from <em>http</em> to <em>https</em>. If not, just add the <em>s</em> to your URL in the address bar. You should see the <em>Lock Icon</em>  now to the left of the address bar. Click on that to view your certificate and see that it is valid!</p>
+<h4>Install PHPMyAdmin</h4>
+<p>We're going to want a nice web-based UI to manage our database. You could do it from the command line, but it's cumbersome and tedious. There are several MySQL/MariaDB management web apps, but I"m partial to <a href="https://www.phpmyadmin.net/" rel="noreferrer noopener" target="_blank">PHPMyAdmin</a>, probably because it's the one I've used for years and years and I don't want to change! But there are others that may be better.</p>
+<p>Run:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">sudo apt install -y phpmyadmin
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Now go back to your web page and append <em>/phpmyadmin</em> to your URL. Hopefully, the PHPMyAdmin login page will appear and you can log in with the superuser account we created.</p>
+<p>Well, I hope everything went according to plan and you now have a fully-functional LAMP server. Thanks for reading and/or viewing and look forward to more to come!</p>
+<p>Happy coding! :-)</p>
+</section>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <div class="share-buttons text-2xl flex gap-4 mx-auto">
+                <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
+                <a
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fhow-to-install-a-production-lamp-server"
+                    target="_blank"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook text-blue-700"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-install-a-production-lamp-server"
+                    target="_blank"
+                    aria-label="Share on LinkedIn"
+                >
+                    <i class="fab fa-linkedin text-indigo-700"></i>
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-install-a-production-lamp-server" target="_blank">
+                    <i class="fab fa-twitter text-sky-700"></i>
+                </a>
+            </div>
+            <hr />
+            <div class="bg-white dark:bg-zinc-800 border-1 rounded-lg flex flex-col shadow p-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4">
+                    <div class="col-span-1 flex items-center">
+                        <img
+                            src="https://cdn.designly.biz/imgr/jay.jpg?w=200&q=75"
+                            alt="Jay"
+                            width="200"
+                            height="200"
+                            class="rounded-full shadow-md border-4 border-blue-700/20 w-32 h-32 mx-auto"
+                        />
+                    </div>
+                    <div class="col-span-3 px-6 flex flex-col gap-4">
+                        <h3 class="text-2xl font-semibold text-center text-colors">About The Author</h3>
+                        <p class="text-zinc-700 dark:text-zinc-300">
+                            Jay is a full-stack developer, electrical engineer, writer and music producer. He currently
+                            resides in the Madison, WI area.
+                        </p>
+                        <a
+                            href="https://jay.designly.biz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-hover flex gap-2 items-center"
+                        >
+                            <div>Portfolio Site</div>
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-2xl font-bold text-center border-b-2 border-dashed pb-1 text-colors">Comments</h2>
+            <div id="comments" class="text-colors">
+                <!-- Comments will be generated here -->
+                <p>No Comments Yet</p>
+            </div>
+            <button id="btn-post-comment" class="btn btn-primary btn-outline flex gap-2 items-center max-w-md mx-auto">
+                <i class="fas fa-comment-medical"></i>
+                <div>Post Comment</div>
+            </button>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <template id="comment-template" class="text-colors">
+                <div
+                    class="comment flex flex-col gap-4 p-4 border rounded shadow mb-4 bg-white dark:bg-zinc-800 text-colors"
+                >
+                    <div class="flex gap-2 items-center">
+                        <img
+                            class="comment-avatar rounded-full w-10 h-10"
+                            src="/assets/img/pixel-black.png"
+                            width="100"
+                            height="100"
+                            alt="Commenter Avatar"
+                        />
+                        <div class="comment-display-name text-2xl text-cyan-700"></div>
+                    </div>
+                    <p class="comment-text"></p>
+                    <div class="replies ml-4">
+                        <!-- Replies will be generated here -->
+                    </div>
+                    <button class="reply-button mt-2 text-hover flex gap-2 items-center">
+                        <i class="fas fa-comment-dots"></i>
+                        <div>Reply</div>
+                    </button>
+                </div>
+            </template>
+        </article>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl text-hover"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-create-a-verification-code-input-component-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-create-a-verification-code-input-component-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Create a Verification Code Input Component in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create a Verification Code Input Component in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'll show you how to create a robust OTP code input component for React.js, using no other dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, I'll show you how to create a modal dialog overlay and disable the body scroll bars when it is open using Next.js 13 / React.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div>
+<input id="post-id" type="hidden" value="7wgtRGJYX7Gtcgs1HNAOaI" />
+<input id="reply-to" type="hidden" value="" />
+<script>
+    function generateComment(commentData) {
+        const template = document.querySelector("#comment-template");
+        const clone = template.content.cloneNode(true);
+        const displayName = clone.querySelector(".comment-display-name");
+        displayName.textContent = commentData.displayName;
+        const commentAvatar = clone.querySelector(".comment-avatar");
+        commentAvatar.setAttribute("src", commentData.avatar);
+        const commentText = clone.querySelector(".comment-text");
+        commentText.textContent = commentData.comment;
+        const repliesContainer = clone.querySelector(".replies");
+        commentData.replies.forEach((reply) => {
+            const replyElement = generateComment(reply);
+            repliesContainer.appendChild(replyElement);
+        });
+        const replyButton = clone.querySelector(".reply-button");
+        replyButton.addEventListener("click", () => {
+            document.getElementById("reply-to").value = commentData._id;
+            loadUrl("/comment");
+        });
+        return clone;
+    }
+    const fetchComments = async () => {
+        const postId = document.getElementById("post-id").value;
+        try {
+            const result = await fetch(`https://blog-comments.designly.workers.dev/?postId=${postId}`);
+            const comments = await result.json();
+            const commentsContainer = document.querySelector("#comments");
+            if (Array.isArray(comments) && comments.length) {
+                commentsContainer.innerHTML = "";
+                comments.forEach((comment) => {
+                    const commentElement = generateComment(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    setTimeout(async () => {
+        fetchComments();
+        document.getElementById("btn-post-comment").addEventListener("click", () => {
+            loadUrl(`/comment`);
+        });
+    }, 0);
+</script>
+</div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>

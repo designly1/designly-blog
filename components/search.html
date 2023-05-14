@@ -1,0 +1,61 @@
+<button class="fixed top-4 left-6 text-2xl text-hover" onclick="hideLayer();">
+  <i class="fa-solid fa-times"></i>
+</button>
+<div class="flex flex-col gap-1 m-auto w-full px-4 md:w-[500px]">
+  <label class="pl-1" for="header-search-field">Search Term:</label>
+  <div class="flex gap-2">
+    <input id="search-input" class="input input-bordered w-full" />
+    <button id="btn-search-submit" class="btn btn-primary">
+      <i class="fa-solid fa-search"></i>
+    </button>
+  </div>
+  <div id="search-error" class="pl-1 text-sm text-red-600"></div>
+</div>
+<script>
+  var searchButton = document.getElementById("btn-search-submit");
+  var searchInput = document.getElementById("search-input");
+
+  async function search(term) {
+    const errElem = document.getElementById("search-error");
+    errElem.innerHTML = "";
+    const formData = new FormData();
+    formData.append("term", term);
+
+    loadingOn();
+    try {
+      const result = await fetch(`/search`, {
+        method: "POST",
+        body: formData,
+      });
+      const html = await result.text();
+      if (!result.ok) {
+        throw new Error(html);
+      }
+      loadLayer(html);
+    } catch (err) {
+      errElem.innerHTML = err.message;
+      searchInput.select();
+    } finally {
+      loadingOff();
+    }
+  }
+
+  setTimeout(function () {
+    searchInput.focus();
+  }, 0);
+
+  function doSearch() {
+    search(searchInput.value);
+  }
+
+  searchInput.addEventListener("keydown", function (event) {
+    // Number 13 is the "Enter" key on the keyboard
+    if (event.keyCode === 13) {
+      doSearch();
+    }
+  });
+
+  searchButton.addEventListener("click", () => {
+    doSearch();
+  });
+</script>

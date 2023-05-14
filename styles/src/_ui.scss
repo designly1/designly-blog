@@ -1,0 +1,30 @@
+    .code-wrapper {
+        @apply relative rounded-lg overflow-hidden pt-7 bg-zinc-700;
+
+        button {
+            @apply absolute top-3 right-3 text-white text-2xl hover:text-blue-500 hover-trans bg-zinc-800 rounded-md px-2;
+        }
+    }
+
+    .mac {
+        @apply absolute top-2 h-3 w-3 rounded-full;
+
+        &1 {
+            @extend .mac;
+            @apply left-2 bg-red-500;
+        }
+        &2 {
+            @extend .mac;
+            @apply left-6 bg-yellow-500;
+        }
+        &3 {
+            @extend .mac;
+            @apply left-10 bg-green-500;
+        }
+    }
+
+@layer components {
+    .btn-close-layer1 {
+        @apply fa-solid fa-times text-2xl text-colors fixed top-12 left-4 cursor-pointer z-50;
+    }
+}

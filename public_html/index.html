@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Blog</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="" />
+        <meta property="og:title" content="" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1  md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <section class="flex flex-col gap-10 text-lg">
+            <img class="w-full rounded-xl overflow-hidden"
+                src="https://cdn.designly.biz/imgr/images/blog-cover.jpg?w=1200" alt="Designly Blog" loading="eager" />
+                <button class="flex md:hidden gap-2 items-center btn btn-primary btn-sidebar-open">
+                    <i class="fa-solid fa-bars btn-sidebar-open"></i>
+                    <div>Latest Articles</div>
+                </button>
+            <p>Welcome to Designly Blog, a platform dedicated to providing comprehensive and informative content on all
+                things technology. As a solo blogger,
+                I am passionate about sharing my expertise and knowledge on various technology topics, including full
+                stack development, systems administration,
+                software as a service (SaaS), cloud platforms, and the latest trends in artificial intelligence.</p>
+            <p>In today's fast-paced and constantly evolving technology landscape, it is essential to stay up-to-date
+                with the latest advancements
+                and best practices. Designly Blog is here to help you do just that. Whether you are a beginner just
+                starting out in the tech industry,
+                or a seasoned professional looking to enhance your knowledge, Designly Blog has something for you.</p>
+            <p>My goal is to provide practical insights and in-depth analysis on various technology topics, including
+                the latest
+                programming languages, frameworks, cloud-based infrastructure, and AI-powered solutions. With a focus on
+                real-world
+                applications and use cases, my content is designed to help you stay ahead of the curve and succeed in
+                today's competitive technology market.</p>
+            <p>So, if you're looking for a platform that can help you grow your knowledge and expertise in the
+                technology industry,
+                you've come to the right place. Join me on a journey through the exciting world of technology, and let's
+                explore
+                the latest trends and advancements together.</p>
+        </section>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl text-hover"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-create-a-verification-code-input-component-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-create-a-verification-code-input-component-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Create a Verification Code Input Component in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create a Verification Code Input Component in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'll show you how to create a robust OTP code input component for React.js, using no other dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, I'll show you how to create a modal dialog overlay and disable the body scroll bars when it is open using Next.js 13 / React.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div></div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>

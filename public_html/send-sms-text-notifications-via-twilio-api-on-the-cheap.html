@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Send SMS Text Notifications Via Twilio API On the Cheap | Designly</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="Learn how you can send SMS text notifications to your customer via Twilio's easy-to-use API--on the cheap!" />
+        <meta property="og:title" content="Send SMS Text Notifications Via Twilio API On the Cheap" />
+        <meta property="og:description" content="Learn how you can send SMS text notifications to your customer via Twilio's easy-to-use API--on the cheap!" />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/twilio-notify/cover.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz/send-sms-text-notifications-via-twilio-api-on-the-cheap" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <article class="flex flex-col gap-10">
+            <section class="post-header flex flex-col gap-4">
+                <h1 class="text-colors text-xl md:text-3xl font-bold">Send SMS Text Notifications Via Twilio API On the Cheap</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/">#Twilio</a>
+<a href="/tag/cloud-computing">#Cloud Computing</a>
+<a href="/tag/php">#PHP</a>
+<a href="/tag/">#SMS</a></div>
+                <img
+                    class="rounded-md shadow-lg"
+                    src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/cover.jpg?w=1024&q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/cover.jpg?w=320&q=75 320w"
+                    alt="Send SMS Text Notifications Via Twilio API On the Cheap"
+                    width="1200"
+                    height="675"
+                />
+                <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </section>
+            <section class="post-content flex flex-col gap-6"><h2>Send SMS Text Notifications Via Twilio API On the Cheap</h2>
+<p>Sending SMS text notifications is a great way to stay engaged with your customers. There are many services out there that allow you to integrate your app with SMS functionality, but I have become quite smitten with <strong>Twilio</strong>. The main reason I prefer them is because of their trust status and deliverability of SMS messages.</p>
+<p>The process of getting set up is quite straight-forward. You'll need to create an account, purchase a phone number ($1/mo for local and $2/mo for toll-free), and create a messaging service. You'll need to verify your business before you can send SMS messages, but it's easy and instant in most cases.</p>
+<p>There are two levels of trust. The <strong>starter</strong> use case is free to register and allows up to <strong>3000 message segments</strong> per day and up to <strong>1 message segment</strong> per second. For a $50 fee you can upgrade to much higher quotas, but further verification is required.</p>
+<p>The messaging rates as of the writing of this article are $0.0075/message segment, which is not bad--just 3/4 of a penny. <a href="https://www.twilio.com/sms/pricing/us" rel="noreferrer noopener" target="_blank">Click Here</a> for complete pricing info.</p>
+<h4>Step 1: Register Your Twilio Service</h4>
+<p>Ok, let's get started! Assuming you have registered an account and have selected a phone number, let's create a messaging service.</p>
+<p>In the search bar on the top right of the console, type <strong>messaging</strong> and select <strong>Messaging Services</strong> from the search results. Then click <strong>Create Messaging Service</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image1.jpg?w=1200&amp;q=75" alt="Go to Messaging Services" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image1.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image1.jpg?w=320&amp;q=75 320w"></p>
+<p>Name your messaging service (I chose <strong>Notifications</strong>) and then make sure <strong>Notify my users</strong> is selected under <strong>Select what you want to use Messaging for</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image2.jpg?w=1200&amp;q=75" alt="Name Your Messaging Service" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image2.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image2.jpg?w=320&amp;q=75 320w"></p>
+<p>Next, click <strong>Add Senders</strong> to the sender pool, select <strong>Phone Number</strong> as <strong>Sender Type</strong> and click <strong>Continue</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image3.jpg?w=1200&amp;q=75" alt="Click Add Senders to Sender Pool" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image3.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image3.jpg?w=320&amp;q=75 320w"></p>
+<p>Now select your phone number and click <strong>Add Phone Numbers</strong>. Then click <strong>Step 3: Setup Integration</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image4.jpg?w=1200&amp;q=75" alt="Select Your Phone Number" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image4.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image4.jpg?w=320&amp;q=75 320w"></p>
+<p>On the next screen, you can set up webhooks and callback URLs for inbound messages, but we're not going to do that now (tutorial forthcoming). Go ahead and leave these settings as-is and click <strong>Step 4: Add compliance info</strong>. Then click <strong>Register Business Profile</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image5.jpg?w=1200&amp;q=75" alt="Click Register Business Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image5.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image5.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image5.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image5.jpg?w=320&amp;q=75 320w"></p>
+<p>Under <strong>What type of profile do you need?</strong> select <strong>Starter customer profile</strong> and click <strong>Continue</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image6.jpg?w=1200&amp;q=75" alt="Select Starter Customer Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image6.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image6.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image6.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image6.jpg?w=320&amp;q=75 320w"></p>
+<p>Fill out your company information (be sure to use your company's legal business name) and then click <strong>Save and continue</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image7.jpg?w=1200&amp;q=75" alt="Fill Out Your Customer Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image7.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image7.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image7.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image7.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image8.jpg?w=1200&amp;q=75" alt="Fill Out Your Customer Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image8.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image8.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image8.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image8.jpg?w=320&amp;q=75 320w"></p>
+<p>When your profile is complete, click <strong>Submit for Review</strong>. You should now see a screen confirming your messaging quota limits as shown. Click <strong>Continue</strong> twice to proceed.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image9.jpg?w=1200&amp;q=75" alt="Confirmation Screen" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image9.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image9.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image9.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image9.jpg?w=320&amp;q=75 320w"></p>
+<p>Now select your service <strong>Notifications</strong> under <strong>Select a Messaging Service to link to your campaign use case</strong> and click <strong>Continue</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image10.jpg?w=1200&amp;q=75" alt="Select Your Notification Service" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image10.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image10.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image10.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image10.jpg?w=320&amp;q=75 320w"></p>
+<p>If everything looks good, click <strong>Register campaign use case</strong>. If all goes well, you should see the confetti screen. If so, you're good to go!</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image11.jpg?w=1200&amp;q=75" alt="Confetti Screen" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image11.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image11.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image11.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image11.jpg?w=320&amp;q=75 320w"></p>
+<p>Now before we can get integrated, you'll need three things: your <strong>Account SID</strong>, <strong>Auth Token</strong> and <strong>Messaging Service SID</strong>. Navigate back to the main screen of your messaging service to get the SID:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image12.jpg?w=1200&amp;q=75" alt="Copy Your Messaging Service ID" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image12.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image12.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image12.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image12.jpg?w=320&amp;q=75 320w"></p>
+<p>To get your <strong>Account SID</strong> and <strong>Auth Token</strong>, click your  company name in the top left corner to go back to your main dashboard screen and copy them from there:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image13.jpg?w=1200&amp;q=75" alt="Copy Your Account SID and Auth Token" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image13.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image13.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image13.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image13.jpg?w=320&amp;q=75 320w"></p>
+<h4>Step 2: Setup Your SDK Environment</h4>
+<p>Ok, now let's get integrated! I'll cover two development environments here, <strong>Node.JS</strong> and <strong>PHP</strong>.</p>
+<p>First install the <strong>Twilio SDK</strong>.</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash"><span class="hljs-comment"># Node.JS</span>
+npm install twilio
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash"><span class="hljs-comment"># PHP</span>
+composer require twilio/sdk
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Now, let's send a test SMS to ourself:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">/* Node.JS */</span>
+<span class="hljs-keyword">const</span> accountSid = <span class="hljs-string">'ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'</span>; <span class="hljs-comment">// Your Account SID from www.twilio.com/console</span>
+<span class="hljs-keyword">const</span> authToken = <span class="hljs-string">'your_auth_token'</span>; <span class="hljs-comment">// Your Auth Token from www.twilio.com/console</span>
+<span class="hljs-keyword">const</span> twilio = <span class="hljs-built_in">require</span>(<span class="hljs-string">'twilio'</span>);
+<span class="hljs-keyword">const</span> client = <span class="hljs-keyword">new</span> twilio(accountSid, authToken);
+client.messages
+  .create({
+    <span class="hljs-attr">messagingServiceSid</span>: <span class="hljs-string">"YOUR_MESSAGING_SERVICE_ID"</span>,
+    <span class="hljs-attr">body</span>: <span class="hljs-string">'Hello from Node'</span>,
+    <span class="hljs-attr">to</span>: <span class="hljs-string">'+12345678901'</span>, <span class="hljs-comment">// Text this number</span>
+    <span class="hljs-attr">from</span>: <span class="hljs-string">'+12345678901'</span>, <span class="hljs-comment">// From a valid Twilio number</span>
+  })
+  .then(<span class="hljs-function">(<span class="hljs-params">message</span>) =&gt;</span> <span class="hljs-built_in">console</span>.log(message.sid));
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<div class="code-wrapper shadow-lg"><pre><code class="language-php hljs php" data-lang="php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-comment">// Required if your environment does not handle autoloading</span>
+<span class="hljs-keyword">require</span> <span class="hljs-keyword">__DIR__</span> . <span class="hljs-string">'/vendor/autoload.php'</span>;
+<span class="hljs-comment">// Use the REST API Client to make requests to the Twilio REST API</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Twilio</span>\<span class="hljs-title">Rest</span>\<span class="hljs-title">Client</span>;
+<span class="hljs-comment">// Your Account SID and Auth Token from twilio.com/console</span>
+$sid = <span class="hljs-string">'ACXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX'</span>;
+$token = <span class="hljs-string">'your_auth_token'</span>;
+$client = <span class="hljs-keyword">new</span> Client($sid, $token);
+<span class="hljs-comment">// Use the client to do fun stuff like send text messages!</span>
+$client-&gt;messages-&gt;create(
+    <span class="hljs-comment">// the number you'd like to send the message to</span>
+    <span class="hljs-string">'+15558675309'</span>,
+    [
+        <span class="hljs-string">'messagingServiceSid'</span> =&gt; <span class="hljs-string">'YOUR_MESSAGING_SERVICE_ID'</span>,
+        <span class="hljs-comment">// A Twilio phone number you purchased at twilio.com/console</span>
+        <span class="hljs-string">'from'</span> =&gt; <span class="hljs-string">'+15017250604'</span>,
+        <span class="hljs-comment">// the body of the text message you'd like to send</span>
+        <span class="hljs-string">'body'</span> =&gt; <span class="hljs-string">'Hey Jenny! Good luck on the bar exam!'</span>
+    ]
+);
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Hopefully your phone dinged! If so, you're good to go. There are infinite possibilities for what you can do with Twilio's amazing programmable messaging and voice services. Be sure to check <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Our Blog</a>. for more awesome tutorials!</p>
+<p>Happy coding!</p>
+</section>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <div class="share-buttons text-2xl flex gap-4 mx-auto">
+                <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
+                <a
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fsend-sms-text-notifications-via-twilio-api-on-the-cheap"
+                    target="_blank"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook text-blue-700"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fsend-sms-text-notifications-via-twilio-api-on-the-cheap"
+                    target="_blank"
+                    aria-label="Share on LinkedIn"
+                >
+                    <i class="fab fa-linkedin text-indigo-700"></i>
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fsend-sms-text-notifications-via-twilio-api-on-the-cheap" target="_blank">
+                    <i class="fab fa-twitter text-sky-700"></i>
+                </a>
+            </div>
+            <hr />
+            <div class="bg-white dark:bg-zinc-800 border-1 rounded-lg flex flex-col shadow p-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4">
+                    <div class="col-span-1 flex items-center">
+                        <img
+                            src="https://cdn.designly.biz/imgr/jay.jpg?w=200&q=75"
+                            alt="Jay"
+                            width="200"
+                            height="200"
+                            class="rounded-full shadow-md border-4 border-blue-700/20 w-32 h-32 mx-auto"
+                        />
+                    </div>
+                    <div class="col-span-3 px-6 flex flex-col gap-4">
+                        <h3 class="text-2xl font-semibold text-center text-colors">About The Author</h3>
+                        <p class="text-zinc-700 dark:text-zinc-300">
+                            Jay is a full-stack developer, electrical engineer, writer and music producer. He currently
+                            resides in the Madison, WI area.
+                        </p>
+                        <a
+                            href="https://jay.designly.biz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-hover flex gap-2 items-center"
+                        >
+                            <div>Portfolio Site</div>
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-2xl font-bold text-center border-b-2 border-dashed pb-1 text-colors">Comments</h2>
+            <div id="comments" class="text-colors">
+                <!-- Comments will be generated here -->
+                <p>No Comments Yet</p>
+            </div>
+            <button id="btn-post-comment" class="btn btn-primary btn-outline flex gap-2 items-center max-w-md mx-auto">
+                <i class="fas fa-comment-medical"></i>
+                <div>Post Comment</div>
+            </button>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <template id="comment-template" class="text-colors">
+                <div
+                    class="comment flex flex-col gap-4 p-4 border rounded shadow mb-4 bg-white dark:bg-zinc-800 text-colors"
+                >
+                    <div class="flex gap-2 items-center">
+                        <img
+                            class="comment-avatar rounded-full w-10 h-10"
+                            src="/assets/img/pixel-black.png"
+                            width="100"
+                            height="100"
+                            alt="Commenter Avatar"
+                        />
+                        <div class="comment-display-name text-2xl text-cyan-700"></div>
+                    </div>
+                    <p class="comment-text"></p>
+                    <div class="replies ml-4">
+                        <!-- Replies will be generated here -->
+                    </div>
+                    <button class="reply-button mt-2 text-hover flex gap-2 items-center">
+                        <i class="fas fa-comment-dots"></i>
+                        <div>Reply</div>
+                    </button>
+                </div>
+            </template>
+        </article>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl text-hover"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-create-a-verification-code-input-component-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-create-a-verification-code-input-component-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Create a Verification Code Input Component in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create a Verification Code Input Component in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'll show you how to create a robust OTP code input component for React.js, using no other dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, I'll show you how to create a modal dialog overlay and disable the body scroll bars when it is open using Next.js 13 / React.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div>
+<input id="post-id" type="hidden" value="5ML7b2Aqu1tAczlQ0oSnIx" />
+<input id="reply-to" type="hidden" value="" />
+<script>
+    function generateComment(commentData) {
+        const template = document.querySelector("#comment-template");
+        const clone = template.content.cloneNode(true);
+        const displayName = clone.querySelector(".comment-display-name");
+        displayName.textContent = commentData.displayName;
+        const commentAvatar = clone.querySelector(".comment-avatar");
+        commentAvatar.setAttribute("src", commentData.avatar);
+        const commentText = clone.querySelector(".comment-text");
+        commentText.textContent = commentData.comment;
+        const repliesContainer = clone.querySelector(".replies");
+        commentData.replies.forEach((reply) => {
+            const replyElement = generateComment(reply);
+            repliesContainer.appendChild(replyElement);
+        });
+        const replyButton = clone.querySelector(".reply-button");
+        replyButton.addEventListener("click", () => {
+            document.getElementById("reply-to").value = commentData._id;
+            loadUrl("/comment");
+        });
+        return clone;
+    }
+    const fetchComments = async () => {
+        const postId = document.getElementById("post-id").value;
+        try {
+            const result = await fetch(`https://blog-comments.designly.workers.dev/?postId=${postId}`);
+            const comments = await result.json();
+            const commentsContainer = document.querySelector("#comments");
+            if (Array.isArray(comments) && comments.length) {
+                commentsContainer.innerHTML = "";
+                comments.forEach((comment) => {
+                    const commentElement = generateComment(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    setTimeout(async () => {
+        fetchComments();
+        document.getElementById("btn-post-comment").addEventListener("click", () => {
+            loadUrl(`/comment`);
+        });
+    }, 0);
+</script>
+</div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>

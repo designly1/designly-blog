@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Create a Free Image Resizing CDN Using Amazon S3 + ImageKit.io | Designly</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="You can have your own free image-resizing and optimizing CDN using Amazon S3 + ImageKit.io. I'll show you how!" />
+        <meta property="og:title" content="Create a Free Image Resizing CDN Using Amazon S3 + ImageKit.io" />
+        <meta property="og:description" content="You can have your own free image-resizing and optimizing CDN using Amazon S3 + ImageKit.io. I'll show you how!" />
+        <meta property="og:image" content="https://d340jo5zum8tsx.cloudfront.net/blog_files/imagekit/banner.webp" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz/create-a-free-image-resizing-cdn-using-amazon-s3-imagekit-io" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <article class="flex flex-col gap-10">
+            <section class="post-header flex flex-col gap-4">
+                <h1 class="text-colors text-xl md:text-3xl font-bold">Create a Free Image Resizing CDN Using Amazon S3 + ImageKit.io</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/amazon-web-services">#Amazon Web Services</a>
+<a href="/tag/aws">#AWS</a>
+<a href="/tag/cdn">#CDN</a>
+<a href="/tag/aws-cloudfront">#AWS CloudFront</a></div>
+                <img
+                    class="rounded-md shadow-lg"
+                    src="https://d340jo5zum8tsx.cloudfront.net/blog_files/imagekit/banner.webp?w=1200&q=75"
+                    srcset="https://d340jo5zum8tsx.cloudfront.net/blog_files/imagekit/banner.webp?w=1024&q=75 1024w, https://d340jo5zum8tsx.cloudfront.net/blog_files/imagekit/banner.webp?w=640&q=75 640w, https://d340jo5zum8tsx.cloudfront.net/blog_files/imagekit/banner.webp?w=320&q=75 320w"
+                    alt="Create a Free Image Resizing CDN Using Amazon S3 + ImageKit.io"
+                    width="1200"
+                    height="675"
+                />
+                <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </section>
+            <section class="post-content flex flex-col gap-6"><p>No longer is the realm of CDNs and automated image resizing accessible only to large corporations with deep wallets. Both Amazon Web Services and ImageKit.io have free-tier plans. And using these services, I will show you how to create an image-optimizing and -resizing CDN using these two services in conjunction.</p>
+<h4>Step 1: Create an AWS Account and an S3 Bucket</h4>
+<p>I&acirc;&#128;&#153;ll assume you can figure out how to register an Amazon Web Services account on your own. Don&acirc;&#128;&#153;t be discouraged by the need to give a credit card. Your card will not be charged unless you exceed free-tier limits, and the free-tier limits for an S3 bucket are exceedingly high. Also, if you do go over your quota, you only pay as you go and the rates are very low.</p>
+<p>For more information on Amazon&acirc;&#128;&#153;s pricing for the Simple Storage Service, <a href="https://aws.amazon.com/s3/pricing/?trk=fecf68c9-3874-4ae2-a7ed-72b6d19c8034&amp;sc_channel=ps&amp;sc_campaign=acquisition&amp;sc_medium=ACQ-P%7CPS-GO%7CBrand%7CDesktop%7CSU%7CStorage%7CS3%7CUS%7CEN%7CText&amp;s_kwcid=AL!4422!3!488982706710!p!!g!!amazon%20s3&amp;ef_id=Cj0KCQjwgMqSBhDCARIsAIIVN1VFc6BOx1NUqzpmit98PzXU0VI-CkNwfrF6gnXtWdQlOBIftCwoXbAaAkafEALw_wcB:G:s&amp;s_kwcid=AL!4422!3!488982706710!p!!g!!amazon%20s3" rel="noreferrer noopener" target="_blank">click here</a>.</p>
+<p>OK, so hopefully you now have an AWS account and your at your dashboard. Now we can create an S3 bucket, which we will use to store our image files.</p>
+<p>Click the <strong>Services</strong> icon on the top right of the dashboard and select <strong>Storage-&gt;S3</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-1.webp?w=1200&amp;q=75" alt="Click the Services icon on the top right of the dashboard and select Storage-&gt;S3" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-1.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-1.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-1.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-1.webp?w=320&amp;q=75 320w"></p>
+<p>Next, enter a <strong>Bucket Name</strong> and choose your <strong>AWS Region</strong>. If you don&acirc;&#128;&#153;t already have other AWS services in a region, choose a region that this geographically close to you.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-2.webp?w=1200&amp;q=75" alt="Enter a Bucket Name and choose your AWS Region" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-2.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-2.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-2.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-2.webp?w=320&amp;q=75 320w">
+Now scroll down and uncheck <strong>Block <em>all</em> public access</strong>. Then check the <strong>&acirc;&#128;&#156;I Acknowledge&acirc;&#128;&#157;</strong> checkbox to continue. Leave all the other settings as-is and then scroll down and click <strong>Create Bucket</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-3.webp?w=1200&amp;q=75" alt="Scroll down and uncheck Block all public access" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-3.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-3.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-3.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-3.webp?w=320&amp;q=75 320w"></p>
+<p>OK, now we need to setup external access to the S3 bucket so ImageKit.io can access it as an external origin for your CDN edge.</p>
+<p>In the <strong>Search Bar</strong> next to the <strong>Services</strong> icon type in <em><strong>Iam</strong></em> and then click <strong>Users</strong> under <strong>IAM</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-8.webp?w=1200&amp;q=75" alt="In the Search Bar next to the Services icon type in Iam and then click Users under IAM" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-8.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-8.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-8.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-8.webp?w=320&amp;q=75 320w">
+Then click <strong>Add Users</strong> and enter a username. Then check the box labeled <strong>Access key</strong> under <strong>Select AWS credential type</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-9.webp?w=1200&amp;q=75" alt="Click Add Users and enter a username. Then check the box labeled Access key under Select AWS credential type" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-9.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-9.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-9.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-9.webp?w=320&amp;q=75 320w"></p>
+<p>Next, you&acirc;&#128;&#153;ll need to add your new user to a group. We&acirc;&#128;&#153;re going to <strong>Create Group.</strong> Name the group whatever you like and the type <strong>S3</strong> in the search baar and check <strong>AmazonS3FullAcess</strong>. This will give this group full access to your S3 bucket for managing objects.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-10.webp?w=1200&amp;q=75" alt="Click Add User To Group and then search for S3 and check AmazonS3FullAccess" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-10.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-10.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-10.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-10.webp?w=320&amp;q=75 320w"></p>
+<p>Click next, skip adding tags and then click <strong>Create User</strong>. Now copy and paste your <strong>Access key ID</strong> and <strong>Secret access key</strong> and store them in a safe place. Once you close this screen you will not be able to see your secret key again!</p>
+<h3>Step 2: Create an ImageKit.io Account</h3>
+<p>Head to <a href="https://imagekit.io/registration?code=tkda4404" rel="noreferrer noopener" target="_blank">ImageKit.io</a> and create your free account. This service does not require a credit card for a free-tier account, so yay! Also, FYI: Please use the link I provided as it has my affiliate link attached. If you decide to upgrade to a paid plan, I get $20 and you get $10. But you&acirc;&#128;&#153;ll probably be staying with a free account unless you want to activate some advanced features. One feature you may want to use in a paid plan is caching of resized files between your ImageKit CDN edge and your S3 bucket.</p>
+<p>OK, so now you have an ImageKit.io account, now we&acirc;&#128;&#153;ll need to create an <strong>External Origin</strong>. Click <strong>External Storage</strong> on the left sidebar and then click <strong>+ Add New</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/imagekit/imagekit1.webp?w=1200&amp;q=75" alt="Click External Storage on the left sidebar and then click + Add New" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/imagekit/imagekit1.webp" srcset="https://cdn.designly.biz/imgr/blog_files/imagekit/imagekit1.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/imagekit/imagekit1.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/imagekit/imagekit1.webp?w=320&amp;q=75 320w"></p>
+<p>Next, enter a friendly <strong>Origin name</strong>, and then enter your <strong>S3 bucket name</strong>, <strong>S3 access key</strong>, and <strong>S3 secret key</strong>. Hopefully you saved your keys in a safe place! For <strong>S3 bucket folder</strong>, you can simply enter &acirc;&#128;&#156;/&acirc;&#128;&#157;. If you want to set your root directory to a specific folder, you can.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/imagekit/imagekit2.webp?w=1200&amp;q=75" alt="Enter your S3 bucket name, S3 access key, and S3 secret key" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/imagekit/imagekit2.webp" srcset="https://cdn.designly.biz/imgr/blog_files/imagekit/imagekit2.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/imagekit/imagekit2.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/imagekit/imagekit2.webp?w=320&amp;q=75 320w"></p>
+<p>Now copy and paste your <strong>URL Endpoint</strong> into a new browser tab and type the relative path to your image file after the slash. You should see your image! Great! Now you&acirc;&#128;&#153;re images are being served by a super-fast CDN edge!</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/imagekit/imagekit3.webp?w=1200&amp;q=75" alt="Copy Your URL Endpoint" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/imagekit/imagekit3.webp" srcset="https://cdn.designly.biz/imgr/blog_files/imagekit/imagekit3.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/imagekit/imagekit3.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/imagekit/imagekit3.webp?w=320&amp;q=75 320w"></p>
+<p>Now, if you want to retrieve a resized image from your CDN, you simply have to prepend a path to your file as follows:</p>
+<p>Let&acirc;&#128;&#153;s say your image endpoint URL is <a href="https://ik.imagekit.io/r2d98yeyh9/images/some-image.jpg." rel="noreferrer noopener" target="_blank">https://ik.imagekit.io/r2d98yeyh9/images/some-image.jpg.</a> Now let&acirc;&#128;&#153;s say we want to resize the width to 500 pixels. We simply do this: <a href="https://ik.imagekit.io/r2d98yeyh9/images/some-image.jpg." rel="noreferrer noopener" target="_blank">https://ik.imagekit.io/r2d98yeyh9/images/tr:w-300/some-image.jpg</a>.</p>
+<p>That&acirc;&#128;&#153;s it! For a full list of transformation options, as well as doing cool things like <strong>Named Transformations</strong>, please read the <a href="https://docs.imagekit.io/features/image-transformations" rel="noreferrer noopener" target="_blank">ImakeKit Docs</a>.</p>
+<p>I hope you found this tutorial useful. For more great information and new, please visit <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Our Blog</a>.</p>
+</section>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <div class="share-buttons text-2xl flex gap-4 mx-auto">
+                <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
+                <a
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fcreate-a-free-image-resizing-cdn-using-amazon-s3-imagekit-io"
+                    target="_blank"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook text-blue-700"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fcreate-a-free-image-resizing-cdn-using-amazon-s3-imagekit-io"
+                    target="_blank"
+                    aria-label="Share on LinkedIn"
+                >
+                    <i class="fab fa-linkedin text-indigo-700"></i>
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fcreate-a-free-image-resizing-cdn-using-amazon-s3-imagekit-io" target="_blank">
+                    <i class="fab fa-twitter text-sky-700"></i>
+                </a>
+            </div>
+            <hr />
+            <div class="bg-white dark:bg-zinc-800 border-1 rounded-lg flex flex-col shadow p-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4">
+                    <div class="col-span-1 flex items-center">
+                        <img
+                            src="https://cdn.designly.biz/imgr/jay.jpg?w=200&q=75"
+                            alt="Jay"
+                            width="200"
+                            height="200"
+                            class="rounded-full shadow-md border-4 border-blue-700/20 w-32 h-32 mx-auto"
+                        />
+                    </div>
+                    <div class="col-span-3 px-6 flex flex-col gap-4">
+                        <h3 class="text-2xl font-semibold text-center text-colors">About The Author</h3>
+                        <p class="text-zinc-700 dark:text-zinc-300">
+                            Jay is a full-stack developer, electrical engineer, writer and music producer. He currently
+                            resides in the Madison, WI area.
+                        </p>
+                        <a
+                            href="https://jay.designly.biz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-hover flex gap-2 items-center"
+                        >
+                            <div>Portfolio Site</div>
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-2xl font-bold text-center border-b-2 border-dashed pb-1 text-colors">Comments</h2>
+            <div id="comments" class="text-colors">
+                <!-- Comments will be generated here -->
+                <p>No Comments Yet</p>
+            </div>
+            <button id="btn-post-comment" class="btn btn-primary btn-outline flex gap-2 items-center max-w-md mx-auto">
+                <i class="fas fa-comment-medical"></i>
+                <div>Post Comment</div>
+            </button>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <template id="comment-template" class="text-colors">
+                <div
+                    class="comment flex flex-col gap-4 p-4 border rounded shadow mb-4 bg-white dark:bg-zinc-800 text-colors"
+                >
+                    <div class="flex gap-2 items-center">
+                        <img
+                            class="comment-avatar rounded-full w-10 h-10"
+                            src="/assets/img/pixel-black.png"
+                            width="100"
+                            height="100"
+                            alt="Commenter Avatar"
+                        />
+                        <div class="comment-display-name text-2xl text-cyan-700"></div>
+                    </div>
+                    <p class="comment-text"></p>
+                    <div class="replies ml-4">
+                        <!-- Replies will be generated here -->
+                    </div>
+                    <button class="reply-button mt-2 text-hover flex gap-2 items-center">
+                        <i class="fas fa-comment-dots"></i>
+                        <div>Reply</div>
+                    </button>
+                </div>
+            </template>
+        </article>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl text-hover"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-create-a-verification-code-input-component-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-create-a-verification-code-input-component-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Create a Verification Code Input Component in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create a Verification Code Input Component in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'll show you how to create a robust OTP code input component for React.js, using no other dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, I'll show you how to create a modal dialog overlay and disable the body scroll bars when it is open using Next.js 13 / React.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div>
+<input id="post-id" type="hidden" value="2vkcjlM2t5YmAgGiDQ7nMZ" />
+<input id="reply-to" type="hidden" value="" />
+<script>
+    function generateComment(commentData) {
+        const template = document.querySelector("#comment-template");
+        const clone = template.content.cloneNode(true);
+        const displayName = clone.querySelector(".comment-display-name");
+        displayName.textContent = commentData.displayName;
+        const commentAvatar = clone.querySelector(".comment-avatar");
+        commentAvatar.setAttribute("src", commentData.avatar);
+        const commentText = clone.querySelector(".comment-text");
+        commentText.textContent = commentData.comment;
+        const repliesContainer = clone.querySelector(".replies");
+        commentData.replies.forEach((reply) => {
+            const replyElement = generateComment(reply);
+            repliesContainer.appendChild(replyElement);
+        });
+        const replyButton = clone.querySelector(".reply-button");
+        replyButton.addEventListener("click", () => {
+            document.getElementById("reply-to").value = commentData._id;
+            loadUrl("/comment");
+        });
+        return clone;
+    }
+    const fetchComments = async () => {
+        const postId = document.getElementById("post-id").value;
+        try {
+            const result = await fetch(`https://blog-comments.designly.workers.dev/?postId=${postId}`);
+            const comments = await result.json();
+            const commentsContainer = document.querySelector("#comments");
+            if (Array.isArray(comments) && comments.length) {
+                commentsContainer.innerHTML = "";
+                comments.forEach((comment) => {
+                    const commentElement = generateComment(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    setTimeout(async () => {
+        fetchComments();
+        document.getElementById("btn-post-comment").addEventListener("click", () => {
+            loadUrl(`/comment`);
+        });
+    }, 0);
+</script>
+</div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>

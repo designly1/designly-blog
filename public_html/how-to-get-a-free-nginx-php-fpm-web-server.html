@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>How to Get a Free NGINX/PHP-FPM Web Server | Designly</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="In this article, I'll show you how to get your own free cloud VPS from Oracle Cloud and then setup NGINX/PHP-FPM." />
+        <meta property="og:title" content="How to Get a Free NGINX/PHP-FPM Web Server" />
+        <meta property="og:description" content="In this article, I'll show you how to get your own free cloud VPS from Oracle Cloud and then setup NGINX/PHP-FPM." />
+        <meta property="og:image" content="https://d340jo5zum8tsx.cloudfront.net/blog_files/oracle_cloud/poster.webp" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz/how-to-get-a-free-nginx-php-fpm-web-server" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <article class="flex flex-col gap-10">
+            <section class="post-header flex flex-col gap-4">
+                <h1 class="text-colors text-xl md:text-3xl font-bold">How to Get a Free NGINX/PHP-FPM Web Server</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/cloud-computing">#Cloud Computing</a>
+<a href="/tag/oracle-cloud">#Oracle Cloud</a>
+<a href="/tag/php">#PHP</a>
+<a href="/tag/nginx">#NGINX</a>
+<a href="/tag/mysql">#MySQL</a>
+<a href="/tag/">#Ubuntu</a>
+<a href="/tag/php-fpm">#PHP-FPM</a></div>
+                <img
+                    class="rounded-md shadow-lg"
+                    src="https://d340jo5zum8tsx.cloudfront.net/blog_files/oracle_cloud/poster.webp?w=1200&q=75"
+                    srcset="https://d340jo5zum8tsx.cloudfront.net/blog_files/oracle_cloud/poster.webp?w=1024&q=75 1024w, https://d340jo5zum8tsx.cloudfront.net/blog_files/oracle_cloud/poster.webp?w=640&q=75 640w, https://d340jo5zum8tsx.cloudfront.net/blog_files/oracle_cloud/poster.webp?w=320&q=75 320w"
+                    alt="How to Get a Free NGINX/PHP-FPM Web Server"
+                    width="1200"
+                    height="675"
+                />
+                <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </section>
+            <section class="post-content flex flex-col gap-6"><p>There are several cloud services these days that have a free-tier for certain cloud services. I&acirc;&#128;&#153;ve tried several. <strong>Amazon Web Services</strong> gives you 700 hours per month free, which is pretty close to free. <strong>Microsoft Azure</strong> gives you a whole year of free services, and then you have to pay (a comparable price to AWS). <strong>Oracle Cloud</strong>, however, by far has the best deal. You can have up to <strong>two</strong> micro-class VPSs free &acirc;&#128;&#148; forever.</p>
+<p>So in this guide, we will be setting up a <strong>NGINX / PHP-FPM</strong> server stack on an <strong>Oracle Cloud</strong> free VPS.</p>
+<h4>Step 1 &acirc;&#128;&#148; Create Your Free VPS Instance</h4>
+<p>First, let&acirc;&#128;&#153;s get set up with a free account. Follow <a href="https://signup.cloud.oracle.com/" rel="noreferrer noopener" target="_blank">this link</a> to get started.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=1200&amp;q=75" alt="Enter your full name and email address" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-1.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=320&amp;q=75 320w"></p>
+<p>You&acirc;&#128;&#153;ll need to confirm your email address. Once that&acirc;&#128;&#153;s done, you should be able to log in.</p>
+<p>Once you&acirc;&#128;&#153;re at your dashboard, click the <strong>menu button</strong> in the upper left corner and click on <strong>Compute</strong>, then <strong>Instances.</strong></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=1200&amp;q=75" alt="Click on compute and then instances" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-2.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=320&amp;q=75 320w"></p>
+<p>It may take some time to get to the <strong>instances</strong> dashboard. Once you&acirc;&#128;&#153;re there, click <strong>Create Instance</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=1200&amp;q=75" alt="Click create instance" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-3.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=320&amp;q=75 320w"></p>
+<p>You can name your VPS whatever you like, in my example, I named mine <em>nginx-server</em>. Leave everything else as-is and then click <strong>edit</strong> on the right-hand side of the <strong>image and shape</strong> section.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=1200&amp;q=75" alt="Name your instance then click edit under image and shape" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-4.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=320&amp;q=75 320w"></p>
+<p>The default OS image is <strong>Oracle Linux 8</strong> (at the time of this writing). In my example, we&acirc;&#128;&#153;re going to use <strong>Ubuntu 20.04 LTS</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=1200&amp;q=75" alt="Click change image" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-5.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=320&amp;q=75 320w"></p>
+<p>Next, scroll down to <strong>Add SSH keys</strong> and make sure <strong>generate a key pair for me</strong> is checked and then click <strong>download private key</strong>. You won&acirc;&#128;&#153;t need the public key as it will automatically be installed on the VPS.</p>
+<p>Once your key is downloaded click the <strong>Create</strong> button.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=1200&amp;q=75" alt="Download your Private Key, then click the Create button." class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-7.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=320&amp;q=75 320w"></p>
+<p>You should now see your <strong>VPS instance</strong> listed. Copy the <strong>Public IP</strong> <strong>Address</strong> and create a <strong>hostname</strong> with your DNS / Domain provider. For this example, I&acirc;&#128;&#153;m going to use <strong>your-host.example.com</strong>.</p>
+<h4>Step 2 &acirc;&#128;&#148; Setup Your Firewall</h4>
+<p>Ok, we&acirc;&#128;&#153;re getting there. Inbound port 22 is allowed to the world by default, which you may want to restrict to your own <strong>CIDR</strong> subnet or IP address. In this example, we&acirc;&#128;&#153;re just going to leave port 22 open and also open <strong>ports 80 and 443</strong>.</p>
+<p>In the <strong>search bar</strong> at the top of the dashboard, search for <strong>security groups</strong> and then click <strong>Default Security List for vcn-&acirc;&#128;&brvbar;</strong></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=1200&amp;q=75" alt="Click Default Security List&acirc;&#128;&brvbar;" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-8.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=320&amp;q=75 320w"></p>
+<p>Scroll down and click <strong>Add Ingress Rules</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=1200&amp;q=75" alt="Click Add Ingress Rules." class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-9.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=320&amp;q=75 320w"></p>
+<p>Alright, in the <strong>Source CIDR</strong> field, enter 0.0.0.0/0. If you&acirc;&#128;&#153;re unfamiliar with firewalls, that allows the source IP address to be any address in the world. Alternatively, you could set that to your own IP address or subnet, but on a web server, you probably want the <strong>HTTP</strong> and <strong>HTTPS</strong> ports to be open to the world.</p>
+<p>Now in the <strong>Destination Port Range</strong> enter 80. And in <strong>Description</strong> enter HTTP.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=1200&amp;q=75" alt="Enter 0.0.0.0/0 in Source CIDR, 80 in Destination Port Range, and HTTP in Description." class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-10.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=320&amp;q=75 320w"></p>
+<p>Now click <strong>+ Another Ingress Rule</strong> and do the same for <strong>port 443 / HTTPS</strong>, and then click <strong>Add Ingress Rules</strong>.</p>
+<h4>Step 3 &acirc;&#128;&#148; Connect to Your VPS and Update</h4>
+<p>Alright! We now have a totally free <strong>Ubuntu</strong> server. Now we need to get connected. If you&acirc;&#128;&#153;re on <strong>MacOS</strong>, you can just open terminal to connect, but if you&acirc;&#128;&#153;re on <strong>Windows</strong>, you&acirc;&#128;&#153;ll need to <strong>enable SSH</strong>. You can find a guide <a href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse" rel="noreferrer noopener" target="_blank">here</a> on how to do just that. Alternatively, you can download the free <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" rel="noreferrer noopener" target="_blank">PUTTY SSH Client</a>.</p>
+<p>If you don&acirc;&#128;&#153;t already have an <strong>SSH Key Pair</strong> create one now by entering:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ ssh-keygen
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>You can enter a password (recommended) but you don&acirc;&#128;&#153;t have to. Hit enter to place the file in the default location which is /your_home_directory/.ssh.</p>
+<p>Now that that&acirc;&#128;&#153;s done, do the following:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ <span class="hljs-built_in">cd</span> ~/.ssh&lt;br&gt;&lt;/br&gt;$ mv ~/Downloads/ssh_key.key ./
+$ nano config
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>The above example is for <strong>MacOS</strong>. For <strong>Windows</strong> you should be able to do notepad instead of nano. Also <strong>Windows</strong> uses for path separator, and <strong>MacOS</strong> or other <strong>&acirc;&#128;&#152;IXes</strong> use /.</p>
+<p>Now in the new <strong>config file</strong> copy and paste the following. Change to suit your environment:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">Host host_nickname
+  Hostname your-host.example.com
+  IdentityFile ~/.ssh/key_key.key
+  User ubuntu
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>The nice thing about setting up <strong>host configs</strong> is you don&acirc;&#128;&#153;t have to specify the <strong>key file</strong> every time and you can assign the host a <strong>nickname</strong> that you can use on the command line.</p>
+<p>Hit <strong>CTRL-X, Y, Enter</strong> if using <strong>nano</strong> or <strong>CTRL-S</strong> if using <strong>notepad.</strong></p>
+<p>Now let&acirc;&#128;&#153;s connect to our VPS!</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ ssh host_nickname
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Hopefully you are now logged in to your VPS and have a shell prompt. Now we need to update:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo apt-get update; apt-get -y upgrade; apt-get -y dist-upgrade
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>This will take a little time to complete. Next, let&acirc;&#128;&#153;s set our server&acirc;&#128;&#153;s <strong>Fully Qualified Domain Name</strong> or <strong>FQDN</strong>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo hostnamectl <span class="hljs-built_in">set</span>-hostname your-host.example.com
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Now, although we've already setup our <strong>VCN firewall</strong> for the virtual network, we need to update IP Tables from within Ubuntu. You have two options: you can either disable IP tables completely and rely on the subnet firewall, or we can add the allow rules for ports 443 and 80 manually. You could also install a firewall management tool, such as the <strong>Uncomplicated Firewall (UFW)</strong>. Your choice.</p>
+<p><strong>Option 1&acirc;&#128;&#138;-&acirc;&#128;&#138;Remove IP Tables Completely:</strong></p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo iptables -P INPUT ACCEPT
+$ sudo iptables -P OUTPUT ACCEPT
+$ sudo iptables -P FORWARD ACCEPT
+$ sudo iptables -F
+$ sudo netfilter-persistent save
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p><strong>Option 2&acirc;&#128;&#138;-&acirc;&#128;&#138;Allow Ports 443 and 80:</strong></p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 80 -j ACCEPT
+$ sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 443 -j ACCEPT
+$ sudo netfilter-persistent save
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<h4>Step 4 &acirc;&#128;&#148; Install Server Software</h4>
+<p>Now we&acirc;&#128;&#153;ll install the <strong>NGINX http server</strong>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo apt -y install nginx
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Once that&acirc;&#128;&#153;s done you can test to see if it&acirc;&#128;&#153;s working by entering <a href="http://your-host.example.com/" rel="noreferrer noopener" target="_blank">http://your-host.example.com</a> in your web browser. You should see the default (it works) web page.</p>
+<p>Next let&acirc;&#128;&#153;s install <strong>PHP-FPM</strong>, which is a very fast version of PHP that runs as a daemon. We&acirc;&#128;&#153;ll install the latest version, which is <strong>v8.1</strong> at the time of this writing:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo apt -y install software-properties-common unzip
+$ sudo add-apt-repository ppa:ondrej/php
+$ sudo apt -y install php8.1-fpm
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Let&acirc;&#128;&#153;s see if it&acirc;&#128;&#153;s working:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo systemctl status php8.1-fpm
+php8.1-fpm.service - The PHP 8.1 FastCGI Process Manager
+Loaded: loaded (/lib/systemd/system/php8.1-fpm.service; enabled; vendor preset: enabled)
+Active: active (running) since Thu 2021-03-01 16:10:47 UTC; 6s ago
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Hopefully, you will see the above output.</p>
+<p>Now it&acirc;&#128;&#153;s time to install <strong>Mysql</strong>, which you&acirc;&#128;&#153;re probably going to want:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo apt -y install mysql-server
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Once that&acirc;&#128;&#153;s done, we need to setup Mysql for production by running:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo mysql_secure_installation
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Enter y for the first question if you want to enforce complex passwords, and then set a <strong>root password</strong>. Enter y for the rest of the questions.</p>
+<p>Next we&acirc;&#128;&#153;ll install the <strong>php-mysql</strong> extension:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo apt -y install php8.1-mysql
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Now we need to create a Mysql <strong>super user</strong>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo mysql
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<div class="code-wrapper shadow-lg"><pre><code class="language-sql hljs sql" data-lang="sql"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">USER</span> <span class="hljs-string">'admin'</span>@<span class="hljs-string">'localhost'</span> <span class="hljs-keyword">IDENTIFIED</span> <span class="hljs-keyword">BY</span> <span class="hljs-string">'your-password'</span>;
+<span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">ALL</span> <span class="hljs-keyword">PRIVILEGES</span> <span class="hljs-keyword">ON</span> *.* <span class="hljs-keyword">TO</span> <span class="hljs-string">'admin'</span>@<span class="hljs-string">'localhost'</span> <span class="hljs-keyword">WITH</span> <span class="hljs-keyword">GRANT</span> <span class="hljs-keyword">OPTION</span>;
+<span class="hljs-keyword">FLUSH</span> <span class="hljs-keyword">PRIVILEGES</span>;
+quit
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<h4>Step 5 &acirc;&#128;&#148; Configure NGINX</h4>
+<p>First we&acirc;&#128;&#153;ll create a <a href="https://www.sciencedirect.com/topics/computer-science/nonprivileged-user" rel="noreferrer noopener" target="_blank"><strong>non-privileged</strong></a> user to store our public HTML files:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo adduser web
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>You can enter the <a href="https://www.geeksforgeeks.org/finger-command-in-linux-with-examples/#:~:text=Finger%20command%20is%20a%20user,cases%20their%20email%20address%20even." rel="noreferrer noopener" target="_blank"><strong>finger</strong></a> information if you like but it&acirc;&#128;&#153;s optional.</p>
+<p>You&acirc;&#128;&#153;ll probably want to import your <strong>public key</strong> that you created with ssh-keygen:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo su web
+$ <span class="hljs-built_in">cd</span>
+$ ssh-keygen
+$ <span class="hljs-built_in">cd</span> .ssh
+$ nano authorized_keys
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Now copy and paste your <em>id_rsa.pub</em> contents from your .ssh directory on your local PC into the <em>authorized_keys</em> file.</p>
+<p>Hit <strong>CTRL-X, Y, Enter</strong> to save.</p>
+<p>Ok, let&acirc;&#128;&#153;s create some directories for our <strong>server root</strong>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ <span class="hljs-built_in">cd</span>
+$ mkdir wwwroot
+$ <span class="hljs-built_in">cd</span> wwwroot
+$ mkdir pub
+$ <span class="hljs-built_in">cd</span> pub
+$ nano index.php
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Enter the following into the new file:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-php hljs php" data-lang="php"><span class="hljs-meta">&lt;?php</span>
+  phpinfo();
+<span class="hljs-meta">?&gt;</span>
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Now let&acirc;&#128;&#153;s create a directory for <strong>PHPMyAdmin</strong>, a web-based Mysql admin tool:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ <span class="hljs-built_in">cd</span>
+$ wget https://files.phpmyadmin.net/phpMyAdmin/5.1.3/phpMyAdmin-5.1.3-all-languages.zip
+$ unzip phpMyAdmin-5.1.3-all-languages.zip
+$ mv phpMyAdmin-5.1.3-all-languages pma
+$ rm -f phpMyAdmin-5.1.3-all-languages.zip
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Save the file and then hit <strong>CTRL-D</strong> to exit the <strong>web</strong> user session.</p>
+<p>Now we need to configure NGINX. First we&acirc;&#128;&#153;ll set up cache control:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ <span class="hljs-built_in">cd</span> /etc/nginx/conf.d
+$ sudo nano expires.conf
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Copy and past the following into the new file:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-nginx hljs nginx" data-lang="nginx"><span class="hljs-attribute">map</span> <span class="hljs-variable">$sent_http_content_type</span> <span class="hljs-variable">$expires</span> {
+    <span class="hljs-attribute">default</span>                    <span class="hljs-literal">off</span>;
+    text/<span class="hljs-attribute">html</span>                  epoch;
+    text/<span class="hljs-attribute">css</span>                   max;
+    application/<span class="hljs-attribute">javascript</span>     max;
+    ~image/                    max;
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Again, <strong>CTRL-X, Y, Enter</strong> to save. Now we&acirc;&#128;&#153;ll create a <strong>virtual host</strong> configuration:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ <span class="hljs-built_in">cd</span> /etc/nginx/sites-enabled
+$ sudo rm -f default
+$ <span class="hljs-built_in">cd</span> ../sites-available
+$ sudo nano your-host.example.com
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Copy and paste the following config into the new file, change to suit your situation, and then hit <strong>CTRL-X, Y, Enter</strong>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-nginx hljs nginx" data-lang="nginx"><span class="hljs-section">server</span> {
+    <span class="hljs-attribute">server_name</span> your-host-example.com;
+    <span class="hljs-attribute">root</span> /home/web/wwwroot/pub;
+    <span class="hljs-attribute">error_log</span> /var/log/nginx/your-host.example.com-<span class="hljs-literal">error</span>.log <span class="hljs-literal">error</span>;
+    <span class="hljs-attribute">access_log</span> /var/log/nginx/your-host.example.com-access.log;
+    <span class="hljs-attribute">expires</span> <span class="hljs-variable">$expires</span>;
+    <span class="hljs-attribute">index</span> index.html index.php;
+    <span class="hljs-attribute">location</span> / {
+        <span class="hljs-attribute">try_files</span> <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ /index.php?<span class="hljs-variable">$args</span>;
+    }
+    <span class="hljs-attribute">location</span> <span class="hljs-regexp">~ \.php$</span> {
+        <span class="hljs-attribute">include</span> snippets/fastcgi-php.conf;
+        <span class="hljs-attribute">fastcgi_pass</span> unix:/var/run/php/php8.1-fpm.sock;
+     }
+    <span class="hljs-attribute">location</span> <span class="hljs-regexp">~ /\.ht</span> {
+        <span class="hljs-attribute">deny</span> all;
+    }
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>The above configuration will route any files not found to index.php, which is usually what you want.</p>
+<p>Next, we&acirc;&#128;&#153;ll create a configuration for <strong>PHPMyAdmin</strong>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo nano pma.your-host.example.com
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Copy and paste the following configuration:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-nginx hljs nginx" data-lang="nginx"><span class="hljs-section">server</span> {
+    <span class="hljs-attribute">server_name</span> pma.your-host-example.com;
+    <span class="hljs-attribute">root</span> /home/web/wwwroot/pma;
+    <span class="hljs-attribute">error_log</span> /var/log/nginx/pma.your-host.example.com-<span class="hljs-literal">error</span>.log <span class="hljs-literal">error</span>;
+    <span class="hljs-attribute">access_log</span> /var/log/nginx/pma.your-host.example.com-access.log;
+    <span class="hljs-attribute">expires</span> <span class="hljs-variable">$expires</span>;
+    <span class="hljs-attribute">index</span> index.html index.php;
+    <span class="hljs-attribute">location</span> / {
+        <span class="hljs-attribute">try_files</span> <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ =<span class="hljs-number">404</span>;
+    }
+    <span class="hljs-attribute">location</span> <span class="hljs-regexp">~ \.php$</span> {
+        <span class="hljs-attribute">include</span> snippets/fastcgi-php.conf;
+        <span class="hljs-attribute">fastcgi_pass</span> unix:/var/run/php/php8.1-fpm.sock;
+     }
+    <span class="hljs-attribute">location</span> <span class="hljs-regexp">~ /\.ht</span> {
+        <span class="hljs-attribute">deny</span> all;
+    }
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Now let&acirc;&#128;&#153;s enable the configurations by creating <strong>symbolic links</strong>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ <span class="hljs-built_in">cd</span> ../sites-enabled
+$ sudo ln -s /etc/nginx/sites-available/your-host.example.com .
+$ sudo ln -s /etc/nginx/sites-available/pma.your-host.example.com .
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>And reload NGINX:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo systemctl reload nginx
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Now refresh your your-host.example.com page. You should see the <strong>phpinfo</strong> page.</p>
+<h4>Step 6 &acirc;&#128;&#148; Setup SSL</h4>
+<p>In my example, we&acirc;&#128;&#153;re going to use <strong>certbot</strong>, a free SSL certificate tool provided by the <a href="https://www.eff.org/" rel="noreferrer noopener" target="_blank"><strong>Electronic Frontier Foundation</strong></a>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo snap install core; sudo snap refresh core
+$ sudo snap install --classic certbot
+$ sudo certbot --nginx
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Certbot will ask you to enter an admin email address. This will be your login identifier for <a href="https://letsencrypt.org/" rel="noreferrer noopener" target="_blank"><strong>Let&acirc;&#128;&#153;s Encrypt</strong></a>. Next, certbot will ask you if you want to receive periodic emails from the EFF. This is totally up to you.</p>
+<p>Next you should see a list of virtual hosts that are configured in NGINX. In this example, we only have two: your-host.example.com and pma.your-host.example.com. You can just hit enter to select them all. Certbot will then do the following:</p>
+<ul>
+<li>Create a hash file in each virtual host&acirc;&#128;&#153;s root directory</li>
+<li>Verify those hashes via HTTP</li>
+<li>Install the newly issues SSL certificates</li>
+<li>Automatically configure your NGINX config files for SSL</li>
+</ul>
+<p>Now if you refresh your web browser, it should automatically redirect you from http to https. If not, just change it in the address bar. Check that you are able to connect to <a href="https://pma.your-host.example.com/" rel="noreferrer noopener" target="_blank">https://pma.your-host.example.com</a> and login with the admin user we created.</p>
+<p>I hope everything went as planned and you are now the proud new owner of a completely free web server.</p>
+<p>For information on how to create backups of your VPS, please see: <a href="https://designly.biz/blog/post/scheduling-backups-on-an-oracle-cloud-vps" rel="noreferrer noopener" target="_blank">Scheduling Backups on an Oracle Cloud VPS</a>.</p>
+<p>Thanks for reading!</p>
+</section>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <div class="share-buttons text-2xl flex gap-4 mx-auto">
+                <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
+                <a
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fhow-to-get-a-free-nginx-php-fpm-web-server"
+                    target="_blank"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook text-blue-700"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-get-a-free-nginx-php-fpm-web-server"
+                    target="_blank"
+                    aria-label="Share on LinkedIn"
+                >
+                    <i class="fab fa-linkedin text-indigo-700"></i>
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-get-a-free-nginx-php-fpm-web-server" target="_blank">
+                    <i class="fab fa-twitter text-sky-700"></i>
+                </a>
+            </div>
+            <hr />
+            <div class="bg-white dark:bg-zinc-800 border-1 rounded-lg flex flex-col shadow p-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4">
+                    <div class="col-span-1 flex items-center">
+                        <img
+                            src="https://cdn.designly.biz/imgr/jay.jpg?w=200&q=75"
+                            alt="Jay"
+                            width="200"
+                            height="200"
+                            class="rounded-full shadow-md border-4 border-blue-700/20 w-32 h-32 mx-auto"
+                        />
+                    </div>
+                    <div class="col-span-3 px-6 flex flex-col gap-4">
+                        <h3 class="text-2xl font-semibold text-center text-colors">About The Author</h3>
+                        <p class="text-zinc-700 dark:text-zinc-300">
+                            Jay is a full-stack developer, electrical engineer, writer and music producer. He currently
+                            resides in the Madison, WI area.
+                        </p>
+                        <a
+                            href="https://jay.designly.biz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-hover flex gap-2 items-center"
+                        >
+                            <div>Portfolio Site</div>
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-2xl font-bold text-center border-b-2 border-dashed pb-1 text-colors">Comments</h2>
+            <div id="comments" class="text-colors">
+                <!-- Comments will be generated here -->
+                <p>No Comments Yet</p>
+            </div>
+            <button id="btn-post-comment" class="btn btn-primary btn-outline flex gap-2 items-center max-w-md mx-auto">
+                <i class="fas fa-comment-medical"></i>
+                <div>Post Comment</div>
+            </button>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <template id="comment-template" class="text-colors">
+                <div
+                    class="comment flex flex-col gap-4 p-4 border rounded shadow mb-4 bg-white dark:bg-zinc-800 text-colors"
+                >
+                    <div class="flex gap-2 items-center">
+                        <img
+                            class="comment-avatar rounded-full w-10 h-10"
+                            src="/assets/img/pixel-black.png"
+                            width="100"
+                            height="100"
+                            alt="Commenter Avatar"
+                        />
+                        <div class="comment-display-name text-2xl text-cyan-700"></div>
+                    </div>
+                    <p class="comment-text"></p>
+                    <div class="replies ml-4">
+                        <!-- Replies will be generated here -->
+                    </div>
+                    <button class="reply-button mt-2 text-hover flex gap-2 items-center">
+                        <i class="fas fa-comment-dots"></i>
+                        <div>Reply</div>
+                    </button>
+                </div>
+            </template>
+        </article>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl text-hover"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-create-a-verification-code-input-component-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-create-a-verification-code-input-component-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Create a Verification Code Input Component in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create a Verification Code Input Component in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'll show you how to create a robust OTP code input component for React.js, using no other dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, I'll show you how to create a modal dialog overlay and disable the body scroll bars when it is open using Next.js 13 / React.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div>
+<input id="post-id" type="hidden" value="59bWfEz4ClWebplivBDkzQ" />
+<input id="reply-to" type="hidden" value="" />
+<script>
+    function generateComment(commentData) {
+        const template = document.querySelector("#comment-template");
+        const clone = template.content.cloneNode(true);
+        const displayName = clone.querySelector(".comment-display-name");
+        displayName.textContent = commentData.displayName;
+        const commentAvatar = clone.querySelector(".comment-avatar");
+        commentAvatar.setAttribute("src", commentData.avatar);
+        const commentText = clone.querySelector(".comment-text");
+        commentText.textContent = commentData.comment;
+        const repliesContainer = clone.querySelector(".replies");
+        commentData.replies.forEach((reply) => {
+            const replyElement = generateComment(reply);
+            repliesContainer.appendChild(replyElement);
+        });
+        const replyButton = clone.querySelector(".reply-button");
+        replyButton.addEventListener("click", () => {
+            document.getElementById("reply-to").value = commentData._id;
+            loadUrl("/comment");
+        });
+        return clone;
+    }
+    const fetchComments = async () => {
+        const postId = document.getElementById("post-id").value;
+        try {
+            const result = await fetch(`https://blog-comments.designly.workers.dev/?postId=${postId}`);
+            const comments = await result.json();
+            const commentsContainer = document.querySelector("#comments");
+            if (Array.isArray(comments) && comments.length) {
+                commentsContainer.innerHTML = "";
+                comments.forEach((comment) => {
+                    const commentElement = generateComment(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    setTimeout(async () => {
+        fetchComments();
+        document.getElementById("btn-post-comment").addEventListener("click", () => {
+            loadUrl(`/comment`);
+        });
+    }, 0);
+</script>
+</div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>

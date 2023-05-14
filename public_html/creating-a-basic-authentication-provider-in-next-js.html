@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Creating a Basic Authentication Provider in Next.js | Designly</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js." />
+        <meta property="og:title" content="Creating a Basic Authentication Provider in Next.js" />
+        <meta property="og:description" content="In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js." />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz/creating-a-basic-authentication-provider-in-next-js" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <article class="flex flex-col gap-10">
+            <section class="post-header flex flex-col gap-4">
+                <h1 class="text-colors text-xl md:text-3xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/nextjs">#Next.js</a>
+<a href="/tag/react">#React</a>
+<a href="/tag/authentication">#Authentication</a></div>
+                <img
+                    class="rounded-md shadow-lg"
+                    src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=1024&q=75 1024w, https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=320&q=75 320w"
+                    alt="Creating a Basic Authentication Provider in Next.js"
+                    width="1200"
+                    height="675"
+                />
+                <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </section>
+            <section class="post-content flex flex-col gap-6"><p>There are several identity service providers out there that take the complexity and security considerations off the plate of the developer. There are also authentication libraries, such as <em>next-auth</em>, for Next.js. But sometimes you want to implement very basic authentication for a simple web app where no sensitive user data is involved.</p>
+<p>In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js. Whether you're a seasoned developer or just starting with Next.js, you'll find this tutorial helpful in building a basic authentication provider. So let's get started!</p>
+<hr>
+<h2>Anatomy of an Auth Provider</h2>
+<p>Our authentication flow will consist of two parts:</p>
+<ol>
+<li>A React context provider and <code>useAuth</code> hook</li>
+<li>A back-end API that authenticates and serves user data</li>
+</ol>
+<p>Here's how our authentication flow will operate:</p>
+<ol>
+<li>User tries to access a protected page</li>
+<li>
+<code>useAuth</code> checks if there is a login cookie, if not the login page is served</li>
+<li>User enters login and password</li>
+<li>Back-end API receives login data and looks up user in DB</li>
+<li>A unique token is generated and returned to client along with user data</li>
+<li>
+<code>useAuth</code> sets the current user state and sets a cookie containing login token</li>
+<li>User data for subsequent refreshes come from login cookie data</li>
+<li>Login cookie data is validated against fresh API data in background</li>
+</ol>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/image1.jpg?w=1200&amp;q=75" alt="Authentication Flow" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/creating-a-basic-authentication-provider-in-next-js/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/image1.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/image1.jpg?w=320&amp;q=75 320w"></p>
+<hr>
+<h2>Setting Up Our Project</h2>
+<p>The demo site and repo for this tutorial can be found at the bottom of the page. The demo was created with <code>npx create-next-app@latest</code> with TypeScript and Tailwind CSS.</p>
+<p>Dependencies:</p>
+<table>
+<thead>
+<tr>
+<th>Package Name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cookie</td>
+<td>Package for parsing cookies from request data</td>
+</tr>
+<tr>
+<td>cookies-next</td>
+<td>Package for managing cookies in Next.js</td>
+</tr>
+<tr>
+<td>bcryptjs</td>
+<td>Package for hashing and comparing passwords</td>
+</tr>
+</tbody>
+</table>
+<p>To install types:
+<code>npm i -D @types/bcryptjs @types/cookie</code></p>
+<hr>
+<h2>Creating our Context Provider</h2>
+<p>We'll use React's <code>useContext</code> hook to create our authentication context:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-comment">/**
+ * Basic Authentication Provider
+ * 
+ * <span class="hljs-doctag">@author </span>Jay Simons
+ * 
+ */</span>
+<span class="hljs-keyword">import</span> React, { useState, useEffect, useContext, createContext, ReactNode } <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+<span class="hljs-keyword">import</span> { getCookie, setCookie, deleteCookie } <span class="hljs-keyword">from</span> <span class="hljs-string">'cookies-next'</span>;
+<span class="hljs-keyword">import</span> { useRouter } <span class="hljs-keyword">from</span> <span class="hljs-string">"next/router"</span>;
+<span class="hljs-keyword">import</span> { User, LoginToken, LoginCookie, LoginProps, AuthContextType } <span class="hljs-keyword">from</span> <span class="hljs-string">'@/interfaces'</span>;
+<span class="hljs-keyword">const</span> COOKIE_KEY = process.env.NEXT_PUBLIC_AUTH_COOKIE_KEY || <span class="hljs-string">''</span>;
+<span class="hljs-keyword">const</span> authContext = createContext&lt;AuthContextType&gt;({
+    <span class="hljs-attr">user</span>: <span class="hljs-literal">null</span>,
+    <span class="hljs-attr">login</span>: <span class="hljs-keyword">async</span> () =&gt; <span class="hljs-literal">false</span>,
+    <span class="hljs-attr">logout</span>: <span class="hljs-keyword">async</span> () =&gt; { },
+    <span class="hljs-attr">reload</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { },
+    <span class="hljs-attr">sendPasswordResetEmail</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { },
+    <span class="hljs-attr">setLoginCookie</span>: <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> { },
+});
+<span class="hljs-comment">// Auth provider context</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">AuthProvider</span>(<span class="hljs-params">{ children }: { children: ReactNode }</span>) </span>{
+    <span class="hljs-keyword">const</span> auth = useAuthProvider();
+    <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">authContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{auth}</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">authContext.Provider</span>&gt;</span></span>;
+}
+<span class="hljs-comment">// Hook for child components to get the auth object ...</span>
+<span class="hljs-comment">// ... and re-render when it changes.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useAuth = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">return</span> useContext(authContext);
+};
+<span class="hljs-comment">// Provider hook that creates auth object and handles state</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">useAuthProvider</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> [user, setUser] = useState&lt;User | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+    <span class="hljs-keyword">const</span> cookieData = getCookie(COOKIE_KEY);
+    <span class="hljs-keyword">const</span> router = useRouter();
+    <span class="hljs-keyword">const</span> login = <span class="hljs-keyword">async</span> (props: LoginProps) =&gt; {
+        <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">"/api/auth/login"</span>, {
+            <span class="hljs-attr">method</span>: <span class="hljs-string">'POST'</span>,
+            <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(props),
+            <span class="hljs-attr">headers</span>: {
+                <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>
+            }
+        });
+        <span class="hljs-keyword">if</span> (result.ok) {
+            <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> result.json();
+            setUser(data.user);
+            setLoginCookie(data);
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">const</span> error = <span class="hljs-keyword">await</span> result.text();
+            <span class="hljs-keyword">const</span> errMess = result.status === <span class="hljs-number">401</span> ? <span class="hljs-string">"Invalid username or password"</span> : <span class="hljs-string">'Login failed'</span>;
+            <span class="hljs-built_in">console</span>.error(error);
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(errMess);
+        }
+    };
+    <span class="hljs-comment">// Tell the API we're loggin out and delete out login cookie</span>
+    <span class="hljs-keyword">const</span> logout = <span class="hljs-keyword">async</span> () =&gt; {
+        <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">'/api/auth/logout'</span>);
+        <span class="hljs-keyword">if</span> (!result.ok) <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"Log out failed"</span>);
+        deleteLoginCookie();
+        setUser(<span class="hljs-literal">null</span>);
+        <span class="hljs-keyword">return</span>;
+    };
+    <span class="hljs-comment">// Store login token / user data in cookie</span>
+    <span class="hljs-keyword">const</span> setLoginCookie = <span class="hljs-function">(<span class="hljs-params">data: LoginCookie</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> expires = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(data.token.expires);
+        setCookie(COOKIE_KEY, data, { <span class="hljs-attr">path</span>: <span class="hljs-string">'/'</span>, <span class="hljs-attr">expires</span>: expires });
+    }
+    <span class="hljs-comment">// Delete login cookie</span>
+    <span class="hljs-keyword">const</span> deleteLoginCookie = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        deleteCookie(COOKIE_KEY);
+    }
+    <span class="hljs-comment">// Pull user data from API</span>
+    <span class="hljs-keyword">const</span> loadUser = <span class="hljs-keyword">async</span> () =&gt; {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Pulling user data..."</span>);
+        <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fetchUser</span>(<span class="hljs-params">cookieParsed: LoginCookie</span>) </span>{
+            <span class="hljs-keyword">try</span> {
+                <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">"/api/auth/me"</span>);
+                <span class="hljs-keyword">if</span> (result.ok) {
+                    <span class="hljs-keyword">const</span> user = <span class="hljs-keyword">await</span> result.json();
+                    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Done fetching user!"</span>);
+                    setUser(user);
+                    cookieParsed.user = user;
+                    setLoginCookie(cookieParsed);
+                } <span class="hljs-keyword">else</span> {
+                    setUser(<span class="hljs-literal">null</span>);
+                    deleteLoginCookie();
+                }
+            } <span class="hljs-keyword">catch</span> (err) {
+                <span class="hljs-built_in">console</span>.error(err);
+            }
+        }
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> cookieData === <span class="hljs-string">'string'</span>) {
+            <span class="hljs-keyword">const</span> cookieParsed = <span class="hljs-built_in">JSON</span>.parse(cookieData);
+            setUser(cookieParsed.user);
+            fetchUser(cookieParsed);
+        } <span class="hljs-keyword">else</span> {
+            setUser(<span class="hljs-literal">null</span>);
+        }
+    }
+    <span class="hljs-comment">// Reload user data</span>
+    <span class="hljs-keyword">const</span> reload = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+            loadUser();
+        }, <span class="hljs-number">200</span>);
+    }
+    <span class="hljs-comment">// Send password reset email</span>
+    <span class="hljs-keyword">const</span> sendPasswordResetEmail = <span class="hljs-function">(<span class="hljs-params">email: string</span>) =&gt;</span> {
+        <span class="hljs-comment">/* TODO */</span>
+    };
+    <span class="hljs-comment">// Subscribe to user on mount</span>
+    useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        loadUser();
+    }, []); <span class="hljs-comment">//eslint-disable-line</span>
+    <span class="hljs-comment">// Return the user object and auth methods</span>
+    <span class="hljs-keyword">return</span> {
+        user,
+        login,
+        logout,
+        reload,
+        sendPasswordResetEmail,
+        setLoginCookie,
+    };
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Creating the <code>authContext</code> for the provider and defining <code>AuthProvider</code> and <code>useAuth</code> functions:</p>
+<p>This section defines the <code>authContext</code> and two functions:</p>
+<ul>
+<li>
+<code>AuthProvider</code>: A component that wraps the application and provides the <code>authContext</code> for its child components.</li>
+<li>
+<code>useAuth</code>: A hook that is used by child components to get access to the <code>auth</code> object.</li>
+</ul>
+<p>Defining the <code>useAuthProvider</code> hook</p>
+<p>This section defines the <code>useAuthProvider</code> hook, which is the core functionality of this code. It manages the user state, handles authentication requests to the server, and stores user data in a cookie. The functions inside <code>useAuthProvider</code> are:</p>
+<ul>
+<li>
+<code>login</code>: Sends a POST request to the server with the user's credentials and sets the user state and cookie data if successful.</li>
+<li>
+<code>logout</code>: Sends a request to the server to logout the user and removes the user state and cookie data.</li>
+<li>
+<code>setLoginCookie</code>: Stores login token and user data in a cookie.</li>
+<li>
+<code>deleteLoginCookie</code>: Deletes the login token and user data from the cookie.</li>
+<li>
+<code>loadUser</code>: Retrieves the user data from the server and sets the user state and cookie data if the request is successful.</li>
+<li>
+<code>reload</code>: Reloads a fresh copy of user data from server.</li>
+<li>
+<code>sendPasswordResetEmail</code>: Sends a password reset email (currently not implemented).</li>
+</ul>
+<p>Exporting <code>AuthProvider</code> and <code>useAuth</code> functions:</p>
+<p>This section exports the <code>AuthProvider</code> and <code>useAuth</code> functions so that they can be used in other components.</p>
+<hr>
+<h2>Implementing In Our App</h2>
+<p>First, we'll need to open up <code>_app.tsx</code> and wrap everything in our <code>AuthProvider</code> context:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-keyword">import</span> <span class="hljs-string">'@/styles/globals.css'</span>
+<span class="hljs-keyword">import</span> type { AppProps } <span class="hljs-keyword">from</span> <span class="hljs-string">'next/app'</span>
+<span class="hljs-keyword">import</span> { Inter } <span class="hljs-keyword">from</span> <span class="hljs-string">'next/font/google'</span>
+<span class="hljs-keyword">import</span> { AuthProvider } <span class="hljs-keyword">from</span> <span class="hljs-string">'@/hooks/useAuth'</span>;
+<span class="hljs-keyword">const</span> inter = Inter({ <span class="hljs-attr">subsets</span>: [<span class="hljs-string">'latin'</span>] })
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params">{ Component, pageProps }: AppProps</span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">AuthProvider</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{inter.className}</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">Component</span> {<span class="hljs-attr">...pageProps</span>} /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">AuthProvider</span>&gt;</span></span>
+  )
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Next, we'll need a way to handle protected and unprotected pages. The best way to accomplish this is to do it in the layout higher-order component:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-keyword">import</span> React, { ReactNode } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> Head <span class="hljs-keyword">from</span> <span class="hljs-string">'next/head'</span>
+<span class="hljs-keyword">import</span> Footer <span class="hljs-keyword">from</span> <span class="hljs-string">'./Footer'</span>
+<span class="hljs-keyword">import</span> LoginWrapper <span class="hljs-keyword">from</span> <span class="hljs-string">'../Login'</span>
+<span class="hljs-keyword">import</span> { useAuth } <span class="hljs-keyword">from</span> <span class="hljs-string">'@/hooks/useAuth'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Layout</span>(<span class="hljs-params">props: {
+    children: ReactNode,
+    pageTitle?: string,
+    requireAuth?: boolean
+}</span>) </span>{
+    <span class="hljs-keyword">const</span> auth = useAuth();
+    <span class="hljs-keyword">const</span> {
+        children,
+        pageTitle,
+        requireAuth = <span class="hljs-literal">false</span>
+    } = props;
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"min-h-screen flex flex-col bg-gradient-to-b from-slate-600 to-slate-700 text-white"</span>&gt;</span>
+            {
+                requireAuth &amp;&amp; !auth.user
+                    ?
+                    <span class="hljs-tag">&lt;<span class="hljs-name">LoginWrapper</span> /&gt;</span>
+                    :
+                    <span class="hljs-tag">&lt;&gt;</span>{children}<span class="hljs-tag">&lt;/&gt;</span></span>
+            }
+            &lt;Footer /&gt;
+        &lt;<span class="hljs-regexp">/div&gt;
+    )
+}
+</span></code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>This component will conditionally render either <code>&lt;LoginWrapper&gt;</code> or <code>{children}</code> depending on whether or not we set the <code>requireAuth</code> flag.</p>
+<p>And here's <code>&lt;LoginWrapper&gt;</code>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-keyword">import</span> React, { useEffect, useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> Login <span class="hljs-keyword">from</span> <span class="hljs-string">'./Login'</span>
+<span class="hljs-comment">/**
+ * This component is used to wrap the login page.
+ * It delays showing the login page
+ * to give time for auth.user to load
+ * 
+ * <span class="hljs-doctag">@author </span>Jay Simons
+*/</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">LoginWrapper</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> [showLogin, setShowLogin] = useState&lt;boolean&gt;(<span class="hljs-literal">false</span>);
+    useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+            setShowLogin(<span class="hljs-literal">true</span>);
+        }, <span class="hljs-number">1000</span>);
+    }, []);
+    <span class="hljs-keyword">if</span> (showLogin) {
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Login</span> /&gt;</span></span>
+        )
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"flex h-screen"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"m-auto text-2xl fade-text"</span>&gt;</span>Checking Login...<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+        )
+    }
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>We use <code>useEffect</code> to wait one second before showing the login component. This is to give <code>useAuth</code> time to fetch user data from cookie or server.</p>
+<p>Next is our login form component:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> Link <span class="hljs-keyword">from</span> <span class="hljs-string">'next/link'</span>
+<span class="hljs-keyword">import</span> { useAuth } <span class="hljs-keyword">from</span> <span class="hljs-string">'@/hooks/useAuth'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Login</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> auth = useAuth();
+    <span class="hljs-keyword">const</span> [email, setEmail] = useState&lt;string&gt;(<span class="hljs-string">'joeblow'</span>);
+    <span class="hljs-keyword">const</span> [password, setPassword] = useState&lt;string&gt;(<span class="hljs-string">'TestPassword4$'</span>);
+    <span class="hljs-keyword">const</span> [error, setError] = useState&lt;string&gt;(<span class="hljs-string">''</span>);
+    <span class="hljs-keyword">const</span> [loading, setLoading] = useState&lt;boolean&gt;(<span class="hljs-literal">false</span>);
+    <span class="hljs-keyword">const</span> handleResetPassword = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Implement</span>
+    }
+    <span class="hljs-keyword">const</span> handleInputChange = <span class="hljs-function">(<span class="hljs-params">e: React.ChangeEvent&lt;HTMLInputElement&gt;</span>) =&gt;</span> {
+        <span class="hljs-keyword">if</span> (e.target.name === <span class="hljs-string">'email'</span>) {
+            setEmail(e.target.value);
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> (e.target.name === <span class="hljs-string">'password'</span>) {
+            setPassword(e.target.value);
+        }
+    }
+    <span class="hljs-keyword">const</span> handleSubmit = <span class="hljs-keyword">async</span> (e: React.FormEvent&lt;HTMLFormElement&gt;) =&gt; {
+        e.preventDefault();
+        setLoading(<span class="hljs-literal">true</span>);
+        <span class="hljs-keyword">try</span> {
+            <span class="hljs-keyword">await</span> auth.login({
+                <span class="hljs-attr">username</span>: email,
+                password
+            });
+        } <span class="hljs-keyword">catch</span> (err) {
+            <span class="hljs-keyword">if</span> (err <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Error</span>) {
+                setError(err.message);
+            }
+        } <span class="hljs-keyword">finally</span> {
+            setLoading(<span class="hljs-literal">false</span>);
+        }
+    }
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"m-auto w-full md:w-[300px] flex flex-col gap-6"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-center text-2xl font-medium"</span>&gt;</span>Please Log In<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+            {error &amp;&amp; <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-center text-red-500"</span>&gt;</span>{error}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>}
+            <span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"flex flex-col gap-4"</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{handleSubmit}</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">name</span>=<span class="hljs-string">"email"</span>
+                    <span class="hljs-attr">className</span>=<span class="hljs-string">"border border-gray-300 p-2 rounded-md text-gray-800"</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>
+                    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Username or Email"</span>
+                    <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleInputChange}</span>
+                    <span class="hljs-attr">defaultValue</span>=<span class="hljs-string">"joeblow"</span>
+                /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">name</span>=<span class="hljs-string">"password"</span>
+                    <span class="hljs-attr">className</span>=<span class="hljs-string">"border border-gray-300 p-2 rounded-md text-gray-800"</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span>
+                    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Password"</span>
+                    <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleInputChange}</span>
+                    <span class="hljs-attr">defaultValue</span>=<span class="hljs-string">"TestPassword4$"</span>
+                /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                    <span class="hljs-attr">className</span>=<span class="hljs-string">{</span>`<span class="hljs-attr">btn-base</span> ${<span class="hljs-attr">loading</span> ? '<span class="hljs-attr">bg-gray-500</span> <span class="hljs-attr">opacity-50</span>' <span class="hljs-attr">:</span> '<span class="hljs-attr">bg-blue-500</span> <span class="hljs-attr">hover:bg-blue-600</span>'}`}
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>
+                    <span class="hljs-attr">disabled</span>=<span class="hljs-string">{loading}</span>
+                &gt;</span>
+                    {loading ? <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"fade-text"</span>&gt;</span>Loading...<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> : 'Log In'}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-center"</span>&gt;</span>
+                Don<span class="hljs-symbol">&amp;apos;</span>t have an account?{' '}
+                <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"link"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/login"</span>&gt;</span>Register<span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-center"</span>&gt;</span>
+                Forgot your password?{' '}
+                <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                    <span class="hljs-attr">className</span>=<span class="hljs-string">"link"</span>
+                    <span class="hljs-attr">onClick</span>=<span class="hljs-string">{handleResetPassword}</span>
+                &gt;</span>Reset<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    )
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Pretty straight-forward. Our <code>handleSubmit</code> function simply calls <code>auth.login</code> with the supplied login id and password. Note that the login ID can be either the username or email address.</p>
+<hr>
+<h2>Handling the Back End</h2>
+<p>We have three endpoints to define:</p>
+<ol>
+<li>/api/auth/login - Responsible for authenticating username and password</li>
+<li>/api/auth/login - Responsible for removing login token from user record</li>
+<li>/api/auth/me - Responsible for serving fresh user data from server based on login cookie</li>
+</ol>
+<p>Here's our login endpoint:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-keyword">import</span> fakeDb <span class="hljs-keyword">from</span> <span class="hljs-string">"@/util/fakeDb"</span>;
+<span class="hljs-keyword">import</span> { compareSync } <span class="hljs-keyword">from</span> <span class="hljs-string">"bcryptjs"</span>;
+<span class="hljs-keyword">import</span> sanitizeUser <span class="hljs-keyword">from</span> <span class="hljs-string">"@/util/sanitizeUser"</span>;
+<span class="hljs-comment">// Use edge runtime to improve performance.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> config = {
+    runtime: <span class="hljs-string">'edge'</span>
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unauth</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(<span class="hljs-string">'Unauthorized'</span>, { status: <span class="hljs-number">401</span> });
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handler</span>(<span class="hljs-params">request: Request</span>) </span>{
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> request.json();
+        <span class="hljs-keyword">let</span> user;
+        <span class="hljs-comment">// Fetch user from database</span>
+        <span class="hljs-keyword">try</span> {
+            user = <span class="hljs-keyword">await</span> fakeDb(data.username);
+        } <span class="hljs-keyword">catch</span> (err) {
+            <span class="hljs-keyword">return</span> unauth();
+        }
+        <span class="hljs-comment">// Check if user exists</span>
+        <span class="hljs-keyword">if</span> (!user) <span class="hljs-keyword">return</span> unauth();
+        <span class="hljs-comment">// Verify password</span>
+        <span class="hljs-keyword">if</span> (!compareSync(data.password, user.password)) {
+            <span class="hljs-keyword">return</span> unauth();
+        }
+        <span class="hljs-comment">// Generate token</span>
+        <span class="hljs-keyword">const</span> token = user.tokens[<span class="hljs-number">0</span>]; <span class="hljs-comment">// Normally we would generate one</span>
+        <span class="hljs-comment">// Return user and token</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(<span class="hljs-built_in">JSON</span>.stringify({
+            user: sanitizeUser(user),
+            token
+        }), {
+            headers: {
+                <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>
+            }
+        });
+    } <span class="hljs-keyword">catch</span> (err) {
+        <span class="hljs-keyword">if</span> (err <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Error</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(err.message, { status: <span class="hljs-number">500</span> });
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(<span class="hljs-string">'Unknown error'</span>, { status: <span class="hljs-number">500</span> });
+        }
+    }
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>In my example, I'm using the Edge runtime for super-fast speed, but you can use Node/Express if you prefer.</p>
+<p>I created a <code>fakeDb</code> function that simulates a call to a database to fetch user data with a slight delay. You can find that code on the repo below.</p>
+<p>Lastly, here is the code for our /api/auth/me endpoint:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-keyword">import</span> fakeDb <span class="hljs-keyword">from</span> <span class="hljs-string">"@/util/fakeDb"</span>;
+<span class="hljs-keyword">import</span> sanitizeUser <span class="hljs-keyword">from</span> <span class="hljs-string">"@/util/sanitizeUser"</span>;
+<span class="hljs-keyword">import</span> { parse } <span class="hljs-keyword">from</span> <span class="hljs-string">"cookie"</span>;
+<span class="hljs-comment">// Use edge runtime to improve performance.</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> config = {
+    runtime: <span class="hljs-string">'edge'</span>
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unauth</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(<span class="hljs-string">'Unauthorized'</span>, { status: <span class="hljs-number">401</span> });
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handler</span>(<span class="hljs-params">request: Request</span>) </span>{
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-comment">// Fetch login cookie</span>
+        <span class="hljs-keyword">const</span> cookies = parse(request.headers.get(<span class="hljs-string">'Cookie'</span>) || <span class="hljs-string">''</span>);
+        <span class="hljs-keyword">const</span> cookie = cookies[process.env.NEXT_PUBLIC_AUTH_COOKIE_KEY || <span class="hljs-string">''</span>];
+        <span class="hljs-keyword">if</span> (!cookie) <span class="hljs-keyword">return</span> unauth();
+        <span class="hljs-keyword">const</span> cookieData = <span class="hljs-built_in">JSON</span>.parse(cookie);
+        <span class="hljs-comment">// Check if cookie is valid</span>
+        <span class="hljs-keyword">if</span> (!cookieData.token || !cookieData.token.token || !cookieData.token.expires) <span class="hljs-keyword">return</span> unauth();
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(cookieData.token.expires) &lt; <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>()) <span class="hljs-keyword">return</span> unauth();
+        <span class="hljs-comment">// Fetch user from database</span>
+        <span class="hljs-keyword">let</span> user;
+        <span class="hljs-keyword">try</span> {
+            user = <span class="hljs-keyword">await</span> fakeDb(cookieData.token.token);
+        } <span class="hljs-keyword">catch</span> (err) {
+            <span class="hljs-keyword">return</span> unauth();
+        }
+        <span class="hljs-comment">// Check if user exists</span>
+        <span class="hljs-keyword">if</span> (!user) <span class="hljs-keyword">return</span> unauth();
+        <span class="hljs-comment">// Return user and token</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(<span class="hljs-built_in">JSON</span>.stringify(sanitizeUser(user)), {
+            headers: {
+                <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>
+            }
+        });
+    } <span class="hljs-keyword">catch</span> (err) {
+        <span class="hljs-keyword">if</span> (err <span class="hljs-keyword">instanceof</span> <span class="hljs-built_in">Error</span>) {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(err.message, { status: <span class="hljs-number">500</span> });
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(<span class="hljs-string">'Unknown error'</span>, { status: <span class="hljs-number">500</span> });
+        }
+    }
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Pretty similar to the login endpoint, except that we identify the user from the stored token in our login cookie rather than supplied login id and password. We also want to be sure to check that the token has not expired. Typically you would have a clean-up CRON job that runs on the DB server that checks for expired tokens, but we don't want to rely solely on that.</p>
+<p>I left the code for the logout endpoint because it simply returns a blank 200 response. In a production environment, you would typically include code to remove the login token from the user record in the DB. In this demo, the client-side cookie is simply deleted upon logging out.</p>
+<hr>
+<h2>Links</h2>
+<ol>
+<li>
+<a href="https://github.com/designly1/next-auth-example" rel="noreferrer noopener" target="_blank">GitHub Repo</a>
+</li>
+<li>
+<a href="https://next-auth-example-yuc.pages.dev/" rel="noreferrer noopener" target="_blank">Demo Page</a>
+</li>
+</ol>
+<hr>
+<p>Thank you for taking the time to read my article and I hope you found it useful (or at the very least, mildly entertaining). For more great information about web dev, systems administration and cloud computing, please read the <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Designly Blog</a>. Also, please leave your comments! I love to hear thoughts from my readers.</p>
+<p>I use <a href="https://hostinger.com?REFERRALCODE=1J11864" rel="noreferrer noopener" target="_blank">Hostinger</a> to host my clients' websites. You can get a business account that can host 100 websites at a price of $3.99/mo, which you can lock in for up to 48 months! It's the best deal in town. Services include PHP hosting (with extensions), MySQL, Wordpress and Email services.</p>
+<p>Looking for a web developer? I'm available for hire! To inquire, please fill out a <a href="https://designly.biz/contact" rel="noreferrer noopener" target="_blank">contact form</a>.</p>
+</section>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <div class="share-buttons text-2xl flex gap-4 mx-auto">
+                <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
+                <a
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fcreating-a-basic-authentication-provider-in-next-js"
+                    target="_blank"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook text-blue-700"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fcreating-a-basic-authentication-provider-in-next-js"
+                    target="_blank"
+                    aria-label="Share on LinkedIn"
+                >
+                    <i class="fab fa-linkedin text-indigo-700"></i>
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fcreating-a-basic-authentication-provider-in-next-js" target="_blank">
+                    <i class="fab fa-twitter text-sky-700"></i>
+                </a>
+            </div>
+            <hr />
+            <div class="bg-white dark:bg-zinc-800 border-1 rounded-lg flex flex-col shadow p-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4">
+                    <div class="col-span-1 flex items-center">
+                        <img
+                            src="https://cdn.designly.biz/imgr/jay.jpg?w=200&q=75"
+                            alt="Jay"
+                            width="200"
+                            height="200"
+                            class="rounded-full shadow-md border-4 border-blue-700/20 w-32 h-32 mx-auto"
+                        />
+                    </div>
+                    <div class="col-span-3 px-6 flex flex-col gap-4">
+                        <h3 class="text-2xl font-semibold text-center text-colors">About The Author</h3>
+                        <p class="text-zinc-700 dark:text-zinc-300">
+                            Jay is a full-stack developer, electrical engineer, writer and music producer. He currently
+                            resides in the Madison, WI area.
+                        </p>
+                        <a
+                            href="https://jay.designly.biz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-hover flex gap-2 items-center"
+                        >
+                            <div>Portfolio Site</div>
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-2xl font-bold text-center border-b-2 border-dashed pb-1 text-colors">Comments</h2>
+            <div id="comments" class="text-colors">
+                <!-- Comments will be generated here -->
+                <p>No Comments Yet</p>
+            </div>
+            <button id="btn-post-comment" class="btn btn-primary btn-outline flex gap-2 items-center max-w-md mx-auto">
+                <i class="fas fa-comment-medical"></i>
+                <div>Post Comment</div>
+            </button>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <template id="comment-template" class="text-colors">
+                <div
+                    class="comment flex flex-col gap-4 p-4 border rounded shadow mb-4 bg-white dark:bg-zinc-800 text-colors"
+                >
+                    <div class="flex gap-2 items-center">
+                        <img
+                            class="comment-avatar rounded-full w-10 h-10"
+                            src="/assets/img/pixel-black.png"
+                            width="100"
+                            height="100"
+                            alt="Commenter Avatar"
+                        />
+                        <div class="comment-display-name text-2xl text-cyan-700"></div>
+                    </div>
+                    <p class="comment-text"></p>
+                    <div class="replies ml-4">
+                        <!-- Replies will be generated here -->
+                    </div>
+                    <button class="reply-button mt-2 text-hover flex gap-2 items-center">
+                        <i class="fas fa-comment-dots"></i>
+                        <div>Reply</div>
+                    </button>
+                </div>
+            </template>
+        </article>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl text-hover"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-create-a-verification-code-input-component-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-create-a-verification-code-input-component-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Create a Verification Code Input Component in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create a Verification Code Input Component in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'll show you how to create a robust OTP code input component for React.js, using no other dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, I'll show you how to create a modal dialog overlay and disable the body scroll bars when it is open using Next.js 13 / React.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div>
+<input id="post-id" type="hidden" value="5PAF6uPRMvZcYAOEnWikIX" />
+<input id="reply-to" type="hidden" value="" />
+<script>
+    function generateComment(commentData) {
+        const template = document.querySelector("#comment-template");
+        const clone = template.content.cloneNode(true);
+        const displayName = clone.querySelector(".comment-display-name");
+        displayName.textContent = commentData.displayName;
+        const commentAvatar = clone.querySelector(".comment-avatar");
+        commentAvatar.setAttribute("src", commentData.avatar);
+        const commentText = clone.querySelector(".comment-text");
+        commentText.textContent = commentData.comment;
+        const repliesContainer = clone.querySelector(".replies");
+        commentData.replies.forEach((reply) => {
+            const replyElement = generateComment(reply);
+            repliesContainer.appendChild(replyElement);
+        });
+        const replyButton = clone.querySelector(".reply-button");
+        replyButton.addEventListener("click", () => {
+            document.getElementById("reply-to").value = commentData._id;
+            loadUrl("/comment");
+        });
+        return clone;
+    }
+    const fetchComments = async () => {
+        const postId = document.getElementById("post-id").value;
+        try {
+            const result = await fetch(`https://blog-comments.designly.workers.dev/?postId=${postId}`);
+            const comments = await result.json();
+            const commentsContainer = document.querySelector("#comments");
+            if (Array.isArray(comments) && comments.length) {
+                commentsContainer.innerHTML = "";
+                comments.forEach((comment) => {
+                    const commentElement = generateComment(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    setTimeout(async () => {
+        fetchComments();
+        document.getElementById("btn-post-comment").addEventListener("click", () => {
+            loadUrl(`/comment`);
+        });
+    }, 0);
+</script>
+</div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>

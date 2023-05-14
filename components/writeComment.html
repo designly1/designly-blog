@@ -1,0 +1,121 @@
+<button class="fixed top-4 left-6 text-2xl text-hover z-50" onclick="hideLayer();">
+    <i class="fa-solid fa-times"></i>
+</button>
+<div class="flex flex-col gap-4 m-auto w-full px-4 md:w-[500px] text-colors">
+    <h1 class="text-2xl font-bold border-b-2 border-dashed pb-2">Post Comment</h1>
+    <div class="flex flex-col gap-1">
+        <label for="comment-name">Display Name:</label>
+        <input
+            id="comment-name"
+            type="text"
+            class="input input-bordered"
+            placeholder="e.g. Joe"
+            maxlength="24"
+            value="{{displayName}}"
+        />
+    </div>
+    <div class="flex flex-col gap-1">
+        <label for="comment-email">Email (not displayed):</label>
+        <input
+            id="comment-email"
+            type="email"
+            class="input input-bordered"
+            placeholder="e.g. joe@example.com"
+            maxlength="80"
+            value="{{email}}"
+        />
+    </div>
+    <div class="flex flex-col gap-1">
+        <label for="comment-body">Comment:</label>
+        <textarea id="comment-body" class="textarea textarea-bordered p-2" rows="6" maxlength="1024"></textarea>
+        <div id="comment-body-counter" class="text-sm text-green-600">0/1024 Characters</div>
+    </div>
+    <div id="captcha"></div>
+    <div id="comment-error" class="text-sm text-red-600"></div>
+    <button id="btn-comment-submit" class="btn btn-primary">Post Comment</button>
+</div>
+<input id="ts-token" type="hidden" value="" />
+<script>
+    var tsId;
+    turnstile.ready(function () {
+        tsId = turnstile.render("#captcha", {
+            sitekey: "0x4AAAAAAAElQiY453bZVqcc",
+            callback: function (token) {
+                document.getElementById("ts-token").value = token;
+            },
+        });
+    });
+
+    setTimeout(() => {
+        document.getElementById("comment-body").addEventListener("input", function () {
+            const commentBodyCounter = document.getElementById("comment-body-counter");
+            const commentLength = this.value.length;
+            const maxChars = 1024;
+
+            // Remove existing color classes
+            commentBodyCounter.classList.remove("text-green-600", "text-red-600");
+
+            // Add the appropriate color class based on the character count
+            if (commentLength <= maxChars) {
+                commentBodyCounter.classList.add("text-green-600");
+            } else {
+                commentBodyCounter.classList.add("text-red-600");
+            }
+
+            commentBodyCounter.textContent = `${commentLength}/${maxChars} Characters`;
+        });
+
+        document.getElementById("btn-comment-submit").addEventListener("click", async () => {
+            const errorElem = document.getElementById("comment-error");
+            errorElem.innerHTML = "";
+            const postId = document.getElementById("post-id").value;
+            const replyTo = document.getElementById("reply-to").value;
+            const body = {
+                token: document.getElementById("ts-token").value,
+                comment: {
+                    displayName: document.getElementById("comment-name").value,
+                    email: document.getElementById("comment-email").value,
+                    comment: document.getElementById("comment-body").value,
+                    postId: postId,
+                    replyTo: replyTo,
+                },
+            };
+            loadingOn();
+            try {
+                // Post comment to API
+                const result = await fetch(
+                    `https://blog-comments.designly.workers.dev/?postId=${postId}&replyTo=${replyTo}`,
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                        body: JSON.stringify(body),
+                    }
+                );
+                const outcome = await result.text();
+                if (!result.ok) {
+                    throw new Error(outcome);
+                }
+
+                // Post data to local back-end to remember in a cookie
+                const formData = new FormData();
+                formData.append("displayName", body.comment.displayName);
+                formData.append("email", body.comment.email);
+                fetch("/comment", {
+                    method: "POST",
+                    body: formData,
+                });
+
+                fetchComments();
+                hideLayer();
+            } catch (err) {
+                turnstile.reset(tsId);
+                console.error(err);
+                errorElem.textContent = err.message;
+            } finally {
+                loadingOff();
+            }
+        });
+    }, 0);
+</script>

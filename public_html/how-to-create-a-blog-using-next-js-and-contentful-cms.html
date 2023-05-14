@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>How to Create a Blog Using Next.js and Contentful CMS | Designly</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="Learn how to create your own completely-free cloud-hosted blog using Contentful, Vercel and Next.JS." />
+        <meta property="og:title" content="How to Create a Blog Using Next.js and Contentful CMS" />
+        <meta property="og:description" content="Learn how to create your own completely-free cloud-hosted blog using Contentful, Vercel and Next.JS." />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/contentful-next/cover.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz/how-to-create-a-blog-using-next-js-and-contentful-cms" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <article class="flex flex-col gap-10">
+            <section class="post-header flex flex-col gap-4">
+                <h1 class="text-colors text-xl md:text-3xl font-bold">How to Create a Blog Using Next.js and Contentful CMS</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/nextjs">#Next.js</a>
+<a href="/tag/contentful">#Contentful</a>
+<a href="/tag/react">#React</a></div>
+                <img
+                    class="rounded-md shadow-lg"
+                    src="https://cdn.designly.biz/imgr/blog_files/contentful-next/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/cover.jpg?w=1024&q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/cover.jpg?w=320&q=75 320w"
+                    alt="How to Create a Blog Using Next.js and Contentful CMS"
+                    width="1200"
+                    height="675"
+                />
+                <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </section>
+            <section class="post-content flex flex-col gap-6"><p>In case you haven't heard, <a href="https://nextjs.org/" rel="noreferrer noopener" target="_blank"><strong>Next.JS</strong></a> is a <strong>React JS</strong> framework that super-optimizes website page speeds. When you host your Next website on <a href="https://vercel.com" rel="noreferrer noopener" target="_blank"><strong>Vercel's</strong></a> platform (for free), you get their automatic image optimization as well when you use Next's <a href="https://nextjs.org/docs/api-reference/next/image" rel="noreferrer noopener" target="_blank"><strong>Next/Image</strong></a> built-in component.</p>
+<p>Another key feature of Next is the ability to generate static pages from external data sources using the <code>getStaticProps()</code> function. This dramatically speeds up data-driven websites, such as blogs because there is no back-end call to a server or CMS when visitors come to your site. The data is pulled from the database or CMS at build-time.</p>
+<p><a href="https://contentful.com" rel="noreferrer noopener" target="_blank"><strong>Contentful</strong></a> is a headless content management system (CMS). Headless simply means there is no front-end to display the content to the consumer. It's basically a database, but much easier to setup and maintain than a traditional relational database. Contentful provides a very easy-to-use API for fetching and managing content. They also support GraphQL queries if you're into that.</p>
+<p>Contentful's paid plan is quite pricey (nearly $500/mo), but the free (community plan) is very generous and should suit most small to medium size projects. If you want all the details, please check out Contentful's <a href="https://www.contentful.com/developers/docs/technical-limits" rel="noreferrer noopener" target="_blank">Technical Limits</a> for their free tier.</p>
+<p>Contentful has two SDKs that are available for integration with React/Next. The first is their <a href="https://github.com/contentful/contentful.js" rel="noreferrer noopener" target="_blank"><strong>Content Delivery API (CDA)</strong></a>. And the second is their <a href="https://github.com/contentful/contentful-management.js" rel="noreferrer noopener" target="_blank"><strong>Content Management API (CMA)</strong></a>. The first is a read-only API that's used for delivering content to your front-end. The second is read/write and allows creating, editing and managing content and content models programmatically.</p>
+<p>Unlike a database, Contentful is object-driven. Contentful calls data objects <strong>Content Models</strong>. You can consider a content model a type of document. In this tutorial, we are going to create two types of content models: <strong>Blog Post</strong> and <strong>Author</strong>.</p>
+<p>To create our blog, we're going to need the following prerequisites:</p>
+<ul>
+<li>A free-forever Contentful account</li>
+<li>A free-forever Vercel account</li>
+<li>A Github account (free as well)</li>
+<li>Node.JS and NPM installed on your PC</li>
+<li>A development IDE, such as Visual Studio Code (also free)</li>
+</ul>
+<p>The complete repository for this tutorial can be found <a href="https://github.com/designly1/contentful-next-blog" rel="noreferrer noopener" target="_blank">Here</a>.</p>
+<p>And a demo of this tutorial app can be found <a href="https://designly-blog-example.vercel.app" rel="noreferrer noopener" target="_blank">Here</a></p>
+<p>Ok, let's get started!</p>
+<h4>Step 1: Set Up Github</h4>
+<p>If you're a seasoned developer, you probably already have a Github account. If not <a href="https://github.com" rel="noreferrer noopener" target="_blank">head over there</a> now and set one up. Github is a development collaboration and code-management / versioning system. Vercel will automatically rebuild your Next.JS website when you push a new commit of your code to Github.</p>
+<p>I also recommend using the <a href="https://desktop.github.com" rel="noreferrer noopener" target="_blank"><strong>Github Desktop</strong></a> app, which is great for visualizing changes bewtween commits. If you're already a seasoned command-line user, then I understand! :-)</p>
+<h4>Step 2: Set Up Contentful</h4>
+<p>Head over to <a href="https://contentful.com" rel="noreferrer noopener" target="_blank">Contentful.com</a> and register for a free account. No credit card needed. You can use your Github account to register and sign-in. Once you have your account registered and you're logged in, you should be at your Contentful Space Dashboard.</p>
+<p>Ok, first we want to create our dependency content models before we create the actual blog post model. This is because <strong>Blog Post</strong> will refer to <strong>Author</strong> and <strong>Category</strong> much like a relational database.</p>
+<p>Begin by clicking the <strong>Content Model</strong> tab at the top of the dashboard. Then click the <strong>Add Content Type</strong> button in the upper right corner. Let's name it <strong>Author</strong>. Note that the <strong>API Identifier</strong> field is automatically filled in. You can type in a friendly name (with spaces) as the field name and Contentful will automatically generate the variable name in camel case, which is how we will refer to the field programmatically.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/contentful-next/image1.jpg?w=1200&amp;q=75" alt="Create Author Content Type" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/contentful-next/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/image1.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image1.jpg?w=320&amp;q=75 320w"></p>
+<p>Now let's create some fields. Click the <strong>Add Field</strong> button to the right and select <strong>Text</strong> as the field type. Name the field <strong>Name</strong> and then click <strong>Create and Configure</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/contentful-next/image2.jpg?w=1200&amp;q=75" alt="Create a Name Field" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/contentful-next/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/image2.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image2.jpg?w=320&amp;q=75 320w"></p>
+<p>Under <strong>Field Options</strong> check the box labeled <strong>This field represents the Entry title</strong>. Then under the <strong>Validation</strong> tab check <strong>Required Field</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/contentful-next/image3.jpg?w=1200&amp;q=75" alt="Configure the Name Field" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/contentful-next/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/image3.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image3.jpg?w=320&amp;q=75 320w"></p>
+<p>Next, repeat the same process and add a field named <strong>Image</strong>. Select <strong>Media</strong> as the field type. Leave <strong>One File</strong> checked, as an author will only have one profile image, and then click <strong>Create</strong>. When you're done click the <strong>Save</strong> button in the upper right corner.</p>
+<p>Now let's create a content model called <strong>Category</strong>. This model will have two <strong>Short Text</strong> fields: <strong>Category Name</strong> and <strong>Description</strong>. Be sure to check <strong>Category Name</strong> as the entry title.</p>
+<p>Ok now we can finally create our <strong>Blog Post</strong> content model. Blog post will have the following fields:</p>
+<table>
+<thead>
+<tr>
+<th>Field Name</th>
+<th>Type</th>
+<th>Settings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Title</td>
+<td>Short Text</td>
+<td>&acirc;&#156;&#133;Represents title field</td>
+</tr>
+<tr>
+<td>Publish Date</td>
+<td>Date &amp; Time</td>
+<td></td>
+</tr>
+<tr>
+<td>Slug</td>
+<td>Short Text</td>
+<td>Appearance Tab: Generate slug from Title</td>
+</tr>
+<tr>
+<td>Featured Image</td>
+<td>Media</td>
+<td>&acirc;&#156;&#133;One File</td>
+</tr>
+<tr>
+<td>Author</td>
+<td>Reference</td>
+<td>Validation: Accept Only Entry Type: Author</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>Reference</td>
+<td>Validation: Accept Only Entry Type: Category</td>
+</tr>
+<tr>
+<td>Excerpt</td>
+<td>Long Text</td>
+<td></td>
+</tr>
+<tr>
+<td>Content</td>
+<td>Long Text</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Note that the <strong>Slug</strong> field will automatically be generated from the <strong>Title</strong> field. The slug field will be used for generating our static routes in Next. For example, if we had a post titled <em>All Your Base Are Belong to Us</em>, the slug would be <em>all-your-base-are-belong-to-us</em>, which is a URL-safe format.</p>
+<h4>Step 3: Create a Test Post</h4>
+<p>First, create an author entry. Under the <strong>Content</strong> tab, click the <strong>Add</strong> dropdown menu in the upper right and select <strong>Author</strong>. Enter your name and upload your profile pic. You can also use Contentful's built-in editing tools to crop or rotate your image as well. You can enter a title and description, but it's not necessary. We will use the <strong>Name</strong> field of the author entry for the <code>&lt;img alt="" /&gt;</code> property in our Next app.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/contentful-next/image4.jpg?w=1200&amp;q=75" alt="Upload and Crop Image" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/contentful-next/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/image4.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image4.jpg?w=320&amp;q=75 320w"></p>
+<p>Next, we'll need a category. Again, click the <strong>Add</strong> dropdown and select category. I'm going to name mine <em>General</em>. You can add as many categories as you like, but we'll start with just one for testing purposes.</p>
+<p>And now we can finally create our test post. Fill out all the fields and upload a <strong>Featured Image</strong>. Your featured image should be roughly 1920x1200 pixels. Next.JS will automatically optimize and render the <code>&lt;img src-set="" /&gt;</code>. For <strong>Excerpt</strong>, you should type an SEO-friendly synopsis of what your blog post is about.</p>
+<p>In the content field, I've added an image as well. You can use the <strong>Insert Media</strong> tool to upload images directly to Contentful's CDN, but you are limited to image size and bandwidth per month. If you plan to have a <strong>lot</strong> of images in our blog posts, I might suggest using a CDN service or an S3 bucket to store images. You might also want to check out my article titled <a href="https://designly.biz/blog/post/how-to-use-aws-cloudfront-to-create-your-own-free-cdn" rel="noreferrer noopener" target="_blank"><em>How to Use AWS CloudFront to Create Your Own Free CDN</em></a>.</p>
+<p>You should end up with something like this:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/contentful-next/image5.jpg?w=1200&amp;q=75" alt="Test Post Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/contentful-next/image5.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/image5.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image5.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image5.jpg?w=320&amp;q=75 320w"></p>
+<p>When you're done, click <strong>Publish</strong>.</p>
+<p>Great. Now for the fun part!</p>
+<h4>Step 4: Create Our Blog App</h4>
+<p>Ok, so hopefully you have the latest versions of <strong>Node.JS</strong> and <strong>NPM</strong> installed. This tutorial doesn't cover that, but here's a <a href="https://nodejs.org/en/download" rel="noreferrer noopener" target="_blank">point in the right direction</a>. Personally, I prefer <strong>Ubuntu</strong> for my React development environment, but Node will run on Windows or Mac as well. I think you need to use <a href="https://brew.sh" rel="noreferrer noopener" target="_blank"><strong>Homebrew</strong></a> to install it on MacOS.</p>
+<p>We also need to create our Github repository. Hopefully you've downloaded and installed <a href="https://desktop.github.com" rel="noreferrer noopener" target="_blank">Guthub Desktop</a> and are logged in to your Github account.</p>
+<p>From file <strong>File</strong> menu, choose <strong>New Repository</strong>. Choose a name for your repository (usually lowercase with dashes). I chose <code>contentful-next-blog</code> for this tutorial. Then you can either choose a location for your respository or you can keep the defaults, which is <strong>Home_Dir &gt; Documents &gt; GitHub</strong>. You don't need to worry about a <code>.gitignore</code> file. NPM will create one for us when we initialize our app. Also, do not choose to create a <code>README.md</code> file as it will conflict with the <code>create-next-app</code> command. Once it's created, click the <strong>Publish Repository</strong> button. You should leave <strong>Keep this code private</strong> unless you want your code to be publicly visible.</p>
+<p>Now, when ever you make any local changes to your reponsitory, you can come back here and see the changes that have been made. You can also discard changes as well, which makes Github like a super-duper undo button!</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/contentful-next/image6.jpg?w=1200&amp;q=75" alt="Create Your Github Repository" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/contentful-next/image6.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/image6.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image6.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image6.jpg?w=320&amp;q=75 320w"></p>
+<hr>
+<p>Next, open up your terminal, depending on your operating system and navigate to your Github root directory (usually HOME_DIR/Documents/GitHub), just outside your repository directory. Enter the following command:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">npx create-next-app@latest
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>It should install in a few seconds. Now let's test it:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash"><span class="hljs-built_in">cd</span> contentful-next-blog
+npm run dev
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>You should see an output like this:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-angelscript hljs angelscript" data-lang="angelscript">ready - started server on <span class="hljs-number">0.0</span><span class="hljs-number">.0</span><span class="hljs-number">.0</span>:<span class="hljs-number">3000</span>, url: http:<span class="hljs-comment">//localhost:3000</span>
+wait  - compiling...
+event - compiled client <span class="hljs-keyword">and</span> server successfully <span class="hljs-keyword">in</span> <span class="hljs-number">1331</span> ms (<span class="hljs-number">125</span> modules)
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Hit <code>CTRL+C</code> to exit the development server. Now we need to install some additional packages for your blog:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">npm install nextjs-progressbar next-sitemap react-markdown react-syntax-highlighter rehype-raw
+npm install remark-gfm sweetalert2 contentful react-bootstrap bootstrap
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Here's a brief summary of the packages we're going to use:</p>
+<table>
+<thead>
+<tr>
+<th>Package Name</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>nextjs-progressbar</td>
+<td>Shows a progress bar at the top of the page during page loads</td>
+</tr>
+<tr>
+<td>next-sitemap</td>
+<td>Automatically generates a sitemap.xml for statically-generated pages</td>
+</tr>
+<tr>
+<td>react-markdown</td>
+<td>Renders our blog content's markdown as HTML</td>
+</tr>
+<tr>
+<td>react-syntax-highlighter</td>
+<td>Highlights common programming syntax</td>
+</tr>
+<tr>
+<td>rehype-raw</td>
+<td>Supports HTML embedded in markdown</td>
+</tr>
+<tr>
+<td>remark-gfm</td>
+<td>Adds Github-like markdown support (e.g. tables)</td>
+</tr>
+<tr>
+<td>sweetalert2</td>
+<td>A very nice modal / alert system that we'll use for popup images</td>
+</tr>
+<tr>
+<td>contentful</td>
+<td>Contentful Delivery API SDK for fetching our blog content</td>
+</tr>
+<tr>
+<td>react-bootstrap</td>
+<td>The UI framework we'll use for the demo, but you can use whatever you like</td>
+</tr>
+</tbody>
+</table>
+<p>Ok now we need to set up our environment variables for development. In the root directory of your project, create a file called <code>.env.local</code>. This file will store our contenful API key and space ID. Next, go back to your contentful dashboard, click the <strong>Settings</strong> dropdown at the top and select <strong>API Keys</strong>. Then click <strong>Add API Key</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/contentful-next/image7.jpg?w=1200&amp;q=75" alt="Create a Contentful API Key" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/contentful-next/image7.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/image7.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image7.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image7.jpg?w=320&amp;q=75 320w"></p>
+<p>Now copy the space ID and access token to your <code>.env.local</code> file like so:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">NEXT_PUBLIC_CONTENTFUL_SPACE_ID=YOUR_SPACE_ID
+NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN=YOUR_TOKEN
+NEXT_PUBLIC_BASE_URL=http://localhost:3000
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>On a side note, apps created by <code>create-next-app</code> must have environment variables prefixed by <code>NEXT_PUBLIC_</code>. Also, <code>NEXT_PUBLIC_BASE_URL</code> will be used by <code>next-sitemap</code>.</p>
+<p>Now save your file and go back to the terminal and run:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">npm run dev
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>In your browser, nagivate to http://localhost:3000. You should see a page like this:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/contentful-next/image8.jpg?w=1200&amp;q=75" alt="Default Next.JS Page" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/contentful-next/image8.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/image8.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image8.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image8.jpg?w=320&amp;q=75 320w"></p>
+<p>Now we need to edit our main page wrapper <code>pages/_app.js</code> to include bootstrap and nextjs-progressbar, as well as import our styles (which we'll create in a minute):</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-keyword">import</span> <span class="hljs-string">'bootstrap/dist/css/bootstrap.min.css'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'bootstrap/dist/css/bootstrap.min.css'</span>;
+<span class="hljs-keyword">import</span> <span class="hljs-string">'../styles/globals.css'</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">'../styles/blogPost.css'</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">'../styles/postList.css'</span>
+<span class="hljs-keyword">import</span> NextNProgress <span class="hljs-keyword">from</span> <span class="hljs-string">"nextjs-progressbar"</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MyApp</span>(<span class="hljs-params">{ Component, pageProps }</span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">NextNProgress</span> <span class="hljs-attr">height</span>=<span class="hljs-string">{10}</span> <span class="hljs-attr">color</span>=<span class="hljs-string">"#2c85ba"</span> /&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Component</span> {<span class="hljs-attr">...pageProps</span>} /&gt;</span>
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  )
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> MyApp
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<hr>
+<p>Now we need to configure <code>next-sitemap</code> to generate our blog's <code>sitemap.xml</code>. Create a new file in the root directory called <code>next-sitemap.config.js</code>.</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">// next-sitemap.config.js</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@type <span class="hljs-type">{import('next-sitemap').IConfig}</span> </span>*/</span>
+<span class="hljs-keyword">const</span> baseUrl = process.env.NEXT_PUBLIC_BASE_URL || <span class="hljs-string">"https://example.com"</span>;
+<span class="hljs-keyword">const</span> fs = <span class="hljs-built_in">require</span>(<span class="hljs-string">'fs'</span>);
+<span class="hljs-keyword">let</span> postsMeta = fs.readFileSync(<span class="hljs-string">'./public/blogPostMeta.json'</span>);
+postsMeta = <span class="hljs-built_in">JSON</span>.parse(postsMeta);
+<span class="hljs-built_in">module</span>.exports = {
+    <span class="hljs-attr">siteUrl</span>: baseUrl,
+    <span class="hljs-attr">generateRobotsTxt</span>: <span class="hljs-literal">true</span>,
+    <span class="hljs-attr">changefreq</span>: <span class="hljs-string">'monthly'</span>,
+    <span class="hljs-attr">transform</span>: <span class="hljs-keyword">async</span> (config, path) =&gt; {
+        <span class="hljs-keyword">let</span> additionalProps = {};
+        <span class="hljs-keyword">if</span> (path.match(<span class="hljs-regexp">/blog\/post/</span>)) {
+            <span class="hljs-keyword">const</span> pathAr = path.split(<span class="hljs-string">"/"</span>);
+            <span class="hljs-keyword">const</span> findSlug = pathAr.pop();
+            <span class="hljs-keyword">const</span> post = postsMeta.find( <span class="hljs-function">(<span class="hljs-params">{ slug }</span>) =&gt;</span> slug === findSlug );
+            <span class="hljs-keyword">if</span> (post) {
+                additionalProps = {
+                    <span class="hljs-string">'image:image'</span>: post.coverImage
+                };
+            }
+        }
+        <span class="hljs-keyword">return</span> {
+            <span class="hljs-attr">loc</span>: path,
+            <span class="hljs-attr">changefreq</span>: config.changefreq,
+            <span class="hljs-attr">priority</span>: config.priority,
+            <span class="hljs-attr">lastmod</span>: config.autoLastmod ? <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().toISOString() : <span class="hljs-literal">undefined</span>,
+            ...additionalProps
+        };
+    },
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>You may be wondering about the additional configuration options. What this does is allows <code>next-sitemap</code> to add <code>image</code> tags to our blog post listings from a JSON file that we will generate later.</p>
+<p>Now we need to add the post-build script to <code>package.json</code>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-json hljs json" data-lang="json"> {
+   <span class="hljs-attr">"scripts"</span>: {
+     <span class="hljs-attr">"dev"</span>: <span class="hljs-string">"next dev"</span>,
+     <span class="hljs-attr">"build"</span>: <span class="hljs-string">"next build"</span>,
+     <span class="hljs-attr">"start"</span>: <span class="hljs-string">"next start"</span>,
+     <span class="hljs-attr">"lint"</span>: <span class="hljs-string">"next lint"</span>,
+     <span class="hljs-attr">"postbuild"</span>: <span class="hljs-string">"next-sitemap"</span>
+   }
+ }
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<hr>
+<p>Next, edit <code>next.config.js</code> in the root directory to look like this:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">/* next.config.js */</span>
+<span class="hljs-comment">/** <span class="hljs-doctag">@type <span class="hljs-type">{import('next').NextConfig}</span> </span>*/</span>
+<span class="hljs-keyword">const</span> nextConfig = {
+  <span class="hljs-attr">reactStrictMode</span>: <span class="hljs-literal">true</span>,
+  <span class="hljs-attr">images</span>: {
+    <span class="hljs-attr">domains</span>: [
+      <span class="hljs-string">'images.ctfassets.net'</span>,
+    ],
+  }
+}
+<span class="hljs-built_in">module</span>.exports = nextConfig
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>This will allow <code>next/image</code> to load images from the Contentful CDN. Add any other image sources here.</p>
+<hr>
+<p>And we'll create two style files in <code>/styles</code>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-css hljs css" data-lang="css"><span class="hljs-comment">/* postList.css */</span>
+<span class="hljs-keyword">@import</span> url(<span class="hljs-string">"https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&amp;display=swap"</span>);
+*,
+*<span class="hljs-selector-pseudo">::before</span>,
+*<span class="hljs-selector-pseudo">::after</span> {
+    <span class="hljs-attribute">box-sizing</span>: border-box;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+}
+<span class="hljs-selector-class">.post-list-wrapper</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"Quicksand"</span>, sans-serif;
+    <span class="hljs-attribute">display</span>: grid;
+    <span class="hljs-attribute">place-items</span>: center;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100vh</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#7f7fd5</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(to right, #<span class="hljs-number">91</span>eae4, #<span class="hljs-number">86</span>a8e7, #<span class="hljs-number">7</span>f7fd5);
+}
+<span class="hljs-selector-class">.post-list-container</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-wrap</span>: wrap;
+    <span class="hljs-attribute">justify-content</span>: center;
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">1200px</span>;
+    <span class="hljs-attribute">margin-block</span>: <span class="hljs-number">2rem</span>;
+    <span class="hljs-attribute">gap</span>: <span class="hljs-number">2rem</span>;
+    <span class="hljs-attribute">flex-direction</span>: row;
+}
+<span class="hljs-selector-tag">img</span> {
+    <span class="hljs-attribute">max-width</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">display</span>: block;
+    <span class="hljs-attribute">object-fit</span>: cover;
+}
+<span class="hljs-selector-class">.post-card</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-direction</span>: column;
+    <span class="hljs-attribute">width</span>: <span class="hljs-built_in">clamp</span>(<span class="hljs-number">20rem</span>, calc(<span class="hljs-number">20rem</span> + <span class="hljs-number">2vw</span>), <span class="hljs-number">22rem</span>);
+    <span class="hljs-attribute">overflow</span>: hidden;
+    <span class="hljs-attribute">box-shadow</span>: <span class="hljs-number">0</span> .<span class="hljs-number">1rem</span> <span class="hljs-number">1rem</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.1</span>);
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">1em</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#ECE9E6</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(to right, #FFFFFF, #ECE9E6);
+    <span class="hljs-attribute">cursor</span>: pointer;
+    <span class="hljs-attribute">transition</span>: all <span class="hljs-number">0.3s</span> ease-in-out;
+}
+<span class="hljs-selector-class">.post-card</span><span class="hljs-selector-pseudo">:hover</span> {
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.8</span>;
+}
+<span class="hljs-selector-class">.card__body</span> {
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">1rem</span>;
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-direction</span>: column;
+    <span class="hljs-attribute">gap</span>: .<span class="hljs-number">5rem</span>;
+}
+<span class="hljs-selector-class">.tag</span> {
+    <span class="hljs-attribute">align-self</span>: flex-start;
+    <span class="hljs-attribute">padding</span>: .<span class="hljs-number">25em</span> .<span class="hljs-number">75em</span>;
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">1em</span>;
+    <span class="hljs-attribute">font-size</span>: .<span class="hljs-number">75rem</span>;
+}
+<span class="hljs-selector-class">.tag</span>+<span class="hljs-selector-class">.tag</span> {
+    <span class="hljs-attribute">margin-left</span>: .<span class="hljs-number">5em</span>;
+}
+<span class="hljs-selector-class">.tag-blue</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#56CCF2</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(to bottom, #<span class="hljs-number">2</span>F80ED, #<span class="hljs-number">56</span>CCF2);
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fafafa</span>;
+}
+<span class="hljs-selector-class">.tag-brown</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#D1913C</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(to bottom, #FFD194, #D1913C);
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fafafa</span>;
+}
+<span class="hljs-selector-class">.tag-red</span> {
+    <span class="hljs-attribute">background</span>: <span class="hljs-number">#cb2d3e</span>;
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">linear-gradient</span>(to bottom, #ef473a, #cb2d3e);
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#fafafa</span>;
+}
+<span class="hljs-selector-class">.card__body</span> <span class="hljs-selector-tag">h4</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1.5rem</span>;
+    <span class="hljs-attribute">text-transform</span>: capitalize;
+}
+<span class="hljs-selector-class">.card__footer</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">2rem</span> <span class="hljs-number">1rem</span>;
+    <span class="hljs-attribute">margin-top</span>: auto;
+}
+<span class="hljs-selector-class">.user</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">gap</span>: .<span class="hljs-number">5rem</span>;
+}
+<span class="hljs-selector-class">.user__image</span> {
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">50px</span>;
+}
+<span class="hljs-selector-class">.user__info</span>&gt;<span class="hljs-selector-tag">small</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#666</span>;
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<div class="code-wrapper shadow-lg"><pre><code class="language-css hljs css" data-lang="css"><span class="hljs-comment">/* blogPost.css */</span>
+<span class="hljs-keyword">@import</span> url(<span class="hljs-string">'https://fonts.googleapis.com/css2?family=Roboto&amp;display=swap'</span>);
+<span class="hljs-selector-class">.blog-post-container</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'Roboto'</span>, sans-serif;
+    <span class="hljs-attribute">padding-top</span>: <span class="hljs-number">2em</span>;
+}
+<span class="hljs-selector-tag">hr</span><span class="hljs-selector-class">.blog-hr</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">20px</span>;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">60px</span> auto;
+    <span class="hljs-attribute">background</span>: <span class="hljs-built_in">radial-gradient</span>(circle closest-side, #d4d4d4 <span class="hljs-number">98%</span>, #<span class="hljs-number">0000</span>) <span class="hljs-number">0</span>/<span class="hljs-built_in">calc</span>(<span class="hljs-number">100%</span>/<span class="hljs-number">5</span>) <span class="hljs-number">100%</span>;
+}
+<span class="hljs-selector-class">.post-heading</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">1em</span>;
+}
+<span class="hljs-selector-class">.post-header</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-direction</span>: row;
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">3em</span>;
+}
+<span class="hljs-selector-class">.post-header-author</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-direction</span>: column;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">81</span>, <span class="hljs-number">81</span>, <span class="hljs-number">81</span>);
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">2em</span>;
+}
+<span class="hljs-selector-class">.author-avatar</span> {
+    <span class="hljs-attribute">display</span>: flex;
+}
+<span class="hljs-selector-class">.author-avatar</span> <span class="hljs-selector-tag">img</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">75px</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">75px</span>;
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">50%</span>;
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">2px</span> solid <span class="hljs-number">#cddc39</span>;
+    <span class="hljs-attribute">filter</span>: <span class="hljs-built_in">drop-shadow</span>(<span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">8px</span> rgb(<span class="hljs-number">255</span>, <span class="hljs-number">87</span>, <span class="hljs-number">34</span>));
+    <span class="hljs-attribute">margin</span>: auto;
+}
+<span class="hljs-selector-class">.post-header-title</span> {
+    <span class="hljs-attribute">display</span>: flex;
+    <span class="hljs-attribute">flex-direction</span>: column;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">51</span>, <span class="hljs-number">51</span>, <span class="hljs-number">51</span>);
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span>;
+    <span class="hljs-attribute">color</span>: white;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">2em</span>;
+}
+<span class="hljs-selector-class">.author-name</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#f19494</span>;;
+}
+<span class="hljs-selector-class">.publish-date</span> {
+    <span class="hljs-attribute">color</span>: <span class="hljs-number">#afafff</span>;
+    <span class="hljs-attribute">font-style</span>: italic;
+}
+<span class="hljs-selector-class">.post-markdown</span> <span class="hljs-selector-tag">figcaption</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.8em</span>;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">51</span>, <span class="hljs-number">51</span>, <span class="hljs-number">51</span>);
+    <span class="hljs-attribute">color</span>: white;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0.5em</span>;
+    <span class="hljs-attribute">text-align</span>: center;
+}
+<span class="hljs-selector-class">.shadow-box</span> {
+    <span class="hljs-attribute">-webkit-box-shadow</span>: -<span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">35px</span> -<span class="hljs-number">23px</span> <span class="hljs-number">2px</span> -<span class="hljs-number">16px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-attribute">box-shadow</span>: -<span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">35px</span> -<span class="hljs-number">23px</span> <span class="hljs-number">2px</span> -<span class="hljs-number">16px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+}
+<span class="hljs-selector-class">.blog-pre</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">3em</span>;;
+}
+<span class="hljs-selector-class">.blog-pre</span> &gt; <span class="hljs-selector-tag">div</span> {
+    <span class="hljs-attribute">-webkit-box-shadow</span>: -<span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">35px</span> -<span class="hljs-number">23px</span> <span class="hljs-number">2px</span> -<span class="hljs-number">16px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-attribute">box-shadow</span>: -<span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">35px</span> -<span class="hljs-number">23px</span> <span class="hljs-number">2px</span> -<span class="hljs-number">16px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+}
+<span class="hljs-selector-class">.blog-ul</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">3em</span>;
+}
+<span class="hljs-selector-class">.blog-p</span> {
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">2em</span>;
+}
+<span class="hljs-selector-class">.blog-table</span> {
+    <span class="hljs-attribute">-webkit-box-shadow</span>: -<span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">35px</span> -<span class="hljs-number">23px</span> <span class="hljs-number">2px</span> -<span class="hljs-number">16px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-attribute">box-shadow</span>: -<span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">35px</span> -<span class="hljs-number">23px</span> <span class="hljs-number">2px</span> -<span class="hljs-number">16px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-attribute">margin-bottom</span>: <span class="hljs-number">3em</span> <span class="hljs-meta">!important</span>;
+}
+<span class="hljs-selector-tag">code</span><span class="hljs-selector-class">.blog-code</span><span class="hljs-selector-pseudo">:not(pre</span> *) {
+    <span class="hljs-attribute">color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">227</span>, <span class="hljs-number">227</span>, <span class="hljs-number">227</span>);
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">0.9em</span>;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgb</span>(<span class="hljs-number">110</span>, <span class="hljs-number">110</span>, <span class="hljs-number">110</span>);
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">4px</span> <span class="hljs-number">6px</span>;
+    <span class="hljs-attribute">border-radius</span>: <span class="hljs-number">3px</span>;
+    <span class="hljs-attribute">word-break</span>: keep-all;
+}
+<span class="hljs-selector-class">.pop-image</span> {
+    <span class="hljs-attribute">cursor</span>: pointer;
+    <span class="hljs-attribute">transition</span>: <span class="hljs-number">0.3s</span> ease-in-out;
+    <span class="hljs-attribute">-webkit-box-shadow</span>: -<span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">35px</span> -<span class="hljs-number">23px</span> <span class="hljs-number">2px</span> -<span class="hljs-number">16px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+    <span class="hljs-attribute">box-shadow</span>: -<span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">10px</span> <span class="hljs-number">0px</span> <span class="hljs-number">13px</span> -<span class="hljs-number">7px</span> <span class="hljs-number">#000000</span>, <span class="hljs-number">35px</span> -<span class="hljs-number">23px</span> <span class="hljs-number">2px</span> -<span class="hljs-number">16px</span> <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>);
+}
+<span class="hljs-selector-class">.pop-image</span><span class="hljs-selector-pseudo">:hover</span> {
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">scale</span>(<span class="hljs-number">1.01</span>);
+    <span class="hljs-attribute">opacity</span>: <span class="hljs-number">0.8</span>;
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<hr>
+<p>Create a folder in the root directory called <code>lib</code> and a file within called <code>contentful.js</code>. This will contain our functions for fetching data from Contentful:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">/* contentful.js */</span>
+<span class="hljs-keyword">const</span> space = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID ?? <span class="hljs-literal">null</span>
+<span class="hljs-keyword">const</span> accessToken = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN ?? <span class="hljs-literal">null</span>
+<span class="hljs-keyword">const</span> client = <span class="hljs-built_in">require</span>(<span class="hljs-string">'contentful'</span>).createClient({
+    <span class="hljs-attr">space</span>: space,
+    <span class="hljs-attr">accessToken</span>: accessToken,
+})
+<span class="hljs-comment">// Fetch post meta data for all posts</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPostsMeta</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> entries = <span class="hljs-keyword">await</span> client.getEntries({
+        <span class="hljs-attr">content_type</span>: <span class="hljs-string">'blogPost'</span>,
+        <span class="hljs-attr">select</span>: <span class="hljs-string">'fields.title,fields.publishDate,fields.slug,fields.featuredImage,fields.category,fields.excerpt,fields.author'</span>
+    })
+    <span class="hljs-keyword">if</span> (entries.items) {
+        <span class="hljs-keyword">return</span> entries.items;
+    }
+    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Could not fetch blog posts!"</span>)
+}
+<span class="hljs-comment">// Fetch a single post by slug</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPost</span>(<span class="hljs-params">slug</span>) </span>{
+    <span class="hljs-keyword">const</span> entries = <span class="hljs-keyword">await</span> client.getEntries({
+        <span class="hljs-attr">content_type</span>: <span class="hljs-string">'blogPost'</span>,
+        <span class="hljs-string">'fields.slug'</span>: slug
+    })
+    <span class="hljs-keyword">if</span> (entries.items) {
+        <span class="hljs-keyword">return</span> entries.items;
+    }
+    <span class="hljs-built_in">console</span>.error(<span class="hljs-string">`Could not fetch blog post: <span class="hljs-subst">${slug}</span>!`</span>)
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>And also a file called <code>formatFunctions.js</code>. This will have a function for formatting ISO dates:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">/* formatFunctions.js */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">formatDate</span>(<span class="hljs-params">str</span>) </span>{
+    <span class="hljs-keyword">let</span> date = <span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>(str);
+    <span class="hljs-keyword">const</span> options = { <span class="hljs-attr">year</span>: <span class="hljs-string">'numeric'</span>, <span class="hljs-attr">month</span>: <span class="hljs-string">'long'</span>, <span class="hljs-attr">day</span>: <span class="hljs-string">'numeric'</span> };
+    <span class="hljs-keyword">return</span> date.toLocaleDateString(<span class="hljs-string">"en-US"</span>, options);
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<hr>
+<p>Now we can create our main layout component. Create a folder in the root directory called <code>components</code> and create the following components:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">/* layout.js */</span>
+<span class="hljs-keyword">import</span> Head <span class="hljs-keyword">from</span> <span class="hljs-string">'next/head'</span>
+<span class="hljs-keyword">import</span> { Navbar, Nav, Container } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bootstrap"</span>;
+<span class="hljs-keyword">import</span> { useRouter } <span class="hljs-keyword">from</span> <span class="hljs-string">'next/router'</span>
+<span class="hljs-keyword">import</span> NavLink <span class="hljs-keyword">from</span> <span class="hljs-string">'./navLink'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Layout</span>(<span class="hljs-params">{
+    children,
+    title,
+    description = <span class="hljs-string">"My blog site default description"</span>,
+    image,
+    headCustom = <span class="hljs-string">""</span>
+}</span>) </span>{
+    <span class="hljs-keyword">const</span> router = useRouter()
+    <span class="hljs-keyword">const</span> canonicalUrl = process.env.NEXT_PUBLIC_BASE_URL + router.asPath;
+    <span class="hljs-comment">// Configure dynamic title</span>
+    <span class="hljs-keyword">let</span> dispTitle = <span class="hljs-string">"My Blog"</span>; <span class="hljs-comment">// title prefix</span>
+    <span class="hljs-keyword">if</span> (title) dispTitle = dispTitle + <span class="hljs-string">" | "</span> + title;
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Head</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>{dispTitle}<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">{description}</span> /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"og:url"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">{canonicalUrl}</span> /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"og:type"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"article"</span> /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"og:title"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">{dispTitle}</span> /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"og:description"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">{description}</span> /&gt;</span>
+                {image &amp;&amp;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">property</span>=<span class="hljs-string">"og:image"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">{image}</span> /&gt;</span>
+                }
+                {headCustom}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">Head</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Navbar</span> <span class="hljs-attr">bg</span>=<span class="hljs-string">"dark"</span> <span class="hljs-attr">variant</span>=<span class="hljs-string">"dark"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">Container</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">Navbar.Brand</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"#"</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> router.push('/')}&gt;
+                        My Blog
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">Navbar.Brand</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">Nav</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"me-auto"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">NavLink</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/blog"</span>&gt;</span>My Blog<span class="hljs-tag">&lt;/<span class="hljs-name">NavLink</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">Nav</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">Container</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">Navbar</span>&gt;</span>
+            {children}
+        <span class="hljs-tag">&lt;/&gt;</span></span>
+    );
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">// navLink.js</span>
+<span class="hljs-keyword">import</span> Link <span class="hljs-keyword">from</span> <span class="hljs-string">"next/link"</span>;
+<span class="hljs-keyword">import</span> { Nav } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bootstrap"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">NavLink</span>(<span class="hljs-params">props</span>) </span>{
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">{props.href}</span> <span class="hljs-attr">passHref</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">Nav.Link</span>&gt;</span>{props.children}<span class="hljs-tag">&lt;/<span class="hljs-name">Nav.Link</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span>
+    );
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">/* postCard.js */</span>
+<span class="hljs-keyword">import</span> Image <span class="hljs-keyword">from</span> <span class="hljs-string">"next/image"</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">PostCard</span>(<span class="hljs-params">{
+    title,
+    image,
+    excerpt,
+    authorName,
+    authorAvatar,
+    publishDate,
+    category,
+    onClick
+}</span>) </span>{
+    <span class="hljs-keyword">const</span> featuredImage = image
+        ? <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Image</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{image}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"card__image"</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"card__image"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">{600}</span> <span class="hljs-attr">height</span>=<span class="hljs-string">{338}</span> /&gt;</span></span>
+        : <span class="xml"><span class="hljs-tag">&lt;&gt;</span><span class="hljs-tag">&lt;/&gt;</span></span>
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"post-card"</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{onClick}</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"card__header"</span>&gt;</span>
+                {featuredImage}
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"card__body"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"tag tag-blue"</span>&gt;</span>{category}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h4</span>&gt;</span>{title}<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{excerpt}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"card__footer"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"user"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{authorAvatar}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">{authorName}</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"user__image"</span> /&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"user__info"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">h5</span>&gt;</span>{authorName}<span class="hljs-tag">&lt;/<span class="hljs-name">h5</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">small</span>&gt;</span>{publishDate}<span class="hljs-tag">&lt;/<span class="hljs-name">small</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    )
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">/* post.js */</span>
+<span class="hljs-keyword">import</span> { Container } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bootstrap"</span>
+<span class="hljs-keyword">import</span> Image <span class="hljs-keyword">from</span> <span class="hljs-string">"next/image"</span>
+<span class="hljs-keyword">import</span> PostBody <span class="hljs-keyword">from</span> <span class="hljs-string">"./postBody"</span>
+<span class="hljs-keyword">import</span> { formatDate } <span class="hljs-keyword">from</span> <span class="hljs-string">"../lib/formatFunctions"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Post</span>(<span class="hljs-params">{
+    date,
+    slug,
+    image = <span class="hljs-string">"/kjd"</span>,
+    title,
+    category,
+    content,
+    author
+}</span>) </span>{
+    <span class="hljs-keyword">const</span> authorAvatar = <span class="hljs-string">'https:'</span> + author.picture.fields.file.url;
+    <span class="hljs-keyword">const</span> featuredImage = image ? <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Image</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{image}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">""</span> <span class="hljs-attr">width</span>=<span class="hljs-string">{1900}</span> <span class="hljs-attr">height</span>=<span class="hljs-string">{1080}</span> /&gt;</span></span> : <span class="xml"><span class="hljs-tag">&lt;&gt;</span><span class="hljs-tag">&lt;/&gt;</span></span>;
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Container</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{slug}</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"blog-post-container"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"post-header shadow-box"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"post-header-author"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"author-avatar"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">height</span>=<span class="hljs-string">{75}</span> <span class="hljs-attr">width</span>=<span class="hljs-string">{75}</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{authorAvatar}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">{author.name}</span> /&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"post-header-title"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>{title}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"by-line"</span>&gt;</span>Published by {" "}
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"author-name"</span>&gt;</span>{author.name}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> on {" "}
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"publish-date"</span>&gt;</span>{formatDate(date)}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            {featuredImage}
+            <span class="hljs-tag">&lt;<span class="hljs-name">PostBody</span> <span class="hljs-attr">content</span>=<span class="hljs-string">{content}</span> /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Container</span>&gt;</span></span>
+    )
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">/* postBody.js */</span>
+<span class="hljs-keyword">import</span> ReactMarkdown <span class="hljs-keyword">from</span> <span class="hljs-string">'react-markdown'</span>;
+<span class="hljs-keyword">import</span> rehypeRaw <span class="hljs-keyword">from</span> <span class="hljs-string">'rehype-raw'</span>;
+<span class="hljs-keyword">import</span> remarkGfm <span class="hljs-keyword">from</span> <span class="hljs-string">'remark-gfm'</span>;
+<span class="hljs-keyword">import</span> { Prism <span class="hljs-keyword">as</span> SyntaxHighlighter } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-syntax-highlighter'</span>
+<span class="hljs-keyword">import</span> { a11yDark } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-syntax-highlighter/dist/cjs/styles/prism'</span>
+<span class="hljs-keyword">import</span> PopImage <span class="hljs-keyword">from</span> <span class="hljs-string">'./popImage'</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">PostBody</span>(<span class="hljs-params">{ content }</span>) </span>{
+    <span class="hljs-keyword">const</span> HeaderOne = <span class="hljs-function">(<span class="hljs-params">{ children }</span>) =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"post-heading"</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span></span>
+    <span class="hljs-keyword">const</span> HeaderTwo = <span class="hljs-function">(<span class="hljs-params">{ children }</span>) =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h2</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"post-heading"</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span></span>
+    <span class="hljs-keyword">const</span> HeaderThree = <span class="hljs-function">(<span class="hljs-params">{ children }</span>) =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h3</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"post-heading"</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">h3</span>&gt;</span></span>
+    <span class="hljs-keyword">const</span> HeaderFour = <span class="hljs-function">(<span class="hljs-params">{ children }</span>) =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">h4</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"post-heading"</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">h4</span>&gt;</span></span>
+    <span class="hljs-keyword">const</span> Table = <span class="hljs-function">(<span class="hljs-params">{ children }</span>) =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">table</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"table table-striped table-bordered table-responsive-sm blog-table shadow-box"</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">table</span>&gt;</span></span>
+    <span class="hljs-keyword">const</span> Thead = <span class="hljs-function">(<span class="hljs-params">{ children }</span>) =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">thead</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"thead-dark"</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">thead</span>&gt;</span></span>
+    <span class="hljs-keyword">const</span> Pre = <span class="hljs-function">(<span class="hljs-params">{ children }</span>) =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">pre</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"blog-pre"</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">pre</span>&gt;</span></span>
+    <span class="hljs-keyword">const</span> Ul = <span class="hljs-function">(<span class="hljs-params">{ children }</span>) =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"blog-ul"</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span></span>
+    <span class="hljs-keyword">const</span> P = <span class="hljs-function">(<span class="hljs-params">{ children }</span>) =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"blog-p"</span>&gt;</span>{children}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+    <span class="hljs-keyword">const</span> Hr = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">hr</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"blog-hr"</span> /&gt;</span></span>
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ReactMarkdown</span>
+            <span class="hljs-attr">className</span>=<span class="hljs-string">'post-markdown'</span>
+            <span class="hljs-attr">linkTarget</span>=<span class="hljs-string">'_blank'</span>
+            <span class="hljs-attr">rehypePlugins</span>=<span class="hljs-string">{[rehypeRaw]}</span>
+            <span class="hljs-attr">remarkPlugins</span>=<span class="hljs-string">{[remarkGfm]}</span>
+            <span class="hljs-attr">components</span>=<span class="hljs-string">{{</span>
+                <span class="hljs-attr">h1:</span> <span class="hljs-attr">HeaderOne</span>,
+                <span class="hljs-attr">h2:</span> <span class="hljs-attr">HeaderTwo</span>,
+                <span class="hljs-attr">h3:</span> <span class="hljs-attr">HeaderThree</span>,
+                <span class="hljs-attr">h4:</span> <span class="hljs-attr">HeaderFour</span>,
+                <span class="hljs-attr">table:</span> <span class="hljs-attr">Table</span>,
+                <span class="hljs-attr">thead:</span> <span class="hljs-attr">Thead</span>,
+                <span class="hljs-attr">pre:</span> <span class="hljs-attr">Pre</span>,
+                <span class="hljs-attr">ul:</span> <span class="hljs-attr">Ul</span>,
+                <span class="hljs-attr">p:</span> <span class="hljs-attr">P</span>,
+                <span class="hljs-attr">hr:</span> <span class="hljs-attr">Hr</span>,
+                <span class="hljs-attr">code</span>({ <span class="hljs-attr">node</span>, <span class="hljs-attr">inline</span>, <span class="hljs-attr">className</span> = <span class="hljs-string">"blog-code"</span>, <span class="hljs-attr">children</span>, <span class="hljs-attr">...props</span> }) {
+                    <span class="hljs-attr">const</span> <span class="hljs-attr">match</span> = <span class="hljs-string">/language-(\w+)/.exec(className</span> || '')
+                    <span class="hljs-attr">return</span> !<span class="hljs-attr">inline</span> &amp;&amp; <span class="hljs-attr">match</span> ? (
+                        &lt;<span class="hljs-attr">SyntaxHighlighter</span>
+                            <span class="hljs-attr">style</span>=<span class="hljs-string">{a11yDark}</span>
+                            <span class="hljs-attr">language</span>=<span class="hljs-string">{match[1]}</span>
+                            <span class="hljs-attr">PreTag</span>=<span class="hljs-string">"div"</span>
+                            {<span class="hljs-attr">...props</span>}
+                        &gt;</span>
+                            {String(children).replace(/\n$/, '')}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">SyntaxHighlighter</span>&gt;</span>
+                    ) : (
+                        <span class="hljs-tag">&lt;<span class="hljs-name">code</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{className}</span> {<span class="hljs-attr">...props</span>}&gt;</span>
+                            {children}
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">code</span>&gt;</span>
+                    )
+                },
+                img: ({ src, ...props }) =&gt; <span class="hljs-tag">&lt;<span class="hljs-name">PopImage</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{src}</span> {<span class="hljs-attr">...props</span>} /&gt;</span>
+            }}
+        &gt;
+            {content}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">ReactMarkdown</span>&gt;</span></span>
+    )
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">/* popImage.js */</span>
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+<span class="hljs-keyword">import</span> Swal <span class="hljs-keyword">from</span> <span class="hljs-string">"sweetalert2"</span>;
+<span class="hljs-keyword">import</span> Image <span class="hljs-keyword">from</span> <span class="hljs-string">"next/image"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PopImage</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+    state = {
+        <span class="hljs-attr">isOpen</span>: <span class="hljs-literal">false</span>,
+        <span class="hljs-attr">winWidth</span>: <span class="hljs-literal">null</span>
+    };
+    <span class="hljs-keyword">constructor</span>(props) {
+        <span class="hljs-keyword">super</span>(props);
+        <span class="hljs-comment">// Fix contentful's image prefix</span>
+        <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.props.src.match(<span class="hljs-regexp">/^\/\//</span>)) {
+            <span class="hljs-keyword">this</span>.src = <span class="hljs-string">'https:'</span> + <span class="hljs-keyword">this</span>.props.src;
+        }<span class="hljs-keyword">else</span>{
+            <span class="hljs-keyword">this</span>.src = <span class="hljs-keyword">this</span>.props.src;
+        }
+        <span class="hljs-keyword">this</span>.dialogTitle = (<span class="hljs-keyword">this</span>.props.alt) ? <span class="hljs-keyword">this</span>.props.alt : <span class="hljs-string">"Image"</span>;
+    }
+    componentDidMount() {
+        <span class="hljs-keyword">this</span>.setState({
+            <span class="hljs-attr">winWidth</span>: <span class="hljs-built_in">window</span>.innerWidth
+        });
+    }
+    imgPop = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">this</span>.setState({ <span class="hljs-attr">isOpen</span>: !<span class="hljs-keyword">this</span>.state.isOpen });
+        Swal.fire({
+            <span class="hljs-attr">title</span>: <span class="hljs-keyword">this</span>.props.title,
+            <span class="hljs-attr">html</span>: <span class="hljs-string">`
+                &lt;div style="display: flex; width:100%;"&gt;
+                    &lt;img src="<span class="hljs-subst">${<span class="hljs-keyword">this</span>.src}</span>" alt="<span class="hljs-subst">${<span class="hljs-keyword">this</span>.props.alt}</span>" className="<span class="hljs-subst">${<span class="hljs-keyword">this</span>.props.className}</span>"
+                        onClick="document.querySelector('.swal2-confirm').click()" style="margin: auto; width:100%;" /&gt;
+                &lt;/div&gt;
+            `</span>,
+            <span class="hljs-attr">confirmButtonText</span>: <span class="hljs-string">"CLOSE"</span>,
+            <span class="hljs-attr">width</span>: <span class="hljs-string">'100%'</span>,
+            <span class="hljs-attr">backdrop</span>: <span class="hljs-string">'black'</span>,
+            <span class="hljs-attr">background</span>: <span class="hljs-string">'black'</span>,
+            <span class="hljs-attr">padding</span>: <span class="hljs-string">'1px'</span>,
+            <span class="hljs-attr">margin</span>: <span class="hljs-string">'1px'</span>,
+            <span class="hljs-attr">loaderHtml</span>: <span class="hljs-string">`&lt;svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: none; display: block; shape-rendering: auto;" width="200px" height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid"&gt;
+            &lt;g transform="translate(26.666666666666668,26.666666666666668)"&gt;
+              &lt;rect x="-20" y="-20" width="40" height="40" fill="#93dbe9"&gt;
+                &lt;animateTransform attributeName="transform" type="scale" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="1.1500000000000001;1" begin="-0.3s"&gt;&lt;/animateTransform&gt;
+              &lt;/rect&gt;
+            &lt;/g&gt;
+            &lt;g transform="translate(73.33333333333333,26.666666666666668)"&gt;
+              &lt;rect x="-20" y="-20" width="40" height="40" fill="#689cc5"&gt;
+                &lt;animateTransform attributeName="transform" type="scale" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="1.1500000000000001;1" begin="-0.2s"&gt;&lt;/animateTransform&gt;
+              &lt;/rect&gt;
+            &lt;/g&gt;
+            &lt;g transform="translate(26.666666666666668,73.33333333333333)"&gt;
+              &lt;rect x="-20" y="-20" width="40" height="40" fill="#5e6fa3"&gt;
+                &lt;animateTransform attributeName="transform" type="scale" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="1.1500000000000001;1" begin="0s"&gt;&lt;/animateTransform&gt;
+              &lt;/rect&gt;
+            &lt;/g&gt;
+            &lt;g transform="translate(73.33333333333333,73.33333333333333)"&gt;
+              &lt;rect x="-20" y="-20" width="40" height="40" fill="#3b4368"&gt;
+                &lt;animateTransform attributeName="transform" type="scale" repeatCount="indefinite" dur="1s" keyTimes="0;1" values="1.1500000000000001;1" begin="-0.1s"&gt;&lt;/animateTransform&gt;
+              &lt;/rect&gt;
+            &lt;/g&gt;
+            &lt;!-- [ldio] generated by https://loading.io/ --&gt;&lt;/svg&gt;`</span>
+        });
+    };
+    render() {
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Image</span>
+                {<span class="hljs-attr">...this.props</span>}
+                <span class="hljs-attr">className</span>=<span class="hljs-string">"pop-image"</span>
+                <span class="hljs-attr">src</span>=<span class="hljs-string">{this.src}</span>
+                <span class="hljs-attr">onClick</span>=<span class="hljs-string">{this.imgPop}</span>
+                <span class="hljs-attr">alt</span>=<span class="hljs-string">{this.props.alt}</span>
+                <span class="hljs-attr">width</span>=<span class="hljs-string">{1920}</span>
+                <span class="hljs-attr">height</span>=<span class="hljs-string">{1080}</span>
+            /&gt;</span></span>
+        );
+    }
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<hr>
+<p>Next, create a folder in <code>/pages/</code> called <code>blog</code>, and a file within called <code>index.js</code>. This will be our main blog index:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">/* index.js */</span>
+<span class="hljs-keyword">import</span> Layout <span class="hljs-keyword">from</span> <span class="hljs-string">"../../components/layout"</span>
+<span class="hljs-keyword">import</span> { Container } <span class="hljs-keyword">from</span> <span class="hljs-string">"react-bootstrap"</span>
+<span class="hljs-keyword">import</span> { getPostsMeta } <span class="hljs-keyword">from</span> <span class="hljs-string">"../../lib/contentful"</span>;
+<span class="hljs-keyword">import</span> PostCard <span class="hljs-keyword">from</span> <span class="hljs-string">"../../components/postCard"</span>;
+<span class="hljs-keyword">import</span> { formatDate } <span class="hljs-keyword">from</span> <span class="hljs-string">"../../lib/formatFunctions"</span>;
+<span class="hljs-keyword">import</span> { useRouter } <span class="hljs-keyword">from</span> <span class="hljs-string">"next/router"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Blog</span>(<span class="hljs-params">{ posts }</span>) </span>{
+    <span class="hljs-keyword">const</span> router = useRouter();
+    <span class="hljs-keyword">const</span> handePostClick = <span class="hljs-function">(<span class="hljs-params">slug</span>) =&gt;</span> {
+        router.push(<span class="hljs-string">"/blog/post/"</span>+slug);
+    }
+    <span class="hljs-keyword">const</span> postList = posts.map(<span class="hljs-function">(<span class="hljs-params">post</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> featuredImage = post.fields.featuredImage ? <span class="hljs-string">'https:'</span> + post.fields.featuredImage.fields.file.url : <span class="hljs-literal">null</span>;
+        <span class="hljs-built_in">console</span>.log(post)
+        <span class="hljs-keyword">return</span> (
+            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">PostCard</span>
+                <span class="hljs-attr">key</span>=<span class="hljs-string">{post.fields.slug}</span>
+                <span class="hljs-attr">title</span>=<span class="hljs-string">{post.fields.title}</span>
+                <span class="hljs-attr">image</span>=<span class="hljs-string">{featuredImage}</span>
+                <span class="hljs-attr">excerpt</span>=<span class="hljs-string">{post.fields.excerpt}</span>
+                <span class="hljs-attr">authorAvatar</span>=<span class="hljs-string">{post.fields.author.fields.picture.fields.file.url}</span>
+                <span class="hljs-attr">authorName</span>=<span class="hljs-string">{post.fields.author.fields.name}</span>
+                <span class="hljs-attr">publishDate</span>=<span class="hljs-string">{formatDate(post.fields.publishDate)}</span>
+                <span class="hljs-attr">category</span>=<span class="hljs-string">{post.fields.category.fields.categoryName}</span>
+                <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> { handePostClick(post.fields.slug) }}
+            /&gt;</span>
+        )
+    })
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span> <span class="hljs-attr">title</span>=<span class="hljs-string">"blog"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"post-list-wrapper"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"post-list-container"</span>&gt;</span>
+                    {postList}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">Layout</span>&gt;</span></span>
+    )
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getStaticProps</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> posts = <span class="hljs-keyword">await</span> getPostsMeta();
+    <span class="hljs-keyword">return</span> {
+        <span class="hljs-attr">props</span>: {
+            <span class="hljs-attr">posts</span>: posts
+        }
+    }
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<hr>
+<p>Next, create a folder in <code>/pages/blog</code> called <code>/post</code> and a file within called <code>[slug].js</code>. This is a special Next.JS file that allows dynamic routing based on the slug in the URI path:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">/* [slug].js */</span>
+<span class="hljs-keyword">import</span> { useRouter } <span class="hljs-keyword">from</span> <span class="hljs-string">'next/router'</span>
+<span class="hljs-keyword">import</span> Layout <span class="hljs-keyword">from</span> <span class="hljs-string">'../../../components/layout'</span>;
+<span class="hljs-keyword">import</span> Post <span class="hljs-keyword">from</span> <span class="hljs-string">"../../../components/post"</span>;
+<span class="hljs-keyword">import</span> ErrorPage <span class="hljs-keyword">from</span> <span class="hljs-string">'next/error'</span>
+<span class="hljs-keyword">import</span> { getPostsMeta, getPost } <span class="hljs-keyword">from</span> <span class="hljs-string">'../../../lib/contentful'</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">PostDetails</span>(<span class="hljs-params">{ post }</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(post)
+    <span class="hljs-keyword">const</span> router = useRouter()
+    <span class="hljs-keyword">if</span> (!router.isFallback &amp;&amp; <span class="hljs-keyword">typeof</span> post === <span class="hljs-keyword">typeof</span> <span class="hljs-literal">undefined</span> || !post.hasOwnProperty(<span class="hljs-string">'slug'</span>)) {
+        <span class="hljs-keyword">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">ErrorPage</span> <span class="hljs-attr">statusCode</span>=<span class="hljs-string">{404}</span> /&gt;</span></span>
+    }
+    <span class="hljs-keyword">const</span> baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+    <span class="hljs-keyword">const</span> canonicalUrl = baseUrl + router.asPath;
+    <span class="hljs-keyword">const</span> featuredImage = post.featuredImage ? <span class="hljs-string">'https:'</span> + post.featuredImage.fields.file.url : <span class="hljs-literal">null</span>;
+    <span class="hljs-comment">// LdJSON data for Google Rich Results</span>
+    <span class="hljs-keyword">const</span> ldJsonBlog = {
+        <span class="hljs-string">"@context"</span>: <span class="hljs-string">"https://schema.org"</span>,
+        <span class="hljs-string">"@type"</span>: <span class="hljs-string">"BlogPosting"</span>,
+        <span class="hljs-string">"headline"</span>: post.title,
+        <span class="hljs-string">"about"</span>: post.excerpt,
+        <span class="hljs-string">"image"</span>: [featuredImage],
+        <span class="hljs-string">"datePublished"</span>: post.publishDate,
+        <span class="hljs-string">"dateModified"</span>: post.publishDate,
+        <span class="hljs-string">"author"</span>: {
+            <span class="hljs-string">"@type"</span>: <span class="hljs-string">"Person"</span>,
+            <span class="hljs-string">"name"</span>: post.author.fields.name,
+            <span class="hljs-string">"image"</span>: <span class="hljs-string">'http:'</span> + post.author.fields.picture.fields.file.url,
+            <span class="hljs-string">"url"</span>: canonicalUrl
+        }
+    }
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Layout</span>
+            <span class="hljs-attr">title</span>=<span class="hljs-string">{post.title}</span>
+            <span class="hljs-attr">description</span>=<span class="hljs-string">{post.excerpt}</span>
+            <span class="hljs-attr">headCustom</span>=<span class="hljs-string">{</span>
+                &lt;&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'application/ld+json'</span> <span class="hljs-attr">dangerouslySetInnerHTML</span>=<span class="hljs-string"> /&gt;</span><span class="handlebars"><span class="xml">
+                <span class="hljs-tag">&lt;/&gt;</span></span></span></span>
+            }
+        &gt;
+            <span class="xml"><span class="handlebars"><span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Post</span>
+                <span class="hljs-attr">date</span>=<span class="hljs-string">{post.publishDate}</span>
+                <span class="hljs-attr">image</span>=<span class="hljs-string">{featuredImage}</span>
+                <span class="hljs-attr">title</span>=<span class="hljs-string">{post.title}</span>
+                <span class="hljs-attr">excerpt</span>=<span class="hljs-string">{post.excerpt}</span>
+                <span class="hljs-attr">content</span>=<span class="hljs-string">{post.content}</span>
+                <span class="hljs-attr">slug</span>=<span class="hljs-string">{post.slug}</span>
+                <span class="hljs-attr">category</span>=<span class="hljs-string">{post.category.fields}</span>
+                <span class="hljs-attr">author</span>=<span class="hljs-string">{post.author.fields}</span>
+            /&gt;</span></span></span></span>
+        &lt;<span class="hljs-regexp">/Layout&gt;
+    );
+}
+export async function getStaticProps({ params }) {
+    const res = await getPost(params.slug)
+    const post = res.length &amp;&amp; res[0].hasOwnProperty('fields') ? res[0].fields : {};
+    return {
+        props: {
+            post: post
+        },
+    }
+}
+export async function getStaticPaths() {
+    const meta = await getPostsMeta();
+    const fs = require('fs');
+    const path = require('path');
+    const dataFile = path.join(__dirname, '../</span>../../../../public/blogPostMeta.json<span class="hljs-string">');
+    // Write meta-data to JSON file
+    const postsMeta = [];
+    meta.forEach(function (item) {
+        const fields = item.fields;
+        const id = item.sys.id;
+        if (id) {
+            postsMeta.push(fields);
+        }
+        fs.writeFileSync(dataFile, JSON.stringify(postsMeta, null, 4));
+    });
+    const paths = meta.map((post) =&gt; ({
+        params: { slug: post.fields.slug },
+    }));
+    return {
+        paths,
+        fallback: false
+    };
+}
+export default PostDetails;
+</span></code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<hr>
+<p>Now restart the dev server with <code>npm run dev</code> and navigate to <code>http://localhost:3000/blog</code>. You should see your test post displayed as a card. Click on the card and <code>next/router</code> should navigate you to the dynamic <code>[slug].js</code> page. Notice the progress bar and single-page app loading, which is the doing of <code>next/router</code>.</p>
+<h4>Step 5: Publish Your App on Vercel</h4>
+<p>Switch over to GitHub Desktop and commit your changes and push to origin:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/contentful-next/image9.jpg?w=1200&amp;q=75" alt="Commit Changes to GitHub" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/contentful-next/image9.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/image9.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image9.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image9.jpg?w=320&amp;q=75 320w"></p>
+<p>Ok, it's time to go live! Head over to <a href="https://vercel.com" rel="noreferrer noopener" target="_blank">Vercel</a> and create your free account. You can use GitHub to register, which is a good idea because you're going to link your GitHub account to Vercel for automatic building of your app.</p>
+<p>Once you have your account and GitHub linked, create a new project and import your blog app:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/contentful-next/image10.jpg?w=1200&amp;q=75" alt="Create a New Vercel Project" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/contentful-next/image10.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/image10.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image10.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image10.jpg?w=320&amp;q=75 320w"></p>
+<p>Next, we need to add our environment variables to be able to connect to Contentful. Don't worry about our BASE_URL variable, we need to wait to get our assigned Vercel domain to add that:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/contentful-next/image11.jpg?w=1200&amp;q=75" alt="Add Your Environment Variables" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/contentful-next/image11.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/image11.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image11.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image11.jpg?w=320&amp;q=75 320w"></p>
+<p>Finally, click <strong>Deploy</strong>. Vercel will pull your commit from GitHub and build your app with statically-generated blog pages! When the build completes, you should get some confetti:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/contentful-next/image12.jpg?w=1200&amp;q=75" alt="Vercel Build Completed" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/contentful-next/image12.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/image12.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image12.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image12.jpg?w=320&amp;q=75 320w"></p>
+<p>Now you need to set a custom domain for your app. If you have a domain name you want to use, you can add it by adding some records on your registrar, but  for the purposes of this tutorial, we're going to use a vercel.app subdomain.  Click on <strong>Dashboard</strong> and then click <strong>View Domains</strong>. On the domain name that was assigned, click <strong>Edit</strong> and enter your custom domain name.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/contentful-next/image13.jpg?w=1200&amp;q=75" alt="Customize Your Domain" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/contentful-next/image13.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/contentful-next/image13.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image13.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/contentful-next/image13.jpg?w=320&amp;q=75 320w"></p>
+<p>The last thing you need to do is go back to your project settings and add the <code>NEXT_PUBLIC_BASE_URL</code> environment variable to be your new domain name. Then re-deploy your app.</p>
+<hr>
+<p>I hope you found this tutorial useful. Designly's blog uses much of this code and we're always developing new ways to do things. For more great tutorials, please visit <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Our Blog</a>.</p>
+</section>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <div class="share-buttons text-2xl flex gap-4 mx-auto">
+                <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
+                <a
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fhow-to-create-a-blog-using-next-js-and-contentful-cms"
+                    target="_blank"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook text-blue-700"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-create-a-blog-using-next-js-and-contentful-cms"
+                    target="_blank"
+                    aria-label="Share on LinkedIn"
+                >
+                    <i class="fab fa-linkedin text-indigo-700"></i>
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-create-a-blog-using-next-js-and-contentful-cms" target="_blank">
+                    <i class="fab fa-twitter text-sky-700"></i>
+                </a>
+            </div>
+            <hr />
+            <div class="bg-white dark:bg-zinc-800 border-1 rounded-lg flex flex-col shadow p-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4">
+                    <div class="col-span-1 flex items-center">
+                        <img
+                            src="https://cdn.designly.biz/imgr/jay.jpg?w=200&q=75"
+                            alt="Jay"
+                            width="200"
+                            height="200"
+                            class="rounded-full shadow-md border-4 border-blue-700/20 w-32 h-32 mx-auto"
+                        />
+                    </div>
+                    <div class="col-span-3 px-6 flex flex-col gap-4">
+                        <h3 class="text-2xl font-semibold text-center text-colors">About The Author</h3>
+                        <p class="text-zinc-700 dark:text-zinc-300">
+                            Jay is a full-stack developer, electrical engineer, writer and music producer. He currently
+                            resides in the Madison, WI area.
+                        </p>
+                        <a
+                            href="https://jay.designly.biz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-hover flex gap-2 items-center"
+                        >
+                            <div>Portfolio Site</div>
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-2xl font-bold text-center border-b-2 border-dashed pb-1 text-colors">Comments</h2>
+            <div id="comments" class="text-colors">
+                <!-- Comments will be generated here -->
+                <p>No Comments Yet</p>
+            </div>
+            <button id="btn-post-comment" class="btn btn-primary btn-outline flex gap-2 items-center max-w-md mx-auto">
+                <i class="fas fa-comment-medical"></i>
+                <div>Post Comment</div>
+            </button>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <template id="comment-template" class="text-colors">
+                <div
+                    class="comment flex flex-col gap-4 p-4 border rounded shadow mb-4 bg-white dark:bg-zinc-800 text-colors"
+                >
+                    <div class="flex gap-2 items-center">
+                        <img
+                            class="comment-avatar rounded-full w-10 h-10"
+                            src="/assets/img/pixel-black.png"
+                            width="100"
+                            height="100"
+                            alt="Commenter Avatar"
+                        />
+                        <div class="comment-display-name text-2xl text-cyan-700"></div>
+                    </div>
+                    <p class="comment-text"></p>
+                    <div class="replies ml-4">
+                        <!-- Replies will be generated here -->
+                    </div>
+                    <button class="reply-button mt-2 text-hover flex gap-2 items-center">
+                        <i class="fas fa-comment-dots"></i>
+                        <div>Reply</div>
+                    </button>
+                </div>
+            </template>
+        </article>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl text-hover"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-create-a-verification-code-input-component-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-create-a-verification-code-input-component-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Create a Verification Code Input Component in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create a Verification Code Input Component in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'll show you how to create a robust OTP code input component for React.js, using no other dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, I'll show you how to create a modal dialog overlay and disable the body scroll bars when it is open using Next.js 13 / React.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div>
+<input id="post-id" type="hidden" value="4OLBBZ1lO5k5Jctm8aPBl4" />
+<input id="reply-to" type="hidden" value="" />
+<script>
+    function generateComment(commentData) {
+        const template = document.querySelector("#comment-template");
+        const clone = template.content.cloneNode(true);
+        const displayName = clone.querySelector(".comment-display-name");
+        displayName.textContent = commentData.displayName;
+        const commentAvatar = clone.querySelector(".comment-avatar");
+        commentAvatar.setAttribute("src", commentData.avatar);
+        const commentText = clone.querySelector(".comment-text");
+        commentText.textContent = commentData.comment;
+        const repliesContainer = clone.querySelector(".replies");
+        commentData.replies.forEach((reply) => {
+            const replyElement = generateComment(reply);
+            repliesContainer.appendChild(replyElement);
+        });
+        const replyButton = clone.querySelector(".reply-button");
+        replyButton.addEventListener("click", () => {
+            document.getElementById("reply-to").value = commentData._id;
+            loadUrl("/comment");
+        });
+        return clone;
+    }
+    const fetchComments = async () => {
+        const postId = document.getElementById("post-id").value;
+        try {
+            const result = await fetch(`https://blog-comments.designly.workers.dev/?postId=${postId}`);
+            const comments = await result.json();
+            const commentsContainer = document.querySelector("#comments");
+            if (Array.isArray(comments) && comments.length) {
+                commentsContainer.innerHTML = "";
+                comments.forEach((comment) => {
+                    const commentElement = generateComment(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    setTimeout(async () => {
+        fetchComments();
+        document.getElementById("btn-post-comment").addEventListener("click", () => {
+            loadUrl(`/comment`);
+        });
+    }, 0);
+</script>
+</div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>

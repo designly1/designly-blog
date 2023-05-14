@@ -1,0 +1,12 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Awesome */
+@import './fa/fontawesome.scss';
+@import './fa/solid.scss';
+@import './fa/brands.scss';
+
+@import './src/layout';
+@import './src/typography';
+@import './src/ui';

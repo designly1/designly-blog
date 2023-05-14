@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial | Designly</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples." />
+        <meta property="og:title" content="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" />
+        <meta property="og:description" content="Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples." />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <article class="flex flex-col gap-10">
+            <section class="post-header flex flex-col gap-4">
+                <h1 class="text-colors text-xl md:text-3xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/nextjs">#Next.js</a>
+<a href="/tag/react-hook-form">#React-Hook-Form</a>
+<a href="/tag/openai">#OpenAI</a>
+<a href="/tag/chatgpt">#ChatGPT</a></div>
+                <img
+                    class="rounded-md shadow-lg"
+                    src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=1024&q=75 1024w, https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=320&q=75 320w"
+                    alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial"
+                    width="1200"
+                    height="675"
+                />
+                <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </section>
+            <section class="post-content flex flex-col gap-6"><h2>Introduction</h2>
+<p>As the amount of information available online continues to grow at an unprecedented pace, traditional search engines are struggling to keep up. This is where semantic search comes in&acirc;&#128;&#148;a technique that aims to understand the intent behind a user's query and provide more accurate results. In this tutorial, we will explore how to implement semantic search using Supabase and PostgreSQL for the database, Next.js for the frontend, and OpenAI's GPT-3 for the natural language processing. By the end of this tutorial, you will have a fully functional semantic search engine that can provide relevant and accurate results to your users.</p>
+<p>One of the key components of implementing semantic search is the ability to represent textual data in a way that allows for meaningful comparison and analysis. This is where vector representations come in&acirc;&#128;&#148;they allow us to transform words or phrases into high-dimensional vectors that capture their meaning and context.</p>
+<p>In PostgreSQL, the <code>pg-vector</code> module provides a way to store and manipulate vector data within the database. By using <code>pg-vector</code>, we can represent our text data as vectors and perform vector operations such as cosine similarity to compare the similarity of different documents or search queries.</p>
+<p>To implement semantic search with Supabase and PostgreSQL, we can first create a table to store our documents and their vector representations using the <code>pg-vector</code> data type. Then, when a user submits a search query, we can convert the query into a vector representation using the same method as the documents, and perform a cosine similarity search to find the most relevant results.</p>
+<p>By using <code>pg-vector</code> in conjunction with Supabase and Next.js, we can create a powerful semantic search engine that can provide accurate and relevant results to our users. This approach is especially useful when dealing with large amounts of text data, where traditional keyword-based search engines may struggle to provide meaningful results.</p>
+<p>This tutorial will be using code snippets from my portfolio site (which is a public repository). Link are at the bottom.</p>
+<hr>
+<h2>The Process</h2>
+<p>The secret to making this work is OpenAI's GPT-3 embeddings API, which handles converting the text snippets into a very large array of numbers called a vector (1536 to be precise). By using a chunk size of 200 tokens, it gives the embeddings API just enough information to match relevant results to the query, but not too much information to overload our answer request to ChatGPT, who will interpret that information.</p>
+<p>The process is as follows:</p>
+<ol>
+<li>We parse the document text into chunks approximately 200-tokens each</li>
+<li>We run each chunk through OpenAI's embeddings API to get the semantic vector</li>
+<li>We store that text, including the vector in our PG table</li>
+</ol>
+<p>That's all done in advance. The continuous process is as follows:</p>
+<ol>
+<li>A user asks a question on the front-end form</li>
+<li>The question is converted to a vector via OpenAI on-the-fly</li>
+<li>We run a vector search query against our database to get the top 3 results</li>
+<li>We concatenate those results and feed them and the original question to ChatGPT</li>
+<li>ChatGPT gives us the answer</li>
+</ol>
+<hr>
+<h2>Setting Up Supabase</h2>
+<ol>
+<li>First, we need to create a Supabase project and database. If you haven't done so already, sign up for a free Supabase account and create a new project.</li>
+<li>Once you have created your project, navigate to the SQL editor and connect to your database. You can do this by clicking on the "SQL" button in the left sidebar, and then clicking "Connect to Database".</li>
+<li>In the SQL editor, create a new table to store your documents. For this example, we will create a table called "documents" with the following columns:</li>
+</ol>
+<div class="code-wrapper shadow-lg"><pre><code class="language-sql hljs sql" data-lang="sql"><span class="hljs-comment">--  RUN 1st</span>
+<span class="hljs-keyword">create</span> extension vector;
+<span class="hljs-comment">-- RUN 2nd</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">table</span> vsearch (
+  <span class="hljs-keyword">id</span> bigserial primary <span class="hljs-keyword">key</span>,
+  document_title <span class="hljs-built_in">text</span>,
+  page_no int2,
+  <span class="hljs-keyword">content</span> <span class="hljs-built_in">text</span>,
+  content_length <span class="hljs-built_in">bigint</span>,
+  content_tokens <span class="hljs-built_in">bigint</span>,
+  embedding vector (<span class="hljs-number">1536</span>)
+);
+<span class="hljs-comment">-- RUN 3rd after running the scripts</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">or</span> <span class="hljs-keyword">replace</span> <span class="hljs-keyword">function</span> vector_search (
+  query_embedding vector(<span class="hljs-number">1536</span>),
+  similarity_threshold <span class="hljs-built_in">float</span>,
+  match_count <span class="hljs-built_in">int</span>
+)
+<span class="hljs-keyword">returns</span> <span class="hljs-keyword">table</span> (
+  <span class="hljs-keyword">id</span> <span class="hljs-built_in">bigint</span>,
+  document_title <span class="hljs-built_in">text</span>,
+  page_no int2,
+  <span class="hljs-keyword">content</span> <span class="hljs-built_in">text</span>,
+  content_length <span class="hljs-built_in">bigint</span>,
+  content_tokens <span class="hljs-built_in">bigint</span>,
+  similarity <span class="hljs-built_in">float</span>
+)
+<span class="hljs-keyword">language</span> plpgsql
+<span class="hljs-keyword">as</span> $$
+<span class="hljs-keyword">begin</span>
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">query</span>
+  <span class="hljs-keyword">select</span>
+    vsearch.id,
+    vsearch.document_title,
+    vsearch.page_no,
+    vsearch.content,
+    vsearch.content_length,
+    vsearch.content_tokens,
+    <span class="hljs-number">1</span> - (vsearch.embedding &lt;=&gt; query_embedding) <span class="hljs-keyword">as</span> similarity
+  <span class="hljs-keyword">from</span> vsearch
+  <span class="hljs-keyword">where</span> <span class="hljs-number">1</span> - (vsearch.embedding &lt;=&gt; query_embedding) &gt; similarity_threshold
+  <span class="hljs-keyword">order</span> <span class="hljs-keyword">by</span> vsearch.embedding &lt;=&gt; query_embedding
+  <span class="hljs-keyword">limit</span> match_count;
+<span class="hljs-keyword">end</span>;
+$$;
+<span class="hljs-comment">-- RUN 4th</span>
+<span class="hljs-keyword">create</span> <span class="hljs-keyword">index</span> <span class="hljs-keyword">on</span> vsearch 
+<span class="hljs-keyword">using</span> ivfflat (embedding vector_cosine_ops)
+<span class="hljs-keyword">with</span> (lists = <span class="hljs-number">100</span>);
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Here is a breakdown of what each section of the code is doing:</p>
+<ul>
+<li>
+<code>create extension vector;</code> is creating the <code>vector</code> extension which provides support for vector data types and operations in PostgreSQL.</li>
+<li>
+<code>create table vsearch ...</code> is creating a new table called <code>vsearch</code> with columns for the document title, page number, content, content length, content tokens, and embedding vector.</li>
+<li>
+<code>create or replace function vector_search ...</code> is defining a new function called <code>vector_search</code> that takes in a query embedding vector, a similarity threshold, and a match count, and returns a table of document information with a similarity score. This function is written in PL/pgSQL, a procedural language for PostgreSQL.</li>
+<li>
+<code>create index on vsearch ...</code> is creating an index on the <code>embedding</code> column using the IVFFLAT method with 100 lists. This index speeds up similarity searches by clustering vectors together in groups, reducing the number of comparisons needed to find the most similar vectors.</li>
+</ul>
+<hr>
+<h2>Parsing A Document Into the PG-Vector Table</h2>
+<p>Ok, hopefully everything went to plan and you have your table and the RPC function created. If not, just ask ChatGPT&acirc;&#128;&#148;he'll know what to do. &eth;&#159;&curren;&pound;</p>
+<p>In my experiment, I used a PDF file, a short book about early IBM programmers, titled <em>True Hackers</em> for my body of information. I wrote several scripts that I run from my dev environment to pre-process information and then insert into the table.</p>
+<p>Here's the script for parsing the PDF:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-keyword">import</span> fs <span class="hljs-keyword">from</span> <span class="hljs-string">'fs'</span>
+<span class="hljs-keyword">import</span> { encode } <span class="hljs-keyword">from</span> <span class="hljs-string">'gpt-3-encoder'</span>;
+<span class="hljs-keyword">import</span> PDF <span class="hljs-keyword">from</span> <span class="hljs-string">'pdf-scraper'</span>;
+<span class="hljs-keyword">const</span> inFile = <span class="hljs-string">'data/hackers.pdf'</span>;
+<span class="hljs-keyword">const</span> outFile = <span class="hljs-string">'data/hackers.json'</span>;
+<span class="hljs-keyword">const</span> dataBuffer = fs.readFileSync(inFile);
+<span class="hljs-keyword">const</span> tokensPerChunk = <span class="hljs-number">200</span>;
+<span class="hljs-keyword">const</span> documentTitle = <span class="hljs-string">"True Hackers"</span>
+PDF(dataBuffer).then(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">data</span>) </span>{
+    <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Successfully parsed <span class="hljs-subst">${data.numpages}</span> pages from <span class="hljs-subst">${inFile}</span>`</span>);
+    <span class="hljs-comment">// Iterate over PDF pages</span>
+    <span class="hljs-keyword">let</span> chunkIndex = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">let</span> currentChunk = <span class="hljs-string">''</span>;
+    <span class="hljs-keyword">let</span> currentChunkWords = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">const</span> output = [];
+    <span class="hljs-keyword">let</span> content = <span class="hljs-string">''</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> pageIndex = <span class="hljs-number">0</span>; pageIndex &lt; data.pages.length; pageIndex++) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Parsing page #<span class="hljs-subst">${pageIndex}</span>...`</span>);
+        <span class="hljs-keyword">const</span> pushChunk = <span class="hljs-function">(<span class="hljs-params">chunk</span>) =&gt;</span> {
+            <span class="hljs-keyword">const</span> contentLength = encode(chunk).length;
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Creating chunk of token length:'</span>, contentLength);
+            output.push({
+                <span class="hljs-attr">documentTitle</span>: documentTitle,
+                <span class="hljs-attr">pageNo</span>: pageIndex + <span class="hljs-number">1</span>,
+                <span class="hljs-attr">tokens</span>: contentLength,
+                <span class="hljs-attr">content</span>: chunk.trim()
+            });
+        }
+        <span class="hljs-comment">// Normalize all whitespace to a single space</span>
+        content = data.pages[pageIndex].replace(<span class="hljs-regexp">/\s+/g</span>, <span class="hljs-string">' '</span>);
+        <span class="hljs-comment">// If page content is longer than tokens limit, parse into sentences</span>
+        <span class="hljs-keyword">if</span> (encode(content).length &gt; tokensPerChunk) {
+            <span class="hljs-comment">// Split content into sentences</span>
+            <span class="hljs-keyword">let</span> sentences = content.split(<span class="hljs-string">'. '</span>);
+            <span class="hljs-keyword">let</span> chunk = <span class="hljs-string">''</span>;
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">let</span> i = <span class="hljs-number">0</span>; i &lt; sentences.length; i++) {
+                <span class="hljs-keyword">const</span> sentence = sentences[i];
+                <span class="hljs-keyword">const</span> sentenceTokenLength = encode(sentence).length;
+                <span class="hljs-keyword">const</span> chunkTokenLength = encode(chunk).length;
+                <span class="hljs-comment">// If our chunk has grown to exceed the tokens limit, append to output buffer</span>
+                <span class="hljs-keyword">if</span> (chunkTokenLength + sentenceTokenLength &gt; tokensPerChunk) {
+                    pushChunk(chunk);
+                    chunk = <span class="hljs-string">''</span>;
+                }
+                <span class="hljs-comment">// If current sentence ends with a character, append a period, otherwise a space</span>
+                <span class="hljs-keyword">if</span> (sentence &amp;&amp; sentence[sentence.length - <span class="hljs-number">1</span>].match(<span class="hljs-regexp">/[a-z0-9]/i</span>)) {
+                    chunk += sentence + <span class="hljs-string">". "</span>;
+                } <span class="hljs-keyword">else</span> {
+                    chunk += sentence + <span class="hljs-string">" "</span>;
+                }
+            }
+            <span class="hljs-comment">// Append the remaining text</span>
+            pushChunk(chunk);
+        } <span class="hljs-keyword">else</span> {
+            pushChunk(content);
+        }
+    }
+    fs.writeFileSync(outFile, <span class="hljs-built_in">JSON</span>.stringify(output));
+});
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>The code begins by importing necessary modules such as 'fs', 'gpt-3-encoder', and 'pdf-scraper'.</p>
+<p>Then it defines the input and output file paths, and reads the content of the input PDF file using <code>fs.readFileSync()</code> into a buffer object.</p>
+<p>Next, the PDF content is passed through the <code>pdf-scraper</code> module using <code>PDF(dataBuffer)</code>. The <code>pdf-scraper</code> module extracts the text content from the PDF file, and returns a Promise which is handled in a callback function. The text content is stored in <code>data.pages</code>, where each element of the array represents a page of the PDF.</p>
+<p>The script then iterates over the pages of the PDF using a <code>for</code> loop. For each page, it checks if the length of the page content exceeds the maximum token length specified by <code>tokensPerChunk</code>. If it does, the content is split into sentences, and each sentence is concatenated into a chunk of text with a maximum token length of <code>tokensPerChunk</code>. If a sentence exceeds this limit, it is split into multiple chunks.</p>
+<p>The <code>gpt-3-encoder</code> module is used to encode the text chunks into a format that can be used as input for the OpenAI GPT-3 language model. The encoded text is stored in the <code>output</code> array, which is a collection of objects that contain the document title, page number, number of tokens, and the content chunk itself.</p>
+<p>Finally, the <code>output</code> array is written to a JSON file using <code>fs.writeFileSync()</code> with the output file path specified by <code>outFile</code>.</p>
+<hr>
+<p>Next, here is the code for generating the embeddings and inserting into our PG table. Be sure to check the JSON output for validity first. That's why I split these functions into two scripts:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-keyword">import</span> { loadEnvConfig } <span class="hljs-keyword">from</span> <span class="hljs-string">"@next/env"</span>;
+<span class="hljs-keyword">import</span> { createClient } <span class="hljs-keyword">from</span> <span class="hljs-string">"@supabase/supabase-js"</span>;
+<span class="hljs-keyword">import</span> fs <span class="hljs-keyword">from</span> <span class="hljs-string">"fs"</span>;
+<span class="hljs-keyword">import</span> { Configuration, OpenAIApi } <span class="hljs-keyword">from</span> <span class="hljs-string">"openai"</span>;
+<span class="hljs-keyword">import</span> { encode } <span class="hljs-keyword">from</span> <span class="hljs-string">"gpt-3-encoder"</span>;
+loadEnvConfig(<span class="hljs-string">""</span>);
+(<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> configuration = <span class="hljs-keyword">new</span> Configuration({ <span class="hljs-attr">apiKey</span>: process.env.OPENAI_KEY });
+        <span class="hljs-keyword">const</span> openai = <span class="hljs-keyword">new</span> OpenAIApi(configuration);
+        <span class="hljs-keyword">const</span> supabase = createClient(process.env.NEXT_PUBLIC_SB_URL, process.env.SB_SERVICE_KEY);
+        <span class="hljs-keyword">const</span> inFile = <span class="hljs-string">'data/hackers.json'</span>;
+        <span class="hljs-keyword">const</span> dataBuffer = fs.readFileSync(inFile);
+        <span class="hljs-keyword">const</span> data = <span class="hljs-built_in">JSON</span>.parse(dataBuffer);
+        data.forEach(<span class="hljs-keyword">async</span> item =&gt; {
+            <span class="hljs-comment">// Generate embedding via GPT model ada-002</span>
+            <span class="hljs-keyword">const</span> aiRes = <span class="hljs-keyword">await</span> openai.createEmbedding({
+                <span class="hljs-attr">model</span>: <span class="hljs-string">"text-embedding-ada-002"</span>,
+                <span class="hljs-attr">input</span>: item.content
+            });
+            <span class="hljs-keyword">const</span> [{ embedding }] = aiRes.data.data;
+            <span class="hljs-comment">// Insert data and embedding into PG table</span>
+            <span class="hljs-keyword">const</span> { data, error } = <span class="hljs-keyword">await</span> supabase
+                .from(<span class="hljs-string">"vsearch"</span>)
+                .insert({
+                    <span class="hljs-attr">document_title</span>: item.documentTitle,
+                    <span class="hljs-attr">page_no</span>: item.pageNo,
+                    embedding,
+                    <span class="hljs-attr">content</span>: item.content,
+                    <span class="hljs-attr">content_length</span>: item.content.length,
+                    <span class="hljs-attr">content_tokens</span>: encode(item.content).length
+                })
+                .select(<span class="hljs-string">"*"</span>);
+            <span class="hljs-keyword">return</span>;
+        });
+    } <span class="hljs-keyword">catch</span> (err) {
+        <span class="hljs-built_in">console</span>.error(err.message, err.stack);
+    }
+})();
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<ol>
+<li>We load our JSON data from the file we created earlier</li>
+<li>We use the <code>text-embedding-ada-002</code> OpenAI endpoint to get our vector</li>
+<li>We use the Supabase SDK to insert our snippets into our search table</li>
+</ol>
+<hr>
+<h2>Putting It Into Practice</h2>
+<p>We'll divide the back-end process into two separate controllers. The first will query our PG table and get the 3 most relevant results. The second will prompt ChatGPT with the pulled data and the original query.</p>
+<p>Here's the first:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-keyword">import</span> { createClient } <span class="hljs-keyword">from</span> <span class="hljs-string">"@supabase/supabase-js"</span>;
+<span class="hljs-keyword">import</span> readRequestBody <span class="hljs-keyword">from</span> <span class="hljs-string">"@/lib/api/readRequestBody"</span>;
+<span class="hljs-keyword">import</span> checkTurnstileToken <span class="hljs-keyword">from</span> <span class="hljs-string">"@/lib/api/checkTurnstileToken"</span>;
+<span class="hljs-comment">// Use Next.js edge runtime</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> config = {
+    <span class="hljs-attr">runtime</span>: <span class="hljs-string">'edge'</span>,
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handler</span>(<span class="hljs-params">request</span>) </span>{
+    <span class="hljs-keyword">const</span> MATCHES = <span class="hljs-number">3</span>; <span class="hljs-comment">// max matches to return</span>
+    <span class="hljs-keyword">const</span> THRESHOLD = <span class="hljs-number">0.01</span>; <span class="hljs-comment">// similarity threshold</span>
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> requestData = <span class="hljs-keyword">await</span> readRequestBody(request);
+        <span class="hljs-comment">// Validate CAPTCHA response</span>
+        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">await</span> checkTurnstileToken(requestData.token)) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Captcha verification failed'</span>);
+        }
+        <span class="hljs-keyword">const</span> supabase = createClient(process.env.NEXT_PUBLIC_SB_URL, process.env.SB_SERVICE_KEY);
+        <span class="hljs-comment">// Get embedding vector for search term via OpenAI</span>
+        <span class="hljs-keyword">const</span> input = requestData.searchTerm.replace(<span class="hljs-regexp">/\n/g</span>, <span class="hljs-string">" "</span>);
+        <span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">"https://api.openai.com/v1/embeddings"</span>, {
+            <span class="hljs-attr">headers</span>: {
+                <span class="hljs-string">"Content-Type"</span>: <span class="hljs-string">"application/json"</span>,
+                <span class="hljs-attr">Authorization</span>: <span class="hljs-string">`Bearer <span class="hljs-subst">${process.env.OPENAI_KEY}</span>`</span>
+            },
+            <span class="hljs-attr">method</span>: <span class="hljs-string">"POST"</span>,
+            <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify({
+                <span class="hljs-attr">model</span>: <span class="hljs-string">"text-embedding-ada-002"</span>,
+                input
+            })
+        });
+        <span class="hljs-keyword">if</span> (!result.ok) {
+            <span class="hljs-keyword">const</span> mess = <span class="hljs-keyword">await</span> result.text();
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(mess)
+        }
+        <span class="hljs-keyword">const</span> json = <span class="hljs-keyword">await</span> result.json();
+        <span class="hljs-keyword">const</span> embedding = json.data[<span class="hljs-number">0</span>].embedding;
+        <span class="hljs-comment">// Perform cosine similarity search via RPC call</span>
+        <span class="hljs-keyword">const</span> { <span class="hljs-attr">data</span>: chunks, error } = <span class="hljs-keyword">await</span> supabase.rpc(<span class="hljs-string">"vector_search"</span>, {
+            <span class="hljs-attr">query_embedding</span>: embedding,
+            <span class="hljs-attr">similarity_threshold</span>: THRESHOLD,
+            <span class="hljs-attr">match_count</span>: MATCHES
+        });
+        <span class="hljs-keyword">if</span> (error) {
+            <span class="hljs-built_in">console</span>.error(error);
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(error);
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(<span class="hljs-built_in">JSON</span>.stringify(chunks), {
+            <span class="hljs-attr">status</span>: <span class="hljs-number">200</span>,
+            <span class="hljs-attr">headers</span>: {
+                <span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>
+            }
+        });
+    } <span class="hljs-keyword">catch</span> (err) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(<span class="hljs-string">`Server error: <span class="hljs-subst">${err.message}</span>`</span>, { <span class="hljs-attr">status</span>: <span class="hljs-number">500</span> });
+    }
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Here's what is does:</p>
+<ul>
+<li>The <code>config</code> object specifies that this is a Next.js edge runtime function. Edge runtime allows the function to run closer to the user, reducing latency.</li>
+<li>The <code>handler</code> function is the main function that takes in a <code>request</code> object and returns a <code>Response</code> object.</li>
+<li>The <code>MATCHES</code> variable determines the maximum number of matches to return.</li>
+<li>The <code>THRESHOLD</code> variable specifies the similarity threshold. Matches with a similarity score below this threshold will not be returned.</li>
+<li>The <code>readRequestBody</code> function reads the request body as a string.</li>
+<li>The <code>checkTurnstileToken</code> function validates the CAPTCHA response by sending it to Supabase.</li>
+<li>The <code>createClient</code> function creates a Supabase client with the Supabase URL and service key.</li>
+<li>The <code>fetch</code> function sends a request to the OpenAI API to get the embedding vector for the search term.</li>
+<li>The <code>rpc</code> function sends a remote procedure call to the Supabase server to perform the cosine similarity search.</li>
+<li>The <code>Response</code> object is returned with the matching chunks in JSON format.</li>
+</ul>
+<p>The next is a function that sends a prompt to the OpenAI API and returns a <code>ReadableStream</code> that receives the response in real-time:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-keyword">import</span> { createParser } <span class="hljs-keyword">from</span> <span class="hljs-string">"eventsource-parser"</span>;
+<span class="hljs-keyword">const</span> openAiStream = <span class="hljs-keyword">async</span> (system, prompt) =&gt; {
+    <span class="hljs-keyword">const</span> encoder = <span class="hljs-keyword">new</span> TextEncoder();
+    <span class="hljs-keyword">const</span> decoder = <span class="hljs-keyword">new</span> TextDecoder();
+    <span class="hljs-keyword">const</span> res = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">"https://api.openai.com/v1/chat/completions"</span>, {
+        <span class="hljs-attr">headers</span>: {
+            <span class="hljs-string">"Content-Type"</span>: <span class="hljs-string">"application/json"</span>,
+            <span class="hljs-attr">Authorization</span>: <span class="hljs-string">`Bearer <span class="hljs-subst">${process.env.OPENAI_KEY}</span>`</span>
+        },
+        <span class="hljs-attr">method</span>: <span class="hljs-string">"POST"</span>,
+        <span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify({
+            <span class="hljs-attr">model</span>: <span class="hljs-string">'gpt-3.5-turbo'</span>,
+            <span class="hljs-attr">messages</span>: [
+                {
+                    <span class="hljs-attr">role</span>: <span class="hljs-string">"system"</span>,
+                    <span class="hljs-attr">content</span>: system
+                },
+                {
+                    <span class="hljs-attr">role</span>: <span class="hljs-string">"user"</span>,
+                    <span class="hljs-attr">content</span>: prompt
+                }
+            ],
+            <span class="hljs-attr">max_tokens</span>: <span class="hljs-number">150</span>,
+            <span class="hljs-attr">temperature</span>: <span class="hljs-number">0.0</span>,
+            <span class="hljs-attr">stream</span>: <span class="hljs-literal">true</span>
+        })
+    });
+    <span class="hljs-keyword">if</span> (res.status !== <span class="hljs-number">200</span>) {
+        <span class="hljs-keyword">const</span> mess = <span class="hljs-keyword">await</span> res.text();
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(mess);
+    }
+    <span class="hljs-keyword">const</span> stream = <span class="hljs-keyword">new</span> ReadableStream({
+        <span class="hljs-keyword">async</span> start(controller) {
+            <span class="hljs-keyword">const</span> onParse = <span class="hljs-function">(<span class="hljs-params">event</span>) =&gt;</span> {
+                <span class="hljs-keyword">if</span> (event.type === <span class="hljs-string">"event"</span>) {
+                    <span class="hljs-keyword">const</span> data = event.data;
+                    <span class="hljs-keyword">if</span> (data === <span class="hljs-string">"[DONE]"</span>) {
+                        controller.close();
+                        <span class="hljs-keyword">return</span>;
+                    }
+                    <span class="hljs-keyword">try</span> {
+                        <span class="hljs-keyword">const</span> json = <span class="hljs-built_in">JSON</span>.parse(data);
+                        <span class="hljs-keyword">const</span> text = json.choices[<span class="hljs-number">0</span>].delta.content;
+                        <span class="hljs-keyword">const</span> queue = encoder.encode(text);
+                        controller.enqueue(queue);
+                    } <span class="hljs-keyword">catch</span> (e) {
+                        controller.error(e);
+                    }
+                }
+            };
+            <span class="hljs-keyword">const</span> parser = createParser(onParse);
+            <span class="hljs-keyword">for</span> <span class="hljs-keyword">await</span> (<span class="hljs-keyword">const</span> chunk <span class="hljs-keyword">of</span> res.body) {
+                parser.feed(decoder.decode(chunk));
+            }
+        }
+    });
+    <span class="hljs-keyword">return</span> stream;
+};
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> openAiStream;
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<ul>
+<li>The <code>createParser</code> function creates a new <code>Parser</code> object that parses an <code>EventSource</code> stream.</li>
+<li>The <code>openAiStream</code> function takes two parameters: <code>system</code> and <code>prompt</code>. <code>system</code> is a message from the system, and <code>prompt</code> is a prompt from the user.</li>
+<li>The function sends a POST request to the OpenAI API with the specified <code>system</code> and <code>prompt</code> messages.</li>
+<li>If the response status is not 200, an error is thrown.</li>
+<li>The <code>ReadableStream</code> is created with an <code>async start</code> method that takes a <code>controller</code> object. The <code>controller</code> is used to manage the stream.</li>
+<li>A callback function <code>onParse</code> is created to handle parsed events from the <code>Parser</code>.</li>
+<li>Inside the <code>start</code> method, a <code>for await...of</code> loop is used to iterate over the response body chunks.</li>
+<li>Each chunk is decoded from binary to UTF-8 using <code>decoder.decode(chunk)</code>.</li>
+<li>The decoded chunk is fed into the parser using <code>parser.feed()</code>.</li>
+<li>If the parser encounters an "event" type, the <code>data</code> field is parsed into JSON, and the response text is encoded and enqueued into the <code>controller</code> object.</li>
+<li>If the parser encounters a "[DONE]" message, the <code>controller</code> is closed, and the <code>start</code> method exits.</li>
+<li>If there is an error parsing the response, it is thrown using <code>controller.error()</code>.</li>
+</ul>
+<p>Lastly, here is the handler that will put it all together:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-keyword">import</span> readRequestBody <span class="hljs-keyword">from</span> <span class="hljs-string">"@/lib/api/readRequestBody"</span>;
+<span class="hljs-keyword">import</span> endent <span class="hljs-keyword">from</span> <span class="hljs-string">"endent"</span>;
+<span class="hljs-keyword">import</span> openAiStream <span class="hljs-keyword">from</span> <span class="hljs-string">"@/lib/openAi/openAiStream"</span>;
+<span class="hljs-comment">// Use Next.js edge runtime</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> config = {
+    <span class="hljs-attr">runtime</span>: <span class="hljs-string">'edge'</span>,
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handler</span>(<span class="hljs-params">request</span>) </span>{
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> requestData = <span class="hljs-keyword">await</span> readRequestBody(request);
+        <span class="hljs-keyword">const</span> query = requestData.searchTerm.replace(<span class="hljs-regexp">/\n/g</span>, <span class="hljs-string">" "</span>);
+        <span class="hljs-keyword">const</span> system = endent<span class="hljs-string">`
+    You are a helpful assistant that answers questions based on a provided body of text.
+    Use only the provided text to answer the question. Try not to copy the text word-for-word.
+    If you are not certain of the answer, then answer: "Sorry, I can't help you with that."
+    `</span>
+        <span class="hljs-keyword">const</span> textBody = requestData.chunks.map(<span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> {
+            <span class="hljs-keyword">return</span> c.content + <span class="hljs-string">' '</span>;
+        });
+        <span class="hljs-keyword">const</span> prompt = <span class="hljs-string">`Please answer this query: <span class="hljs-subst">${query}</span>\n\n`</span>
+            + <span class="hljs-string">`Use only the following information:\n\n<span class="hljs-subst">${textBody}</span>`</span>;
+        <span class="hljs-keyword">const</span> stream = <span class="hljs-keyword">await</span> openAiStream(system, prompt);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(stream);
+    } <span class="hljs-keyword">catch</span> (err) {
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(<span class="hljs-string">`Server error: <span class="hljs-subst">${err.message}</span>`</span>, { <span class="hljs-attr">status</span>: <span class="hljs-number">500</span> });
+    }
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>The first part is the system message that primes ChatGPT on how it should handle subsequent queries. The second is the actually query containing the user's search term and the data pulled from the database. We then feed it to our <code>openAiStream</code> function and then return the stream to the client.</p>
+<hr>
+<h2>Creating a Client</h2>
+<p>You're welcome to view the client I created on my portfolio site (see below), but this is getting to be long, so I won't put the full code here as most of it is not important to making this work. Here is the good stuff, though:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-keyword">const</span> embedSearchTerm = <span class="hljs-keyword">async</span> () =&gt; {
+	<span class="hljs-keyword">const</span> body = <span class="hljs-keyword">new</span> FormData();
+	body.append(<span class="hljs-string">'searchTerm'</span>, searchTerm);
+	body.append(<span class="hljs-string">'token'</span>, token);
+	<span class="hljs-keyword">const</span> result = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">'/api/vsearch/embed'</span>, {
+		<span class="hljs-attr">method</span>: <span class="hljs-string">'POST'</span>,
+		body
+	});
+	<span class="hljs-keyword">if</span> (!result.ok) {
+		<span class="hljs-keyword">const</span> mess = <span class="hljs-keyword">await</span> result.text();
+		<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(mess);
+	}
+	<span class="hljs-keyword">const</span> chunks = <span class="hljs-keyword">await</span> result.json();
+	<span class="hljs-keyword">if</span> (!chunks.length) {
+		setErrorMess(<span class="hljs-string">'Sorry, I was unable to find a match'</span>);
+		<span class="hljs-keyword">return</span>;
+	}
+	setPageNumbers(chunks.map(<span class="hljs-function"><span class="hljs-params">c</span> =&gt;</span> (c.page_no)));
+	<span class="hljs-keyword">return</span> chunks;
+}
+<span class="hljs-keyword">const</span> getAnswer = <span class="hljs-keyword">async</span> (chunks) =&gt; {
+	<span class="hljs-keyword">const</span> body = {
+		searchTerm,
+		chunks
+	};
+	<span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">'/api/vsearch/answer'</span>, {
+		<span class="hljs-attr">method</span>: <span class="hljs-string">'POST'</span>,
+		<span class="hljs-attr">body</span>: <span class="hljs-built_in">JSON</span>.stringify(body),
+		<span class="hljs-attr">headers</span>: {
+			<span class="hljs-string">'Content-Type'</span>: <span class="hljs-string">'application/json'</span>
+		}
+	});
+	<span class="hljs-keyword">if</span> (!response.ok) {
+		<span class="hljs-keyword">const</span> message = <span class="hljs-keyword">await</span> response.text();
+		<span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(message);
+	}
+	<span class="hljs-keyword">const</span> stream = response.body;
+	<span class="hljs-keyword">const</span> reader = stream.getReader();
+	<span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>) {
+		<span class="hljs-keyword">const</span> { done, value } = <span class="hljs-keyword">await</span> reader.read();
+		<span class="hljs-keyword">if</span> (done) {
+			<span class="hljs-keyword">break</span>;
+		}
+		<span class="hljs-keyword">const</span> chunk = <span class="hljs-keyword">new</span> TextDecoder(<span class="hljs-string">'utf-8'</span>).decode(value);
+		setAnswer(<span class="hljs-function">(<span class="hljs-params">prev</span>) =&gt;</span> prev + chunk);
+	}
+};
+<span class="hljs-keyword">const</span> handleSearch = <span class="hljs-keyword">async</span> (e) =&gt; {
+	e.preventDefault();
+	e.stopPropagation();
+	<span class="hljs-keyword">if</span> (isLoading) <span class="hljs-keyword">return</span>;
+	setSearchErrorMess(<span class="hljs-string">''</span>);
+	<span class="hljs-keyword">if</span> (!searchTerm.length) {
+		setSearchErrorMess(<span class="hljs-string">'Please fill this out'</span>);
+		<span class="hljs-keyword">return</span>;
+	}
+	setIsLoading(<span class="hljs-literal">true</span>);
+	<span class="hljs-keyword">try</span> {
+		<span class="hljs-keyword">const</span> chunks = <span class="hljs-keyword">await</span> embedSearchTerm();
+		<span class="hljs-keyword">if</span> (chunks.length) {
+			<span class="hljs-keyword">await</span> getAnswer(chunks);
+		}
+	} <span class="hljs-keyword">catch</span> (err) {
+		setErrorMess(err.message);
+		captcha.reset();
+	} <span class="hljs-keyword">finally</span> {
+		setIsLoading(<span class="hljs-literal">false</span>);
+	}
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<hr>
+<h2>Conclusion</h2>
+<p>In this tutorial, we've explored how to implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. We've set up a database table in Supabase to store our documents and their vector representations, and defined a function for performing semantic search against these vectors. We've also utilized the pg-vector extension in PostgreSQL to enable vector operations, and set up an index on the embedding column to speed up similarity searches.</p>
+<p>Semantic search is a powerful tool for improving search accuracy and relevance, especially when dealing with large amounts of unstructured data. With the rise of natural language processing and machine learning, it's becoming increasingly feasible to implement semantic search in our own projects. By following the steps outlined in this tutorial, you can get started with semantic search using Supabase/PostgreSQL, Next.js, and OpenAI, and tailor it to your specific use case.</p>
+<p>The power of these LLMs will unlock knowledge to people in a way never before possible. The world will be forever changed by this technology.</p>
+<h2>Links</h2>
+<ol>
+<li>
+<a href="https://github.com/designly1/portfolio" rel="noreferrer noopener" target="_blank">GitHub Repo</a>
+</li>
+<li>
+<a href="https://jay.designly.biz/portfolio/semantic-search" rel="noreferrer noopener" target="_blank">Demo Page</a>
+</li>
+<li>
+<a href="https://github.com/designly1/pdf-scraper" rel="noreferrer noopener" target="_blank">pdf-scraper</a>
+</li>
+</ol>
+<hr>
+<p>Thank you for taking the time to read my article and I hope you found it useful (or at the very least, mildly entertaining). For more great information about web dev, systems administration and cloud computing, please read the <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Designly Blog</a>. Also, please leave your comments! I love to hear thoughts from my readers.</p>
+<p>I use <a href="https://hostinger.com?REFERRALCODE=1J11864" rel="noreferrer noopener" target="_blank">Hostinger</a> to host my clients' websites. You can get a business account that can host 100 websites at a price of $3.99/mo, which you can lock in for up to 48 months! It's the best deal in town. Services include PHP hosting (with extensions), MySQL, Wordpress and Email services.</p>
+<p>Looking for a web developer? I'm available for hire! To inquire, please fill out a <a href="https://designly.biz/contact" rel="noreferrer noopener" target="_blank">contact form</a>.</p>
+</section>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <div class="share-buttons text-2xl flex gap-4 mx-auto">
+                <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
+                <a
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fimplementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial"
+                    target="_blank"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook text-blue-700"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fimplementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial"
+                    target="_blank"
+                    aria-label="Share on LinkedIn"
+                >
+                    <i class="fab fa-linkedin text-indigo-700"></i>
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fimplementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial" target="_blank">
+                    <i class="fab fa-twitter text-sky-700"></i>
+                </a>
+            </div>
+            <hr />
+            <div class="bg-white dark:bg-zinc-800 border-1 rounded-lg flex flex-col shadow p-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4">
+                    <div class="col-span-1 flex items-center">
+                        <img
+                            src="https://cdn.designly.biz/imgr/jay.jpg?w=200&q=75"
+                            alt="Jay"
+                            width="200"
+                            height="200"
+                            class="rounded-full shadow-md border-4 border-blue-700/20 w-32 h-32 mx-auto"
+                        />
+                    </div>
+                    <div class="col-span-3 px-6 flex flex-col gap-4">
+                        <h3 class="text-2xl font-semibold text-center text-colors">About The Author</h3>
+                        <p class="text-zinc-700 dark:text-zinc-300">
+                            Jay is a full-stack developer, electrical engineer, writer and music producer. He currently
+                            resides in the Madison, WI area.
+                        </p>
+                        <a
+                            href="https://jay.designly.biz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-hover flex gap-2 items-center"
+                        >
+                            <div>Portfolio Site</div>
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-2xl font-bold text-center border-b-2 border-dashed pb-1 text-colors">Comments</h2>
+            <div id="comments" class="text-colors">
+                <!-- Comments will be generated here -->
+                <p>No Comments Yet</p>
+            </div>
+            <button id="btn-post-comment" class="btn btn-primary btn-outline flex gap-2 items-center max-w-md mx-auto">
+                <i class="fas fa-comment-medical"></i>
+                <div>Post Comment</div>
+            </button>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <template id="comment-template" class="text-colors">
+                <div
+                    class="comment flex flex-col gap-4 p-4 border rounded shadow mb-4 bg-white dark:bg-zinc-800 text-colors"
+                >
+                    <div class="flex gap-2 items-center">
+                        <img
+                            class="comment-avatar rounded-full w-10 h-10"
+                            src="/assets/img/pixel-black.png"
+                            width="100"
+                            height="100"
+                            alt="Commenter Avatar"
+                        />
+                        <div class="comment-display-name text-2xl text-cyan-700"></div>
+                    </div>
+                    <p class="comment-text"></p>
+                    <div class="replies ml-4">
+                        <!-- Replies will be generated here -->
+                    </div>
+                    <button class="reply-button mt-2 text-hover flex gap-2 items-center">
+                        <i class="fas fa-comment-dots"></i>
+                        <div>Reply</div>
+                    </button>
+                </div>
+            </template>
+        </article>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl text-hover"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-create-a-verification-code-input-component-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-create-a-verification-code-input-component-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Create a Verification Code Input Component in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create a Verification Code Input Component in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'll show you how to create a robust OTP code input component for React.js, using no other dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, I'll show you how to create a modal dialog overlay and disable the body scroll bars when it is open using Next.js 13 / React.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div>
+<input id="post-id" type="hidden" value="3ebpFqhgBZtx6pyloRCkAY" />
+<input id="reply-to" type="hidden" value="" />
+<script>
+    function generateComment(commentData) {
+        const template = document.querySelector("#comment-template");
+        const clone = template.content.cloneNode(true);
+        const displayName = clone.querySelector(".comment-display-name");
+        displayName.textContent = commentData.displayName;
+        const commentAvatar = clone.querySelector(".comment-avatar");
+        commentAvatar.setAttribute("src", commentData.avatar);
+        const commentText = clone.querySelector(".comment-text");
+        commentText.textContent = commentData.comment;
+        const repliesContainer = clone.querySelector(".replies");
+        commentData.replies.forEach((reply) => {
+            const replyElement = generateComment(reply);
+            repliesContainer.appendChild(replyElement);
+        });
+        const replyButton = clone.querySelector(".reply-button");
+        replyButton.addEventListener("click", () => {
+            document.getElementById("reply-to").value = commentData._id;
+            loadUrl("/comment");
+        });
+        return clone;
+    }
+    const fetchComments = async () => {
+        const postId = document.getElementById("post-id").value;
+        try {
+            const result = await fetch(`https://blog-comments.designly.workers.dev/?postId=${postId}`);
+            const comments = await result.json();
+            const commentsContainer = document.querySelector("#comments");
+            if (Array.isArray(comments) && comments.length) {
+                commentsContainer.innerHTML = "";
+                comments.forEach((comment) => {
+                    const commentElement = generateComment(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    setTimeout(async () => {
+        fetchComments();
+        document.getElementById("btn-post-comment").addEventListener("click", () => {
+            loadUrl(`/comment`);
+        });
+    }, 0);
+</script>
+</div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>

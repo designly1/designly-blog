@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>UI/UX Best Practices for Web Forms | Designly</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="Collecting information from prospective clients is the bread and butter of any online business. That being said, facilitating the ease and fluidity of collecting that information from the user perspective is imperative." />
+        <meta property="og:title" content="UI/UX Best Practices for Web Forms" />
+        <meta property="og:description" content="Collecting information from prospective clients is the bread and butter of any online business. That being said, facilitating the ease and fluidity of collecting that information from the user perspective is imperative." />
+        <meta property="og:image" content="https://d340jo5zum8tsx.cloudfront.net/blog_files/forms/banner.webp" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz/ui-ux-best-practices-for-web-forms" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <article class="flex flex-col gap-10">
+            <section class="post-header flex flex-col gap-4">
+                <h1 class="text-colors text-xl md:text-3xl font-bold">UI/UX Best Practices for Web Forms</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/">#UI / UX</a>
+<a href="/tag/">#Web Design</a></div>
+                <img
+                    class="rounded-md shadow-lg"
+                    src="https://d340jo5zum8tsx.cloudfront.net/blog_files/forms/banner.webp?w=1200&q=75"
+                    srcset="https://d340jo5zum8tsx.cloudfront.net/blog_files/forms/banner.webp?w=1024&q=75 1024w, https://d340jo5zum8tsx.cloudfront.net/blog_files/forms/banner.webp?w=640&q=75 640w, https://d340jo5zum8tsx.cloudfront.net/blog_files/forms/banner.webp?w=320&q=75 320w"
+                    alt="UI/UX Best Practices for Web Forms"
+                    width="1200"
+                    height="675"
+                />
+                <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </section>
+            <section class="post-content flex flex-col gap-6"><p>Collecting information from prospective clients is the bread and butter of any online business. That being said, facilitating the ease and fluidity of collecting that information from the user perspective is imperative.</p>
+<p>In addition to the UI/UX considerations, there is also the importance of data input standardization. For example, how do you store phone numbers in your database. Is it 555-444-3333 or (555) 444-3333 or 555.444.3333 or +15554443333? Using a good masking Javascript library will assist you in asserting the format you desire.</p>
+<p>During my many many years of web development, I&acirc;&#128;&#153;ve developed a set of rules I used when it comes to designing web forms. And I&acirc;&#128;&#153;ve so graciously decided to share those rules with you here today!</p>
+<h4>Rule 1: Take the Guess-Work Out of Input Formatting</h4>
+<p>As I indicated previously with the phone number example, you&acirc;&#128;&#153;re going to want to use some form of input formatting for the data fields you intend to collect. This not only makes the user experience more fluid, but also allows you to standardize the format of the data you want to collect.</p>
+<p>There are a handful of input masking libraries available. The one I use most is <a href="https://igorescobar.github.io/jQuery-Mask-Plugin/" rel="noreferrer noopener" target="_blank"><strong>jquery.mask</strong></a>, which depends on the <strong>jquery</strong> library. There are also <strong>vanilla JS</strong> libraries available as well, such as <a href="https://imask.js.org/" rel="noreferrer noopener" target="_blank"><strong>imask.js</strong></a>.</p>
+<h4>Example: Masking Phone Number Input via Jquery.Mask</h4>
+<p><strong>HTML:</strong></p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-html hljs xml" data-lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tel"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"phone-number"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"(000) 000-0000"</span>&gt;</span>
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p><strong>JavaScript:</strong></p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js">$(<span class="hljs-string">"#phone-number"</span>).mask(<span class="hljs-string">'(000) 000-0000'</span>);
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p><strong>Result:</strong></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/jquery-mask.gif?w=1200&amp;q=75" alt="jQuery Mask Code Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/jquery-mask.gif" srcset="https://cdn.designly.biz/imgr/blog_files/forms/jquery-mask.gif?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/jquery-mask.gif?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/jquery-mask.gif?w=320&amp;q=75 320w"></p>
+<h4>Rule #2: Use Google Maps Autocomplete for Address Input</h4>
+<p>Address standardization is a common practice, especially by eCommerce companies. Ensuring that you&acirc;&#128;&#153;ve received a deliverable address from your client is key to providing the best user experience.</p>
+<p>There are a number of address correction services out there. There is, of course <a href="https://postalpro.usps.com/address-quality" rel="noreferrer noopener" target="_blank">PostalPro</a>, by the USPS. But that costs a lot of money. I prefer to use the Google Places Autocomplete API to achieve both address standardization, as well as the autocomplete features, which further streamlines the user&acirc;&#128;&#153;s form entry experience. The <a href="https://console.cloud.google.com/" rel="noreferrer noopener" target="_blank">Google Cloud API</a> is mostly free. The non-premium quota is up to 6,000 requests per minute and unlimited requests per day, so unless you&acirc;&#128;&#153;re Amazon, the free version will most likely do!</p>
+<p>You&acirc;&#128;&#153;ll need to create a <a href="https://console.cloud.google.com/" rel="noreferrer noopener" target="_blank">Google Cloud</a> account and generate an API key to use the Places Autocomplete API.</p>
+<h4>Example: Google Places Autocomplete API</h4>
+<p><strong>HTML:</strong></p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-html hljs xml" data-lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12 mb-4"</span>&gt;</span> 
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"address"</span>&gt;</span>Address<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"address"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Type to search..."</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-4 mb-4"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"city"</span>&gt;</span>City<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"city"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-4 mb-4"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"state"</span>&gt;</span>State<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"state"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-4 mb-4"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"zip"</span>&gt;</span>Zip Code<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"tel"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"zip"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12 mb-4"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"btn-submit"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary"</span>&gt;</span>Send<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&amp;libraries=places"</span>&gt;</span>
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p><strong>JavaScript:</strong></p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-built_in">document</span>.addEventListener(<span class="hljs-string">"DOMContentLoaded"</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">var</span> addr = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"address"</span>);
+    <span class="hljs-keyword">var</span> options = {
+        <span class="hljs-attr">componentRestrictions</span>: {
+            <span class="hljs-attr">country</span>: [<span class="hljs-string">"us"</span>]
+        },
+        <span class="hljs-attr">fields</span>: [<span class="hljs-string">"address_components"</span>, <span class="hljs-string">"geometry"</span>],
+        <span class="hljs-attr">types</span>: [<span class="hljs-string">"address"</span>],
+    }
+    ac = <span class="hljs-keyword">new</span> google.maps.places.Autocomplete(addr, options);
+    ac.addListener(<span class="hljs-string">"place_changed"</span>, fillInAddress);
+});
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">fillInAddress</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> place = ac.getPlace();
+    <span class="hljs-keyword">let</span> address1 = <span class="hljs-string">""</span>;
+    <span class="hljs-keyword">let</span> zipcode = <span class="hljs-string">""</span>;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> component <span class="hljs-keyword">of</span> place.address_components) {
+        <span class="hljs-keyword">const</span> componentType = component.types[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">switch</span> (componentType) {
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"street_number"</span>: {
+                address1 = <span class="hljs-string">`<span class="hljs-subst">${component.long_name}</span> <span class="hljs-subst">${address1}</span>`</span>;
+                <span class="hljs-keyword">break</span>;
+            }
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"route"</span>: {
+                address1 += component.short_name;
+                <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#address"</span>).value = address1;
+                <span class="hljs-keyword">break</span>;
+            }
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"postal_code"</span>: {
+                zipcode = <span class="hljs-string">`<span class="hljs-subst">${component.long_name}</span><span class="hljs-subst">${zipcode}</span>`</span>;
+                <span class="hljs-keyword">break</span>;
+            }
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"postal_code_suffix"</span>: {
+                zipcode = <span class="hljs-string">`<span class="hljs-subst">${zipcode}</span>-<span class="hljs-subst">${component.long_name}</span>`</span>;
+                <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#zip"</span>).value = zipcode;
+                <span class="hljs-keyword">break</span>;
+            }
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"locality"</span>:
+                <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#city"</span>).value = component.long_name;
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"administrative_area_level_1"</span>: {
+                <span class="hljs-built_in">document</span>.querySelector(<span class="hljs-string">"#state"</span>).value = component.short_name;
+                <span class="hljs-keyword">break</span>;
+            }
+        }
+    }
+}
+$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    $(<span class="hljs-string">".after-submit"</span>).hide();
+    $(<span class="hljs-string">"#username"</span>).onEnter(<span class="hljs-string">"tab"</span>);
+    $(<span class="hljs-string">"#password"</span>).onEnter(submitForm);
+    $(<span class="hljs-string">"#btn-do-again"</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        $(<span class="hljs-string">"input"</span>).val(<span class="hljs-string">""</span>);
+        $(<span class="hljs-string">".after-submit"</span>).hide();
+        $(<span class="hljs-string">".before-submit"</span>).fadeIn();
+    });
+});
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p><strong>Result</strong></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/maps-autocomplete.gif?w=1200&amp;q=75" alt="Google Maps Autocomplete Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/maps-autocomplete.gif" srcset="https://cdn.designly.biz/imgr/blog_files/forms/maps-autocomplete.gif?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/maps-autocomplete.gif?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/maps-autocomplete.gif?w=320&amp;q=75 320w"></p>
+<h4>Rule #3: Use the Appropriate HTML Type Attributes for Input Fields</h4>
+<p>HTML 5 has a variety of input element types that can be utilized to enhance the user experience. Some of them are rather clunky without using additional JavaScript libraries, while others work well out-of-the-box.</p>
+<p>Choosing the proper input type is particularly useful on mobile devices. For example, if you specify input type email, a mobile keyboard will pop up with functions conducive to entering an email address.</p>
+<h4>Mobile Email Example:</h4>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/mobile-email.webp?w=1200&amp;q=75" alt="Mobile Email Input Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/mobile-email.webp" srcset="https://cdn.designly.biz/imgr/blog_files/forms/mobile-email.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/mobile-email.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/mobile-email.webp?w=320&amp;q=75 320w"></p>
+<p>As you can see, a customized soft keyboard appears on this iPhone. Note the @ symbol next to the spacebar. Had you used input type text, the user would have had to take additional steps to enter the @ symbol.</p>
+<h4>Mobile Phone Example:</h4>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/mobile-phone.webp?w=1200&amp;q=75" alt="Mobile Phone Input Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/mobile-phone.webp" srcset="https://cdn.designly.biz/imgr/blog_files/forms/mobile-phone.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/mobile-phone.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/mobile-phone.webp?w=320&amp;q=75 320w"></p>
+<p>Again, a custom keyboard appears with only digits. A modifier key also appears that allows entering other symbols such as &acirc;&#128;&#148; + # etc.</p>
+<p>You can use the tel input type for other types of input as well, such as zip codes or other numerical entries.</p>
+<h4>Rule #4: Handle the Operation of the Enter Key</h4>
+<p>As a computer programmer, I am a keyboard-oriented user, which means I keep my hands off my mouse as much as humanly possible. When I&acirc;&#128;&#153;m in an input field, I expect the enter key to either advance to the next field or submit the information I entered.</p>
+<p>I wrote a jQuery plugin called <a href="https://github.com/designly1/jquery.onEnter.js" rel="noreferrer noopener" target="_blank">jQuery.onEnter.js</a>. You can include it in your project using the following CDN:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-vim hljs vim" data-lang="vim">&lt;<span class="hljs-keyword">a</span> href=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/@designly/jquery.onenter@1.0.0/jquery.onEnter.min.js"</span> target=<span class="hljs-string">"_blank"</span>&gt;http<span class="hljs-variable">s:</span>//cdn.jsdelivr.net/npm/@designly/jquery.onenter@<span class="hljs-number">1.0</span>.<span class="hljs-number">0</span>/jquery.onEnter.<span class="hljs-built_in">min</span>.js&lt;/<span class="hljs-keyword">a</span>&gt;
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<h4>Enter Key Input Example:</h4>
+<p><strong>HTML:</strong></p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-html hljs xml" data-lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-6 col-sm-12"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row before-submit"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12 mb-4"</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"username"</span>&gt;</span>Username<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"email"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"username"</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"joe_blow"</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12 mb-4"</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">for</span>=<span class="hljs-string">"password"</span>&gt;</span>Password<span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">input</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"password"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"password"</span>
+                    <span class="hljs-attr">class</span>=<span class="hljs-string">"form-control"</span> <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"********"</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12 mb-4"</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"btn-submit"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary"</span>&gt;</span> Login <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row after-submit"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12 mb-4"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Thank You!<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>You're input has been received!<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12 mb-4"</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"btn-do-again"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary"</span>&gt;</span> Do It Again!
+                <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span> <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://cdn.jsdelivr.net/npm/@designly/jquery.onenter@1.0.0/jquery.onEnter.min.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p><strong>JavaScript:</strong></p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js">$(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    $(<span class="hljs-string">".after-submit"</span>).hide();
+    $(<span class="hljs-string">"#username"</span>).onEnter(<span class="hljs-string">"tab"</span>);
+    $(<span class="hljs-string">"#password"</span>).onEnter(submitForm);
+    $(<span class="hljs-string">"#btn-do-again"</span>).click(<span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        $(<span class="hljs-string">"input"</span>).val(<span class="hljs-string">""</span>);
+        $(<span class="hljs-string">".after-submit"</span>).hide();
+        $(<span class="hljs-string">".before-submit"</span>).fadeIn();
+    });
+});
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p><strong>Result:</strong></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/input-enter.gif?w=1200&amp;q=75" alt="Input On Enter Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/input-enter.gif" srcset="https://cdn.designly.biz/imgr/blog_files/forms/input-enter.gif?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/input-enter.gif?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/input-enter.gif?w=320&amp;q=75 320w"></p>
+<h4>Rule #5: Don&acirc;&#128;&#153;t Use Overly-Complicated CAPTCHA Challenges</h4>
+<p>It&acirc;&#128;&#153;s necessary these days to use a CAPTCHA challenge to keep the bots at bay. CAPTCHA stands for <em><strong>Completely Automated Public Turing Test To Tell Computers and Humans Apart</strong></em>. Alan Turing was a turn-of-the-century genius who is responsible for modern day computer science.</p>
+<p>Although we must use these types of checks to stop bots from flooding our inboxes and filling up our databases with garbage, your CAPTCHA test needn&acirc;&#128;&#153;t be overly complex.</p>
+<p>Here is an example of what <strong>not</strong> to do:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/bad-captcha.webp?w=1200&amp;q=75" alt="Bad CAPTCHA Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/bad-captcha.webp" srcset="https://cdn.designly.biz/imgr/blog_files/forms/bad-captcha.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/bad-captcha.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/bad-captcha.webp?w=320&amp;q=75 320w"></p>
+<p>The above text is indecipherable by both computer <em>and</em> humans alike! Having such an insurmountable hurdle on your website would be essentially UI/UX suicide.</p>
+<p>There are some really good CAPTCHA services out there that can help you balance between convenience and security. <a href="https://www.google.com/recaptcha/about/" rel="noreferrer noopener" target="_blank">Google reCaptcha</a> is one, but I stopped using it long ago due to Google&acirc;&#128;&#153;s awful privacy practices. Instead, I now use <a href="https://www.hcaptcha.com/" rel="noreferrer noopener" target="_blank">hCaptcha</a>, which is super easy to set up and completely free.</p>
+<h4>hCaptcha Challenge Example:</h4>
+<p><strong>HTML:</strong></p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-html hljs xml" data-lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-md-6 col-sm-12"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"row"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12 mb-4"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"h-captcha"</span> <span class="hljs-attr">data-sitekey</span>=<span class="hljs-string">"YOUR_HCAPTCHA_KEY"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"col-12 mb-4"</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"button"</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"btn-submit"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"btn btn-primary"</span>&gt;</span> Send <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://www.hCaptcha.com/1/api.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>####<strong>Result:</strong></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha.gif?w=1200&amp;q=75" alt="hCAPTCHA Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/hcaptcha.gif" srcset="https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha.gif?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha.gif?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha.gif?w=320&amp;q=75 320w"></p>
+<p>This particular hCaptcha challenge is set to easy mode. Higher-level challenges may have the user click on several series of images before approving the test. Unless you&acirc;&#128;&#153;re a major site like Amazon or Google, this type of complexity is simply not required. And of course, if you start experiencing bot attacks, you can always log into hCaptcha and change your difficulty setting.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha-difficulty.webp?w=1200&amp;q=75" alt="hCAPTCHA Difficulty Setting" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/hcaptcha-difficulty.webp" srcset="https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha-difficulty.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha-difficulty.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha-difficulty.webp?w=320&amp;q=75 320w"></p>
+<h4>Rule #6: Test, Test, Test and Test Again!</h4>
+<p>Once you&acirc;&#128;&#153;ve designed your form, it&acirc;&#128;&#153;s imperative that you test it on a variety of platforms and browsers. Both Google Chrome and Firefox have some nice web developer tools for testing your site on mobile devices. But it&acirc;&#128;&#153;s also important you test your site on <em>actual</em> mobile devices as well, both Android and iOS.</p>
+<p>If you follow these rules when designing your web forms, you can be sure that your potential customers will be able to connect with you in a comfortable and user-friendly manner. After all, that&acirc;&#128;&#153;s the whole point: getting new customer leads!</p>
+<p>Thank you for reading. For more great website development information, please visit our <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Blog</a>!</p>
+</section>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <div class="share-buttons text-2xl flex gap-4 mx-auto">
+                <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
+                <a
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fui-ux-best-practices-for-web-forms"
+                    target="_blank"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook text-blue-700"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fui-ux-best-practices-for-web-forms"
+                    target="_blank"
+                    aria-label="Share on LinkedIn"
+                >
+                    <i class="fab fa-linkedin text-indigo-700"></i>
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fui-ux-best-practices-for-web-forms" target="_blank">
+                    <i class="fab fa-twitter text-sky-700"></i>
+                </a>
+            </div>
+            <hr />
+            <div class="bg-white dark:bg-zinc-800 border-1 rounded-lg flex flex-col shadow p-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4">
+                    <div class="col-span-1 flex items-center">
+                        <img
+                            src="https://cdn.designly.biz/imgr/jay.jpg?w=200&q=75"
+                            alt="Jay"
+                            width="200"
+                            height="200"
+                            class="rounded-full shadow-md border-4 border-blue-700/20 w-32 h-32 mx-auto"
+                        />
+                    </div>
+                    <div class="col-span-3 px-6 flex flex-col gap-4">
+                        <h3 class="text-2xl font-semibold text-center text-colors">About The Author</h3>
+                        <p class="text-zinc-700 dark:text-zinc-300">
+                            Jay is a full-stack developer, electrical engineer, writer and music producer. He currently
+                            resides in the Madison, WI area.
+                        </p>
+                        <a
+                            href="https://jay.designly.biz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-hover flex gap-2 items-center"
+                        >
+                            <div>Portfolio Site</div>
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-2xl font-bold text-center border-b-2 border-dashed pb-1 text-colors">Comments</h2>
+            <div id="comments" class="text-colors">
+                <!-- Comments will be generated here -->
+                <p>No Comments Yet</p>
+            </div>
+            <button id="btn-post-comment" class="btn btn-primary btn-outline flex gap-2 items-center max-w-md mx-auto">
+                <i class="fas fa-comment-medical"></i>
+                <div>Post Comment</div>
+            </button>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <template id="comment-template" class="text-colors">
+                <div
+                    class="comment flex flex-col gap-4 p-4 border rounded shadow mb-4 bg-white dark:bg-zinc-800 text-colors"
+                >
+                    <div class="flex gap-2 items-center">
+                        <img
+                            class="comment-avatar rounded-full w-10 h-10"
+                            src="/assets/img/pixel-black.png"
+                            width="100"
+                            height="100"
+                            alt="Commenter Avatar"
+                        />
+                        <div class="comment-display-name text-2xl text-cyan-700"></div>
+                    </div>
+                    <p class="comment-text"></p>
+                    <div class="replies ml-4">
+                        <!-- Replies will be generated here -->
+                    </div>
+                    <button class="reply-button mt-2 text-hover flex gap-2 items-center">
+                        <i class="fas fa-comment-dots"></i>
+                        <div>Reply</div>
+                    </button>
+                </div>
+            </template>
+        </article>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl text-hover"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-create-a-verification-code-input-component-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-create-a-verification-code-input-component-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Create a Verification Code Input Component in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create a Verification Code Input Component in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'll show you how to create a robust OTP code input component for React.js, using no other dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, I'll show you how to create a modal dialog overlay and disable the body scroll bars when it is open using Next.js 13 / React.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div>
+<input id="post-id" type="hidden" value="6FC0iCvlinTinifZUAFg0g" />
+<input id="reply-to" type="hidden" value="" />
+<script>
+    function generateComment(commentData) {
+        const template = document.querySelector("#comment-template");
+        const clone = template.content.cloneNode(true);
+        const displayName = clone.querySelector(".comment-display-name");
+        displayName.textContent = commentData.displayName;
+        const commentAvatar = clone.querySelector(".comment-avatar");
+        commentAvatar.setAttribute("src", commentData.avatar);
+        const commentText = clone.querySelector(".comment-text");
+        commentText.textContent = commentData.comment;
+        const repliesContainer = clone.querySelector(".replies");
+        commentData.replies.forEach((reply) => {
+            const replyElement = generateComment(reply);
+            repliesContainer.appendChild(replyElement);
+        });
+        const replyButton = clone.querySelector(".reply-button");
+        replyButton.addEventListener("click", () => {
+            document.getElementById("reply-to").value = commentData._id;
+            loadUrl("/comment");
+        });
+        return clone;
+    }
+    const fetchComments = async () => {
+        const postId = document.getElementById("post-id").value;
+        try {
+            const result = await fetch(`https://blog-comments.designly.workers.dev/?postId=${postId}`);
+            const comments = await result.json();
+            const commentsContainer = document.querySelector("#comments");
+            if (Array.isArray(comments) && comments.length) {
+                commentsContainer.innerHTML = "";
+                comments.forEach((comment) => {
+                    const commentElement = generateComment(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    setTimeout(async () => {
+        fetchComments();
+        document.getElementById("btn-post-comment").addEventListener("click", () => {
+            loadUrl(`/comment`);
+        });
+    }, 0);
+</script>
+</div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>

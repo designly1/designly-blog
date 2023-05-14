@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>How to Use AWS CloudFront to Create Your Own Free CDN | Designly</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="You can have your own free CDN by using AWS CloudFront and S3. I'll show you how!" />
+        <meta property="og:title" content="How to Use AWS CloudFront to Create Your Own Free CDN" />
+        <meta property="og:description" content="You can have your own free CDN by using AWS CloudFront and S3. I'll show you how!" />
+        <meta property="og:image" content="https://d340jo5zum8tsx.cloudfront.net/blog_files/cloudfront/cloudfront-banner.webp" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz/how-to-use-aws-cloudfront-to-create-your-own-free-cdn" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <article class="flex flex-col gap-10">
+            <section class="post-header flex flex-col gap-4">
+                <h1 class="text-colors text-xl md:text-3xl font-bold">How to Use AWS CloudFront to Create Your Own Free CDN</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/cdn">#CDN</a>
+<a href="/tag/amazon-web-services">#Amazon Web Services</a>
+<a href="/tag/amazon-web-services">#Amazon Web Services</a></div>
+                <img
+                    class="rounded-md shadow-lg"
+                    src="https://d340jo5zum8tsx.cloudfront.net/blog_files/cloudfront/cloudfront-banner.webp?w=1200&q=75"
+                    srcset="https://d340jo5zum8tsx.cloudfront.net/blog_files/cloudfront/cloudfront-banner.webp?w=1024&q=75 1024w, https://d340jo5zum8tsx.cloudfront.net/blog_files/cloudfront/cloudfront-banner.webp?w=640&q=75 640w, https://d340jo5zum8tsx.cloudfront.net/blog_files/cloudfront/cloudfront-banner.webp?w=320&q=75 320w"
+                    alt="How to Use AWS CloudFront to Create Your Own Free CDN"
+                    width="1200"
+                    height="675"
+                />
+                <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </section>
+            <section class="post-content flex flex-col gap-6"><p>CDN stands for <strong>Content Delivery Network</strong>. They are used by large platforms such as Facebook, Amazon, Twitter, etc. Traditionally, they were only in the market of companies with deep wallets, but now-a-days, you can have your own CDN solution for an affordable price.</p>
+<p>In years past, I used <a href="https://www.cloudflare.com/" rel="noreferrer noopener" target="_blank"><strong>CloudFlare</strong></a> to cache my websites and speed up delivery &acirc;&#128;&#148; and I still do. But recently I discovered <a href="https://console.aws.amazon.com/" rel="noreferrer noopener" target="_blank"><strong>Amazon Web Service</strong></a>&acirc;&#128;&#153;s <a href="https://aws.amazon.com/cloudfront/pricing/" rel="noreferrer noopener" target="_blank"><strong>CloudFront</strong></a> product. Like many AWS services, CloudFront has a free tier! The free tier allows up to <strong>1TB</strong> of transfer out, <strong>10,000,000 HTTP or HTTPS Requests</strong>, and <strong>2,000,000 CloudFront Function Invocations</strong> per month. And the overage charges are just pennies. In the past, this type of service was only available to large-scale sites with millions of requests per day, but Amazon has made this service available to anyone &acirc;&#128;&#148; all you need is an AWS account and a credit card on file, but you&acirc;&#128;&#153;re credit card will only be charged if you go over the free-tier quota.</p>
+<p>So, without further ado, let&acirc;&#128;&#153;s get started! This guide assumes you already have an AWS account and are logged in.</p>
+<h4>Step 1: Create an S3 Bucket</h4>
+<p>S3 stands for <strong>Simple Storage Service</strong>. Unlike services, such as Google Drive or DropBox, S3 treats files stored as objects. This gives you greater control over management of your files, such as versioning, deletion protection and encryption option. In this tutorial, we are just going to create a standard S3 bucket with no bells and whistles.</p>
+<p>Ok, once you&acirc;&#128;&#153;re logged into the <a href="https://console.aws.amazon.com/" rel="noreferrer noopener" target="_blank"><strong>AWS Console</strong></a>, click on the <strong>Services</strong> icon in the upper left corner, then click <strong>Storage</strong>, then click <strong>S3</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-1.webp?w=1200&amp;q=75" alt="Click Services &gt; Storage &gt; S3" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-1.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-1.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-1.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-1.webp?w=320&amp;q=75 320w"></p>
+<p>Next, click <strong>Create Bucket</strong> and enter a <strong>Bucket Name</strong>. The name you choose must be unique amongst all of AWS, so you may have to play around until you find one that works. You should choose a name that is DNS-compliant because this name will be part of your URI to access the bucket from the web.</p>
+<p>Now choose your <strong>AWS Region</strong>, which should be the same as any other AWS services you currently use. If this if your first AWS resource, choose a region that geographically close to where you live.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-2.webp?w=1200&amp;q=75" alt="Create a New Bucket and then enter a Bucket Name and choose your AWS Region" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-2.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-2.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-2.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-2.webp?w=320&amp;q=75 320w"></p>
+<p>Next, scroll down to the <strong>Block all Public Access</strong> checkbox and uncheck it. This bucket is intended to be accessible to the public so we can uncheck this option. Then check the <strong>&acirc;&#128;&#156;I Acknowledge&acirc;&#128;&#157;</strong> checkbox to continue.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-3.webp?w=1200&amp;q=75" alt="Uncheck Block all pubic access and check &acirc;&#128;&#156;I Acknowledge&acirc;&#128;&#157;" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-3.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-3.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-3.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-3.webp?w=320&amp;q=75 320w"></p>
+<h4>Step 2: Setup AWS CloudFront</h4>
+<p>Now that we have an S3 bucket, we can setup AWS CloudFront, which will use that bucket as back-end storage for your CDN.</p>
+<p>Click the <strong>Services</strong> icon and then choose <strong>Network &amp; Content Delivery &gt; CloudFront</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-4.webp?w=1200&amp;q=75" alt="Click Services &gt; Network &amp; Content Delivery &gt; CloudFront" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-4.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-4.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-4.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-4.webp?w=320&amp;q=75 320w"></p>
+<p>Once in the CloudFront console, click <strong>Create Distribution</strong>. Then click on <strong>Origin Domain</strong> and select your newly-created S3 bucket.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-5.webp?w=1200&amp;q=75" alt="Click Create Distribution and then click Origin Domain and select your bucket" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-5.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-5.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-5.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-5.webp?w=320&amp;q=75 320w"></p>
+<p>Next, scroll down to the <strong>Viewer</strong> section and select <strong>Redirect HTTP to HTTPS</strong> under <strong>Viewer protocol policy</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-6.webp?w=1200&amp;q=75" alt="Select Redirect HTTP to HTTPS under Viewer protocol Policy" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-6.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-6.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-6.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-6.webp?w=320&amp;q=75 320w"></p>
+<p>Leave all the other settings in their default state and then scroll down to the bottom and click <strong>Create Distribution</strong>.</p>
+<p>Now copy and paste the <strong>Distribution domain name</strong> into a place where you can reference it later. This is your new CDN&acirc;&#128;&#153;s base url.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-7.webp?w=1200&amp;q=75" alt="Create Distribution" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-7.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-7.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-7.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-7.webp?w=320&amp;q=75 320w"></p>
+<h4>Step 3: Create an IAM User/Group to Manage your CDN</h4>
+<p>Now we need to create a service account user with appropriate permissions to manage your new CDN. In the <strong>Search Bar</strong> next to the <strong>Services</strong> icon type in <em><strong>Iam</strong></em> and then click <strong>Users</strong> under <strong>IAM</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-8.webp?w=1200&amp;q=75" alt="Search for IAM and then click Users" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-8.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-8.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-8.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-8.webp?w=320&amp;q=75 320w"></p>
+<p>Next, click <strong>Add Users</strong> and enter a username. Then check the box labeled <strong>Acces key</strong> under <strong>Seledct AWS credential type</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-10.webp?w=1200&amp;q=75" alt="Click Add Users and enter a Username then check Access Key" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-10.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-10.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-10.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-10.webp?w=320&amp;q=75 320w"></p>
+<p>Now you&acirc;&#128;&#153;ll need to add your new user to a group. We&acirc;&#128;&#153;re going to <strong>Create Group.</strong> Name the group whatever you like and the type <strong>S3</strong> in the search baar and check <strong>AmazonS3FullAcess</strong>. This will give this group full access to your S3 bucket for managing objects.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-11.webp?w=1200&amp;q=75" alt="Click Add User To Group and then search for S3 and check AmazonS3FullAccess" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-11.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-11.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-11.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-11.webp?w=320&amp;q=75 320w"></p>
+<p>Now search for <strong>cloudfront</strong> and check <strong>CloudFrontFullAccess</strong>. Then click <strong>Create Group</strong>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-12.webp?w=1200&amp;q=75" alt="Search for cloudfront and check CloudFrontFullAccess then click Create Group" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-12.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-12.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-12.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-12.webp?w=320&amp;q=75 320w"></p>
+<p>Click next, skip adding tags and then click <strong>Create User</strong>. Now copy and paste your <strong>Access key ID</strong> and <strong>Secret access key</strong> and store them in a safe place. Once you close this screen you will not be able to see your secret key again!</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-13.webp?w=1200&amp;q=75" alt="Copy your Access Key ID and Secret access key" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-13.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-13.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-13.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-13.webp?w=320&amp;q=75 320w"></p>
+<h4>Step 4: Install the AWS Command Line Interface</h4>
+<p>We have our own free CDN! Yay! Now we need to be able to upload files to the S3 bucket and control our CloudFront cache. So we need to install the AWS CLI. I offer methods to install this on <strong>MacOS</strong> or <strong>Linux</strong>. I&acirc;&#128;&#153;ve never used it on <strong>Windows</strong> because&acirc;&#128;&brvbar; well&acirc;&#128;&brvbar; I hate Windows! So sorry.</p>
+<h4>Install AWS CLI on MacOS</h4>
+<p>Assuming you alread have <a href="https://brew.sh/" rel="noreferrer noopener" target="_blank">Homebrew</a> installed on your Mac, run the following commands:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ brew update
+$ brew install awscli
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<h4>Install AWS CLI on Linux</h4>
+<p>Debian/Ubuntu</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ curl <span class="hljs-string">"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"</span> -o <span class="hljs-string">"awscliv2.zip"</span>$ unzip awscliv2.zip$ <span class="hljs-built_in">cd</span> aws$ sudo ./install
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Once the installation completes you can test if it installed properly by running:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ aws --version
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>It should output something like:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">aws-cli/2.1.33 Python/3.8.8 Linux/5.4.0-70-generic exe/x86_64.ubuntu.20 prompt/off
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Next, we need to login using the <strong>Access key</strong> and <strong>Private key</strong> you so carefully wrote down. To do this, we&acirc;&#128;&#153;ll run aws configure:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ aws configureAWS Access Key ID [None]: YOUR_ACCESS_KEYAWS Secret Access Key [None]: YOUR_SECRET_KEYDefault region name [None]: e.g: us-east-1Default output format [None]: LEAVE_BLANK
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>If all goes well, you are now logged in and may begin uploading files to your S3 bucket!</p>
+<p>There are two ways to get your file uploaded to your CDN. You can use the aws s3 cp command or the aws s3 sync command. Personally, I prefer the sync command as it works very similarly to <strong>rsync</strong>. So in this example, I&acirc;&#128;&#153;m going to show you how to sync a local <strong>images</strong> directory to your CloudFront CDN:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">aws s3 sync /Users/johndoe/httpd/images/ s3://designly-test-cdn/images --delete --exclude <span class="hljs-string">".*"</span>
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>If you&acirc;&#128;&#153;re familiar with <strong>rsync</strong> then this command should look very familiar. The --delete option tells the command to delete any files in the target directory that no longer exists. The --exclude directive tells sync to ignore any files that begin with a dot. Most likely, you won&acirc;&#128;&#153;t want to upload any operating system hidden files like .DS_Store.</p>
+<p>Ok, you did it! You now have a globally-syndicated CDN for your website&acirc;&#128;&#153;s assets! You should see huge gains in loading times on your site.</p>
+<p>To access your files, remember the <strong>Distribution domain name</strong> I asked you to note earlier. In my example it was <code>https://dmcgr6zwv04i4.cloudfront.net/</code>. So to get to a specific image fie we just uploaded you would enter <code>https://dmcgr6zwv04i4.cloudfront.net/images/your-image-file.jpg</code>.</p>
+<h4>Invalidating Your CDN Cache</h4>
+<p>CloudFront automatically caches your S3 files at the CloudFront edge server for lightning-fast delivery. If you are doing a lot go development and changing files regularly, it may be necessary to invalidate certain files from the cache. To do this run the following awscli command:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths <span class="hljs-string">"/*"</span>
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Where <code>--distribution-id</code> is your CloudFront <strong>Distribution ID</strong> and <code>--paths</code> is the specific files you want to invalidate. If you enter <code>"/\*"</code>, it will invalidate everything.</p>
+<p>Well, that&acirc;&#128;&#153;s it. I hope you found this tutorial as useful as I have! For more great information, please visit our <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank"><strong>Blog</strong></a>.</p>
+</section>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <div class="share-buttons text-2xl flex gap-4 mx-auto">
+                <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
+                <a
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fhow-to-use-aws-cloudfront-to-create-your-own-free-cdn"
+                    target="_blank"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook text-blue-700"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-use-aws-cloudfront-to-create-your-own-free-cdn"
+                    target="_blank"
+                    aria-label="Share on LinkedIn"
+                >
+                    <i class="fab fa-linkedin text-indigo-700"></i>
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-use-aws-cloudfront-to-create-your-own-free-cdn" target="_blank">
+                    <i class="fab fa-twitter text-sky-700"></i>
+                </a>
+            </div>
+            <hr />
+            <div class="bg-white dark:bg-zinc-800 border-1 rounded-lg flex flex-col shadow p-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4">
+                    <div class="col-span-1 flex items-center">
+                        <img
+                            src="https://cdn.designly.biz/imgr/jay.jpg?w=200&q=75"
+                            alt="Jay"
+                            width="200"
+                            height="200"
+                            class="rounded-full shadow-md border-4 border-blue-700/20 w-32 h-32 mx-auto"
+                        />
+                    </div>
+                    <div class="col-span-3 px-6 flex flex-col gap-4">
+                        <h3 class="text-2xl font-semibold text-center text-colors">About The Author</h3>
+                        <p class="text-zinc-700 dark:text-zinc-300">
+                            Jay is a full-stack developer, electrical engineer, writer and music producer. He currently
+                            resides in the Madison, WI area.
+                        </p>
+                        <a
+                            href="https://jay.designly.biz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-hover flex gap-2 items-center"
+                        >
+                            <div>Portfolio Site</div>
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-2xl font-bold text-center border-b-2 border-dashed pb-1 text-colors">Comments</h2>
+            <div id="comments" class="text-colors">
+                <!-- Comments will be generated here -->
+                <p>No Comments Yet</p>
+            </div>
+            <button id="btn-post-comment" class="btn btn-primary btn-outline flex gap-2 items-center max-w-md mx-auto">
+                <i class="fas fa-comment-medical"></i>
+                <div>Post Comment</div>
+            </button>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <template id="comment-template" class="text-colors">
+                <div
+                    class="comment flex flex-col gap-4 p-4 border rounded shadow mb-4 bg-white dark:bg-zinc-800 text-colors"
+                >
+                    <div class="flex gap-2 items-center">
+                        <img
+                            class="comment-avatar rounded-full w-10 h-10"
+                            src="/assets/img/pixel-black.png"
+                            width="100"
+                            height="100"
+                            alt="Commenter Avatar"
+                        />
+                        <div class="comment-display-name text-2xl text-cyan-700"></div>
+                    </div>
+                    <p class="comment-text"></p>
+                    <div class="replies ml-4">
+                        <!-- Replies will be generated here -->
+                    </div>
+                    <button class="reply-button mt-2 text-hover flex gap-2 items-center">
+                        <i class="fas fa-comment-dots"></i>
+                        <div>Reply</div>
+                    </button>
+                </div>
+            </template>
+        </article>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl text-hover"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-create-a-verification-code-input-component-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-create-a-verification-code-input-component-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Create a Verification Code Input Component in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create a Verification Code Input Component in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'll show you how to create a robust OTP code input component for React.js, using no other dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, I'll show you how to create a modal dialog overlay and disable the body scroll bars when it is open using Next.js 13 / React.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div>
+<input id="post-id" type="hidden" value="5UsNi7nXvLjqxnOvPxM60B" />
+<input id="reply-to" type="hidden" value="" />
+<script>
+    function generateComment(commentData) {
+        const template = document.querySelector("#comment-template");
+        const clone = template.content.cloneNode(true);
+        const displayName = clone.querySelector(".comment-display-name");
+        displayName.textContent = commentData.displayName;
+        const commentAvatar = clone.querySelector(".comment-avatar");
+        commentAvatar.setAttribute("src", commentData.avatar);
+        const commentText = clone.querySelector(".comment-text");
+        commentText.textContent = commentData.comment;
+        const repliesContainer = clone.querySelector(".replies");
+        commentData.replies.forEach((reply) => {
+            const replyElement = generateComment(reply);
+            repliesContainer.appendChild(replyElement);
+        });
+        const replyButton = clone.querySelector(".reply-button");
+        replyButton.addEventListener("click", () => {
+            document.getElementById("reply-to").value = commentData._id;
+            loadUrl("/comment");
+        });
+        return clone;
+    }
+    const fetchComments = async () => {
+        const postId = document.getElementById("post-id").value;
+        try {
+            const result = await fetch(`https://blog-comments.designly.workers.dev/?postId=${postId}`);
+            const comments = await result.json();
+            const commentsContainer = document.querySelector("#comments");
+            if (Array.isArray(comments) && comments.length) {
+                commentsContainer.innerHTML = "";
+                comments.forEach((comment) => {
+                    const commentElement = generateComment(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    setTimeout(async () => {
+        fetchComments();
+        document.getElementById("btn-post-comment").addEventListener("click", () => {
+            loadUrl(`/comment`);
+        });
+    }, 0);
+</script>
+</div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>

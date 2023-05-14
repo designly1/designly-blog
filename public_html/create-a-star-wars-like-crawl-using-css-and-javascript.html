@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Create a Star Wars-Like Crawl Using CSS & JavaScript | Designly</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="If you're a geek like me, then you're defininely going to want to check out this article. I'll show you how to create a Star Wars-like crawl background for your website using only JavaScript and CSS." />
+        <meta property="og:title" content="Create a Star Wars-Like Crawl Using CSS & JavaScript" />
+        <meta property="og:description" content="If you're a geek like me, then you're defininely going to want to check out this article. I'll show you how to create a Star Wars-like crawl background for your website using only JavaScript and CSS." />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/create-a-star-wars-like-crawl-using-css-and-javascript/cover.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz/create-a-star-wars-like-crawl-using-css-and-javascript" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <article class="flex flex-col gap-10">
+            <section class="post-header flex flex-col gap-4">
+                <h1 class="text-colors text-xl md:text-3xl font-bold">Create a Star Wars-Like Crawl Using CSS & JavaScript</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/typography">#Typography</a>
+<a href="/tag/front-end">#Front End</a>
+<a href="/tag/css">#CSS</a>
+<a href="/tag/javascript">#JavaScript</a></div>
+                <img
+                    class="rounded-md shadow-lg"
+                    src="https://cdn.designly.biz/imgr/blog_files/create-a-star-wars-like-crawl-using-css-and-javascript/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/create-a-star-wars-like-crawl-using-css-and-javascript/cover.jpg?w=1024&q=75 1024w, https://cdn.designly.biz/imgr/blog_files/create-a-star-wars-like-crawl-using-css-and-javascript/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-a-star-wars-like-crawl-using-css-and-javascript/cover.jpg?w=320&q=75 320w"
+                    alt="Create a Star Wars-Like Crawl Using CSS & JavaScript"
+                    width="1200"
+                    height="675"
+                />
+                <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </section>
+            <section class="post-content flex flex-col gap-6"><p>If you're a web developer (or want to be), then you're probably a geek and you like Star Wars. Well, how would you like to have the Star Wars opening crawl as a background for your next website? &eth;&#159;&#152;&#129;</p>
+<p>The answer, of course, is YAAAAAS! Read on....</p>
+<p>I tried many iterations of this (because I really really wanted it). First I tried using a stock video of traveling through space, but the file size was too large and Google Lighthouse complained. I tried compressing to <code>webm</code> format but that only works on some devices (not iOS) and looks terrible and pixelated.</p>
+<p>After hours of playing around, I decided to use the HTML5 canvas element and JavaScript to render the stars and CSS keyframes to render the 3D crawling text. As for the font, I downloaded a mock-Star Wars font called "Deathstar". You can find those <a href="https://www.fontspace.com/category/star-wars" rel="noreferrer noopener" target="_blank">here</a>.</p>
+<p>Check out <a href="https://designly3.vercel.app/examples/starwars/index.html" rel="noreferrer noopener" target="_blank">this working example</a>.</p>
+<p>And now for the code:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">// stars.js</span>
+<span class="hljs-comment">// Get canvas element by its ID</span>
+<span class="hljs-keyword">var</span> field = <span class="hljs-built_in">document</span>.getElementById(<span class="hljs-string">"field"</span>);
+<span class="hljs-comment">// Make sure field canvas exists</span>
+<span class="hljs-keyword">var</span> f = (<span class="hljs-keyword">typeof</span> field.getContext === <span class="hljs-string">'function'</span>) ? field.getContext(<span class="hljs-string">"2d"</span>) : <span class="hljs-literal">null</span>;
+<span class="hljs-comment">// Config</span>
+<span class="hljs-keyword">var</span> stars = {};
+<span class="hljs-keyword">var</span> starIndex = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">var</span> numStars = <span class="hljs-number">0</span>;
+<span class="hljs-keyword">var</span> acceleration = <span class="hljs-number">1</span>;
+<span class="hljs-keyword">var</span> starsToDraw = (field.width * field.height) / <span class="hljs-number">200</span>;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Star</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">this</span>.X = field.width / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">this</span>.Y = field.height / <span class="hljs-number">2</span>;
+    <span class="hljs-keyword">this</span>.SX = <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span> - <span class="hljs-number">5</span>;
+    <span class="hljs-keyword">this</span>.SY = <span class="hljs-built_in">Math</span>.random() * <span class="hljs-number">10</span> - <span class="hljs-number">5</span>;
+    <span class="hljs-keyword">var</span> start = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">if</span> (field.width &gt; field.height)
+        start = field.width;
+    <span class="hljs-keyword">else</span>
+        start = field.height;
+    <span class="hljs-keyword">this</span>.X += <span class="hljs-keyword">this</span>.SX * start / <span class="hljs-number">10</span>;
+    <span class="hljs-keyword">this</span>.Y += <span class="hljs-keyword">this</span>.SY * start / <span class="hljs-number">10</span>;
+    <span class="hljs-keyword">this</span>.W = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">this</span>.H = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">this</span>.age = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">this</span>.dies = <span class="hljs-number">500</span>;
+    starIndex++;
+    stars[starIndex] = <span class="hljs-keyword">this</span>;
+    <span class="hljs-keyword">this</span>.ID = starIndex;
+    <span class="hljs-keyword">this</span>.C = <span class="hljs-string">"#ffffff"</span>;
+}
+Star.prototype.Draw = <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (!f) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Could not load canvas element'</span>);
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-keyword">this</span>.X += <span class="hljs-keyword">this</span>.SX;
+    <span class="hljs-keyword">this</span>.Y += <span class="hljs-keyword">this</span>.SY
+    <span class="hljs-keyword">this</span>.SX += <span class="hljs-keyword">this</span>.SX / (<span class="hljs-number">50</span> / acceleration);
+    <span class="hljs-keyword">this</span>.SY += <span class="hljs-keyword">this</span>.SY / (<span class="hljs-number">50</span> / acceleration);
+    <span class="hljs-keyword">this</span>.age++;
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.age == <span class="hljs-built_in">Math</span>.floor(<span class="hljs-number">50</span> / acceleration) | <span class="hljs-keyword">this</span>.age == <span class="hljs-built_in">Math</span>.floor(<span class="hljs-number">150</span> / acceleration) | <span class="hljs-keyword">this</span>.age == <span class="hljs-built_in">Math</span>.floor(<span class="hljs-number">300</span> / acceleration)) {
+        <span class="hljs-keyword">this</span>.W++;
+        <span class="hljs-keyword">this</span>.H++;
+    }
+    <span class="hljs-keyword">if</span> (<span class="hljs-keyword">this</span>.X + <span class="hljs-keyword">this</span>.W &lt; <span class="hljs-number">0</span> | <span class="hljs-keyword">this</span>.X &gt; field.width |
+        <span class="hljs-keyword">this</span>.Y + <span class="hljs-keyword">this</span>.H &lt; <span class="hljs-number">0</span> | <span class="hljs-keyword">this</span>.Y &gt; field.height) {
+        <span class="hljs-keyword">delete</span> stars[<span class="hljs-keyword">this</span>.ID];
+        numStars--;
+    }
+    f.fillStyle = <span class="hljs-keyword">this</span>.C;
+    f.fillRect(<span class="hljs-keyword">this</span>.X, <span class="hljs-keyword">this</span>.Y, <span class="hljs-keyword">this</span>.W, <span class="hljs-keyword">this</span>.H);
+}
+field.width = <span class="hljs-built_in">window</span>.innerWidth;
+field.height = <span class="hljs-built_in">window</span>.innerHeight;
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">draw</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">if</span> (!f) {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Could not load canvas element'</span>);
+        <span class="hljs-keyword">return</span>;
+    }
+    <span class="hljs-keyword">if</span> (field.width != <span class="hljs-built_in">window</span>.innerWidth)
+        field.width = <span class="hljs-built_in">window</span>.innerWidth;
+    <span class="hljs-keyword">if</span> (field.height != <span class="hljs-built_in">window</span>.innerHeight)
+        field.height = <span class="hljs-built_in">window</span>.innerHeight;
+    <span class="hljs-comment">// The alpha value can be adjusted to create a stream effect</span>
+    f.fillStyle = <span class="hljs-string">"rgba(0, 0, 0, 0.6)"</span>;
+    f.fillRect(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, field.width, field.height);
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> i = numStars; i &lt; starsToDraw; i++) {
+        <span class="hljs-keyword">new</span> Star();
+        numStars++;
+    }
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">var</span> star <span class="hljs-keyword">in</span> stars) {
+        stars[star].Draw();
+    }
+}
+<span class="hljs-comment">// Modify interval to adjust speed</span>
+<span class="hljs-keyword">if</span> (f) setInterval(draw, <span class="hljs-number">40</span>);
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>And the CSS:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-css hljs css" data-lang="css"><span class="hljs-comment">/* global.css */</span>
+<span class="hljs-selector-tag">body</span> {
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">background-color</span>: black;
+}
+<span class="hljs-selector-tag">main</span> {
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100vw</span>;
+    <span class="hljs-attribute">height</span>: <span class="hljs-number">100vh</span>;
+}
+<span class="hljs-selector-id">#field</span> {
+    <span class="hljs-attribute">position</span>: fixed;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">z-index</span>: -<span class="hljs-number">3</span>;
+}
+<span class="hljs-selector-id">#crawl</span> {
+    <span class="hljs-attribute">position</span>: fixed;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">z-index</span>: -<span class="hljs-number">2</span>;
+    <span class="hljs-attribute">font-family</span>: Deathstar, Verdana, Geneva, Tahoma, sans-serif;
+    <span class="hljs-attribute">text-align</span>: center;
+    <span class="hljs-attribute">color</span>: white;
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">4rem</span>;
+    <span class="hljs-attribute">perspective</span>: <span class="hljs-number">200px</span>;
+}
+<span class="hljs-selector-id">#crawl</span> <span class="hljs-selector-tag">p</span> {
+    <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotateX</span>(<span class="hljs-number">20deg</span>);
+    <span class="hljs-attribute">animation</span>: starwars <span class="hljs-number">30s</span> ease-in;
+    <span class="hljs-attribute">animation-iteration-count</span>: infinite;
+    <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> auto;
+}
+<span class="hljs-selector-id">#crawl</span> <span class="hljs-selector-tag">p</span> <span class="hljs-selector-tag">span</span> {
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">150%</span>;
+}
+<span class="hljs-selector-id">#overlay</span> {
+    <span class="hljs-attribute">position</span>: fixed;
+    <span class="hljs-attribute">top</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">right</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">bottom</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">left</span>: <span class="hljs-number">0</span>;
+    <span class="hljs-attribute">z-index</span>: -<span class="hljs-number">1</span>;
+    <span class="hljs-attribute">background-color</span>: <span class="hljs-built_in">rgba</span>(<span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">0.4</span>);
+}
+<span class="hljs-keyword">@keyframes</span> starwars {
+    0% {
+        <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotateX</span>(<span class="hljs-number">20deg</span>) <span class="hljs-built_in">translateY</span>(<span class="hljs-number">750px</span>);
+    }
+    100% {
+        <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotateX</span>(<span class="hljs-number">20deg</span>) <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">1500px</span>);
+    }
+}
+<span class="hljs-keyword">@keyframes</span> starwars1200 {
+    0% {
+        <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotateX</span>(<span class="hljs-number">20deg</span>) <span class="hljs-built_in">translateY</span>(<span class="hljs-number">565px</span>);
+    }
+    100% {
+        <span class="hljs-attribute">transform</span>: <span class="hljs-built_in">rotateX</span>(<span class="hljs-number">20deg</span>) <span class="hljs-built_in">translateY</span>(-<span class="hljs-number">1500px</span>);
+    }
+}
+<span class="hljs-keyword">@media</span> <span class="hljs-keyword">only</span> screen <span class="hljs-keyword">and</span> (<span class="hljs-attribute">max-width:</span> <span class="hljs-number">1200px</span>) {
+    <span class="hljs-selector-id">#crawl</span> {
+        <span class="hljs-attribute">font-size</span>: <span class="hljs-number">1rem</span>;
+    }
+    <span class="hljs-selector-id">#crawl</span> <span class="hljs-selector-tag">p</span> {
+        <span class="hljs-attribute">animation</span>: starwars1200 <span class="hljs-number">30s</span> ease-in;
+    }
+}
+<span class="hljs-keyword">@font-face</span> {
+    <span class="hljs-attribute">font-family</span>: <span class="hljs-string">'Deathstar'</span>;
+    <span class="hljs-attribute">font-style</span>: normal;
+    <span class="hljs-attribute">font-weight</span>: <span class="hljs-number">100</span>;
+    <span class="hljs-attribute">font-display</span>: swap;
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">url</span>(<span class="hljs-string">'https://cdn.designly.biz/fonts/deathstar/death_star-webfont.eot'</span>);
+    <span class="hljs-attribute">src</span>: <span class="hljs-built_in">local</span>(<span class="hljs-string">''</span>),
+        <span class="hljs-built_in">url</span>(<span class="hljs-string">'https://cdn.designly.biz/fonts/deathstar/death_star-webfont.eot?#iefix'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'embedded-opentype'</span>),
+        <span class="hljs-built_in">url</span>(<span class="hljs-string">'https://cdn.designly.biz/fonts/deathstar/death_star-webfont.woff2'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'woff2'</span>),
+        <span class="hljs-built_in">url</span>(<span class="hljs-string">'https://cdn.designly.biz/fonts/deathstar/death_star-webfont.woff'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'woff'</span>),
+        <span class="hljs-built_in">url</span>(<span class="hljs-string">'https://cdn.designly.biz/fonts/deathstar/deathstar.otf'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'opentype'</span>),
+        <span class="hljs-built_in">url</span>(<span class="hljs-string">'https://cdn.designly.biz/fonts/deathstar/death_star-webfont.svg'</span>) <span class="hljs-built_in">format</span>(<span class="hljs-string">'svg'</span>);
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>The CSS could definitely use some fine tuning, including additional breakpoints. The downside to this code is that you have to adjust the CSS if you change the length of the text. But if your text is static then this should work nicely.</p>
+<p>And last but not least, the HTML:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-html hljs xml" data-lang="html"><span class="hljs-tag">&lt;<span class="hljs-name">html</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">"en"</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"robots"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"index, follow"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">name</span>=<span class="hljs-string">"viewport"</span> <span class="hljs-attr">content</span>=<span class="hljs-string">"width=device-width, initial-scale=1, shrink-to-fit=yes"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">link</span> <span class="hljs-attr">rel</span>=<span class="hljs-string">"stylesheet"</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"css/global.css"</span> /&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">main</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">canvas</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"field"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">canvas</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"crawl"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">span</span>&gt;</span>Episode IV<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                A New Hope
+                <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                It is a period of civil war.
+                Rebel spaceships, striking
+                from a hidden base, have won
+                their first victory against
+                the evil Galactic Empire.
+                <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                During the battle, Rebel
+                spies managed to steal secret
+                plans to the Empire's
+                ultimate weapon, the DEATH
+                STAR, an armored space
+                station with enough power to
+                destroy an entire planet.
+                <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-name">br</span> /&gt;</span>
+                Pursued by the Empire's
+                sinister agents, Princess
+                Leia races home aboard her
+                starship, custodian of the
+                stolen plans that can save
+                her people and restore
+                freedom to the galaxy....
+            <span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"overlay"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"js/stars.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>I hope you found this article helpful. You're welcome to use my copy of the Deathstar font from my CDN for non-commercial purposes only. Otherwise, please download and host your own. If you're not sure how to do that, check out <a href="https://designly.biz/blog/post/how-to-use-google-fonts-in-a-way-google-likes-seo" rel="noreferrer noopener" target="_blank">this article</a>.</p>
+<p>You can find the code for this example on <a href="https://github.com/designly1/starwars-example" rel="noreferrer noopener" target="_blank">GitHub</a>. Feel free to download or clone it.</p>
+<p>For more great information about web dev and systems administration, please read the <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Designly Blog</a>. &eth;&#159;&#153;&#143;</p>
+</section>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <div class="share-buttons text-2xl flex gap-4 mx-auto">
+                <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
+                <a
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fcreate-a-star-wars-like-crawl-using-css-and-javascript"
+                    target="_blank"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook text-blue-700"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fcreate-a-star-wars-like-crawl-using-css-and-javascript"
+                    target="_blank"
+                    aria-label="Share on LinkedIn"
+                >
+                    <i class="fab fa-linkedin text-indigo-700"></i>
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fcreate-a-star-wars-like-crawl-using-css-and-javascript" target="_blank">
+                    <i class="fab fa-twitter text-sky-700"></i>
+                </a>
+            </div>
+            <hr />
+            <div class="bg-white dark:bg-zinc-800 border-1 rounded-lg flex flex-col shadow p-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4">
+                    <div class="col-span-1 flex items-center">
+                        <img
+                            src="https://cdn.designly.biz/imgr/jay.jpg?w=200&q=75"
+                            alt="Jay"
+                            width="200"
+                            height="200"
+                            class="rounded-full shadow-md border-4 border-blue-700/20 w-32 h-32 mx-auto"
+                        />
+                    </div>
+                    <div class="col-span-3 px-6 flex flex-col gap-4">
+                        <h3 class="text-2xl font-semibold text-center text-colors">About The Author</h3>
+                        <p class="text-zinc-700 dark:text-zinc-300">
+                            Jay is a full-stack developer, electrical engineer, writer and music producer. He currently
+                            resides in the Madison, WI area.
+                        </p>
+                        <a
+                            href="https://jay.designly.biz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-hover flex gap-2 items-center"
+                        >
+                            <div>Portfolio Site</div>
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-2xl font-bold text-center border-b-2 border-dashed pb-1 text-colors">Comments</h2>
+            <div id="comments" class="text-colors">
+                <!-- Comments will be generated here -->
+                <p>No Comments Yet</p>
+            </div>
+            <button id="btn-post-comment" class="btn btn-primary btn-outline flex gap-2 items-center max-w-md mx-auto">
+                <i class="fas fa-comment-medical"></i>
+                <div>Post Comment</div>
+            </button>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <template id="comment-template" class="text-colors">
+                <div
+                    class="comment flex flex-col gap-4 p-4 border rounded shadow mb-4 bg-white dark:bg-zinc-800 text-colors"
+                >
+                    <div class="flex gap-2 items-center">
+                        <img
+                            class="comment-avatar rounded-full w-10 h-10"
+                            src="/assets/img/pixel-black.png"
+                            width="100"
+                            height="100"
+                            alt="Commenter Avatar"
+                        />
+                        <div class="comment-display-name text-2xl text-cyan-700"></div>
+                    </div>
+                    <p class="comment-text"></p>
+                    <div class="replies ml-4">
+                        <!-- Replies will be generated here -->
+                    </div>
+                    <button class="reply-button mt-2 text-hover flex gap-2 items-center">
+                        <i class="fas fa-comment-dots"></i>
+                        <div>Reply</div>
+                    </button>
+                </div>
+            </template>
+        </article>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl text-hover"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-create-a-verification-code-input-component-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-create-a-verification-code-input-component-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Create a Verification Code Input Component in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create a Verification Code Input Component in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'll show you how to create a robust OTP code input component for React.js, using no other dependencies.</p>
+        </div>
+    </div>
+</a>
+<a href="/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/how-to-disable-body-scroll-when-a-modal-dialog-is-open-in-react-next-js/cover.jpg?w=400&q=75" alt="How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Disable Body Scroll When a Modal Dialog is Open in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, I'll show you how to create a modal dialog overlay and disable the body scroll bars when it is open using Next.js 13 / React.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div>
+<input id="post-id" type="hidden" value="7grpTeazvgpwGARKOHTwdZ" />
+<input id="reply-to" type="hidden" value="" />
+<script>
+    function generateComment(commentData) {
+        const template = document.querySelector("#comment-template");
+        const clone = template.content.cloneNode(true);
+        const displayName = clone.querySelector(".comment-display-name");
+        displayName.textContent = commentData.displayName;
+        const commentAvatar = clone.querySelector(".comment-avatar");
+        commentAvatar.setAttribute("src", commentData.avatar);
+        const commentText = clone.querySelector(".comment-text");
+        commentText.textContent = commentData.comment;
+        const repliesContainer = clone.querySelector(".replies");
+        commentData.replies.forEach((reply) => {
+            const replyElement = generateComment(reply);
+            repliesContainer.appendChild(replyElement);
+        });
+        const replyButton = clone.querySelector(".reply-button");
+        replyButton.addEventListener("click", () => {
+            document.getElementById("reply-to").value = commentData._id;
+            loadUrl("/comment");
+        });
+        return clone;
+    }
+    const fetchComments = async () => {
+        const postId = document.getElementById("post-id").value;
+        try {
+            const result = await fetch(`https://blog-comments.designly.workers.dev/?postId=${postId}`);
+            const comments = await result.json();
+            const commentsContainer = document.querySelector("#comments");
+            if (Array.isArray(comments) && comments.length) {
+                commentsContainer.innerHTML = "";
+                comments.forEach((comment) => {
+                    const commentElement = generateComment(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    setTimeout(async () => {
+        fetchComments();
+        document.getElementById("btn-post-comment").addEventListener("click", () => {
+            loadUrl(`/comment`);
+        });
+    }, 0);
+</script>
+</div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>
