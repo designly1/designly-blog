@@ -109,7 +109,7 @@ class Page
     {
         $dom = new DOMDocument();
         $dom->formatOutput = false;
-        $dom->loadHTML($html);
+        $dom->loadHTML(mb_convert_encoding($html, 'HTML-ENTITIES', 'UTF-8'));
 
         // Format code blocks
         $pres = $dom->getElementsByTagName('pre');
@@ -217,6 +217,7 @@ class Page
 
     public function render()
     {
+        header('Content-Type: text/html; charset=utf-8');
         echo $this->content;
     }
 

@@ -101,6 +101,7 @@ class Helper
 
     static public function render404()
     {
+        http_response_code(404);
         $page = new Page(COMP_DIR . '/404.html', [
             'title' => '404 Not Found',
         ]);

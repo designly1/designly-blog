@@ -215,7 +215,7 @@ Have a great day!
     <span class="hljs-keyword">let</span> info = <span class="hljs-keyword">await</span> transporter.sendMail({
         <span class="hljs-attr">from</span>: adminEmail,
         <span class="hljs-attr">to</span>: recipEmail, <span class="hljs-comment">// list of receivers</span>
-        <span class="hljs-attr">subject</span>: <span class="hljs-string">"Message Received &acirc;&#156;&#148;"</span>, <span class="hljs-comment">// Subject line</span>
+        <span class="hljs-attr">subject</span>: <span class="hljs-string">"Message Received &#10004;"</span>, <span class="hljs-comment">// Subject line</span>
         <span class="hljs-attr">text</span>: sendTxt, <span class="hljs-comment">// plain text body</span>
         <span class="hljs-attr">html</span>: sendHtml, <span class="hljs-comment">// html body</span>
     });
@@ -234,7 +234,7 @@ Have a great day!
     info = <span class="hljs-keyword">await</span> transporter.sendMail({
         <span class="hljs-attr">from</span>: recipEmail,
         <span class="hljs-attr">to</span>: adminEmail, <span class="hljs-comment">// list of receivers</span>
-        <span class="hljs-attr">subject</span>: req.body.subject ? req.body.subject : <span class="hljs-string">"New Message From Website &acirc;&#156;&#148;"</span>, <span class="hljs-comment">// Subject line</span>
+        <span class="hljs-attr">subject</span>: req.body.subject ? req.body.subject : <span class="hljs-string">"New Message From Website &#10004;"</span>, <span class="hljs-comment">// Subject line</span>
         <span class="hljs-attr">text</span>: sendTxt, <span class="hljs-comment">// plain text body</span>
         <span class="hljs-attr">html</span>: sendHtml, <span class="hljs-comment">// html body</span>
     });

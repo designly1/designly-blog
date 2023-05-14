@@ -10379,7 +10379,7 @@ body {
     word-break: keep-all;
   }
   .post-content .blog-post-image {
-    @apply rounded-md shadow-lg cursor-zoom-in hover:opacity-80 transition-all ease-in-out duration-300;
+    @apply rounded-md shadow-lg cursor-zoom-in hover:opacity-80 transition-all ease-in-out duration-300 w-fit;
   }
   hr {
     @apply my-6 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100;

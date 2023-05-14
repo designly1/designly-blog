@@ -1,9 +1,7 @@
 <?php
 $tag = $url[1] ??  null;
 if (!$tag) {
-    http_response_code(404);
-    echo 'Not Found';
-    exit;
+    Helper::render404();
 }
 
 $posts = Helper::getPostsByTagSlug($tag);

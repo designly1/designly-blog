@@ -78,7 +78,7 @@
 <a href="/tag/php">#PHP</a>
 <a href="/tag/nginx">#NGINX</a>
 <a href="/tag/mysql">#MySQL</a>
-<a href="/tag/">#Ubuntu</a>
+<a href="/tag/ubuntu">#Ubuntu</a>
 <a href="/tag/php-fpm">#PHP-FPM</a></div>
                 <img
                     class="rounded-md shadow-lg"
@@ -105,100 +105,100 @@
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
             </section>
-            <section class="post-content flex flex-col gap-6"><p>There are several cloud services these days that have a free-tier for certain cloud services. I&acirc;&#128;&#153;ve tried several. <strong>Amazon Web Services</strong> gives you 700 hours per month free, which is pretty close to free. <strong>Microsoft Azure</strong> gives you a whole year of free services, and then you have to pay (a comparable price to AWS). <strong>Oracle Cloud</strong>, however, by far has the best deal. You can have up to <strong>two</strong> micro-class VPSs free &acirc;&#128;&#148; forever.</p>
+            <section class="post-content flex flex-col gap-6"><p>There are several cloud services these days that have a free-tier for certain cloud services. I&rsquo;ve tried several. <strong>Amazon Web Services</strong> gives you 700 hours per month free, which is pretty close to free. <strong>Microsoft Azure</strong> gives you a whole year of free services, and then you have to pay (a comparable price to AWS). <strong>Oracle Cloud</strong>, however, by far has the best deal. You can have up to <strong>two</strong> micro-class VPSs free &mdash; forever.</p>
 <p>So in this guide, we will be setting up a <strong>NGINX / PHP-FPM</strong> server stack on an <strong>Oracle Cloud</strong> free VPS.</p>
-<h4>Step 1 &acirc;&#128;&#148; Create Your Free VPS Instance</h4>
-<p>First, let&acirc;&#128;&#153;s get set up with a free account. Follow <a href="https://signup.cloud.oracle.com/" rel="noreferrer noopener" target="_blank">this link</a> to get started.</p>
+<h4>Step 1 &mdash; Create Your Free VPS Instance</h4>
+<p>First, let&rsquo;s get set up with a free account. Follow <a href="https://signup.cloud.oracle.com/" rel="noreferrer noopener" target="_blank">this link</a> to get started.</p>
 <p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=1200&amp;q=75" alt="Enter your full name and email address" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-1.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=320&amp;q=75 320w"></p>
-<p>You&acirc;&#128;&#153;ll need to confirm your email address. Once that&acirc;&#128;&#153;s done, you should be able to log in.</p>
-<p>Once you&acirc;&#128;&#153;re at your dashboard, click the <strong>menu button</strong> in the upper left corner and click on <strong>Compute</strong>, then <strong>Instances.</strong></p>
+<p>You&rsquo;ll need to confirm your email address. Once that&rsquo;s done, you should be able to log in.</p>
+<p>Once you&rsquo;re at your dashboard, click the <strong>menu button</strong> in the upper left corner and click on <strong>Compute</strong>, then <strong>Instances.</strong></p>
 <p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=1200&amp;q=75" alt="Click on compute and then instances" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-2.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=320&amp;q=75 320w"></p>
-<p>It may take some time to get to the <strong>instances</strong> dashboard. Once you&acirc;&#128;&#153;re there, click <strong>Create Instance</strong>.</p>
+<p>It may take some time to get to the <strong>instances</strong> dashboard. Once you&rsquo;re there, click <strong>Create Instance</strong>.</p>
 <p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=1200&amp;q=75" alt="Click create instance" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-3.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=320&amp;q=75 320w"></p>
 <p>You can name your VPS whatever you like, in my example, I named mine <em>nginx-server</em>. Leave everything else as-is and then click <strong>edit</strong> on the right-hand side of the <strong>image and shape</strong> section.</p>
 <p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=1200&amp;q=75" alt="Name your instance then click edit under image and shape" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-4.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=320&amp;q=75 320w"></p>
-<p>The default OS image is <strong>Oracle Linux 8</strong> (at the time of this writing). In my example, we&acirc;&#128;&#153;re going to use <strong>Ubuntu 20.04 LTS</strong>.</p>
+<p>The default OS image is <strong>Oracle Linux 8</strong> (at the time of this writing). In my example, we&rsquo;re going to use <strong>Ubuntu 20.04 LTS</strong>.</p>
 <p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=1200&amp;q=75" alt="Click change image" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-5.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=320&amp;q=75 320w"></p>
-<p>Next, scroll down to <strong>Add SSH keys</strong> and make sure <strong>generate a key pair for me</strong> is checked and then click <strong>download private key</strong>. You won&acirc;&#128;&#153;t need the public key as it will automatically be installed on the VPS.</p>
+<p>Next, scroll down to <strong>Add SSH keys</strong> and make sure <strong>generate a key pair for me</strong> is checked and then click <strong>download private key</strong>. You won&rsquo;t need the public key as it will automatically be installed on the VPS.</p>
 <p>Once your key is downloaded click the <strong>Create</strong> button.</p>
 <p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=1200&amp;q=75" alt="Download your Private Key, then click the Create button." class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-7.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=320&amp;q=75 320w"></p>
-<p>You should now see your <strong>VPS instance</strong> listed. Copy the <strong>Public IP</strong> <strong>Address</strong> and create a <strong>hostname</strong> with your DNS / Domain provider. For this example, I&acirc;&#128;&#153;m going to use <strong>your-host.example.com</strong>.</p>
-<h4>Step 2 &acirc;&#128;&#148; Setup Your Firewall</h4>
-<p>Ok, we&acirc;&#128;&#153;re getting there. Inbound port 22 is allowed to the world by default, which you may want to restrict to your own <strong>CIDR</strong> subnet or IP address. In this example, we&acirc;&#128;&#153;re just going to leave port 22 open and also open <strong>ports 80 and 443</strong>.</p>
-<p>In the <strong>search bar</strong> at the top of the dashboard, search for <strong>security groups</strong> and then click <strong>Default Security List for vcn-&acirc;&#128;&brvbar;</strong></p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=1200&amp;q=75" alt="Click Default Security List&acirc;&#128;&brvbar;" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-8.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=320&amp;q=75 320w"></p>
+<p>You should now see your <strong>VPS instance</strong> listed. Copy the <strong>Public IP</strong> <strong>Address</strong> and create a <strong>hostname</strong> with your DNS / Domain provider. For this example, I&rsquo;m going to use <strong>your-host.example.com</strong>.</p>
+<h4>Step 2 &mdash; Setup Your Firewall</h4>
+<p>Ok, we&rsquo;re getting there. Inbound port 22 is allowed to the world by default, which you may want to restrict to your own <strong>CIDR</strong> subnet or IP address. In this example, we&rsquo;re just going to leave port 22 open and also open <strong>ports 80 and 443</strong>.</p>
+<p>In the <strong>search bar</strong> at the top of the dashboard, search for <strong>security groups</strong> and then click <strong>Default Security List for vcn-&hellip;</strong></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=1200&amp;q=75" alt="Click Default Security List&hellip;" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-8.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=320&amp;q=75 320w"></p>
 <p>Scroll down and click <strong>Add Ingress Rules</strong>.</p>
 <p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=1200&amp;q=75" alt="Click Add Ingress Rules." class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-9.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=320&amp;q=75 320w"></p>
-<p>Alright, in the <strong>Source CIDR</strong> field, enter 0.0.0.0/0. If you&acirc;&#128;&#153;re unfamiliar with firewalls, that allows the source IP address to be any address in the world. Alternatively, you could set that to your own IP address or subnet, but on a web server, you probably want the <strong>HTTP</strong> and <strong>HTTPS</strong> ports to be open to the world.</p>
+<p>Alright, in the <strong>Source CIDR</strong> field, enter 0.0.0.0/0. If you&rsquo;re unfamiliar with firewalls, that allows the source IP address to be any address in the world. Alternatively, you could set that to your own IP address or subnet, but on a web server, you probably want the <strong>HTTP</strong> and <strong>HTTPS</strong> ports to be open to the world.</p>
 <p>Now in the <strong>Destination Port Range</strong> enter 80. And in <strong>Description</strong> enter HTTP.</p>
 <p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=1200&amp;q=75" alt="Enter 0.0.0.0/0 in Source CIDR, 80 in Destination Port Range, and HTTP in Description." class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-10.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=320&amp;q=75 320w"></p>
 <p>Now click <strong>+ Another Ingress Rule</strong> and do the same for <strong>port 443 / HTTPS</strong>, and then click <strong>Add Ingress Rules</strong>.</p>
-<h4>Step 3 &acirc;&#128;&#148; Connect to Your VPS and Update</h4>
-<p>Alright! We now have a totally free <strong>Ubuntu</strong> server. Now we need to get connected. If you&acirc;&#128;&#153;re on <strong>MacOS</strong>, you can just open terminal to connect, but if you&acirc;&#128;&#153;re on <strong>Windows</strong>, you&acirc;&#128;&#153;ll need to <strong>enable SSH</strong>. You can find a guide <a href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse" rel="noreferrer noopener" target="_blank">here</a> on how to do just that. Alternatively, you can download the free <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" rel="noreferrer noopener" target="_blank">PUTTY SSH Client</a>.</p>
-<p>If you don&acirc;&#128;&#153;t already have an <strong>SSH Key Pair</strong> create one now by entering:</p>
+<h4>Step 3 &mdash; Connect to Your VPS and Update</h4>
+<p>Alright! We now have a totally free <strong>Ubuntu</strong> server. Now we need to get connected. If you&rsquo;re on <strong>MacOS</strong>, you can just open terminal to connect, but if you&rsquo;re on <strong>Windows</strong>, you&rsquo;ll need to <strong>enable SSH</strong>. You can find a guide <a href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse" rel="noreferrer noopener" target="_blank">here</a> on how to do just that. Alternatively, you can download the free <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" rel="noreferrer noopener" target="_blank">PUTTY SSH Client</a>.</p>
+<p>If you don&rsquo;t already have an <strong>SSH Key Pair</strong> create one now by entering:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ ssh-keygen
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>You can enter a password (recommended) but you don&acirc;&#128;&#153;t have to. Hit enter to place the file in the default location which is /your_home_directory/.ssh.</p>
-<p>Now that that&acirc;&#128;&#153;s done, do the following:</p>
+<p>You can enter a password (recommended) but you don&rsquo;t have to. Hit enter to place the file in the default location which is /your_home_directory/.ssh.</p>
+<p>Now that that&rsquo;s done, do the following:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ <span class="hljs-built_in">cd</span> ~/.ssh&lt;br&gt;&lt;/br&gt;$ mv ~/Downloads/ssh_key.key ./
 $ nano config
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>The above example is for <strong>MacOS</strong>. For <strong>Windows</strong> you should be able to do notepad instead of nano. Also <strong>Windows</strong> uses for path separator, and <strong>MacOS</strong> or other <strong>&acirc;&#128;&#152;IXes</strong> use /.</p>
+<p>The above example is for <strong>MacOS</strong>. For <strong>Windows</strong> you should be able to do notepad instead of nano. Also <strong>Windows</strong> uses for path separator, and <strong>MacOS</strong> or other <strong>&lsquo;IXes</strong> use /.</p>
 <p>Now in the new <strong>config file</strong> copy and paste the following. Change to suit your environment:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">Host host_nickname
   Hostname your-host.example.com
   IdentityFile ~/.ssh/key_key.key
   User ubuntu
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>The nice thing about setting up <strong>host configs</strong> is you don&acirc;&#128;&#153;t have to specify the <strong>key file</strong> every time and you can assign the host a <strong>nickname</strong> that you can use on the command line.</p>
+<p>The nice thing about setting up <strong>host configs</strong> is you don&rsquo;t have to specify the <strong>key file</strong> every time and you can assign the host a <strong>nickname</strong> that you can use on the command line.</p>
 <p>Hit <strong>CTRL-X, Y, Enter</strong> if using <strong>nano</strong> or <strong>CTRL-S</strong> if using <strong>notepad.</strong></p>
-<p>Now let&acirc;&#128;&#153;s connect to our VPS!</p>
+<p>Now let&rsquo;s connect to our VPS!</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ ssh host_nickname
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>Hopefully you are now logged in to your VPS and have a shell prompt. Now we need to update:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo apt-get update; apt-get -y upgrade; apt-get -y dist-upgrade
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>This will take a little time to complete. Next, let&acirc;&#128;&#153;s set our server&acirc;&#128;&#153;s <strong>Fully Qualified Domain Name</strong> or <strong>FQDN</strong>:</p>
+<p>This will take a little time to complete. Next, let&rsquo;s set our server&rsquo;s <strong>Fully Qualified Domain Name</strong> or <strong>FQDN</strong>:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo hostnamectl <span class="hljs-built_in">set</span>-hostname your-host.example.com
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>Now, although we've already setup our <strong>VCN firewall</strong> for the virtual network, we need to update IP Tables from within Ubuntu. You have two options: you can either disable IP tables completely and rely on the subnet firewall, or we can add the allow rules for ports 443 and 80 manually. You could also install a firewall management tool, such as the <strong>Uncomplicated Firewall (UFW)</strong>. Your choice.</p>
-<p><strong>Option 1&acirc;&#128;&#138;-&acirc;&#128;&#138;Remove IP Tables Completely:</strong></p>
+<p><strong>Option 1&#8202;-&#8202;Remove IP Tables Completely:</strong></p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo iptables -P INPUT ACCEPT
 $ sudo iptables -P OUTPUT ACCEPT
 $ sudo iptables -P FORWARD ACCEPT
 $ sudo iptables -F
 $ sudo netfilter-persistent save
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p><strong>Option 2&acirc;&#128;&#138;-&acirc;&#128;&#138;Allow Ports 443 and 80:</strong></p>
+<p><strong>Option 2&#8202;-&#8202;Allow Ports 443 and 80:</strong></p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 80 -j ACCEPT
 $ sudo iptables -I INPUT 6 -m state --state NEW -p tcp --dport 443 -j ACCEPT
 $ sudo netfilter-persistent save
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<h4>Step 4 &acirc;&#128;&#148; Install Server Software</h4>
-<p>Now we&acirc;&#128;&#153;ll install the <strong>NGINX http server</strong>:</p>
+<h4>Step 4 &mdash; Install Server Software</h4>
+<p>Now we&rsquo;ll install the <strong>NGINX http server</strong>:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo apt -y install nginx
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Once that&acirc;&#128;&#153;s done you can test to see if it&acirc;&#128;&#153;s working by entering <a href="http://your-host.example.com/" rel="noreferrer noopener" target="_blank">http://your-host.example.com</a> in your web browser. You should see the default (it works) web page.</p>
-<p>Next let&acirc;&#128;&#153;s install <strong>PHP-FPM</strong>, which is a very fast version of PHP that runs as a daemon. We&acirc;&#128;&#153;ll install the latest version, which is <strong>v8.1</strong> at the time of this writing:</p>
+<p>Once that&rsquo;s done you can test to see if it&rsquo;s working by entering <a href="http://your-host.example.com/" rel="noreferrer noopener" target="_blank">http://your-host.example.com</a> in your web browser. You should see the default (it works) web page.</p>
+<p>Next let&rsquo;s install <strong>PHP-FPM</strong>, which is a very fast version of PHP that runs as a daemon. We&rsquo;ll install the latest version, which is <strong>v8.1</strong> at the time of this writing:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo apt -y install software-properties-common unzip
 $ sudo add-apt-repository ppa:ondrej/php
 $ sudo apt -y install php8.1-fpm
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Let&acirc;&#128;&#153;s see if it&acirc;&#128;&#153;s working:</p>
+<p>Let&rsquo;s see if it&rsquo;s working:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo systemctl status php8.1-fpm
 php8.1-fpm.service - The PHP 8.1 FastCGI Process Manager
 Loaded: loaded (/lib/systemd/system/php8.1-fpm.service; enabled; vendor preset: enabled)
 Active: active (running) since Thu 2021-03-01 16:10:47 UTC; 6s ago
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>Hopefully, you will see the above output.</p>
-<p>Now it&acirc;&#128;&#153;s time to install <strong>Mysql</strong>, which you&acirc;&#128;&#153;re probably going to want:</p>
+<p>Now it&rsquo;s time to install <strong>Mysql</strong>, which you&rsquo;re probably going to want:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo apt -y install mysql-server
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Once that&acirc;&#128;&#153;s done, we need to setup Mysql for production by running:</p>
+<p>Once that&rsquo;s done, we need to setup Mysql for production by running:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo mysql_secure_installation
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>Enter y for the first question if you want to enforce complex passwords, and then set a <strong>root password</strong>. Enter y for the rest of the questions.</p>
-<p>Next we&acirc;&#128;&#153;ll install the <strong>php-mysql</strong> extension:</p>
+<p>Next we&rsquo;ll install the <strong>php-mysql</strong> extension:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo apt -y install php8.1-mysql
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>Now we need to create a Mysql <strong>super user</strong>:</p>
@@ -209,12 +209,12 @@ Active: active (running) since Thu 2021-03-01 16:10:47 UTC; 6s ago
 <span class="hljs-keyword">FLUSH</span> <span class="hljs-keyword">PRIVILEGES</span>;
 quit
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<h4>Step 5 &acirc;&#128;&#148; Configure NGINX</h4>
-<p>First we&acirc;&#128;&#153;ll create a <a href="https://www.sciencedirect.com/topics/computer-science/nonprivileged-user" rel="noreferrer noopener" target="_blank"><strong>non-privileged</strong></a> user to store our public HTML files:</p>
+<h4>Step 5 &mdash; Configure NGINX</h4>
+<p>First we&rsquo;ll create a <a href="https://www.sciencedirect.com/topics/computer-science/nonprivileged-user" rel="noreferrer noopener" target="_blank"><strong>non-privileged</strong></a> user to store our public HTML files:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo adduser web
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>You can enter the <a href="https://www.geeksforgeeks.org/finger-command-in-linux-with-examples/#:~:text=Finger%20command%20is%20a%20user,cases%20their%20email%20address%20even." rel="noreferrer noopener" target="_blank"><strong>finger</strong></a> information if you like but it&acirc;&#128;&#153;s optional.</p>
-<p>You&acirc;&#128;&#153;ll probably want to import your <strong>public key</strong> that you created with ssh-keygen:</p>
+<p>You can enter the <a href="https://www.geeksforgeeks.org/finger-command-in-linux-with-examples/#:~:text=Finger%20command%20is%20a%20user,cases%20their%20email%20address%20even." rel="noreferrer noopener" target="_blank"><strong>finger</strong></a> information if you like but it&rsquo;s optional.</p>
+<p>You&rsquo;ll probably want to import your <strong>public key</strong> that you created with ssh-keygen:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo su web
 $ <span class="hljs-built_in">cd</span>
 $ ssh-keygen
@@ -223,7 +223,7 @@ $ nano authorized_keys
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>Now copy and paste your <em>id_rsa.pub</em> contents from your .ssh directory on your local PC into the <em>authorized_keys</em> file.</p>
 <p>Hit <strong>CTRL-X, Y, Enter</strong> to save.</p>
-<p>Ok, let&acirc;&#128;&#153;s create some directories for our <strong>server root</strong>:</p>
+<p>Ok, let&rsquo;s create some directories for our <strong>server root</strong>:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ <span class="hljs-built_in">cd</span>
 $ mkdir wwwroot
 $ <span class="hljs-built_in">cd</span> wwwroot
@@ -236,7 +236,7 @@ $ nano index.php
   phpinfo();
 <span class="hljs-meta">?&gt;</span>
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Now let&acirc;&#128;&#153;s create a directory for <strong>PHPMyAdmin</strong>, a web-based Mysql admin tool:</p>
+<p>Now let&rsquo;s create a directory for <strong>PHPMyAdmin</strong>, a web-based Mysql admin tool:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ <span class="hljs-built_in">cd</span>
 $ wget https://files.phpmyadmin.net/phpMyAdmin/5.1.3/phpMyAdmin-5.1.3-all-languages.zip
 $ unzip phpMyAdmin-5.1.3-all-languages.zip
@@ -244,7 +244,7 @@ $ mv phpMyAdmin-5.1.3-all-languages pma
 $ rm -f phpMyAdmin-5.1.3-all-languages.zip
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>Save the file and then hit <strong>CTRL-D</strong> to exit the <strong>web</strong> user session.</p>
-<p>Now we need to configure NGINX. First we&acirc;&#128;&#153;ll set up cache control:</p>
+<p>Now we need to configure NGINX. First we&rsquo;ll set up cache control:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ <span class="hljs-built_in">cd</span> /etc/nginx/conf.d
 $ sudo nano expires.conf
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
@@ -257,7 +257,7 @@ $ sudo nano expires.conf
     ~image/                    max;
 }
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Again, <strong>CTRL-X, Y, Enter</strong> to save. Now we&acirc;&#128;&#153;ll create a <strong>virtual host</strong> configuration:</p>
+<p>Again, <strong>CTRL-X, Y, Enter</strong> to save. Now we&rsquo;ll create a <strong>virtual host</strong> configuration:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ <span class="hljs-built_in">cd</span> /etc/nginx/sites-enabled
 $ sudo rm -f default
 $ <span class="hljs-built_in">cd</span> ../sites-available
@@ -284,7 +284,7 @@ $ sudo nano your-host.example.com
 }
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>The above configuration will route any files not found to index.php, which is usually what you want.</p>
-<p>Next, we&acirc;&#128;&#153;ll create a configuration for <strong>PHPMyAdmin</strong>:</p>
+<p>Next, we&rsquo;ll create a configuration for <strong>PHPMyAdmin</strong>:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo nano pma.your-host.example.com
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>Copy and paste the following configuration:</p>
@@ -307,7 +307,7 @@ $ sudo nano your-host.example.com
     }
 }
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Now let&acirc;&#128;&#153;s enable the configurations by creating <strong>symbolic links</strong>:</p>
+<p>Now let&rsquo;s enable the configurations by creating <strong>symbolic links</strong>:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ <span class="hljs-built_in">cd</span> ../sites-enabled
 $ sudo ln -s /etc/nginx/sites-available/your-host.example.com .
 $ sudo ln -s /etc/nginx/sites-available/pma.your-host.example.com .
@@ -316,16 +316,16 @@ $ sudo ln -s /etc/nginx/sites-available/pma.your-host.example.com .
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo systemctl reload nginx
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>Now refresh your your-host.example.com page. You should see the <strong>phpinfo</strong> page.</p>
-<h4>Step 6 &acirc;&#128;&#148; Setup SSL</h4>
-<p>In my example, we&acirc;&#128;&#153;re going to use <strong>certbot</strong>, a free SSL certificate tool provided by the <a href="https://www.eff.org/" rel="noreferrer noopener" target="_blank"><strong>Electronic Frontier Foundation</strong></a>:</p>
+<h4>Step 6 &mdash; Setup SSL</h4>
+<p>In my example, we&rsquo;re going to use <strong>certbot</strong>, a free SSL certificate tool provided by the <a href="https://www.eff.org/" rel="noreferrer noopener" target="_blank"><strong>Electronic Frontier Foundation</strong></a>:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ sudo snap install core; sudo snap refresh core
 $ sudo snap install --classic certbot
 $ sudo certbot --nginx
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Certbot will ask you to enter an admin email address. This will be your login identifier for <a href="https://letsencrypt.org/" rel="noreferrer noopener" target="_blank"><strong>Let&acirc;&#128;&#153;s Encrypt</strong></a>. Next, certbot will ask you if you want to receive periodic emails from the EFF. This is totally up to you.</p>
+<p>Certbot will ask you to enter an admin email address. This will be your login identifier for <a href="https://letsencrypt.org/" rel="noreferrer noopener" target="_blank"><strong>Let&rsquo;s Encrypt</strong></a>. Next, certbot will ask you if you want to receive periodic emails from the EFF. This is totally up to you.</p>
 <p>Next you should see a list of virtual hosts that are configured in NGINX. In this example, we only have two: your-host.example.com and pma.your-host.example.com. You can just hit enter to select them all. Certbot will then do the following:</p>
 <ul>
-<li>Create a hash file in each virtual host&acirc;&#128;&#153;s root directory</li>
+<li>Create a hash file in each virtual host&rsquo;s root directory</li>
 <li>Verify those hashes via HTTP</li>
 <li>Install the newly issues SSL certificates</li>
 <li>Automatically configure your NGINX config files for SSL</li>

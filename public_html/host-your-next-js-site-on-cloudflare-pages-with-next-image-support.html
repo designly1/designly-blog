@@ -125,7 +125,7 @@
     <span class="hljs-keyword">return</span> <span class="hljs-string">`https://cfnext.designly.biz/cdn-cgi/image/<span class="hljs-subst">${params.join(<span class="hljs-string">','</span>)}</span>/<span class="hljs-subst">${src}</span>`</span>
 }
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Pretty basic. It simply maps the received parameters from Next/Image to an API endpoint. The domain name of the URL is the custom domain I assigned to the <a href="https://cfnext.designly.biz" rel="noreferrer noopener" target="_blank">demo project</a> I created for this tutorial. The <code>cdn-cgi</code> route is automatically available for any deployed CloudFlare Pages site! &eth;&#159;&#152;&#129;</p>
+<p>Pretty basic. It simply maps the received parameters from Next/Image to an API endpoint. The domain name of the URL is the custom domain I assigned to the <a href="https://cfnext.designly.biz" rel="noreferrer noopener" target="_blank">demo project</a> I created for this tutorial. The <code>cdn-cgi</code> route is automatically available for any deployed CloudFlare Pages site! &#128513;</p>
 <p>Next, we need to tell Next.js to use this as the default loader for all <code>&lt;Image&gt;</code> components:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">// next.config.js</span>
 <span class="hljs-comment">/** <span class="hljs-doctag">@type <span class="hljs-type">{import('next').NextConfig}</span> </span>*/</span>

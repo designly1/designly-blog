@@ -73,7 +73,7 @@
         <article class="flex flex-col gap-10">
             <section class="post-header flex flex-col gap-4">
                 <h1 class="text-colors text-xl md:text-3xl font-bold">How to Create a React-Native App With Tailwind (Nativewind) and Google Fonts</h1>
-                <div class="flex gap-2 items-center tag-list"><a href="/tag/">#UI / UX</a>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/ui-ux">#UI / UX</a>
 <a href="/tag/react-native">#React Native</a>
 <a href="/tag/tailwind-css">#Tailwind CSS</a>
 <a href="/tag/mobile-development">#Mobile Development</a></div>
@@ -126,31 +126,31 @@ npm i --save-dev tailwindcss
 <p>Now edit the <code>tailwind.config.js</code> file to look like this:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-comment">/** <span class="hljs-doctag">@type <span class="hljs-type">{import('tailwindcss').Config}</span> </span>*/</span>
 <span class="hljs-built_in">module</span>.exports = {
-&Acirc;&nbsp; <span class="hljs-attr">content</span>: [
-&Acirc;&nbsp; &Acirc;&nbsp; <span class="hljs-string">"./App.{js,jsx,ts,tsx}"</span>,
-&Acirc;&nbsp; &Acirc;&nbsp; <span class="hljs-string">"./screens/**/*.{js,jsx,ts,tsx}"</span>,
-&Acirc;&nbsp; &Acirc;&nbsp; <span class="hljs-string">"./components/**/*.{js,jsx,ts,tsx}"</span>,
-&Acirc;&nbsp; ],
-&Acirc;&nbsp; <span class="hljs-attr">theme</span>: {
-&Acirc;&nbsp; &Acirc;&nbsp; <span class="hljs-attr">extend</span>: {
-&Acirc;&nbsp; &Acirc;&nbsp; &Acirc;&nbsp; <span class="hljs-attr">fontFamily</span>: {
-&Acirc;&nbsp; &Acirc;&nbsp; &Acirc;&nbsp; &Acirc;&nbsp; <span class="hljs-string">'geo'</span>: <span class="hljs-string">'Georama_400Regular'</span>
-&Acirc;&nbsp; &Acirc;&nbsp; &Acirc;&nbsp; }
-&Acirc;&nbsp; &Acirc;&nbsp; },
-&Acirc;&nbsp; },
-&Acirc;&nbsp; <span class="hljs-attr">plugins</span>: [],
+&nbsp; <span class="hljs-attr">content</span>: [
+&nbsp; &nbsp; <span class="hljs-string">"./App.{js,jsx,ts,tsx}"</span>,
+&nbsp; &nbsp; <span class="hljs-string">"./screens/**/*.{js,jsx,ts,tsx}"</span>,
+&nbsp; &nbsp; <span class="hljs-string">"./components/**/*.{js,jsx,ts,tsx}"</span>,
+&nbsp; ],
+&nbsp; <span class="hljs-attr">theme</span>: {
+&nbsp; &nbsp; <span class="hljs-attr">extend</span>: {
+&nbsp; &nbsp; &nbsp; <span class="hljs-attr">fontFamily</span>: {
+&nbsp; &nbsp; &nbsp; &nbsp; <span class="hljs-string">'geo'</span>: <span class="hljs-string">'Georama_400Regular'</span>
+&nbsp; &nbsp; &nbsp; }
+&nbsp; &nbsp; },
+&nbsp; },
+&nbsp; <span class="hljs-attr">plugins</span>: [],
 }
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>Tailwind needs to know which directories to traverse to compile the stylesheets. I use a <code>screens</code> directory for screen components and a <code>components</code> directory for sub-components in the RN projects. Also, not that I've added a custom class under <code>theme</code> for the Google font I intend to use.</p>
 <p>One last thing we need to do to configure Tailwind is add the babel plugin to <code>babel.config.js</code> file:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-built_in">module</span>.exports = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">api</span>) </span>{
-&Acirc;&nbsp; api.cache(<span class="hljs-literal">true</span>);
-&Acirc;&nbsp; <span class="hljs-keyword">return</span> {
-&Acirc;&nbsp; &Acirc;&nbsp; <span class="hljs-attr">presets</span>: [<span class="hljs-string">'babel-preset-expo'</span>],
-&Acirc;&nbsp; &Acirc;&nbsp; <span class="hljs-attr">plugins</span>: [
-&Acirc;&nbsp; &Acirc;&nbsp; &Acirc;&nbsp; <span class="hljs-string">'nativewind/babel'</span>,
-&Acirc;&nbsp; &Acirc;&nbsp; ],
-&Acirc;&nbsp; };
+&nbsp; api.cache(<span class="hljs-literal">true</span>);
+&nbsp; <span class="hljs-keyword">return</span> {
+&nbsp; &nbsp; <span class="hljs-attr">presets</span>: [<span class="hljs-string">'babel-preset-expo'</span>],
+&nbsp; &nbsp; <span class="hljs-attr">plugins</span>: [
+&nbsp; &nbsp; &nbsp; <span class="hljs-string">'nativewind/babel'</span>,
+&nbsp; &nbsp; ],
+&nbsp; };
 };
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>That's it! Super easy. Now let's get on with programming our app.</p>
