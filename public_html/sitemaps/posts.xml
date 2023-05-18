@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
+    <loc>https://blog.designly.biz/animating-the-web-route-transitions-in-next-js-with-framer-motion</loc>
+    <image:image>
+      <image:loc>https://cdn.designly.biz/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.designly.biz/enhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form</loc>
+    <image:image>
+      <image:loc>https://cdn.designly.biz/blog_files/enhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form/cover.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://blog.designly.biz/easy-dropdown-menus-with-next-js-and-tailwind-css</loc>
     <image:image>
       <image:loc>https://cdn.designly.biz/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg</image:loc>

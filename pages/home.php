@@ -1,8 +1,11 @@
 <?php
 
 $slug = $url[0] ?? null;
+$posts = [];
+$cards = [];
+
 if ($slug) {
-    $cards = getCards();
+    fetchPosts();
     $url = BLOG_BASE_URL . '/' . $slug;
     $post = json_decode(Helper::getUtf8($url), true);
     if (empty($post)) {
@@ -15,11 +18,14 @@ if ($slug) {
     $page = new Page(COMP_DIR . '/post.html', $data);
     $page->render();
 } else {
-    $cards = getCards();
+    fetchPosts();
+    $tags = Helper::getAllUniqueTags($posts);
+    $tagList = Helper::buildTagList($tags);
     $data = [
         'PAGE_TITLE' => 'Designly Blog',
         'POSTS' => implode("\n", $cards),
         'description' => 'Designly Web Developer Blog - articles & tutorials about full-stack development, design, and technology',
+        'tagList' => $tagList,
     ];
     try {
         $page = new Page(COMP_DIR . '/home.html', $data);
@@ -30,8 +36,9 @@ if ($slug) {
     }
 }
 
-function getCards()
+function fetchPosts()
 {
+    global $posts, $cards;
     $url = BLOG_BASE_URL;
     $posts = json_decode(Helper::getUtf8($url), true);
     if (empty($posts)) {

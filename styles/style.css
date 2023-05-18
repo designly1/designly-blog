@@ -10329,6 +10329,291 @@ body {
   .tag-list a:nth-of-type(5) {
     @apply text-orange-700 dark:text-orange-500;
   }
+  .tag-list a:nth-of-type(6) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(7) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(8) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(9) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(10) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(11) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(12) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(13) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(14) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(15) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(16) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(17) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(18) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(19) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(20) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(21) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(22) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(23) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(24) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(25) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(26) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(27) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(28) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(29) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(30) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(31) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(32) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(33) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(34) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(35) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(36) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(37) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(38) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(39) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(40) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(41) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(42) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(43) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(44) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(45) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(46) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(47) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(48) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(49) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(50) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(51) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(52) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(53) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(54) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(55) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(56) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(57) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(58) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(59) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(60) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(61) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(62) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(63) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(64) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(65) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(66) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(67) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(68) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(69) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(70) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(71) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(72) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(73) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(74) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(75) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(76) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(77) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(78) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(79) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(80) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(81) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(82) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(83) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(84) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(85) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(86) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(87) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(88) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(89) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(90) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(91) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(92) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(93) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(94) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(95) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
+  .tag-list a:nth-of-type(96) {
+    @apply text-fuchsia-700 dark:text-fuchsia-500;
+  }
+  .tag-list a:nth-of-type(97) {
+    @apply text-indigo-700 dark:text-indigo-500;
+  }
+  .tag-list a:nth-of-type(98) {
+    @apply text-blue-700 dark:text-blue-500;
+  }
+  .tag-list a:nth-of-type(99) {
+    @apply text-green-700 dark:text-green-500;
+  }
+  .tag-list a:nth-of-type(100) {
+    @apply text-orange-700 dark:text-orange-500;
+  }
   header a {
     @apply dark:text-zinc-50 text-white dark:hover:text-blue-400 hover:text-zinc-200 hover-trans;
   }

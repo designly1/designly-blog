@@ -244,4 +244,35 @@ class Helper
 
         return $filteredPosts;
     }
+
+    static public function getAllUniqueTags($posts)
+    {
+        $uniqueTags = [];
+
+        foreach ($posts as $post) {
+            $tagsCollection = $post['tagsCollection']['items'];
+
+            foreach ($tagsCollection as $tag) {
+                $tagSlug = $tag['slug'];
+
+                if (!isset($uniqueTags[$tagSlug])) {
+                    $tagName = $tag['tag'];
+                    $uniqueTags[$tagSlug] = $tagName;
+                }
+            }
+        }
+
+        asort($uniqueTags);
+
+        return $uniqueTags;
+    }
+
+    static public function buildTagList($tags)
+    {
+        $tagsList = [];
+        foreach ($tags as $slug => $name) {
+            $tagsList[] = "<a href=\"/tag/$slug\">#$name</a>";
+        }
+        return implode("\n", $tagsList);
+    }
 }

@@ -42,10 +42,15 @@ try {
 
     // Create index page
     doLog('Building index page');
+    // Get tags list
+    $tags = Helper::getAllUniqueTags($json);
+    $tagList = Helper::buildTagList($tags);
+    // Generate page
     $thisUrl = 'https://blog.designly.biz';
     $page = new Page(COMP_DIR . '/home.html', [
         'PAGE_TITLE' => 'Blog',
         'POSTS' => implode("\n", $postCards),
+        'tagList' => $tagList,
     ]);
     $page->write(PUB_DIR . '/index.html');
 

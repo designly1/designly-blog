@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Enhancing Form Usability with Framer Motion: A Guide to Animated, Chunked Form Transitions | Designly</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="Enhance form UX with Framer Motion: Break forms into chunks, animate transitions, and improve user experience for seamless interaction." />
+        <meta property="og:title" content="Enhancing Form Usability with Framer Motion: A Guide to Animated, Chunked Form Transitions" />
+        <meta property="og:description" content="Enhance form UX with Framer Motion: Break forms into chunks, animate transitions, and improve user experience for seamless interaction." />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/enhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form/cover.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz/enhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <article class="flex flex-col gap-10">
+            <section class="post-header flex flex-col gap-4">
+                <h1 class="text-colors text-xl md:text-3xl font-bold">Enhancing Form Usability with Framer Motion: A Guide to Animated, Chunked Form Transitions</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/ui-ux">#UI / UX</a>
+<a href="/tag/nextjs">#Next.js</a>
+<a href="/tag/forms">#Forms</a>
+<a href="/tag/framer-motion">#Framer Motion</a></div>
+                <img
+                    class="rounded-md shadow-lg"
+                    src="https://cdn.designly.biz/imgr/blog_files/enhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/enhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form/cover.jpg?w=1024&q=75 1024w, https://cdn.designly.biz/imgr/blog_files/enhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/enhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form/cover.jpg?w=320&q=75 320w"
+                    alt="Enhancing Form Usability with Framer Motion: A Guide to Animated, Chunked Form Transitions"
+                    width="1200"
+                    height="675"
+                />
+                <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </section>
+            <section class="post-content flex flex-col gap-6"><p>In today's digitally-driven world, an efficient and engaging user experience (UX) is paramount. The cornerstone of this experience often comes down to one pivotal aspect: form design. Forms are the primary medium for users to interact with online platforms, from signing up for a service to making a purchase. However, if not designed thoughtfully, forms can be daunting, leading to user drop-off and missed opportunities.</p>
+<p>The key to mitigating this issue lies in breaking down your forms into smaller, manageable sections, or 'chunks'. Chunking information is a proven cognitive strategy that leverages the human brain's ability to more easily process and remember information presented in bite-sized units. When it comes to forms, presenting information in chunks can reduce cognitive load, make the process seem less overwhelming, and ultimately increase completion rates.</p>
+<p>But how can we make this chunking process more engaging and fluid? This is where Framer Motion comes into play. As a popular open-source motion library, Framer Motion provides a comprehensive platform for infusing your React / Next.js applications with smooth, captivating animations.</p>
+<p>In this article, we'll delve into the power of 'chunking' your forms and enhancing this process with the dynamic capabilities of Framer Motion. By animating transitions between form sections, we can create a more engaging, less intimidating experience for users. Through this approach, we aim to improve form completion rates, reduce user fatigue, and ultimately, elevate the overall UX of your applications.</p>
+<p>The project demo site and GitHub repo for this tutorial can be found at the bottom of the page.</p>
+<p>The demo project I created for this tutorial is a mock registration form for an online course. It's very basic and its lacking in any serious validation logic. Our form will be broken into the following views:</p>
+<ol>
+<li>Contact Information View</li>
+<li>Course Selection View</li>
+<li>Payment View</li>
+<li>Payment Loading View</li>
+<li>Confirmation View</li>
+</ol>
+<h2>Setting Up Our Project</h2>
+<p>This project uses the very latest version of Next.js 13, TypeScript and TailwindCSS + DaisyUI: a component library plugin for Tailwind. I highly recommend it. It's totally customizable, theme-able and really speeds up UI development.</p>
+<p>This project also uses:</p>
+<ol>
+<li>framer-motion - For animating slide transitions</li>
+<li>react-icons - I mean, you gotta have icons!</li>
+<li>react-input-mask - for formatting inputs</li>
+<li>react-select - a very nice and simple multi-select component</li>
+</ol>
+<p>Also, we're going to be using the new app router in Next.js 13... yes, it's time. It's not quite ready for production, in my opinion, but it's very close--and all the major vendors are starting to catch up as well. I think anyone planning to start a new Next.js project at this time should seriously consider using the app router. It's a massive improvement in performance. Our app, however, really won't benefit as it is all client-side code.</p>
+<h2>Create a Form Context</h2>
+<p>Because our form is being broken into smaller component chunks, we need a way to tie all the state data together. To do that, we'll create a React context wrapper that will handle all functions and data related to our form:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-comment">/**
+ * We must use the 'use client' directive
+ * for ensure that our code is sent
+ * to the browser to be executed. All components
+ * in the app router are server components
+ * by default!
+ */</span>
+<span class="hljs-string">'use client'</span>
+<span class="hljs-keyword">import</span> React, { createContext, useState, useContext, ReactNode } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-comment">// Import our types</span>
+<span class="hljs-keyword">import</span> { T_RegistrationForm, T_RegistrationFormContext, T_FormProviderProps, T_CurrentView, T_SyllabusEvent } <span class="hljs-keyword">from</span> <span class="hljs-string">'@/components/RegistrationForm/RegistrationForm'</span>;
+<span class="hljs-comment">// Initialize our form data and errors</span>
+<span class="hljs-keyword">const</span> initialFormData = {
+    <span class="hljs-attr">firstName</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">lastName</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">email</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">phone</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">courses</span>: [],
+    <span class="hljs-attr">ccNumber</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">ccExp</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">ccCvv</span>: <span class="hljs-string">""</span>,
+};
+<span class="hljs-keyword">const</span> initialFormErrors = {
+    <span class="hljs-attr">firstName</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">lastName</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">email</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">phone</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">courses</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">ccNumber</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">ccExp</span>: <span class="hljs-string">""</span>,
+    <span class="hljs-attr">ccCvv</span>: <span class="hljs-string">""</span>,
+};
+<span class="hljs-comment">// List of available views</span>
+<span class="hljs-keyword">const</span> views = [<span class="hljs-string">"contact"</span>, <span class="hljs-string">"syllabus"</span>, <span class="hljs-string">"payment"</span>, <span class="hljs-string">"loading"</span>, <span class="hljs-string">"confirmation"</span>];
+<span class="hljs-comment">// Initialize our form context</span>
+<span class="hljs-keyword">const</span> RegistrationFormContext = createContext&lt;T_RegistrationFormContext | <span class="hljs-literal">undefined</span>&gt;(<span class="hljs-literal">undefined</span>);
+<span class="hljs-comment">/** This is our form provider component. It will wrap our entire app,
+ * and provide us with the form data and methods.
+ */</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> RegistrationFormProvider: React.FC&lt;T_FormProviderProps&gt; = <span class="hljs-function">(<span class="hljs-params">{ children }</span>) =&gt;</span> {
+    <span class="hljs-keyword">const</span> [formData, setFormData] = useState&lt;T_RegistrationForm&gt;(initialFormData);
+    <span class="hljs-keyword">const</span> [formErrors, setFormErrors] = useState(initialFormErrors);
+    <span class="hljs-keyword">const</span> [currentView, setCurrentView] = useState&lt;T_CurrentView&gt;(<span class="hljs-string">"contact"</span>);
+    <span class="hljs-comment">// This function updates our form state</span>
+    <span class="hljs-keyword">const</span> handleFormChange = <span class="hljs-function">(<span class="hljs-params">e: React.ChangeEvent&lt;HTMLInputElement&gt; | T_SyllabusEvent</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> { name, value } = e.target;
+        setFormData(<span class="hljs-function">(<span class="hljs-params">prevFormData</span>) =&gt;</span> ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    }
+    <span class="hljs-comment">// This function updates our form state for the course select</span>
+    <span class="hljs-keyword">const</span> handleSelectChange = <span class="hljs-function">(<span class="hljs-params">name: string, value: string[]</span>) =&gt;</span> {
+        setFormData(<span class="hljs-function">(<span class="hljs-params">prevFormData</span>) =&gt;</span> ({
+            ...prevFormData,
+            [name]: value,
+        }));
+    };
+    <span class="hljs-comment">// A very basic form validation function.</span>
+    <span class="hljs-keyword">const</span> validateContactView = (): <span class="hljs-function"><span class="hljs-params">boolean</span> =&gt;</span> {
+        <span class="hljs-keyword">let</span> errors = { ...initialFormErrors };
+        <span class="hljs-keyword">let</span> isValid = <span class="hljs-literal">true</span>;
+        <span class="hljs-comment">// Validate first name</span>
+        <span class="hljs-keyword">if</span> (!formData.firstName.trim()) {
+            errors.firstName = <span class="hljs-string">"First name is required"</span>;
+            isValid = <span class="hljs-literal">false</span>;
+        }
+        <span class="hljs-comment">// Validate last name</span>
+        <span class="hljs-keyword">if</span> (!formData.lastName.trim()) {
+            errors.lastName = <span class="hljs-string">"Last name is required"</span>;
+            isValid = <span class="hljs-literal">false</span>;
+        }
+        <span class="hljs-comment">// Validate email</span>
+        <span class="hljs-keyword">const</span> emailRegex = <span class="hljs-regexp">/^[^\s@]+@[^\s@]+\.[^\s@]+$/</span>;
+        <span class="hljs-keyword">if</span> (!emailRegex.test(formData.email)) {
+            errors.email = <span class="hljs-string">"Email is invalid"</span>;
+            isValid = <span class="hljs-literal">false</span>;
+        }
+        <span class="hljs-comment">// Validate phone</span>
+        <span class="hljs-comment">// This is a very basic check, just to see if anything is entered.</span>
+        <span class="hljs-keyword">if</span> (!formData.phone.trim()) {
+            errors.phone = <span class="hljs-string">"Phone number is required"</span>;
+            isValid = <span class="hljs-literal">false</span>;
+        }
+        setFormErrors(errors);
+        <span class="hljs-keyword">return</span> isValid;
+    }
+    <span class="hljs-comment">/**
+     * This function validates the current view
+     * before moving to the next view.
+     */</span>
+    <span class="hljs-keyword">const</span> validateCurrentView = (): <span class="hljs-function"><span class="hljs-params">boolean</span> =&gt;</span> {
+        <span class="hljs-keyword">if</span> (currentView === <span class="hljs-string">"contact"</span>) {
+            <span class="hljs-keyword">return</span> validateContactView();
+        }
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Add validation for other views</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    }
+    <span class="hljs-comment">// Advances to the next view</span>
+    <span class="hljs-keyword">const</span> nextView = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> currentViewIndex = views.indexOf(currentView);
+        <span class="hljs-keyword">if</span> (validateCurrentView() &amp;&amp; currentViewIndex &lt; views.length - <span class="hljs-number">1</span>) {
+            setCurrentView(views[currentViewIndex + <span class="hljs-number">1</span>] <span class="hljs-keyword">as</span> T_CurrentView);
+        }
+    }
+    <span class="hljs-comment">// Goes back to the previous view</span>
+    <span class="hljs-keyword">const</span> previousView = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        <span class="hljs-keyword">const</span> currentViewIndex = views.indexOf(currentView);
+        <span class="hljs-keyword">if</span> (currentViewIndex &gt; <span class="hljs-number">0</span>) {
+            setCurrentView(views[currentViewIndex - <span class="hljs-number">1</span>] <span class="hljs-keyword">as</span> T_CurrentView);
+        }
+    }
+    <span class="hljs-comment">// Resets the form, errors and returns to contact view</span>
+    <span class="hljs-keyword">const</span> resetForm = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        setFormData(initialFormData);
+        setFormErrors(initialFormErrors);
+        setCurrentView(<span class="hljs-string">"contact"</span>);
+    }
+    <span class="hljs-comment">/**
+     * This is our context object.
+     * This will be passed down to our children.
+     * All objects and functions you want to be
+     * available to all components should be
+     * included here.
+     */</span>
+    <span class="hljs-keyword">const</span> context = {
+        formData,
+        setFormData,
+        formErrors,
+        handleFormChange,
+        handleSelectChange,
+        currentView,
+        setCurrentView,
+        nextView,
+        previousView,
+        resetForm,
+    }
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">RegistrationFormContext.Provider</span> <span class="hljs-attr">value</span>=<span class="hljs-string">{context}</span> &gt;</span>
+            {children}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">RegistrationFormContext.Provider</span>&gt;</span></span>
+    );
+};
+<span class="hljs-comment">// This hook will be used to access our form context</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> useRegistrationForm = (): <span class="hljs-function"><span class="hljs-params">T_RegistrationFormContext</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> context = useContext(RegistrationFormContext);
+    <span class="hljs-keyword">if</span> (!context) {
+        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">"useRegistrationForm must be used within a RegistrationFormContext"</span>);
+    }
+    <span class="hljs-keyword">return</span> context;
+};
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>As you can see, this context handles not just managing our form state, but also manages our current view, validation and navigation as well. Note: for sake of keeping this article sane in length, I've left out the type declarations file. You can find that <a href="https://github.com/designly1/next-framer-form-example/blob/master/src/components/RegistrationForm/RegistrationForm.d.ts" rel="noreferrer noopener" target="_blank">here</a>.</p>
+<h2>Building Our Components</h2>
+<p>First, we need create our main form component and wrap it in our context provider.</p>
+<p>Here's our main <code>page.tsx</code> file:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-keyword">import</span> RegistrationForm <span class="hljs-keyword">from</span> <span class="hljs-string">"@/components/RegistrationForm"</span>;
+<span class="hljs-keyword">import</span> { RegistrationFormProvider } <span class="hljs-keyword">from</span> <span class="hljs-string">"@/contexts/RegistrationFormContext"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Home</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"flex min-h-screen flex-col items-center justify-around"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">RegistrationFormProvider</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">RegistrationForm</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">RegistrationFormProvider</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span>&gt;</span></span>
+  );
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Pretty self-explanatory. And now for our main form component:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-string">"use client"</span>;
+<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+<span class="hljs-keyword">import</span> { AnimatePresence } <span class="hljs-keyword">from</span> <span class="hljs-string">"framer-motion"</span>;
+<span class="hljs-comment">// Import our view sub-components</span>
+<span class="hljs-keyword">import</span> ContactView <span class="hljs-keyword">from</span> <span class="hljs-string">"./ContactView"</span>;
+<span class="hljs-keyword">import</span> SyllabusView <span class="hljs-keyword">from</span> <span class="hljs-string">"./SyllabusView"</span>;
+<span class="hljs-keyword">import</span> PaymentView <span class="hljs-keyword">from</span> <span class="hljs-string">"./PaymentView"</span>;
+<span class="hljs-keyword">import</span> LoadingView <span class="hljs-keyword">from</span> <span class="hljs-string">"./LoadingView"</span>;
+<span class="hljs-keyword">import</span> ConfirmationView <span class="hljs-keyword">from</span> <span class="hljs-string">"./ConfirmationView"</span>;
+<span class="hljs-comment">// Icons</span>
+<span class="hljs-keyword">import</span> { FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-icons/fa'</span>
+<span class="hljs-keyword">import</span> { BsCreditCard2BackFill } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-icons/bs'</span>
+<span class="hljs-comment">// Hooks</span>
+<span class="hljs-keyword">import</span> { useRegistrationForm } <span class="hljs-keyword">from</span> <span class="hljs-string">"@/contexts/RegistrationFormContext"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">RegistrationForm</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-comment">// Destructure our registration form context</span>
+    <span class="hljs-keyword">const</span> { currentView, setCurrentView, previousView, nextView } = useRegistrationForm();
+    <span class="hljs-comment">/**
+     * We only include our interactive views here.
+     * Our buttons will be conditionally rendered based on the current view.
+     */</span>
+    <span class="hljs-keyword">const</span> viewsOrder = [<span class="hljs-string">"contact"</span>, <span class="hljs-string">"syllabus"</span>, <span class="hljs-string">"payment"</span>];
+    <span class="hljs-comment">// Logic for handling navigation</span>
+    <span class="hljs-keyword">const</span> isFirstView = currentView === viewsOrder[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">const</span> isLastView = currentView === viewsOrder[viewsOrder.length - <span class="hljs-number">1</span>];
+    <span class="hljs-keyword">const</span> isLoadingView = currentView === <span class="hljs-string">"loading"</span>;
+    <span class="hljs-keyword">const</span> isConfirmationView = currentView === <span class="hljs-string">"confirmation"</span>;
+    <span class="hljs-comment">// Payment action handler - fake API call</span>
+    <span class="hljs-keyword">const</span> handlePayment = <span class="hljs-keyword">async</span> () =&gt; {
+        setCurrentView(<span class="hljs-string">"loading"</span>);
+        <span class="hljs-keyword">await</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Promise</span>(<span class="hljs-function"><span class="hljs-params">r</span> =&gt;</span> setTimeout(r, <span class="hljs-number">3000</span>));
+        setCurrentView(<span class="hljs-string">"confirmation"</span>);
+    };
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span>
+            <span class="hljs-attr">className</span>=<span class="hljs-string">"flex flex-col gap-10 md:h-[500px] bg-zinc-50 p-8 w-full md:w-[700px] rounded-lg shadow overflow-y-auto"</span>
+            <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{(e)</span> =&gt;</span> e.preventDefault()}
+        &gt;
+            <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-3xl font-bold text-center"</span>&gt;</span>Registration Form<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+            {/** 
+             * We use AnimatePresence to allow animation upon mounting or 
+             * unmounting of our views.
+             * 
+             * mode='wait' will wait for the animation to complete before unmounting
+             * 
+             * initial={false} will prevent the first view from animating when the page loads
+             * for the first time.
+             * 
+             */}
+            <span class="hljs-tag">&lt;<span class="hljs-name">AnimatePresence</span> <span class="hljs-attr">mode</span>=<span class="hljs-string">'wait'</span> <span class="hljs-attr">initial</span>=<span class="hljs-string">{false}</span>&gt;</span>
+                {
+                    /**
+                     * We use a short-hand switch statement
+                     * to conditionally render our views
+                     */
+                    {
+                        'contact': <span class="hljs-tag">&lt;<span class="hljs-name">ContactView</span> /&gt;</span>,
+                        'syllabus': <span class="hljs-tag">&lt;<span class="hljs-name">SyllabusView</span> /&gt;</span>,
+                        'payment': <span class="hljs-tag">&lt;<span class="hljs-name">PaymentView</span> /&gt;</span>,
+                        'loading': <span class="hljs-tag">&lt;<span class="hljs-name">LoadingView</span> /&gt;</span>,
+                        'confirmation': <span class="hljs-tag">&lt;<span class="hljs-name">ConfirmationView</span> /&gt;</span>,
+                    }[currentView]
+                }
+            <span class="hljs-tag">&lt;/<span class="hljs-name">AnimatePresence</span>&gt;</span>
+            {
+                /**
+                 * This is our logic to conditionally render our navigation buttons.
+                 */
+                !isConfirmationView &amp;&amp; !isLoadingView &amp;&amp;
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"flex gap-12 items-center justify-center mt-auto"</span>&gt;</span>
+                    {!isFirstView &amp;&amp; (
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"btn flex gap-2 w-40"</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{previousView}</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">FaRegArrowAltCircleLeft</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-2xl"</span> /&gt;</span> Previous
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    )}
+                    {isLastView ? (
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"btn flex gap-2 w-40 btn-success"</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{handlePayment}</span>&gt;</span>
+                            Payment <span class="hljs-tag">&lt;<span class="hljs-name">BsCreditCard2BackFill</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-2xl"</span> /&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    ) : (
+                        <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"btn flex gap-2 w-40"</span> <span class="hljs-attr">onClick</span>=<span class="hljs-string">{nextView}</span>&gt;</span>
+                            Next <span class="hljs-tag">&lt;<span class="hljs-name">FaRegArrowAltCircleRight</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-2xl"</span> /&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                    )}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            }
+        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span>
+    );
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>The <code>AnimatePresence</code> component from Framer Motion is used to handle the animation and presence of components when they enter or exit the DOM. It provides a declarative way to define and control the animation of components based on their presence in the React component tree. The <code>wait</code> attribute tells framer motion to wait for the animation to complete before unmounting it. Also, setting <code>initial={false}</code> prevents any animation from firing when the component first loads. Subsequent mounts and unmounts will be animated, however.</p>
+<p>Ok, now that we've done most of the heavy lifting, we have only left to create our individual form views. Again, for sake of brevity, I will only include the first view in this article. Please see the repository for all project files!</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">import</span> { motion, AnimatePresence } <span class="hljs-keyword">from</span> <span class="hljs-string">'framer-motion'</span>
+<span class="hljs-keyword">import</span> InputMask <span class="hljs-keyword">from</span> <span class="hljs-string">'react-input-mask'</span>
+<span class="hljs-keyword">import</span> { useRegistrationForm } <span class="hljs-keyword">from</span> <span class="hljs-string">'@/contexts/RegistrationFormContext'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">ContactView</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> { formData, handleFormChange, formErrors } = useRegistrationForm();
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">motion.div</span>
+            <span class="hljs-attr">key</span>=<span class="hljs-string">{</span>'<span class="hljs-attr">contact</span>'}
+            <span class="hljs-attr">initial</span>=<span class="hljs-string">
+            <span class="hljs-attr">animate</span>=<span class="hljs-string">
+            <span class="hljs-attr">exit</span>=<span class="hljs-string">
+            <span class="hljs-attr">className</span>=<span class="hljs-string">"grid grid-cols-1 md:grid-cols-2 gap-6"</span>
+        &gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"form-control w-full max-w-xs"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label-text"</span>&gt;</span>First Name<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">name</span>=<span class="hljs-string">"firstName"</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>
+                    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Jane"</span>
+                    <span class="hljs-attr">className</span>=<span class="hljs-string">"input input-bordered w-full max-w-xs"</span>
+                    <span class="hljs-attr">value</span>=<span class="hljs-string">{formData.firstName}</span>
+                    <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleFormChange}</span>
+                /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label-text-alt text-red-500"</span>&gt;</span>
+                        {formErrors.firstName}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"form-control w-full max-w-xs"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label-text"</span>&gt;</span>Last Name<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">name</span>=<span class="hljs-string">"lastName"</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>
+                    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Doe"</span>
+                    <span class="hljs-attr">className</span>=<span class="hljs-string">"input input-bordered w-full max-w-xs"</span>
+                    <span class="hljs-attr">value</span>=<span class="hljs-string">{formData.lastName}</span>
+                    <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleFormChange}</span>
+                /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label-text-alt text-red-500"</span>&gt;</span>
+                        {formErrors.lastName}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"form-control w-full max-w-xs"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label-text"</span>&gt;</span>Email Address<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                    <span class="hljs-attr">name</span>=<span class="hljs-string">"email"</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">"email"</span>
+                    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"jane.doe@example.com"</span>
+                    <span class="hljs-attr">className</span>=<span class="hljs-string">"input input-bordered w-full max-w-xs"</span>
+                    <span class="hljs-attr">value</span>=<span class="hljs-string">{formData.email}</span>
+                    <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleFormChange}</span>
+                /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label-text-alt text-red-500"</span>&gt;</span>
+                        {formErrors.email}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"form-control w-full max-w-xs"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label-text"</span>&gt;</span>Phone Number<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">InputMask</span>
+                    <span class="hljs-attr">mask</span>=<span class="hljs-string">"(999) 999-9999"</span>
+                    <span class="hljs-attr">name</span>=<span class="hljs-string">"phone"</span>
+                    <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span>
+                    <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Doe"</span>
+                    <span class="hljs-attr">className</span>=<span class="hljs-string">"input input-bordered w-full max-w-xs"</span>
+                    <span class="hljs-attr">value</span>=<span class="hljs-string">{formData.phone}</span>
+                    <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleFormChange}</span>
+                /&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label"</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label-text-alt text-red-500"</span>&gt;</span>
+                        {formErrors.phone}
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">motion.div</span>&gt;</span></span>
+    )
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>If you're unfamiliar with framer-motion, or this use-case is new to you, then here's a breakdown of what the attributes do:</p>
+<ol>
+<li>
+<p><code>&lt;motion.div&gt;</code>: A special div provided by the Framer Motion library. Like a regular HTML div, but it comes with extra props that allow you to animate the div.</p>
+</li>
+<li>
+<p><code>key={'contact'}</code>: In React, the <code>key</code> prop is used to identify elements in a list for performance reasons. In this case, 'contact' is the key for this element. This is super crucial for framer-motion to prevent unnecessary re-renders and data loss.</p>
+</li>
+<li>
+<p><code>initial=</code>: This is a prop provided by Framer Motion. This sets the initial state of the animation. Here, the div will start 1200 pixels to the right of its natural position.</p>
+</li>
+<li>
+<p><code>animate=</code>: This sets the final state of the animation. Here, the div will end up in its natural position (0 pixels to the right or left of where it would normally be).</p>
+</li>
+<li>
+<p><code>exit=</code>: This sets the exit state of the animation. This would be triggered if the component is unmounted from the DOM. Here, the div will end up 1200 pixels to the left of its natural position when it is removed.</p>
+</li>
+</ol>
+<hr>
+<h2>Summing it Up</h2>
+<p>As you can see, using Framer Motion to create better user experiences for forms by breaking them up into smaller chunks and animating the transitions between sections can greatly enhance the overall user experience. By dividing complex forms into smaller, more manageable sections, users are less likely to feel overwhelmed and can focus better on providing accurate information.</p>
+<p>Also, by using context and state management, such as with React Context and TypeScript, we can maintain consistent and shared form data across different sections, enabling seamless communication and data validation between form components.</p>
+<p>Links:</p>
+<ol>
+<li>
+<a href="https://github.com/designly1/next-framer-form-example" rel="noreferrer noopener" target="_blank">GitHub Repo</a>
+</li>
+<li>
+<a href="https://next-framer-form-example.vercel.app/" rel="noreferrer noopener" target="_blank">Demo Page</a>
+</li>
+</ol>
+<hr>
+<p>Thank you for taking the time to read my article and I hope you found it useful (or at the very least, mildly entertaining). For more great information about web dev, systems administration and cloud computing, please read the <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Designly Blog</a>. Also, please leave your comments! I love to hear thoughts from my readers.</p>
+<p>I use <a href="https://hostinger.com?REFERRALCODE=1J11864" rel="noreferrer noopener" target="_blank">Hostinger</a> to host my clients' websites. You can get a business account that can host 100 websites at a price of $3.99/mo, which you can lock in for up to 48 months! It's the best deal in town. Services include PHP hosting (with extensions), MySQL, Wordpress and Email services.</p>
+<p>Looking for a web developer? I'm available for hire! To inquire, please fill out a <a href="https://designly.biz/contact" rel="noreferrer noopener" target="_blank">contact form</a>.</p>
+</section>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <div class="share-buttons text-2xl flex gap-4 mx-auto">
+                <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
+                <a
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fenhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form"
+                    target="_blank"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook text-blue-700"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fenhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form"
+                    target="_blank"
+                    aria-label="Share on LinkedIn"
+                >
+                    <i class="fab fa-linkedin text-indigo-700"></i>
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fenhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form" target="_blank">
+                    <i class="fab fa-twitter text-sky-700"></i>
+                </a>
+            </div>
+            <hr />
+            <div class="bg-white dark:bg-zinc-800 border-1 rounded-lg flex flex-col shadow p-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4">
+                    <div class="col-span-1 flex items-center">
+                        <img
+                            src="https://cdn.designly.biz/imgr/jay.jpg?w=200&q=75"
+                            alt="Jay"
+                            width="200"
+                            height="200"
+                            class="rounded-full shadow-md border-4 border-blue-700/20 w-32 h-32 mx-auto"
+                        />
+                    </div>
+                    <div class="col-span-3 px-6 flex flex-col gap-4">
+                        <h3 class="text-2xl font-semibold text-center text-colors">About The Author</h3>
+                        <p class="text-zinc-700 dark:text-zinc-300">
+                            Jay is a full-stack developer, electrical engineer, writer and music producer. He currently
+                            resides in the Madison, WI area.
+                        </p>
+                        <a
+                            href="https://jay.designly.biz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-hover flex gap-2 items-center"
+                        >
+                            <div>Portfolio Site</div>
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-2xl font-bold text-center border-b-2 border-dashed pb-1 text-colors">Comments</h2>
+            <div id="comments" class="text-colors">
+                <!-- Comments will be generated here -->
+                <p>No Comments Yet</p>
+            </div>
+            <button id="btn-post-comment" class="btn btn-primary btn-outline flex gap-2 items-center max-w-md mx-auto">
+                <i class="fas fa-comment-medical"></i>
+                <div>Post Comment</div>
+            </button>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <template id="comment-template" class="text-colors">
+                <div
+                    class="comment flex flex-col gap-4 p-4 border rounded shadow mb-4 bg-white dark:bg-zinc-800 text-colors"
+                >
+                    <div class="flex gap-2 items-center">
+                        <img
+                            class="comment-avatar rounded-full w-10 h-10"
+                            src="/assets/img/pixel-black.png"
+                            width="100"
+                            height="100"
+                            alt="Commenter Avatar"
+                        />
+                        <div class="comment-display-name text-2xl text-cyan-700"></div>
+                    </div>
+                    <p class="comment-text"></p>
+                    <div class="replies ml-4">
+                        <!-- Replies will be generated here -->
+                    </div>
+                    <button class="reply-button mt-2 text-hover flex gap-2 items-center">
+                        <i class="fas fa-comment-dots"></i>
+                        <div>Reply</div>
+                    </button>
+                </div>
+            </template>
+        </article>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Animating the Web: Route Transitions in Next.js with Framer Motion</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">This article aims to be your comprehensive guide on how to enhance your Next.js applications with smooth, compelling route transitions using Framer Motion.</p>
+        </div>
+    </div>
+</a>
+<a href="/enhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/enhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form/cover.jpg?w=400&q=75" alt="Enhancing Form Usability with Framer Motion: A Guide to Animated, Chunked Form Transitions" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Enhancing Form Usability with Framer Motion: A Guide to Animated, Chunked Form Transitions</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Enhance form UX with Framer Motion: Break forms into chunks, animate transitions, and improve user experience for seamless interaction.</p>
+        </div>
+    </div>
+</a>
+<a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div>
+<input id="post-id" type="hidden" value="4SWjMC7TNW2BidK8HoFmtJ" />
+<input id="reply-to" type="hidden" value="" />
+<script>
+    function generateComment(commentData) {
+        const template = document.querySelector("#comment-template");
+        const clone = template.content.cloneNode(true);
+        const displayName = clone.querySelector(".comment-display-name");
+        displayName.textContent = commentData.displayName;
+        const commentAvatar = clone.querySelector(".comment-avatar");
+        commentAvatar.setAttribute("src", commentData.avatar);
+        const commentText = clone.querySelector(".comment-text");
+        commentText.textContent = commentData.comment;
+        const repliesContainer = clone.querySelector(".replies");
+        commentData.replies.forEach((reply) => {
+            const replyElement = generateComment(reply);
+            repliesContainer.appendChild(replyElement);
+        });
+        const replyButton = clone.querySelector(".reply-button");
+        replyButton.addEventListener("click", () => {
+            document.getElementById("reply-to").value = commentData._id;
+            loadUrl("/comment");
+        });
+        return clone;
+    }
+    const fetchComments = async () => {
+        const postId = document.getElementById("post-id").value;
+        try {
+            const result = await fetch(`https://blog-comments.designly.workers.dev/?postId=${postId}`);
+            const comments = await result.json();
+            const commentsContainer = document.querySelector("#comments");
+            if (Array.isArray(comments) && comments.length) {
+                commentsContainer.innerHTML = "";
+                comments.forEach((comment) => {
+                    const commentElement = generateComment(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    setTimeout(async () => {
+        fetchComments();
+        document.getElementById("btn-post-comment").addEventListener("click", () => {
+            loadUrl(`/comment`);
+        });
+    }, 0);
+</script>
+</div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>
