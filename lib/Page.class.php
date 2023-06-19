@@ -105,7 +105,7 @@ class Page
         return $content;
     }
 
-    static public function insertCopyButtons($html)
+    static public function formatPost($html)
     {
         $dom = new DOMDocument();
         $dom->formatOutput = false;
@@ -149,7 +149,7 @@ class Page
             $img->setAttribute('data-original', $src);
             $srcset = Helper::mkSrcSet($src);
             $src = str_replace('cdn.designly.biz', 'cdn.designly.biz/imgr',  $src);
-            $src .= '?w=1200&q=75';
+            $src .= '?q=75';
             $img->setAttribute('src', $src);
             $img->setAttribute('srcset', $srcset);
         }
@@ -203,7 +203,7 @@ class Page
         $this->content = self::includeTemplateFiles($this->content);
         // Insert code copy buttons
         if (isset($this->data['content'])) {
-            $this->data['content'] = self::insertCopyButtons($this->data['content']);
+            $this->data['content'] = self::formatPost($this->data['content']);
         }
         // Insert data keys
         $this->content = self::replaceKeys($this->content, $this->data);

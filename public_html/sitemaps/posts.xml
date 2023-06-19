@@ -1,9 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
+    <loc>https://blog.designly.biz/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app</loc>
+    <image:image>
+      <image:loc>https://cdn.designly.biz/blog_files/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app/cover.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.designly.biz/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css</loc>
+    <image:image>
+      <image:loc>https://cdn.designly.biz/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.designly.biz/react-and-tailwind-css-making-a-typewriter-animation-from-scratch</loc>
+    <image:image>
+      <image:loc>https://cdn.designly.biz/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://blog.designly.biz/animating-the-web-route-transitions-in-next-js-with-framer-motion</loc>
     <image:image>
-      <image:loc>https://cdn.designly.biz/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion</image:loc>
+      <image:loc>https://cdn.designly.biz/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion/cover.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -262,6 +280,12 @@
     <loc>https://blog.designly.biz/create-a-free-image-resizing-cdn-using-amazon-s3-imagekit-io</loc>
     <image:image>
       <image:loc>https://d340jo5zum8tsx.cloudfront.net/blog_files/imagekit/banner.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.designly.biz/automating-s3-cloudfront-cdn-using-php</loc>
+    <image:image>
+      <image:loc>https://cdn.designly.biz/blog_files/automating-s3-cloudfront-cdn-using-php/cover.jpg</image:loc>
     </image:image>
   </url>
   <url>

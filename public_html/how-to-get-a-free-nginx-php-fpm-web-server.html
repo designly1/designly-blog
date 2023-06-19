@@ -70,7 +70,7 @@
 </header>
             <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
     <div class="col-span-3 px-4 md:px-20 py-10">
-        <article class="flex flex-col gap-10">
+        <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
                 <h1 class="text-colors text-xl md:text-3xl font-bold">How to Get a Free NGINX/PHP-FPM Web Server</h1>
                 <div class="flex gap-2 items-center tag-list"><a href="/tag/cloud-computing">#Cloud Computing</a>
@@ -83,7 +83,7 @@
                 <img
                     class="rounded-md shadow-lg"
                     src="https://d340jo5zum8tsx.cloudfront.net/blog_files/oracle_cloud/poster.webp?w=1200&q=75"
-                    srcset="https://d340jo5zum8tsx.cloudfront.net/blog_files/oracle_cloud/poster.webp?w=1024&q=75 1024w, https://d340jo5zum8tsx.cloudfront.net/blog_files/oracle_cloud/poster.webp?w=640&q=75 640w, https://d340jo5zum8tsx.cloudfront.net/blog_files/oracle_cloud/poster.webp?w=320&q=75 320w"
+                    srcset="https://d340jo5zum8tsx.cloudfront.net/blog_files/oracle_cloud/poster.webp?w=640&q=75 640w, https://d340jo5zum8tsx.cloudfront.net/blog_files/oracle_cloud/poster.webp?w=320&q=75 320w"
                     alt="How to Get a Free NGINX/PHP-FPM Web Server"
                     width="1200"
                     height="675"
@@ -109,29 +109,29 @@
 <p>So in this guide, we will be setting up a <strong>NGINX / PHP-FPM</strong> server stack on an <strong>Oracle Cloud</strong> free VPS.</p>
 <h4>Step 1 &mdash; Create Your Free VPS Instance</h4>
 <p>First, let&rsquo;s get set up with a free account. Follow <a href="https://signup.cloud.oracle.com/" rel="noreferrer noopener" target="_blank">this link</a> to get started.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=1200&amp;q=75" alt="Enter your full name and email address" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-1.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?q=75" alt="Enter your full name and email address" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-1.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-1.webp?w=320&amp;q=75 320w"></p>
 <p>You&rsquo;ll need to confirm your email address. Once that&rsquo;s done, you should be able to log in.</p>
 <p>Once you&rsquo;re at your dashboard, click the <strong>menu button</strong> in the upper left corner and click on <strong>Compute</strong>, then <strong>Instances.</strong></p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=1200&amp;q=75" alt="Click on compute and then instances" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-2.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?q=75" alt="Click on compute and then instances" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-2.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-2.webp?w=320&amp;q=75 320w"></p>
 <p>It may take some time to get to the <strong>instances</strong> dashboard. Once you&rsquo;re there, click <strong>Create Instance</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=1200&amp;q=75" alt="Click create instance" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-3.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?q=75" alt="Click create instance" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-3.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-3.webp?w=320&amp;q=75 320w"></p>
 <p>You can name your VPS whatever you like, in my example, I named mine <em>nginx-server</em>. Leave everything else as-is and then click <strong>edit</strong> on the right-hand side of the <strong>image and shape</strong> section.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=1200&amp;q=75" alt="Name your instance then click edit under image and shape" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-4.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?q=75" alt="Name your instance then click edit under image and shape" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-4.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-4.webp?w=320&amp;q=75 320w"></p>
 <p>The default OS image is <strong>Oracle Linux 8</strong> (at the time of this writing). In my example, we&rsquo;re going to use <strong>Ubuntu 20.04 LTS</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=1200&amp;q=75" alt="Click change image" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-5.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?q=75" alt="Click change image" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-5.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-5.webp?w=320&amp;q=75 320w"></p>
 <p>Next, scroll down to <strong>Add SSH keys</strong> and make sure <strong>generate a key pair for me</strong> is checked and then click <strong>download private key</strong>. You won&rsquo;t need the public key as it will automatically be installed on the VPS.</p>
 <p>Once your key is downloaded click the <strong>Create</strong> button.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=1200&amp;q=75" alt="Download your Private Key, then click the Create button." class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-7.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?q=75" alt="Download your Private Key, then click the Create button." class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-7.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-7.webp?w=320&amp;q=75 320w"></p>
 <p>You should now see your <strong>VPS instance</strong> listed. Copy the <strong>Public IP</strong> <strong>Address</strong> and create a <strong>hostname</strong> with your DNS / Domain provider. For this example, I&rsquo;m going to use <strong>your-host.example.com</strong>.</p>
 <h4>Step 2 &mdash; Setup Your Firewall</h4>
 <p>Ok, we&rsquo;re getting there. Inbound port 22 is allowed to the world by default, which you may want to restrict to your own <strong>CIDR</strong> subnet or IP address. In this example, we&rsquo;re just going to leave port 22 open and also open <strong>ports 80 and 443</strong>.</p>
 <p>In the <strong>search bar</strong> at the top of the dashboard, search for <strong>security groups</strong> and then click <strong>Default Security List for vcn-&hellip;</strong></p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=1200&amp;q=75" alt="Click Default Security List&hellip;" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-8.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?q=75" alt="Click Default Security List&hellip;" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-8.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-8.webp?w=320&amp;q=75 320w"></p>
 <p>Scroll down and click <strong>Add Ingress Rules</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=1200&amp;q=75" alt="Click Add Ingress Rules." class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-9.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?q=75" alt="Click Add Ingress Rules." class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-9.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-9.webp?w=320&amp;q=75 320w"></p>
 <p>Alright, in the <strong>Source CIDR</strong> field, enter 0.0.0.0/0. If you&rsquo;re unfamiliar with firewalls, that allows the source IP address to be any address in the world. Alternatively, you could set that to your own IP address or subnet, but on a web server, you probably want the <strong>HTTP</strong> and <strong>HTTPS</strong> ports to be open to the world.</p>
 <p>Now in the <strong>Destination Port Range</strong> enter 80. And in <strong>Description</strong> enter HTTP.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=1200&amp;q=75" alt="Enter 0.0.0.0/0 in Source CIDR, 80 in Destination Port Range, and HTTP in Description." class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-10.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?q=75" alt="Enter 0.0.0.0/0 in Source CIDR, 80 in Destination Port Range, and HTTP in Description." class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/oracle_cloud/oracle-cloud-10.webp" srcset="https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/oracle_cloud/oracle-cloud-10.webp?w=320&amp;q=75 320w"></p>
 <p>Now click <strong>+ Another Ingress Rule</strong> and do the same for <strong>port 443 / HTTPS</strong>, and then click <strong>Add Ingress Rules</strong>.</p>
 <h4>Step 3 &mdash; Connect to Your VPS and Update</h4>
 <p>Alright! We now have a totally free <strong>Ubuntu</strong> server. Now we need to get connected. If you&rsquo;re on <strong>MacOS</strong>, you can just open terminal to connect, but if you&rsquo;re on <strong>Windows</strong>, you&rsquo;ll need to <strong>enable SSH</strong>. You can find a guide <a href="https://docs.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse" rel="noreferrer noopener" target="_blank">here</a> on how to do just that. Alternatively, you can download the free <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html" rel="noreferrer noopener" target="_blank">PUTTY SSH Client</a>.</p>
@@ -459,10 +459,59 @@ $ sudo certbot --nginx
         <i class="fa-solid fa-times text-2xl"></i>
     </button>
     <div id="post-sidebar-cont" class="flex flex-col gap-8">
-        <a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+        <a href="/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app">
     <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
         <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app/cover.jpg?w=400&q=75" alt="Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Step-by-step guide to creating an 'Add to Home Screen' prompt for Next.js PWAs, targeting major mobile browsers to enhance user experience.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg?w=400&q=75" alt="How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">By leveraging the strengths of React, Tailwind CSS, and Daisy UI, we can create a user-friendly and aesthetically pleasing file uploader.</p>
+        </div>
+    </div>
+</a>
+<a href="/react-and-tailwind-css-making-a-typewriter-animation-from-scratch">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg?w=400&q=75" alt="React and Tailwind CSS: Making a Typewriter Animation from Scratch" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">React and Tailwind CSS: Making a Typewriter Animation from Scratch</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn to create a typewriter animation using React and Tailwind CSS. Step-by-step guide to add a retro touch to your web design.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion/cover.jpg?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
         </div>
         <div class="p-4 flex flex-col gap-2">
             <h1 class="text-xl font-bold">Animating the Web: Route Transitions in Next.js with Framer Motion</h1>
@@ -557,61 +606,14 @@ $ sudo certbot --nginx
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
-        </div>
-    </div>
-</a>
-<script
-    async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
-    crossorigin="anonymous"
-></script>
-<ins
-    class="adsbygoogle"
-    style="display: block"
-    data-ad-format="fluid"
-    data-ad-layout-key="+13+qh+1q+m+1y"
-    data-ad-client="ca-pub-8001907419576129"
-    data-ad-slot="2598499752"
-></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
     </div>
     <div id="post-list-bottom"></div>
 </div>
 </div>
 <input id="post-id" type="hidden" value="59bWfEz4ClWebplivBDkzQ" />
 <input id="reply-to" type="hidden" value="" />
+<input id="post-title" type="hidden" value="How to Get a Free NGINX/PHP-FPM Web Server" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/how-to-get-a-free-nginx-php-fpm-web-server" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");

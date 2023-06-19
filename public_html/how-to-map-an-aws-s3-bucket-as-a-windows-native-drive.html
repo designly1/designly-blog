@@ -70,7 +70,7 @@
 </header>
             <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
     <div class="col-span-3 px-4 md:px-20 py-10">
-        <article class="flex flex-col gap-10">
+        <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
                 <h1 class="text-colors text-xl md:text-3xl font-bold">How to Map an AWS S3 Bucket as a Windows Native Drive</h1>
                 <div class="flex gap-2 items-center tag-list"><a href="/tag/aws">#AWS</a>
@@ -79,7 +79,7 @@
                 <img
                     class="rounded-md shadow-lg"
                     src="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/cover.jpg?w=1200&q=75"
-                    srcset="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/cover.jpg?w=1024&q=75 1024w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/cover.jpg?w=320&q=75 320w"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/cover.jpg?w=320&q=75 320w"
                     alt="How to Map an AWS S3 Bucket as a Windows Native Drive"
                     width="1200"
                     height="675"
@@ -124,17 +124,17 @@
 <p>Also note that the Simple Storage Service is not an exclusive Amazon product, there are several other service providers that will work with this solution. Please see the appendix of this article for that list.</p>
 <h4>Creating an AWS User With Permissions</h4>
 <p>The first step is to create an IAM user with the necessary permissions to access S3. To begin, click on your profile icon in the upper right corner of the AWS console, then select <code>Security Credentials</code>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image1.jpg?w=1200&amp;q=75" alt="Access IAM Security Credentials" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image1.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image1.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image1.jpg?q=75" alt="Access IAM Security Credentials" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image1.jpg?w=320&amp;q=75 320w"></p>
 <p>Next, click <code>Add User</code> and enter a <code>User name</code> and check <code>Access Key</code> for the access type. You can name the user whatever you like. I've chosen <em>windows</em>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image2.jpg?w=1200&amp;q=75" alt="Create New User" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image2.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image2.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image2.jpg?q=75" alt="Create New User" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image2.jpg?w=320&amp;q=75 320w"></p>
 <p>On the next screen, create a new group. I've named mine <em>WindowsDrive</em>. Pick a name that's appropriate for the function it's associated with. Next, type <code>S3</code> to filter the policies and check the policy <code>AmazonS3FullAccess</code>. Click next twice, ignoring the tags screen, and then click <code>Create User</code> on the review screen.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image3.jpg?w=1200&amp;q=75" alt="Create New Group" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image3.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image3.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image3.jpg?q=75" alt="Create New Group" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image3.jpg?w=320&amp;q=75 320w"></p>
 <p>On the success screen, you should now have an <code>Access Key</code> and <code>Secret Key</code>. Copy both into a text file for safe keeping. Do not forget your secret key or you'll have to generate a new one.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image4.jpg?w=1200&amp;q=75" alt="Access IAM Security Credentials" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image4.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image4.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image4.jpg?q=75" alt="Access IAM Security Credentials" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image4.jpg?w=320&amp;q=75 320w"></p>
 <h4>Download S3 Drive by nSoftware</h4>
 <p>You <a href="https://www.nsoftware.com/drive/s3drive/download.aspx" rel="noreferrer noopener" target="_blank">download</a> the starter edition of <strong>S3 Drive</strong> from nSoftware for free. The free version can only connect and map one drive at a time and cannot be installed as a service, but it works great!</p>
 <p>Once installed, run the app and you should be presented with a configuration screen:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image5.jpg?w=1200&amp;q=75" alt="S3 Drive Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image5.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image5.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image5.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image5.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image5.jpg?q=75" alt="S3 Drive Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image5.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image5.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive/image5.jpg?w=320&amp;q=75 320w"></p>
 <p>You can give the drive a friendly name at the top, then choose a specific drive letter to assign or simply use the last one available. Be sure to select the correct <code>AWS Region</code> and enter your <code>Access Key</code> and <code>Secret Key</code>. If you've entered everything correctly, the <code>Bucket</code> dropdown menu should automagically be populated with a list of your available S3 buckets! Select the one you want to map and then click <code>Ok</code>.</p>
 <p>Click the <code>Start</code> or <code>Connect</code> button in S3 Drive and your bucket should pop up in Explorer. Now you can copy, paste and delete files just like any other local drive!</p>
 <p>I hope you found this article useful. For more great information about systems administration, web dev and more, please read the <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Designly Blog</a>.</p>
@@ -263,10 +263,59 @@
         <i class="fa-solid fa-times text-2xl"></i>
     </button>
     <div id="post-sidebar-cont" class="flex flex-col gap-8">
-        <a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+        <a href="/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app">
     <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
         <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app/cover.jpg?w=400&q=75" alt="Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Step-by-step guide to creating an 'Add to Home Screen' prompt for Next.js PWAs, targeting major mobile browsers to enhance user experience.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg?w=400&q=75" alt="How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">By leveraging the strengths of React, Tailwind CSS, and Daisy UI, we can create a user-friendly and aesthetically pleasing file uploader.</p>
+        </div>
+    </div>
+</a>
+<a href="/react-and-tailwind-css-making-a-typewriter-animation-from-scratch">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg?w=400&q=75" alt="React and Tailwind CSS: Making a Typewriter Animation from Scratch" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">React and Tailwind CSS: Making a Typewriter Animation from Scratch</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn to create a typewriter animation using React and Tailwind CSS. Step-by-step guide to add a retro touch to your web design.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion/cover.jpg?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
         </div>
         <div class="p-4 flex flex-col gap-2">
             <h1 class="text-xl font-bold">Animating the Web: Route Transitions in Next.js with Framer Motion</h1>
@@ -361,61 +410,14 @@
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
-        </div>
-    </div>
-</a>
-<script
-    async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
-    crossorigin="anonymous"
-></script>
-<ins
-    class="adsbygoogle"
-    style="display: block"
-    data-ad-format="fluid"
-    data-ad-layout-key="+13+qh+1q+m+1y"
-    data-ad-client="ca-pub-8001907419576129"
-    data-ad-slot="2598499752"
-></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
     </div>
     <div id="post-list-bottom"></div>
 </div>
 </div>
 <input id="post-id" type="hidden" value="1b7XFhjMHk8AgyDeKg83HK" />
 <input id="reply-to" type="hidden" value="" />
+<input id="post-title" type="hidden" value="How to Map an AWS S3 Bucket as a Windows Native Drive" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/how-to-map-an-aws-s3-bucket-as-a-windows-native-drive" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");

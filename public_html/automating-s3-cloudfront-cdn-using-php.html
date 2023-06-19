@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>How to Create an Amazon AWS Cognito User Pool | Designly</title>
+        <title>Automating S3 + CloudFront CDN Using PHP | Designly</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="/assets/css/style.css" />
@@ -33,12 +33,12 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#ffffff" />
-        <meta name="description" content="In this tutorial, I'm going to show you how to set up AWS Cognito, in conjunction with AWS SES (Simple Email Service), to handle all of your user authentication needs." />
-        <meta property="og:title" content="How to Create an Amazon AWS Cognito User Pool" />
-        <meta property="og:description" content="In this tutorial, I'm going to show you how to set up AWS Cognito, in conjunction with AWS SES (Simple Email Service), to handle all of your user authentication needs." />
-        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/cover.jpg" />
+        <meta name="description" content="This article focuses on how to manage your AWS CloudFront distribution resources via the AWS PHP SDK." />
+        <meta property="og:title" content="Automating S3 + CloudFront CDN Using PHP" />
+        <meta property="og:description" content="This article focuses on how to manage your AWS CloudFront distribution resources via the AWS PHP SDK." />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/automating-s3-cloudfront-cdn-using-php/cover.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://blog.designly.biz/how-to-create-an-amazon-aws-cognito-user-pool" />
+        <meta property="og:url" content="https://blog.designly.biz/automating-s3-cloudfront-cdn-using-php" />
         <meta property="og:site_name" content="Designly Blog" />
         <meta property="fb:app_id" content="3419826058233420" />
     </head>
@@ -72,14 +72,15 @@
     <div class="col-span-3 px-4 md:px-20 py-10">
         <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
-                <h1 class="text-colors text-xl md:text-3xl font-bold">How to Create an Amazon AWS Cognito User Pool</h1>
-                <div class="flex gap-2 items-center tag-list"><a href="/tag/aws">#AWS</a>
-<a href="/tag/identity-service-providers">#Identity Service Providers</a></div>
+                <h1 class="text-colors text-xl md:text-3xl font-bold">Automating S3 + CloudFront CDN Using PHP</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/php">#PHP</a>
+<a href="/tag/aws">#AWS</a>
+<a href="/tag/aws-cloudfront">#AWS CloudFront</a></div>
                 <img
                     class="rounded-md shadow-lg"
-                    src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/cover.jpg?w=1200&q=75"
-                    srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/cover.jpg?w=320&q=75 320w"
-                    alt="How to Create an Amazon AWS Cognito User Pool"
+                    src="https://cdn.designly.biz/imgr/blog_files/automating-s3-cloudfront-cdn-using-php/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/automating-s3-cloudfront-cdn-using-php/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/automating-s3-cloudfront-cdn-using-php/cover.jpg?w=320&q=75 320w"
+                    alt="Automating S3 + CloudFront CDN Using PHP"
                     width="1200"
                     height="675"
                 />
@@ -100,47 +101,159 @@
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
             </section>
-            <section class="post-content flex flex-col gap-6"><p>Many web and mobile developers are offloading the responsibility of authentication to third party identity providers, and for good reason: it's really hard to get it right. It's time consuming and requires constant monitoring and improvement.</p>
-<p>An identity provider will handle all of the following for you:</p>
-<ol>
-<li>User signup</li>
-<li>Password policy enforcement</li>
-<li>Account recovery</li>
-<li>Managing access / refresh tokens</li>
-<li>Multi-factor authentication</li>
-<li>Device tracking</li>
-</ol>
-<p>An identity service simply <em>authenticates</em> the user. What it does not (and should not) do is store user metadata. Typically, you would store this data in a local database or document server (like MongoDB) with a unique identifier linking the user to its data (usually email address).</p>
-<p>In this tutorial, I'm going to show you how to set up AWS Cognito, in conjunction with AWS SES (Simple Email Service), to handle all of your user authentication needs.</p>
-<h2>Setting Up Simple Email Service</h2>
-<p>In order to use AWS Cognito, you'll need to first set up AWS SES (Simple Email Service) to send out account-related emails to your users (e.g. registration confirmation, password resets, etc.)</p>
-<p>To get there, type <em>SES</em> in the search bar and click <em>Simple Email Service</em>. Then from the left side bar of the SES dashboard, click <code>Configuration sets</code> and then click the <code>Create set</code> button:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image1.jpg?q=75" alt="Create configuration set" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image1.jpg?w=320&amp;q=75 320w"></p>
-<p>Enter a <code>Configuration name</code> with no spaces, leave all the other settings as-is, and then click <code>Create set</code>:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image2.jpg?q=75" alt="Create configuration set" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image2.jpg?w=320&amp;q=75 320w"></p>
-<p>Next, click <code>Verified identities</code> on the sidebar, and then click the <code>Create identity</code> button:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image3.jpg?q=75" alt="Create a verified identity" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image3.jpg?w=320&amp;q=75 320w"></p>
-<p>For simplicity's sake, we're going to create an email-based identity. This is fine if you have a relatively small user base and email deliverability is less critical. For bulk mailing applications and apps with a heavy user base, you'll want to set up a domain-based identity with DKIM keys, which will greatly improve deliverability. AWS SES also provides deliverability tracking, which is nice (but adds a little cost overhead).</p>
-<p>Select <code>Email address</code> as identity type, and then enter an email address. This will be the from email address used to send out notification emails, and it must be deliverable because you need to receive a verification email and click a link. Finally, select the configuration set we just created as the default and click <code>Create identity</code>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image5.jpg?q=75" alt="Create a verified identity" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image5.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image5.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image5.jpg?w=320&amp;q=75 320w"></p>
-<p>This should conclude the setup of SES. Now, you may notice on the SES dashboard that your account is in sandbox mode. This is normal. In sandbox mode, you can only send emails  to other verified email address (using the above procedure). This should be fine during development of your app. In the meantime, you'll want to create a support ticket to get this restriction lifted. You can provide optional information like use case, app website and example messages, but this is totally optional, but may speed up your approval process.</p>
-<p>I know this sounds like a pain, but it's really a good thing, and a bare-minimum vetting process, in my opinion. You want your email delivery provider to protect its IP addresses from being blacklisted, as many spam filters apply a huge spam score to emails originating from such addresses. Amazon is usually pretty good at approving these things quickly, and you'll probably be working on coding your app in the meantime anyway!</p>
-<h2>Creating a Cognito User Pool</h2>
-<p>Navigate to <a href="https://us-east-2.console.aws.amazon.com/cognito" rel="noreferrer noopener" target="_blank">Cognito</a> and click <code>Create User Pool</code>. For simplicity's sake, I've checked only email as a sign-in option, but you can additionally chose username and phone as well, but will require additional configuration. In any case, you'll want to decide on these options for your production app in advance because they cannot be changed later.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image6.jpg?q=75" alt="Create a Cognito user pool" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image6.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image6.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image6.jpg?w=320&amp;q=75 320w"></p>
-<p>On the <em>Configure security requirements</em> page, you can leave the password policy settings as-is, if you like. They are set to the bare-minimum complexity requirements, but you can change it later, too, if you like. Also, I've selected <code>No MFA</code> under Multi-factor authentication. This is only to demonstrate the setup procedure. It is strongly recommend that you set-up MFA for a production app. You'll need to setup AWS SNS (Simple Notification Service) in order to provide SMS-based MFA. Leave all the other settings in their defaults and then click <code>Next</code>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image7.jpg?q=75" alt="Create a Cognito user pool" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image7.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image7.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image7.jpg?w=320&amp;q=75 320w"></p>
-<p>On the <code>Configure sign-up experience</code> screen, you can leave the defaults, unless you want to disable self-service signup or change any of the other options. In any case, review these options to be sure they suit your needs.</p>
-<p>Next, on the <code>Configure message delivery</code> screen, select your <code>FROM email address</code> and <code>Configuration set</code>. Also, you can optionally enter a friendly name for your from address, which is always a good idea to make your email more immediately recognizable and human-like.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image8.jpg?q=75" alt="Create a Cognito user pool" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image8.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image8.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image8.jpg?w=320&amp;q=75 320w"></p>
-<p>On the <code>Integrate your app</code> screen, first enter a unique name for your user pool, then check <code>Use the Cognito Hosted UI</code>. For this example, I'm choosing to <code>Use a Cognito domain</code> for the hosted UI domain, but you can optionally specify your own subdomain (like auth.example.com). To do this, you'll need to setup and AWS certificate for this subdomain. I have another article that explains that process <a href="https://designly.biz/blog/post/how-to-get-a-custom-domain-for-your-free-cloudfront-cdn" rel="noreferrer noopener" target="_blank">here</a>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image9.jpg?q=75" alt="Create a Cognito user pool" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image9.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image9.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image9.jpg?w=320&amp;q=75 320w"></p>
-<p>Next, scroll down to <code>Initial app client</code> and select <code>Public client</code>, then enter a unique <code>App client name</code>, then click <code>Generate a client secret</code>, then enter your authorized callback URLs. These are URLs you will be using in your OAUTH authentication flow. You may also want to add <code>http://localhost:3000</code> as well, if you are a Node / React developer, but be sure to remove this before pushing to production.</p>
-<p>You can leave the rest of the options in their defaults, but you should review them to be sure they suit your needs.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image10.jpg?q=75" alt="Create a Cognito user pool" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image10.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image10.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image10.jpg?w=320&amp;q=75 320w"></p>
-<p>Clicking next will bring you to the review screen. Be sure to check over everything and make sure you've made no errors. Some things will not be able to be changed later, and you will have to delete your user pool and start all over to change them. When you are fully satisfied with your setup, click <code>Create user pool</code>.</p>
-<p>Thank you for taking the time to read my article and I hope you found it useful (or at the very least, mildly entertaining). For more great information about web dev, systems administration and cloud computing, please read the <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Designly Blog</a>. Also, please leave your comments! I love to hear thoughts from my readers.</p>
-<p>Looking for a web developer? I'm available for hire! To inquire, please fill out a <a href="https://designly.biz/contact" rel="noreferrer noopener" target="_blank">contact form</a>.</p>
+            <section class="post-content flex flex-col gap-6"><p>If you&rsquo;ve read my last article, <a href="https://designly.biz/blog/post/how-to-use-aws-cloudfront-to-create-your-own-free-cdn" rel="noreferrer noopener" target="_blank"><em>How to Use AWS CloudFront to Create Your Own Free CDN</em></a>, you hopefully have your own practically-free CDN for your website assets. But maintaining all of your assets manually via the <strong>aws cli</strong> tool can be cumbersome. In my last article, I showed you how to use the <strong>aws sync</strong> and <strong>aws cp</strong> commands to move files from your local drive to your S3 bucket, which is the back-end for your <strong>CloudFront CDN</strong>.</p>
+<p>Now I&rsquo;m going to show you how to fully automate this process using PHP. Amazon Web Services has SDKs for several programming platforms, such as C++, Go, Java, JavaScript, .NET, NodeJS, PHP, Python and Ruby. This guide will largely focus on the <a href="https://github.com/aws/aws-sdk-php" rel="noreferrer noopener" target="_blank"><strong>PHP SDK</strong></a>.</p>
+<p>Ok, enough babble, let&rsquo;s et started!</p>
+<p>The first thing we need to do is install the SDK in the root directory of your webserver. If you are familiar with and already have <strong>composer</strong> packages installed on your webserver, then this should be pretty straight-forward. Since this article is not a guide on how to implement composer, I&rsquo;m going to assume you already have your bearings on it. If, not, please refer to the <a href="https://getcomposer.org/doc/01-basic-usage.md" rel="noreferrer noopener" target="_blank">Composer Website</a>.</p>
+<h4>Install the AWS SDK for PHP via Composer</h4>
+<p>In a BASH session on your webserver, navigate your your web root directory (wherever your composer.json file is located) and enter:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ruby hljs ruby" data-lang="ruby">$ composer <span class="hljs-keyword">require</span> aws/aws-sdk-php-resources
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>This should install the latest version of the <strong>AWS-SDK-PHP</strong> in your <strong>vendor</strong> folder. And if you&rsquo;re already a composer user, you&rsquo;ll already have your <strong>autoload.php</strong> included in your project.</p>
+<h4>Test Your Installation</h4>
+<p>Now that it&rsquo;s installed, let&rsquo;s try a little test. First we need to create a configuration. You&rsquo;ll need your security credentials from the IAM user you created for your webserver. This includes your <strong>Access Key</strong> and <strong>Secret Key</strong>. Hopefully, you have your secret key saved in a secure location, as you cannot view it again from the IAM console. If you&rsquo;ve forgotten or lost it, you&rsquo;ll need to revoke your old keys and generate new ones.</p>
+<p>One thing you want to avoid doing is hard-coding your credentials into your code. This is a security vulnerability and should be avoided, if possible. Instead, you can use a key provider service, environment variables or store them in your SQL database.</p>
+<p>Here&rsquo;s an example of a basic AWS configuration in PHP:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ocaml hljs ocaml" data-lang="ocaml">$config = [
+      <span class="hljs-symbol">'version'</span> =&gt; <span class="hljs-symbol">'latest'</span>,
+      <span class="hljs-symbol">'region'</span> =&gt; <span class="hljs-symbol">'us</span>-east-<span class="hljs-number">1</span>,
+      <span class="hljs-symbol">'credentials'</span> =&gt; [
+         <span class="hljs-symbol">'key'</span> =&gt; <span class="hljs-symbol">'YOUR_AWS_ACCESS_KEY'</span>,
+         <span class="hljs-symbol">'secret'</span> =&gt; <span class="hljs-symbol">'YOUR_AWS_SECREY_KEY'</span>
+   ]
+];
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Again, do not hard-code your credentials here. Personally, I pull them from a MySQL database and assign them to a variable, but there are plenty of other methods to store them.</p>
+<p>Ok, let&rsquo;s get right into it. We&rsquo;ll start of with something simple. Let&rsquo;s include the AWS S3 class and list all of the S3 buckets on our account:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-xml hljs xml" data-lang="xml"><span class="php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">'vendor/autoload.php'</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Aws</span>\<span class="hljs-title">S3</span>\<span class="hljs-title">S3Client</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Aws</span>\<span class="hljs-title">Exception</span>\<span class="hljs-title">AwsException</span>;
+<span class="hljs-keyword">try</span> {
+   $s3 = <span class="hljs-keyword">new</span> S3Client($config);
+   $buckets = $s3-&gt;listBuckets();
+   <span class="hljs-keyword">foreach</span> ($buckets <span class="hljs-keyword">as</span> $bucket) {
+      <span class="hljs-keyword">echo</span> $bucket[<span class="hljs-string">'Name'</span>].<span class="hljs-string">"\n"</span>;
+   }
+}
+<span class="hljs-keyword">catch</span> (S3Exception $e)
+{
+   <span class="hljs-keyword">echo</span> $e-&gt;getMessage();
+}
+<span class="hljs-meta">?&gt;</span></span>
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Ok, that&rsquo;s pretty basic, but hopefully your code printed out a list of your S3 buckets. Ideally, you&rsquo;ll already know which bucket you want to upload your files to, so let continue with uploading objects to your preferred S3 bucket.</p>
+<p>But first, I&rsquo;d like to elaborate on how AWS&rsquo;s <strong>Simple Storage Service (S3)</strong> works. Amazon S3 calls &ldquo;files&rdquo; stored in your bucket <strong>objects</strong>. This concept can take some getting used to. If you&rsquo;re familiar with <strong>Object-oriented Programming</strong> , then you know that objects are a collection of properties and methods to manipulate data. Well, S3 works in a very similar capacity. So when you want to refer to a &ldquo;file&rdquo; or &ldquo;S3 Object,&rdquo; you&rsquo;ll refer to it&rsquo;s <strong>key</strong> , just as you would programmatically with an object. That being said, instead of <strong>file path</strong> , AWS S3 calls it a <strong>key</strong>. The key is a relative path to your S3 bucket&rsquo;s root, without the preceding slash.</p>
+<h4>Upload an S3 Object</h4>
+<p>Ok, let&rsquo;s upload an image file to our S3 bucket:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-xml hljs xml" data-lang="xml"><span class="php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">require</span> <span class="hljs-string">'vendor/autoload.php'</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Aws</span>\<span class="hljs-title">S3</span>\<span class="hljs-title">S3Client</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Aws</span>\<span class="hljs-title">Exception</span>\<span class="hljs-title">AwsException</span>;
+<span class="hljs-keyword">try</span> {
+   $s3 = <span class="hljs-keyword">new</span> S3Client($config);
+   $fileData = file_get_contents(<span class="hljs-string">"/path/to/your/image.jpg"</span>);
+   $mimeType = mime_content_type(<span class="hljs-string">"/path/to/your/image.jpg"</span>);
+   $s3-&gt;putObject([
+      <span class="hljs-string">'Key'</span> =&gt; <span class="hljs-string">'images/image.jpg'</span>,
+      <span class="hljs-string">'Body'</span> =&gt; $fileData,
+      <span class="hljs-string">'ContentType'</span> =&gt; $mimeType
+   ]);
+}
+<span class="hljs-keyword">catch</span> (S3Exception $e)
+{
+   <span class="hljs-keyword">echo</span> $e-&gt;getMessage();
+}
+<span class="hljs-meta">?&gt;</span></span>
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Now you should be able to access your object via your <strong>CloudFront Distribution Domain Name</strong>. If you&rsquo;re unsure about this, please refer to my <a href="https://designly.biz/blog/post/how-to-use-aws-cloudfront-to-create-your-own-free-cdn" rel="noreferrer noopener" target="_blank">previous article</a>. Your full URL path will look something like this:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-less hljs less" data-lang="less"><span class="hljs-attribute">https</span>:<span class="hljs-comment">//sdf934r3iruihi3u4h.cloudfront.net/images/image.jpg</span>
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<h4>Invalidate Object from the CloudFront Cache</h4>
+<p>Files stored in your S3 bucket are automatically cached on the CloudFront edge server&rsquo;s cache. Unless you want to wait for the TTL (time to live) to expire, you may want to <strong>invalidate</strong> newly-uploaded objects to get the latest version in your browser. Here&rsquo;s how to do it in the PHP-SDK:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-php hljs php" data-lang="php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">Aws</span>\<span class="hljs-title">CloudFront</span>\<span class="hljs-title">CloudFrontClient</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Aws</span>\<span class="hljs-title">Exception</span>\<span class="hljs-title">AwsException</span>;
+<span class="hljs-keyword">try</span> {
+   $cf = <span class="hljs-keyword">new</span> CloudFrontClient($config);
+   $cf-&gt;createInvalidation([
+      <span class="hljs-string">'DistributionId'</span> =&gt; <span class="hljs-string">"YOUR_CLOUDFRONT_DISTID',
+      'InvalidationBatch' =&gt; [
+         'CallerReference' =&gt; "</span>UNIQUE_CALLER_IDENTIFIER<span class="hljs-string">',
+         '</span>Paths<span class="hljs-string">' =&gt; [
+            '</span>Items<span class="hljs-string">' =&gt; [
+               '</span>images/images.jpg<span class="hljs-string">'
+             ],
+            '</span>Quantity<span class="hljs-string">' =&gt; 1
+         ]
+      ]
+   ]);
+}
+catch (AwsException $e)
+{
+   echo $e-&gt;getAwsErrorMessage();
+}
+?&gt;
+</span></code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>This code will invalidate the cached version of image.jpg and pull the current version from your S3 bucket. The <strong>CallerReference</strong> property is a unique identifier you need to come up with to identify the source of the request. This is mainly used for logging purposes.</p>
+<h4>Advanced Example: Concatenating and Minifying JavaScript Code</h4>
+<p>Ok, let&rsquo;s get serious. In this example, I&rsquo;ll show you how to automate concatenating your JavaScript code, minifying it, and then uploading it to your CDN.</p>
+<p>You&rsquo;ll first need to install Mathias Mullie&rsquo;s <a href="https://github.com/matthiasmullie/minify" rel="noreferrer noopener" target="_blank"><strong>Minify</strong></a> library:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ruby hljs ruby" data-lang="ruby">$ composer <span class="hljs-keyword">require</span> matthiasmullie/minify
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>And here&rsquo;s the code:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-php hljs php" data-lang="php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">use</span> <span class="hljs-title">MatthiasMullie</span>\<span class="hljs-title">Minify</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Aws</span>\<span class="hljs-title">Resource</span>\<span class="hljs-title">Aws</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Aws</span>\<span class="hljs-title">CloudFront</span>\<span class="hljs-title">CloudFrontClient</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Aws</span>\<span class="hljs-title">S3</span>\<span class="hljs-title">S3Client</span>;
+<span class="hljs-comment">// Instantiate the Minify/JS class</span>
+$m = <span class="hljs-keyword">new</span> Minify\JS;
+<span class="hljs-comment">// Iterate through our array of JavaScript files and concatenate them</span>
+<span class="hljs-keyword">foreach</span> ($jsFiles <span class="hljs-keyword">as</span> $file)
+{
+   $m-&gt;add($file);
+}
+<span class="hljs-comment">// Minify the code</span>
+$out = $m-&gt;minify();
+<span class="hljs-comment">// Upload the minified code to our S3 bucket</span>
+<span class="hljs-keyword">try</span> {
+   $s3 = <span class="hljs-keyword">new</span> S3Client($config);
+   $s3-&gt;putObject([
+      <span class="hljs-string">'Key'</span> =&gt; <span class="hljs-string">'js/main.min.js'</span>,
+      <span class="hljs-string">'Body'</span> =&gt; $out,
+      <span class="hljs-string">'ContentType'</span> =&gt; <span class="hljs-string">'text/javascript'</span>
+   ]);
+}
+<span class="hljs-keyword">catch</span> (S3Exception $e)
+{
+   <span class="hljs-keyword">echo</span> $e-&gt;getMessage();
+}
+<span class="hljs-comment">// Invalidate the existing file</span>
+<span class="hljs-keyword">try</span> {
+   $cf = <span class="hljs-keyword">new</span> CloudFrontClient($config);
+   $cf-&gt;createInvalidation([
+      <span class="hljs-string">'DistributionId'</span> =&gt; <span class="hljs-string">"YOUR_CLOUDFRONT_DISTID',
+      'InvalidationBatch' =&gt; [
+         'CallerReference' =&gt; "</span>UNIQUE_CALLER_IDENTIFIER<span class="hljs-string">',
+         '</span>Paths<span class="hljs-string">' =&gt; [
+            '</span>Items<span class="hljs-string">' =&gt; [
+               '</span>js/main.min.js<span class="hljs-string">'
+             ],
+            '</span>Quantity<span class="hljs-string">' =&gt; 1
+         ]
+      ]
+   ]);
+}
+catch (AwsException $e)
+{
+   echo $e-&gt;getAwsErrorMessage();
+}
+</span></code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>As you can see, this setup can be very powerful for speeding up your web design process by automating things that would normally take a lot of time to do manually. You can use this same code to concatenate and upload CSS as well. Just call Minify/CSS instead of Minify/JS.</p>
+<p>I hope you found this guide useful! For more great information, please visit our <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Blog</a>.</p>
+<p>See also: <a href="https://designly.biz/blog/post/how-to-use-aws-cloudfront-to-create-your-own-free-cdn" rel="noreferrer noopener" target="_blank">How to Use AWS CloudFront to Create Your Own Free CDN</a>.</p>
+<hr>
 </section>
             <script
     async
@@ -161,20 +274,20 @@
             <div class="share-buttons text-2xl flex gap-4 mx-auto">
                 <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
                 <a
-                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fhow-to-create-an-amazon-aws-cognito-user-pool"
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fautomating-s3-cloudfront-cdn-using-php"
                     target="_blank"
                     aria-label="Share on Facebook"
                 >
                     <i class="fab fa-facebook text-blue-700"></i>
                 </a>
                 <a
-                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-create-an-amazon-aws-cognito-user-pool"
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fautomating-s3-cloudfront-cdn-using-php"
                     target="_blank"
                     aria-label="Share on LinkedIn"
                 >
                     <i class="fab fa-linkedin text-indigo-700"></i>
                 </a>
-                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-create-an-amazon-aws-cognito-user-pool" target="_blank">
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fautomating-s3-cloudfront-cdn-using-php" target="_blank">
                     <i class="fab fa-twitter text-sky-700"></i>
                 </a>
             </div>
@@ -417,10 +530,10 @@
     <div id="post-list-bottom"></div>
 </div>
 </div>
-<input id="post-id" type="hidden" value="42GtmlQJ23tIApNPJFS8Bt" />
+<input id="post-id" type="hidden" value="6vGkpJh7iCOUa7mktP5l4q" />
 <input id="reply-to" type="hidden" value="" />
-<input id="post-title" type="hidden" value="How to Create an Amazon AWS Cognito User Pool" />
-<input id="post-url" type="hidden" value="https://blog.designly.biz/how-to-create-an-amazon-aws-cognito-user-pool" />
+<input id="post-title" type="hidden" value="Automating S3 + CloudFront CDN Using PHP" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/automating-s3-cloudfront-cdn-using-php" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");

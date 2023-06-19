@@ -70,7 +70,7 @@
 </header>
             <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
     <div class="col-span-3 px-4 md:px-20 py-10">
-        <article class="flex flex-col gap-10">
+        <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
                 <h1 class="text-colors text-xl md:text-3xl font-bold">How to Get a Custom Domain For Your Free CloudFront CDN</h1>
                 <div class="flex gap-2 items-center tag-list"><a href="/tag/cloudflare">#Cloudflare</a>
@@ -79,7 +79,7 @@
                 <img
                     class="rounded-md shadow-lg"
                     src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/banner.jpg?w=1200&q=75"
-                    srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/banner.jpg?w=1024&q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/banner.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/banner.jpg?w=320&q=75 320w"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/banner.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/banner.jpg?w=320&q=75 320w"
                     alt="How to Get a Custom Domain For Your Free CloudFront CDN"
                     width="1200"
                     height="675"
@@ -107,22 +107,22 @@
 <h4>Step 1: Create a Subdomain in CloudFlare DNS</h4>
 <p>Log into your CloudFlare dashboard. If you do not yet have an account, you can create one for free. CloudFlare DNS and proxy service is 100% free forever and it's a great service.</p>
 <p>This tutorial assumes you already have DNS setup. So, navigate to your website and click <strong>DNS</strong> on the left sidebar. Click <strong>Add Record</strong> and then select <strong>CNAME</strong> for type. Enter whatever you want for the <strong>Name</strong>. I chose "cdn". Now for <strong>Target</strong>, put in your <strong>CloudFront Distribution Domain</strong>. Then click <strong>Save</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image1.jpg?w=1200&amp;q=75" alt="Create a CNAME Record" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image1.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image1.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image1.jpg?q=75" alt="Create a CNAME Record" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image1.jpg?w=320&amp;q=75 320w"></p>
 <p>Next, we need to create a <strong>Certification Authority Authorization</strong> record. If you're unfamiliar with this type of record, basically, it allows Amazon to issue certificates for your domain on yuor behalf. We need this record in order to get an SSL certificate for our CF dist.</p>
 <p>Click <strong>Add Record</strong> again and this time select <strong>CAA</strong> for <strong>Type</strong> and enter your chosen <strong>Name</strong> again ("cdn" in my case). For <strong>Tag</strong>, select <strong>Only allow specific hostnames</strong>, and for <strong>CA domain name</strong>, enter "amazon.com."</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image4.jpg?w=1200&amp;q=75" alt="Create a CAA Record" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image4.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image4.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image4.jpg?q=75" alt="Create a CAA Record" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image4.jpg?w=320&amp;q=75 320w"></p>
 <h4>Step 2: Edit Your CloudFront Distribution</h4>
 <p>Your CNAME won't work just yet because we need to set it up on AWS. We need to enter the CNAME in your CloudFront distribution settings. So, go ahead and log into your AWS dashboard and navigate to your CloudFront distribution and click <strong>Edit</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image2.jpg?w=1200&amp;q=75" alt="Edit Your CloudFront Distribution" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image2.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image2.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image2.jpg?q=75" alt="Edit Your CloudFront Distribution" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image2.jpg?w=320&amp;q=75 320w"></p>
 <p>In settings, enter your subdomain in the <strong>Alternate domain name (CNAME)</strong> field. Then click <strong>Request Certificate</strong>. Public SSL certificates are totally free for all AWS services!</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image3.jpg?w=1200&amp;q=75" alt="Enter Your Subdomain and Click Request Certificate" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image3.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image3.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image3.jpg?q=75" alt="Enter Your Subdomain and Click Request Certificate" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image3.jpg?w=320&amp;q=75 320w"></p>
 <p>On the certificate request screen, enter your subdomain for <strong>Fully-qualified domain name</strong> and leave <strong>DNS Validation</strong> checked. Then click <strong>Request</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image5.jpg?w=1200&amp;q=75" alt="Enter Your Subdomain and Click Request" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image5.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image5.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image5.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image5.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image5.jpg?q=75" alt="Enter Your Subdomain and Click Request" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image5.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image5.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image5.jpg?w=320&amp;q=75 320w"></p>
 <p>AWS should issue you a <em>pending</em> certificate. You'll need to validate your ownership of the subdomain by creating another CNAME record in CloudFlare DNS. You'll need to copy the <strong>CNAME Name</strong> and <strong>CNAME Value</strong> fields into a new CNAME record.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image6.jpg?w=1200&amp;q=75" alt="Copy the CNAME Name and CNAME Value Fields" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image6.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image6.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image6.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image6.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image6.jpg?q=75" alt="Copy the CNAME Name and CNAME Value Fields" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image6.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image6.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image6.jpg?w=320&amp;q=75 320w"></p>
 <p>Once you've created the CNAME record in CloudFlare, come back to your AWS certificate and refresh the screen. It may take a few tries, but hopefully <strong>Status</strong> at the stop says <strong>Success</strong>!</p>
 <p>Now go back to your CF dist settings screen and click the <strong>Refresh Circle</strong> buttton and your new certificate should be available in the dropdown. Scroll down to the bottom and click <strong>Save Changes</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image7.jpg?w=1200&amp;q=75" alt="Select Your Certificate and Click Save Changes" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image7.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image7.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image7.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image7.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image7.jpg?q=75" alt="Select Your Certificate and Click Save Changes" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront-domain/image7.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image7.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront-domain/image7.jpg?w=320&amp;q=75 320w"></p>
 <p>That's it. Now try out your new subdomain in your browser by navigating to on of your files using your new CDN url!</p>
 <p>If you're interested in creating an automated image resizing API using CloudFlare and a custom React component, then please read my article titled <a href="https://designly.biz/blog/post/automated-responsive-images-using-react-and-cloudflare-images" rel="noreferrer noopener" target="_blank">Automated Responsive Images Using React and Cloudflare Images</a>.</p>
 <p>Thanks for reading and happy coding! For more great information, please visit our <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Blog</a>.</p>
@@ -251,10 +251,59 @@
         <i class="fa-solid fa-times text-2xl"></i>
     </button>
     <div id="post-sidebar-cont" class="flex flex-col gap-8">
-        <a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+        <a href="/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app">
     <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
         <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app/cover.jpg?w=400&q=75" alt="Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Step-by-step guide to creating an 'Add to Home Screen' prompt for Next.js PWAs, targeting major mobile browsers to enhance user experience.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg?w=400&q=75" alt="How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">By leveraging the strengths of React, Tailwind CSS, and Daisy UI, we can create a user-friendly and aesthetically pleasing file uploader.</p>
+        </div>
+    </div>
+</a>
+<a href="/react-and-tailwind-css-making-a-typewriter-animation-from-scratch">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg?w=400&q=75" alt="React and Tailwind CSS: Making a Typewriter Animation from Scratch" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">React and Tailwind CSS: Making a Typewriter Animation from Scratch</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn to create a typewriter animation using React and Tailwind CSS. Step-by-step guide to add a retro touch to your web design.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion/cover.jpg?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
         </div>
         <div class="p-4 flex flex-col gap-2">
             <h1 class="text-xl font-bold">Animating the Web: Route Transitions in Next.js with Framer Motion</h1>
@@ -349,61 +398,14 @@
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
-        </div>
-    </div>
-</a>
-<script
-    async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
-    crossorigin="anonymous"
-></script>
-<ins
-    class="adsbygoogle"
-    style="display: block"
-    data-ad-format="fluid"
-    data-ad-layout-key="+13+qh+1q+m+1y"
-    data-ad-client="ca-pub-8001907419576129"
-    data-ad-slot="2598499752"
-></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
     </div>
     <div id="post-list-bottom"></div>
 </div>
 </div>
 <input id="post-id" type="hidden" value="2DVpML0Qhv2xoj3fDUVYHQ" />
 <input id="reply-to" type="hidden" value="" />
+<input id="post-title" type="hidden" value="How to Get a Custom Domain For Your Free CloudFront CDN" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/how-to-get-a-custom-domain-for-your-free-cloudfront-cdn" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>How to Create an Amazon AWS Cognito User Pool | Designly</title>
+        <title>React and Tailwind CSS: Making a Typewriter Animation from Scratch | Designly</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="/assets/css/style.css" />
@@ -33,12 +33,12 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#ffffff" />
-        <meta name="description" content="In this tutorial, I'm going to show you how to set up AWS Cognito, in conjunction with AWS SES (Simple Email Service), to handle all of your user authentication needs." />
-        <meta property="og:title" content="How to Create an Amazon AWS Cognito User Pool" />
-        <meta property="og:description" content="In this tutorial, I'm going to show you how to set up AWS Cognito, in conjunction with AWS SES (Simple Email Service), to handle all of your user authentication needs." />
-        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/cover.jpg" />
+        <meta name="description" content="Learn to create a typewriter animation using React and Tailwind CSS. Step-by-step guide to add a retro touch to your web design." />
+        <meta property="og:title" content="React and Tailwind CSS: Making a Typewriter Animation from Scratch" />
+        <meta property="og:description" content="Learn to create a typewriter animation using React and Tailwind CSS. Step-by-step guide to add a retro touch to your web design." />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://blog.designly.biz/how-to-create-an-amazon-aws-cognito-user-pool" />
+        <meta property="og:url" content="https://blog.designly.biz/react-and-tailwind-css-making-a-typewriter-animation-from-scratch" />
         <meta property="og:site_name" content="Designly Blog" />
         <meta property="fb:app_id" content="3419826058233420" />
     </head>
@@ -72,14 +72,16 @@
     <div class="col-span-3 px-4 md:px-20 py-10">
         <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
-                <h1 class="text-colors text-xl md:text-3xl font-bold">How to Create an Amazon AWS Cognito User Pool</h1>
-                <div class="flex gap-2 items-center tag-list"><a href="/tag/aws">#AWS</a>
-<a href="/tag/identity-service-providers">#Identity Service Providers</a></div>
+                <h1 class="text-colors text-xl md:text-3xl font-bold">React and Tailwind CSS: Making a Typewriter Animation from Scratch</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/tailwind-css">#Tailwind CSS</a>
+<a href="/tag/nextjs">#Next.js</a>
+<a href="/tag/react">#React</a>
+<a href="/tag/ui-ux">#UI / UX</a></div>
                 <img
                     class="rounded-md shadow-lg"
-                    src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/cover.jpg?w=1200&q=75"
-                    srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/cover.jpg?w=320&q=75 320w"
-                    alt="How to Create an Amazon AWS Cognito User Pool"
+                    src="https://cdn.designly.biz/imgr/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg?w=320&q=75 320w"
+                    alt="React and Tailwind CSS: Making a Typewriter Animation from Scratch"
                     width="1200"
                     height="675"
                 />
@@ -100,46 +102,92 @@
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
             </section>
-            <section class="post-content flex flex-col gap-6"><p>Many web and mobile developers are offloading the responsibility of authentication to third party identity providers, and for good reason: it's really hard to get it right. It's time consuming and requires constant monitoring and improvement.</p>
-<p>An identity provider will handle all of the following for you:</p>
-<ol>
-<li>User signup</li>
-<li>Password policy enforcement</li>
-<li>Account recovery</li>
-<li>Managing access / refresh tokens</li>
-<li>Multi-factor authentication</li>
-<li>Device tracking</li>
-</ol>
-<p>An identity service simply <em>authenticates</em> the user. What it does not (and should not) do is store user metadata. Typically, you would store this data in a local database or document server (like MongoDB) with a unique identifier linking the user to its data (usually email address).</p>
-<p>In this tutorial, I'm going to show you how to set up AWS Cognito, in conjunction with AWS SES (Simple Email Service), to handle all of your user authentication needs.</p>
-<h2>Setting Up Simple Email Service</h2>
-<p>In order to use AWS Cognito, you'll need to first set up AWS SES (Simple Email Service) to send out account-related emails to your users (e.g. registration confirmation, password resets, etc.)</p>
-<p>To get there, type <em>SES</em> in the search bar and click <em>Simple Email Service</em>. Then from the left side bar of the SES dashboard, click <code>Configuration sets</code> and then click the <code>Create set</code> button:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image1.jpg?q=75" alt="Create configuration set" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image1.jpg?w=320&amp;q=75 320w"></p>
-<p>Enter a <code>Configuration name</code> with no spaces, leave all the other settings as-is, and then click <code>Create set</code>:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image2.jpg?q=75" alt="Create configuration set" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image2.jpg?w=320&amp;q=75 320w"></p>
-<p>Next, click <code>Verified identities</code> on the sidebar, and then click the <code>Create identity</code> button:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image3.jpg?q=75" alt="Create a verified identity" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image3.jpg?w=320&amp;q=75 320w"></p>
-<p>For simplicity's sake, we're going to create an email-based identity. This is fine if you have a relatively small user base and email deliverability is less critical. For bulk mailing applications and apps with a heavy user base, you'll want to set up a domain-based identity with DKIM keys, which will greatly improve deliverability. AWS SES also provides deliverability tracking, which is nice (but adds a little cost overhead).</p>
-<p>Select <code>Email address</code> as identity type, and then enter an email address. This will be the from email address used to send out notification emails, and it must be deliverable because you need to receive a verification email and click a link. Finally, select the configuration set we just created as the default and click <code>Create identity</code>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image5.jpg?q=75" alt="Create a verified identity" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image5.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image5.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image5.jpg?w=320&amp;q=75 320w"></p>
-<p>This should conclude the setup of SES. Now, you may notice on the SES dashboard that your account is in sandbox mode. This is normal. In sandbox mode, you can only send emails  to other verified email address (using the above procedure). This should be fine during development of your app. In the meantime, you'll want to create a support ticket to get this restriction lifted. You can provide optional information like use case, app website and example messages, but this is totally optional, but may speed up your approval process.</p>
-<p>I know this sounds like a pain, but it's really a good thing, and a bare-minimum vetting process, in my opinion. You want your email delivery provider to protect its IP addresses from being blacklisted, as many spam filters apply a huge spam score to emails originating from such addresses. Amazon is usually pretty good at approving these things quickly, and you'll probably be working on coding your app in the meantime anyway!</p>
-<h2>Creating a Cognito User Pool</h2>
-<p>Navigate to <a href="https://us-east-2.console.aws.amazon.com/cognito" rel="noreferrer noopener" target="_blank">Cognito</a> and click <code>Create User Pool</code>. For simplicity's sake, I've checked only email as a sign-in option, but you can additionally chose username and phone as well, but will require additional configuration. In any case, you'll want to decide on these options for your production app in advance because they cannot be changed later.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image6.jpg?q=75" alt="Create a Cognito user pool" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image6.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image6.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image6.jpg?w=320&amp;q=75 320w"></p>
-<p>On the <em>Configure security requirements</em> page, you can leave the password policy settings as-is, if you like. They are set to the bare-minimum complexity requirements, but you can change it later, too, if you like. Also, I've selected <code>No MFA</code> under Multi-factor authentication. This is only to demonstrate the setup procedure. It is strongly recommend that you set-up MFA for a production app. You'll need to setup AWS SNS (Simple Notification Service) in order to provide SMS-based MFA. Leave all the other settings in their defaults and then click <code>Next</code>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image7.jpg?q=75" alt="Create a Cognito user pool" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image7.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image7.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image7.jpg?w=320&amp;q=75 320w"></p>
-<p>On the <code>Configure sign-up experience</code> screen, you can leave the defaults, unless you want to disable self-service signup or change any of the other options. In any case, review these options to be sure they suit your needs.</p>
-<p>Next, on the <code>Configure message delivery</code> screen, select your <code>FROM email address</code> and <code>Configuration set</code>. Also, you can optionally enter a friendly name for your from address, which is always a good idea to make your email more immediately recognizable and human-like.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image8.jpg?q=75" alt="Create a Cognito user pool" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image8.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image8.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image8.jpg?w=320&amp;q=75 320w"></p>
-<p>On the <code>Integrate your app</code> screen, first enter a unique name for your user pool, then check <code>Use the Cognito Hosted UI</code>. For this example, I'm choosing to <code>Use a Cognito domain</code> for the hosted UI domain, but you can optionally specify your own subdomain (like auth.example.com). To do this, you'll need to setup and AWS certificate for this subdomain. I have another article that explains that process <a href="https://designly.biz/blog/post/how-to-get-a-custom-domain-for-your-free-cloudfront-cdn" rel="noreferrer noopener" target="_blank">here</a>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image9.jpg?q=75" alt="Create a Cognito user pool" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image9.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image9.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image9.jpg?w=320&amp;q=75 320w"></p>
-<p>Next, scroll down to <code>Initial app client</code> and select <code>Public client</code>, then enter a unique <code>App client name</code>, then click <code>Generate a client secret</code>, then enter your authorized callback URLs. These are URLs you will be using in your OAUTH authentication flow. You may also want to add <code>http://localhost:3000</code> as well, if you are a Node / React developer, but be sure to remove this before pushing to production.</p>
-<p>You can leave the rest of the options in their defaults, but you should review them to be sure they suit your needs.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image10.jpg?q=75" alt="Create a Cognito user pool" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image10.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image10.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-create-an-amazon-aws-cognito-user-pool/image10.jpg?w=320&amp;q=75 320w"></p>
-<p>Clicking next will bring you to the review screen. Be sure to check over everything and make sure you've made no errors. Some things will not be able to be changed later, and you will have to delete your user pool and start all over to change them. When you are fully satisfied with your setup, click <code>Create user pool</code>.</p>
-<p>Thank you for taking the time to read my article and I hope you found it useful (or at the very least, mildly entertaining). For more great information about web dev, systems administration and cloud computing, please read the <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Designly Blog</a>. Also, please leave your comments! I love to hear thoughts from my readers.</p>
+            <section class="post-content flex flex-col gap-6"><p>In the world of web design, animations are pivotal in adding life and character to a website, making it more appealing and engaging. Among the multitude of animations available, the typewriter effect has a certain charm, transporting users back to a bygone era where each keystroke mattered. This effect can add a touch of nostalgia to any web interface, making content stand out in a unique way. Despite its complex appearance, it's surprisingly straightforward to implement, especially when using the power and versatility of React and Tailwind CSS.</p>
+<p>In this article, we are going to take you on a journey back in time. We'll guide you through creating a typewriter animation, using the contemporary, yet beautifully simple technologies, React and Tailwind CSS. Whether you're looking to add a retro touch to your website, enhance your portfolio, or just learn a new skill, this guide has you covered. Ready to dive into the past with modern tools? Let's get started!</p>
+<iframe src="https://player.vimeo.com/video/828808117?h=c0352dc83d" width="640" height="360" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+<hr>
+<h2>The Component</h2>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-comment">// @/components/Home/TypeWriter.js</span>
+<span class="hljs-keyword">import</span> React, { useState, useEffect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">TypeWriter</span>(<span class="hljs-params">{ appendClass, hats, prefix }</span>) </span>{
+    <span class="hljs-comment">// Outer container base class + append custom class</span>
+    <span class="hljs-keyword">let</span> className = <span class="hljs-string">"flex flex-col gap-4"</span>;
+    <span class="hljs-keyword">if</span> (appendClass) className += <span class="hljs-string">" "</span> + appendClass;
+    <span class="hljs-comment">// Typewriter effect base class</span>
+    <span class="hljs-keyword">const</span> typeWriterClass = <span class="hljs-string">"font-bold border-b-2 border-b-blue-400 border-r-2 pr-1"</span>
+        + <span class="hljs-string">"animate-cursor overflow-hidden whitespace-nowrap transition-[width] ease-in-out duration-1000 mr-auto"</span>;
+    <span class="hljs-comment">// State of current hat index</span>
+    <span class="hljs-keyword">const</span> [currentHat, setCurrentHat] = useState(<span class="hljs-number">0</span>);
+    <span class="hljs-comment">// State to toggle word collapse effect</span>
+    <span class="hljs-keyword">const</span> [collapseClass, setCollapseClass] = useState(<span class="hljs-string">" w-0"</span>);
+    useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> setCollapseClass(<span class="hljs-string">" w-full"</span>), <span class="hljs-number">100</span>);
+        <span class="hljs-keyword">const</span> incrementHat = <span class="hljs-keyword">async</span> () =&gt; {
+            <span class="hljs-comment">// Set the width to 0 - transition duration is 1000ms</span>
+            setCollapseClass(<span class="hljs-string">" w-0"</span>);
+            setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+                <span class="hljs-comment">/**
+                 * After 1100ms, change the displayed text while the div
+                 * is collapsed by incrementing the index
+                 */</span>
+                setCurrentHat(<span class="hljs-function"><span class="hljs-params">oldVal</span> =&gt;</span> {
+                    <span class="hljs-keyword">let</span> hatIndex;
+                    <span class="hljs-keyword">if</span> (oldVal &gt;= hats.length - <span class="hljs-number">1</span>) {
+                        hatIndex = <span class="hljs-number">0</span>;
+                    } <span class="hljs-keyword">else</span> {
+                        hatIndex = oldVal + <span class="hljs-number">1</span>;
+                    }
+                    <span class="hljs-keyword">return</span> hatIndex;
+                });
+            }, <span class="hljs-number">1100</span>);
+            <span class="hljs-comment">// After 1000ms, set width to 100% - transition duration is 1000ms</span>
+            setTimeout(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+                setCollapseClass(<span class="hljs-string">" w-full"</span>);
+            }, <span class="hljs-number">1000</span>);
+        }
+        <span class="hljs-comment">// Interval timer to change text every 4000ms</span>
+        <span class="hljs-keyword">const</span> id = setInterval(incrementHat, <span class="hljs-number">4000</span>);
+        <span class="hljs-comment">// Cleanup interval timer</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> clearInterval(id);
+    }, []); <span class="hljs-comment">//  eslint-disable-line react-hooks/exhaustive-deps</span>
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{className}</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-5xl md:text-6xl text-center mx-auto"</span>&gt;</span>
+                Jay <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-blue-400 font-bold"</span>&gt;</span>Simons<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"flex gap-2 text-2xl md:text-4xl mx-auto"</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"shrink-0 whitespace-nowrap ml-auto"</span>&gt;</span>
+                    {prefix}
+                    {hats[currentHat].prep ? ` ${hats[currentHat].prep} ` : ''}
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{</span>`${<span class="hljs-attr">typeWriterClass</span>}${<span class="hljs-attr">collapseClass</span>}`}&gt;</span>{hats[currentHat].suffix}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+    )
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>This component takes a prop called <code>hats</code>, formatted as follows:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-keyword">const</span> hats = [
+  {
+    <span class="hljs-attr">prep</span>: <span class="hljs-string">'a'</span>,
+    <span class="hljs-attr">suffix</span>: <span class="hljs-string">'Web Developer'</span>
+  },
+  {
+    <span class="hljs-attr">prep</span>: <span class="hljs-string">'a'</span>,
+    <span class="hljs-attr">suffix</span>: <span class="hljs-string">'UI/UX Designer'</span>
+  },
+  {
+    <span class="hljs-attr">prep</span>: <span class="hljs-string">'a'</span>,
+    <span class="hljs-attr">suffix</span>: <span class="hljs-string">'Graphics Designer'</span>
+  },
+];
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>The key <code>prep</code> is so that the typewriter displays the correct indefinite article prepending the suffix.</p>
+<h2>Enjoy! &#129303;</h2>
+<p><a href="https://jay.designly.biz" rel="noreferrer noopener" target="_blank">Demo Site</a></p>
+<hr>
+<p>Thank you for taking the time to read my article and I hope you found it useful (or at the very least, mildly entertaining). For more great information about web dev, systems administration and cloud computing, please read the <a href="https://blog.designly.biz" rel="noreferrer noopener" target="_blank">Designly Blog</a>. Also, please leave your comments! I love to hear thoughts from my readers.</p>
+<p>I use <a href="https://hostinger.com?REFERRALCODE=1J11864" rel="noreferrer noopener" target="_blank">Hostinger</a> to host my clients' websites. You can get a business account that can host 100 websites at a price of $3.99/mo, which you can lock in for up to 48 months! It's the best deal in town. Services include PHP hosting (with extensions), MySQL, Wordpress and Email services.</p>
 <p>Looking for a web developer? I'm available for hire! To inquire, please fill out a <a href="https://designly.biz/contact" rel="noreferrer noopener" target="_blank">contact form</a>.</p>
 </section>
             <script
@@ -161,20 +209,20 @@
             <div class="share-buttons text-2xl flex gap-4 mx-auto">
                 <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
                 <a
-                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fhow-to-create-an-amazon-aws-cognito-user-pool"
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Freact-and-tailwind-css-making-a-typewriter-animation-from-scratch"
                     target="_blank"
                     aria-label="Share on Facebook"
                 >
                     <i class="fab fa-facebook text-blue-700"></i>
                 </a>
                 <a
-                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-create-an-amazon-aws-cognito-user-pool"
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Freact-and-tailwind-css-making-a-typewriter-animation-from-scratch"
                     target="_blank"
                     aria-label="Share on LinkedIn"
                 >
                     <i class="fab fa-linkedin text-indigo-700"></i>
                 </a>
-                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-create-an-amazon-aws-cognito-user-pool" target="_blank">
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Freact-and-tailwind-css-making-a-typewriter-animation-from-scratch" target="_blank">
                     <i class="fab fa-twitter text-sky-700"></i>
                 </a>
             </div>
@@ -417,10 +465,10 @@
     <div id="post-list-bottom"></div>
 </div>
 </div>
-<input id="post-id" type="hidden" value="42GtmlQJ23tIApNPJFS8Bt" />
+<input id="post-id" type="hidden" value="4jUnU84OyXVXmQWKgfRzKe" />
 <input id="reply-to" type="hidden" value="" />
-<input id="post-title" type="hidden" value="How to Create an Amazon AWS Cognito User Pool" />
-<input id="post-url" type="hidden" value="https://blog.designly.biz/how-to-create-an-amazon-aws-cognito-user-pool" />
+<input id="post-title" type="hidden" value="React and Tailwind CSS: Making a Typewriter Animation from Scratch" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/react-and-tailwind-css-making-a-typewriter-animation-from-scratch" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");

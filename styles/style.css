@@ -10664,14 +10664,14 @@ body {
     word-break: keep-all;
   }
   .post-content .blog-post-image {
-    @apply rounded-md shadow-lg cursor-zoom-in hover:opacity-80 transition-all ease-in-out duration-300 w-fit;
+    @apply mx-auto my-10 rounded-md shadow-lg cursor-zoom-in hover:opacity-80 transition-all ease-in-out duration-300 w-fit;
   }
   hr {
     @apply my-6 h-px border-t-0 bg-transparent bg-gradient-to-r from-transparent via-neutral-500 to-transparent opacity-25 dark:opacity-100;
   }
 }
 .code-wrapper {
-  @apply relative rounded-lg overflow-hidden pt-7 bg-zinc-700;
+  @apply relative rounded-lg overflow-hidden pt-7 bg-zinc-700 my-6;
 }
 .code-wrapper button {
   @apply absolute top-3 right-3 text-white text-2xl hover:text-blue-500 hover-trans bg-zinc-800 rounded-md px-2;

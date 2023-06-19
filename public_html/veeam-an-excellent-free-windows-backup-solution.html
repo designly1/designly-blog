@@ -70,14 +70,14 @@
 </header>
             <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
     <div class="col-span-3 px-4 md:px-20 py-10">
-        <article class="flex flex-col gap-10">
+        <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
                 <h1 class="text-colors text-xl md:text-3xl font-bold">Veeam: An Excellent Free Windows Backup Solution</h1>
                 <div class="flex gap-2 items-center tag-list"><a href="/tag/backups">#Backups</a></div>
                 <img
                     class="rounded-md shadow-lg"
                     src="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/cover.jpg?w=1200&q=75"
-                    srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/cover.jpg?w=1024&q=75 1024w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/cover.jpg?w=320&q=75 320w"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/cover.jpg?w=320&q=75 320w"
                     alt="Veeam: An Excellent Free Windows Backup Solution"
                     width="1200"
                     height="675"
@@ -105,20 +105,20 @@
 <p>But wait, you must be saying, I thought the title said this was free? Well it is! Veeam also provides a community version (with almost no support) and a standalone agent you can install. It's stupid easy to install and it pretty much configures itself. I'll show you just how easy it is.</p>
 <h4>Step 1: Download Veeam Agent</h4>
 <p><a href="https://www.veeam.com/windows-backup-free-download.html" rel="noreferrer noopener" target="_blank">Click Here</a> to download the installer. You'll have to enter your email address to get a confirmation code in order to download it. If you don't want any more spam, then I recommend using a service such as <a href="https://temp-mail.org" rel="noreferrer noopener" target="_blank">temp-mail.org</a>. Be sure to select the standalone version at the bottom. If you want to mess around with the full version, you can, but that's outside the scope of this article.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image1.png?w=1200&amp;q=75" alt="Download Veeam Installer" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/veeam-an-excellent-free-windows-backup-solution/image1.png" srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image1.png?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image1.png?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image1.png?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image1.png?q=75" alt="Download Veeam Installer" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/veeam-an-excellent-free-windows-backup-solution/image1.png" srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image1.png?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image1.png?w=320&amp;q=75 320w"></p>
 <hr>
 <h4>Step 2: Install &amp; Configure Veeam Agent</h4>
 <p>Run the installer (should automatically run as administrator). Once the setup is complete, Veeam will ask you to select your destination for backups as well to create a recovery drive. You'll need like an 8GB USB stick to do this. You definitely want to do this in case your computer bricks.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image3.png?w=1200&amp;q=75" alt="Create Recovery Media" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/veeam-an-excellent-free-windows-backup-solution/image3.png" srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image3.png?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image3.png?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image3.png?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image3.png?q=75" alt="Create Recovery Media" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/veeam-an-excellent-free-windows-backup-solution/image3.png" srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image3.png?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image3.png?w=320&amp;q=75 320w"></p>
 <hr>
 <p>Now, in theory, everything should be ready to go, but I suggest you check the settings just to be sure everything is to your liking. So go ahead and right click on your backup job and click <code>Edit job</code>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image4.png?w=1200&amp;q=75" alt="click Edit Job" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/veeam-an-excellent-free-windows-backup-solution/image4.png" srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image4.png?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image4.png?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image4.png?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image4.png?q=75" alt="click Edit Job" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/veeam-an-excellent-free-windows-backup-solution/image4.png" srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image4.png?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image4.png?w=320&amp;q=75 320w"></p>
 <p>Under the <code>Backup Mode</code> tab you should have <code>Entire Computer</code> checked, which is probably what you want. If you have separate OS and data drives, both will be backed up. Veeam is pretty smart and knows what to backup and where to back it up pretty much automatically. However, you have the option to backup by volume or select certain files and folders. It's totally up to you.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image5.png?w=1200&amp;q=75" alt="Check Backup Mode" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/veeam-an-excellent-free-windows-backup-solution/image5.png" srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image5.png?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image5.png?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image5.png?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image5.png?q=75" alt="Check Backup Mode" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/veeam-an-excellent-free-windows-backup-solution/image5.png" srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image5.png?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image5.png?w=320&amp;q=75 320w"></p>
 <p>Now click on the <code>Local Storage</code> tab. Here you'll want to verify that Veeam chose the correct backup destination drive. Change it if need be. You can also change the backup image rotation. By default, Veeam keeps images for seven days.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image6.png?w=1200&amp;q=75" alt="Check Local Storage" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/veeam-an-excellent-free-windows-backup-solution/image6.png" srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image6.png?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image6.png?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image6.png?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image6.png?q=75" alt="Check Local Storage" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/veeam-an-excellent-free-windows-backup-solution/image6.png" srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image6.png?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image6.png?w=320&amp;q=75 320w"></p>
 <p>Finally, you'll want to check the <code>Schedule</code> tab and see if that's to your liking. By default Veeam will automatically backup at 12:30 AM every day. Veeam will also wake your computer if it is asleep, which is nice because you don't have to waste power while you're sleeping.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image7.png?w=1200&amp;q=75" alt="Check Backup Schedule" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/veeam-an-excellent-free-windows-backup-solution/image7.png" srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image7.png?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image7.png?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image7.png?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image7.png?q=75" alt="Check Backup Schedule" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/veeam-an-excellent-free-windows-backup-solution/image7.png" srcset="https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image7.png?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/veeam-an-excellent-free-windows-backup-solution/image7.png?w=320&amp;q=75 320w"></p>
 <hr>
 <p>That's it! You probably didn't have to change a thing! I know I didn't. Now if anything ever happens so your PC and you can't boot, just pop in that USB stick and you can restore from any of the seven-day images.</p>
 <p>I hope you appreciated this article. For more information about web development, design and systems administration, please visit the <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Designly Blog</a>.</p>
@@ -247,10 +247,59 @@
         <i class="fa-solid fa-times text-2xl"></i>
     </button>
     <div id="post-sidebar-cont" class="flex flex-col gap-8">
-        <a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+        <a href="/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app">
     <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
         <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app/cover.jpg?w=400&q=75" alt="Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Step-by-step guide to creating an 'Add to Home Screen' prompt for Next.js PWAs, targeting major mobile browsers to enhance user experience.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg?w=400&q=75" alt="How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">By leveraging the strengths of React, Tailwind CSS, and Daisy UI, we can create a user-friendly and aesthetically pleasing file uploader.</p>
+        </div>
+    </div>
+</a>
+<a href="/react-and-tailwind-css-making-a-typewriter-animation-from-scratch">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg?w=400&q=75" alt="React and Tailwind CSS: Making a Typewriter Animation from Scratch" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">React and Tailwind CSS: Making a Typewriter Animation from Scratch</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn to create a typewriter animation using React and Tailwind CSS. Step-by-step guide to add a retro touch to your web design.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion/cover.jpg?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
         </div>
         <div class="p-4 flex flex-col gap-2">
             <h1 class="text-xl font-bold">Animating the Web: Route Transitions in Next.js with Framer Motion</h1>
@@ -345,61 +394,14 @@
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
-        </div>
-    </div>
-</a>
-<script
-    async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
-    crossorigin="anonymous"
-></script>
-<ins
-    class="adsbygoogle"
-    style="display: block"
-    data-ad-format="fluid"
-    data-ad-layout-key="+13+qh+1q+m+1y"
-    data-ad-client="ca-pub-8001907419576129"
-    data-ad-slot="2598499752"
-></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
     </div>
     <div id="post-list-bottom"></div>
 </div>
 </div>
 <input id="post-id" type="hidden" value="5Tr1gmYT2ZDkrXatiI2sqV" />
 <input id="reply-to" type="hidden" value="" />
+<input id="post-title" type="hidden" value="Veeam: An Excellent Free Windows Backup Solution" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/veeam-an-excellent-free-windows-backup-solution" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");

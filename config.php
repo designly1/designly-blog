@@ -22,3 +22,8 @@ $dotenv->required([]);
 
 define('DEFAULT_ROUTE_FILE', DIR . '/pages/home.php');
 define('CDN_URL', 'https://cdn.designly.biz');
+
+// Email config
+define('EMAIL_FROM', 'noreply@mail.designly.biz');
+define('EMAIL_FROM_NAME', 'Designly Blog');
+define('ADMIN_EMAIL', 'admin@designly.biz');

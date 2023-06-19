@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 md:grid-cols-4">
     <div class="col-span-3 px-4 md:px-20 py-10">
-        <article class="flex flex-col gap-10">
+        <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
                 <h1 class="text-colors text-xl md:text-3xl font-bold">{{title}}</h1>
                 <div class="flex gap-2 items-center tag-list">{{tagList}}</div>
@@ -108,6 +108,8 @@
 </div>
 <input id="post-id" type="hidden" value="{{postId}}" />
 <input id="reply-to" type="hidden" value="" />
+<input id="post-title" type="hidden" value="{{title}}" />
+<input id="post-url" type="hidden" value="<?=$thisUrl;?>" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");

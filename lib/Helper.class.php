@@ -78,7 +78,7 @@ class Helper
     {
         $src = str_replace('cdn.designly.biz', 'cdn.designly.biz/imgr', $src);
         $srcset = [];
-        $sizes = [1024, 640, 320];
+        $sizes = [640, 320];
         foreach ($sizes as $size) {
             $srcset[] = "$src?w=$size&q=75 " . $size . "w";
         }

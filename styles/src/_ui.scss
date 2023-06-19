@@ -1,5 +1,5 @@
     .code-wrapper {
-        @apply relative rounded-lg overflow-hidden pt-7 bg-zinc-700;
+        @apply relative rounded-lg overflow-hidden pt-7 bg-zinc-700 my-6;
 
         button {
             @apply absolute top-3 right-3 text-white text-2xl hover:text-blue-500 hover-trans bg-zinc-800 rounded-md px-2;

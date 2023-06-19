@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS | Designly</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/assets/css/style.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/base16/gigavolt.min.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <!-- We use the full link to the CSS file in the rest of the tags -->
+        <link
+            rel="preload"
+            as="style"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+        />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            media="print"
+            onload="this.media='all'"
+        />
+        <noscript>
+            <link
+                rel="stylesheet"
+                href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap"
+            />
+        </noscript>
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" content="#ffffff" />
+        <meta name="description" content="By leveraging the strengths of React, Tailwind CSS, and Daisy UI, we can create a user-friendly and aesthetically pleasing file uploader." />
+        <meta property="og:title" content="How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS" />
+        <meta property="og:description" content="By leveraging the strengths of React, Tailwind CSS, and Daisy UI, we can create a user-friendly and aesthetically pleasing file uploader." />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://blog.designly.biz/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css" />
+        <meta property="og:site_name" content="Designly Blog" />
+        <meta property="fb:app_id" content="3419826058233420" />
+    </head>
+    <body>
+        <main id="main" class="bg-zinc-50 dark:bg-zinc-900 min-h-screen pt-[90px] flex flex-col">
+            <header
+  class="py-2 bg-gradient-to-t from-blue-500 to-blue-700 dark:from-zinc-700 dark:to-zinc-900 shadow-lg fixed top-0 right-0 left-0 z-30"
+>
+  <nav class="flex justify-between items-center px-4">
+    <a href="/" aria-label="Home Page">
+      <img
+        class="w-[150px] md:w-[175px]"
+        src="/assets/svg/designly-logo-white.svg"
+        alt="Designly"
+        width="175"
+        height="62"
+      />
+    </a>
+    <h1 class="text-zinc-50 text-3xl hidden md:block">Developer Blog</h1>
+    <div class="flex gap-8 items-center pr-2">
+      <button class="btn-search-open" aria-label="Open Search Bar">
+        <i class="fa-solid fa-search text-dark-colors text-3xl"></i>
+      </button>
+      <button class="btn-sidebar-open md:hidden" aria-label="Open Sidebar">
+        <i class="fa-solid fa-bars text-dark-colors text-3xl"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+            <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="col-span-3 px-4 md:px-20 py-10">
+        <article class="flex flex-col gap-10 md:px-10">
+            <section class="post-header flex flex-col gap-4">
+                <h1 class="text-colors text-xl md:text-3xl font-bold">How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/nextjs">#Next.js</a>
+<a href="/tag/react">#React</a>
+<a href="/tag/ui-ux">#UI / UX</a>
+<a href="/tag/tailwind-css">#Tailwind CSS</a></div>
+                <img
+                    class="rounded-md shadow-lg"
+                    src="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg?w=320&q=75 320w"
+                    alt="How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS"
+                    width="1200"
+                    height="675"
+                />
+                <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            </section>
+            <section class="post-content flex flex-col gap-6"><p>In the modern web landscape, file uploading is a fundamental feature that many applications require. Whether it's a profile picture on a social media platform, an attachment in an email, or a document upload for a cloud storage app, handling file uploads correctly is crucial for a great user experience. With the rise of modern JavaScript libraries and CSS frameworks, creating such features has become more efficient than ever. In this article, we're going to explore the power of React, a popular JavaScript library for building user interfaces, paired with Tailwind CSS, a utility-first CSS framework, and its extension Daisy UI.</p>
+<p>React, with its component-based architecture, allows for easy scaling and reusability of code. Tailwind CSS provides low-level utility classes to let you build custom designs without leaving your HTML. Adding Daisy UI into the mix further enhances our toolkit. As an extension for Tailwind CSS, Daisy UI makes it easy to create beautiful interfaces in a jiffy. It's lightweight, easy to use, and accelerates the development process considerably.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/image2.gif?q=75" alt="Animated Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/image2.gif" srcset="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/image2.gif?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/image2.gif?w=320&amp;q=75 320w"></p>
+<p>By leveraging the strengths of React, Tailwind CSS, and Daisy UI, we can create a user-friendly and aesthetically pleasing file uploader. Please feel free to check out or clone the repo at the bottom of the page. There is also a link to a demo as well.</p>
+<p>Well enough babble, on to the code!</p>
+<h2>File Uploader Component</h2>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-string">'use client'</span>
+<span class="hljs-keyword">import</span> React, { useState, ChangeEvent, useRef } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+<span class="hljs-keyword">import</span> { FaCheck, FaTimes } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-icons/fa'</span>;
+interface FileUploaderProps {
+    acceptedFileTypes?: string[] | <span class="hljs-literal">null</span>;
+    url: string;
+    maxFileSize?: number;
+    allowMultiple?: boolean;
+    label?: string;
+    labelAlt?: string;
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">FileUploader</span>(<span class="hljs-params">props: FileUploaderProps</span>) </span>{
+    <span class="hljs-keyword">const</span> {
+        acceptedFileTypes,
+        url, maxFileSize = <span class="hljs-number">5</span>,
+        allowMultiple = <span class="hljs-literal">false</span>,
+        label = <span class="hljs-string">""</span>,
+        labelAlt = <span class="hljs-string">""</span>
+    } = props;
+    <span class="hljs-keyword">const</span> MAX_FILE_BYTES = maxFileSize * <span class="hljs-number">1024</span> * <span class="hljs-number">1024</span>; <span class="hljs-comment">// MB to bytes</span>
+    <span class="hljs-comment">// Change the state structure to handle multiple file progress and status</span>
+    <span class="hljs-keyword">const</span> [fileProgress, setFileProgress] = useState&lt;{ [key: string]: number }&gt;({});
+    <span class="hljs-keyword">const</span> [fileStatus, setFileStatus] = useState&lt;{ [key: string]: string }&gt;({});
+    <span class="hljs-keyword">const</span> [uploadError, setUploadError] = useState&lt;string | <span class="hljs-literal">null</span>&gt;(<span class="hljs-literal">null</span>);
+    <span class="hljs-keyword">const</span> [uploadSuccess, setUploadSuccess] = useState&lt;boolean&gt;(<span class="hljs-literal">false</span>);
+    <span class="hljs-keyword">const</span> isError = <span class="hljs-built_in">Object</span>.values(fileStatus).some(<span class="hljs-function"><span class="hljs-params">status</span> =&gt;</span> status !== <span class="hljs-string">'Uploaded'</span>);
+    <span class="hljs-comment">// Create a ref for the file input</span>
+    <span class="hljs-keyword">const</span> fileInputRef = useRef&lt;HTMLInputElement&gt;(<span class="hljs-literal">null</span>);
+    <span class="hljs-keyword">const</span> resetUploader = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+        setFileProgress({});
+        setFileStatus({});
+        setUploadError(<span class="hljs-literal">null</span>);
+        setUploadSuccess(<span class="hljs-literal">false</span>);
+        <span class="hljs-keyword">if</span> (fileInputRef.current) {
+            fileInputRef.current.value = <span class="hljs-string">""</span>;
+        }
+    };
+    <span class="hljs-keyword">const</span> fileSelectedHandler = <span class="hljs-function">(<span class="hljs-params">event: ChangeEvent&lt;HTMLInputElement&gt;</span>) =&gt;</span> {
+        setUploadError(<span class="hljs-literal">null</span>); <span class="hljs-comment">// reset the upload error when a new file is selected</span>
+        <span class="hljs-keyword">if</span> (event.target.files) {
+            <span class="hljs-keyword">const</span> files = <span class="hljs-built_in">Array</span>.from(event.target.files);
+            <span class="hljs-keyword">let</span> isValid = <span class="hljs-literal">true</span>; <span class="hljs-comment">// Flag to check if all files are valid</span>
+            <span class="hljs-keyword">let</span> fileErrors: { [key: string]: string } = {};
+            <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> file <span class="hljs-keyword">of</span> files) {
+                <span class="hljs-keyword">if</span> (file.size &gt; MAX_FILE_BYTES) {
+                    fileErrors[file.name] = <span class="hljs-string">`File size cannot exceed <span class="hljs-subst">${maxFileSize}</span> MB`</span>;
+                    isValid = <span class="hljs-literal">false</span>;
+                }
+                <span class="hljs-keyword">if</span> (acceptedFileTypes &amp;&amp; !acceptedFileTypes.includes(file.type)) {
+                    fileErrors[file.name] = <span class="hljs-string">"File type not accepted. Accepted types: "</span> + acceptedFileTypes.join(<span class="hljs-string">', '</span>);
+                    isValid = <span class="hljs-literal">false</span>;
+                }
+            }
+            <span class="hljs-keyword">if</span> (!isValid) {
+                setFileStatus(fileErrors);
+            } <span class="hljs-keyword">else</span> {
+                files.forEach(<span class="hljs-function"><span class="hljs-params">file</span> =&gt;</span> {
+                    setFileProgress(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> ({ ...prev, [file.name]: <span class="hljs-number">0</span> }));
+                    fileUploadHandler(file);
+                });
+            }
+        }
+    };
+    <span class="hljs-keyword">const</span> fileUploadHandler = <span class="hljs-function">(<span class="hljs-params">file: File</span>) =&gt;</span> {
+        <span class="hljs-keyword">const</span> formData = <span class="hljs-keyword">new</span> FormData();
+        formData.append(<span class="hljs-string">"uploads"</span>, file);
+        <span class="hljs-keyword">const</span> xhr = <span class="hljs-keyword">new</span> XMLHttpRequest();
+        xhr.open(<span class="hljs-string">"POST"</span>, url, <span class="hljs-literal">true</span>);
+        xhr.upload.addEventListener(<span class="hljs-string">"progress"</span>, event =&gt; {
+            <span class="hljs-keyword">if</span> (event.lengthComputable) {
+                <span class="hljs-keyword">const</span> progress = <span class="hljs-built_in">Math</span>.round((event.loaded / event.total) * <span class="hljs-number">100</span>);
+                setFileProgress(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> ({ ...prev, [file.name]: progress }));
+            }
+        });
+        xhr.addEventListener(<span class="hljs-string">"readystatechange"</span>, () =&gt; {
+            <span class="hljs-keyword">if</span> (xhr.readyState === <span class="hljs-number">4</span>) {
+                <span class="hljs-keyword">if</span> (xhr.status === <span class="hljs-number">200</span>) {
+                    setFileStatus(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> ({ ...prev, [file.name]: <span class="hljs-string">'Uploaded'</span> }));
+                    setUploadSuccess(<span class="hljs-literal">true</span>);
+                } <span class="hljs-keyword">else</span> {
+                    setFileStatus(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> ({ ...prev, [file.name]: <span class="hljs-string">"An error occurred while uploading the file. Server response: "</span> + xhr.statusText }));
+                }
+            }
+        });
+        xhr.send(formData);
+    };
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"flex flex-col gap-4 w-full h-60 md:h-48"</span>&gt;</span>
+            {
+                uploadSuccess
+                    ?
+                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"flex flex-col gap-2"</span>&gt;</span>
+                        {
+                            isError ? <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-xs text-red-500"</span>&gt;</span>Upload completed, but with errors.<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span> : <span class="hljs-tag">&lt;&gt;</span><span class="hljs-tag">&lt;/&gt;</span>
+                        }
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"btn-group w-full"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"btn btn-success w-1/2"</span>&gt;</span>Success!<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+                                <span class="hljs-attr">className</span>=<span class="hljs-string">"btn w-1/2"</span>
+                                <span class="hljs-attr">onClick</span>=<span class="hljs-string">{resetUploader}</span>
+                            &gt;</span>Upload Another<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+                    :
+                    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"form-control w-full"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label-text"</span>&gt;</span>{label}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label-text-alt"</span>&gt;</span>{labelAlt}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+                            <span class="hljs-attr">type</span>=<span class="hljs-string">"file"</span>
+                            <span class="hljs-attr">className</span>=<span class="hljs-string">"file-input file-input-bordered file-input-primary w-full"</span>
+                            <span class="hljs-attr">onChange</span>=<span class="hljs-string">{fileSelectedHandler}</span>
+                            <span class="hljs-attr">accept</span>=<span class="hljs-string">{acceptedFileTypes</span> ? <span class="hljs-attr">acceptedFileTypes.join</span>(',') <span class="hljs-attr">:</span> <span class="hljs-attr">undefined</span>}
+                            <span class="hljs-attr">ref</span>=<span class="hljs-string">{fileInputRef}</span>
+                            <span class="hljs-attr">multiple</span>=<span class="hljs-string">{allowMultiple}</span> // <span class="hljs-attr">Added</span> <span class="hljs-attr">the</span> '<span class="hljs-attr">multiple</span>' <span class="hljs-attr">attribute</span> <span class="hljs-attr">conditionally</span>
+                        /&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label-text-alt text-red-500"</span>&gt;</span>{uploadError}<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+            }
+            &lt;div className=<span class="hljs-string">"overflow-x-auto flex gap-2 flex-col-reverse"</span>&gt;
+                {<span class="hljs-built_in">Object</span>.entries(fileProgress).map(<span class="hljs-function">(<span class="hljs-params">[fileName, progress]</span>) =&gt;</span> (
+                    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">key</span>=<span class="hljs-string">{fileName}</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-xs flex flex-col gap-1"</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>{fileName}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+                        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"flex items-center gap-2"</span>&gt;</span>
+                            <span class="hljs-tag">&lt;<span class="hljs-name">progress</span>
+                                <span class="hljs-attr">className</span>=<span class="hljs-string">"progress progress-primary w-full"</span>
+                                <span class="hljs-attr">value</span>=<span class="hljs-string">{progress}</span>
+                                <span class="hljs-attr">max</span>=<span class="hljs-string">"100"</span>
+                            /&gt;</span>
+                            {progress === 100 &amp;&amp;
+                                <span class="hljs-tag">&lt;&gt;</span>
+                                    {
+                                        fileStatus[fileName] === 'Uploaded'
+                                            ?
+                                            <span class="hljs-tag">&lt;<span class="hljs-name">FaCheck</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-xl text-green-500 mr-4"</span> /&gt;</span>
+                                            :
+                                            <span class="hljs-tag">&lt;<span class="hljs-name">FaTimes</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-xl text-red-500 mr-4"</span> /&gt;</span>
+                                    }
+                                <span class="hljs-tag">&lt;/&gt;</span>
+                            }
+                        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+                        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">p</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-red-500"</span>&gt;</span>{fileStatus[fileName] !== 'Uploaded' ? fileStatus[fileName] : ''}<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span></span>
+                    &lt;<span class="hljs-regexp">/div&gt;
+                ))}
+            &lt;/</span>div&gt;
+        &lt;<span class="hljs-regexp">/div&gt;
+    );
+}
+</span></code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>This component takes several properties:</p>
+<ul>
+<li>
+<code>acceptedFileTypes</code> = an array of content-type strings (defaults to all types)</li>
+<li>
+<code>url</code> = endpoint to send files to</li>
+<li>
+<code>maxFileSize</code> = max file size in MB</li>
+<li>
+<code>allowMultiple</code> = allow multiple file uploads (defaults to false)</li>
+<li>
+<code>label</code> = left hand form control label</li>
+<li>
+<code>labelAlt</code> = right hand muted form control label</li>
+</ul>
+<p>Also not that I am using the modern Next.js 13 app router for this demo. So the <code>'use client'</code> directive is needed to make this a client component, rather than a server component.</p>
+<h2>Putting it All Together</h2>
+<p>Here's the main <code>page.tsx</code>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-keyword">import</span> FileUploader <span class="hljs-keyword">from</span> <span class="hljs-string">"@/components/FileUploader"</span>
+<span class="hljs-keyword">const</span> url = <span class="hljs-string">"/api/upload"</span>;
+interface ContainerProps {
+  <span class="hljs-attr">children</span>: React.ReactNode
+}
+<span class="hljs-keyword">const</span> Container = <span class="hljs-function">(<span class="hljs-params">{ children }: ContainerProps</span>) =&gt;</span> (
+  <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"flex flex-col items-center justify-between gap-4 min-h-60 bg-zinc-800 w-full max-w-2xl py-10 px-4 rounded-xl h-fit"</span>&gt;</span>
+    {children}
+  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+)
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Home</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">main</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"min-h-screen flex-col py-20 px-4 md:px-32 bg-zinc-900 text-white grid grid-cols-1 gap-8 lg:grid-cols-2 2xl:grid-cols-3"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Container</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-2xl font-bold"</span>&gt;</span>File Uploader<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">FileUploader</span>
+          <span class="hljs-attr">url</span>=<span class="hljs-string">{url}</span>
+          <span class="hljs-attr">acceptedFileTypes</span>=<span class="hljs-string">{[</span>
+            "<span class="hljs-attr">image</span>/<span class="hljs-attr">png</span>",
+            "<span class="hljs-attr">image</span>/<span class="hljs-attr">jpeg</span>",
+          ]}
+          <span class="hljs-attr">maxFileSize</span>=<span class="hljs-string">{100}</span>
+          <span class="hljs-attr">label</span>=<span class="hljs-string">"Max File Size: 1MB"</span>
+          <span class="hljs-attr">labelAlt</span>=<span class="hljs-string">"Accepted File Types: png, jpeg"</span>
+        /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Container</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Container</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-2xl font-bold"</span>&gt;</span>File Uploader<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">FileUploader</span>
+          <span class="hljs-attr">url</span>=<span class="hljs-string">{url}</span>
+          <span class="hljs-attr">acceptedFileTypes</span>=<span class="hljs-string">{[</span>
+            "<span class="hljs-attr">image</span>/<span class="hljs-attr">png</span>",
+            "<span class="hljs-attr">image</span>/<span class="hljs-attr">jpeg</span>",
+          ]}
+          <span class="hljs-attr">allowMultiple</span>=<span class="hljs-string">{true}</span>
+          <span class="hljs-attr">maxFileSize</span>=<span class="hljs-string">{100}</span>
+          <span class="hljs-attr">label</span>=<span class="hljs-string">"Max File Size: 100MB (multiple)"</span>
+          <span class="hljs-attr">labelAlt</span>=<span class="hljs-string">"Accepted File Types: png, jpeg"</span>
+        /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Container</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Container</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-2xl font-bold"</span>&gt;</span>File Uploader<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">FileUploader</span>
+          <span class="hljs-attr">url</span>=<span class="hljs-string">{</span>'<span class="hljs-attr">https:</span>//<span class="hljs-attr">example.com</span>'}
+          <span class="hljs-attr">acceptedFileTypes</span>=<span class="hljs-string">{[</span>
+            "<span class="hljs-attr">image</span>/<span class="hljs-attr">png</span>",
+            "<span class="hljs-attr">image</span>/<span class="hljs-attr">jpeg</span>",
+          ]}
+          <span class="hljs-attr">allowMultiple</span>=<span class="hljs-string">{true}</span>
+          <span class="hljs-attr">maxFileSize</span>=<span class="hljs-string">{100}</span>
+          <span class="hljs-attr">label</span>=<span class="hljs-string">"Max File Size: 100MB (non-existent endpoint)"</span>
+          <span class="hljs-attr">labelAlt</span>=<span class="hljs-string">"Accepted File Types: png, jpeg"</span>
+        /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">Container</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">main</span> &gt;</span>
+  )
+}
+</span></code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>That's it! No need for additional dependencies, this solution is lightweight, functional, beautiful and creates an excellent UX. Cheers!</p>
+<hr>
+<p>Note: the demo site API discards all files that are uploaded. The API also randomly returns a code 500 for demonstration of error handling.</p>
+<p><a href="https://next-uploader-example.vercel.app/" rel="noreferrer noopener" target="_blank">Demo Site</a> | <a href="https://github.com/designly1/next-uploader-example" rel="noreferrer noopener" target="_blank">GitHub Repo</a></p>
+<hr>
+<p>Thank you for taking the time to read my article and I hope you found it useful (or at the very least, mildly entertaining). For more great information about web dev, systems administration and cloud computing, please read the <a href="https://blog.designly.biz" rel="noreferrer noopener" target="_blank">Designly Blog</a>. Also, please leave your comments! I love to hear thoughts from my readers.</p>
+<p>I use <a href="https://hostinger.com?REFERRALCODE=1J11864" rel="noreferrer noopener" target="_blank">Hostinger</a> to host my clients' websites. You can get a business account that can host 100 websites at a price of $3.99/mo, which you can lock in for up to 48 months! It's the best deal in town. Services include PHP hosting (with extensions), MySQL, Wordpress and Email services.</p>
+<p>Looking for a web developer? I'm available for hire! To inquire, please fill out a <a href="https://designly.biz/contact" rel="noreferrer noopener" target="_blank">contact form</a>.</p>
+</section>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <div class="share-buttons text-2xl flex gap-4 mx-auto">
+                <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
+                <a
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fcreate-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css"
+                    target="_blank"
+                    aria-label="Share on Facebook"
+                >
+                    <i class="fab fa-facebook text-blue-700"></i>
+                </a>
+                <a
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fcreate-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css"
+                    target="_blank"
+                    aria-label="Share on LinkedIn"
+                >
+                    <i class="fab fa-linkedin text-indigo-700"></i>
+                </a>
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fcreate-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css" target="_blank">
+                    <i class="fab fa-twitter text-sky-700"></i>
+                </a>
+            </div>
+            <hr />
+            <div class="bg-white dark:bg-zinc-800 border-1 rounded-lg flex flex-col shadow p-6 max-w-xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-y-4">
+                    <div class="col-span-1 flex items-center">
+                        <img
+                            src="https://cdn.designly.biz/imgr/jay.jpg?w=200&q=75"
+                            alt="Jay"
+                            width="200"
+                            height="200"
+                            class="rounded-full shadow-md border-4 border-blue-700/20 w-32 h-32 mx-auto"
+                        />
+                    </div>
+                    <div class="col-span-3 px-6 flex flex-col gap-4">
+                        <h3 class="text-2xl font-semibold text-center text-colors">About The Author</h3>
+                        <p class="text-zinc-700 dark:text-zinc-300">
+                            Jay is a full-stack developer, electrical engineer, writer and music producer. He currently
+                            resides in the Madison, WI area.
+                        </p>
+                        <a
+                            href="https://jay.designly.biz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="text-hover flex gap-2 items-center"
+                        >
+                            <div>Portfolio Site</div>
+                            <i class="fa-solid fa-external-link"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <hr />
+            <h2 class="text-2xl font-bold text-center border-b-2 border-dashed pb-1 text-colors">Comments</h2>
+            <div id="comments" class="text-colors">
+                <!-- Comments will be generated here -->
+                <p>No Comments Yet</p>
+            </div>
+            <button id="btn-post-comment" class="btn btn-primary btn-outline flex gap-2 items-center max-w-md mx-auto">
+                <i class="fas fa-comment-medical"></i>
+                <div>Post Comment</div>
+            </button>
+            <script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block; text-align: center"
+    data-ad-layout="in-article"
+    data-ad-format="fluid"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="7647915952"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+            <template id="comment-template" class="text-colors">
+                <div
+                    class="comment flex flex-col gap-4 p-4 border rounded shadow mb-4 bg-white dark:bg-zinc-800 text-colors"
+                >
+                    <div class="flex gap-2 items-center">
+                        <img
+                            class="comment-avatar rounded-full w-10 h-10"
+                            src="/assets/img/pixel-black.png"
+                            width="100"
+                            height="100"
+                            alt="Commenter Avatar"
+                        />
+                        <div class="comment-display-name text-2xl text-cyan-700"></div>
+                    </div>
+                    <p class="comment-text"></p>
+                    <div class="replies ml-4">
+                        <!-- Replies will be generated here -->
+                    </div>
+                    <button class="reply-button mt-2 text-hover flex gap-2 items-center">
+                        <i class="fas fa-comment-dots"></i>
+                        <div>Reply</div>
+                    </button>
+                </div>
+            </template>
+        </article>
+    </div>
+    <div class="sidebar">
+    <button class="btn top-4 left-4 btn-sidebar-close flex md:hidden btn-sidebar-close z-40 shadow-xl"
+        aria-label="Close sidebar">
+        <i class="fa-solid fa-times text-2xl"></i>
+    </button>
+    <div id="post-sidebar-cont" class="flex flex-col gap-8">
+        <a href="/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app/cover.jpg?w=400&q=75" alt="Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Step-by-step guide to creating an 'Add to Home Screen' prompt for Next.js PWAs, targeting major mobile browsers to enhance user experience.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg?w=400&q=75" alt="How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">By leveraging the strengths of React, Tailwind CSS, and Daisy UI, we can create a user-friendly and aesthetically pleasing file uploader.</p>
+        </div>
+    </div>
+</a>
+<a href="/react-and-tailwind-css-making-a-typewriter-animation-from-scratch">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg?w=400&q=75" alt="React and Tailwind CSS: Making a Typewriter Animation from Scratch" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">React and Tailwind CSS: Making a Typewriter Animation from Scratch</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn to create a typewriter animation using React and Tailwind CSS. Step-by-step guide to add a retro touch to your web design.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion/cover.jpg?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Animating the Web: Route Transitions in Next.js with Framer Motion</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">This article aims to be your comprehensive guide on how to enhance your Next.js applications with smooth, compelling route transitions using Framer Motion.</p>
+        </div>
+    </div>
+</a>
+<a href="/enhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/enhancing-form-usability-with-framer-motion-a-guide-to-animated-chunked-form/cover.jpg?w=400&q=75" alt="Enhancing Form Usability with Framer Motion: A Guide to Animated, Chunked Form Transitions" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Enhancing Form Usability with Framer Motion: A Guide to Animated, Chunked Form Transitions</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Enhance form UX with Framer Motion: Break forms into chunks, animate transitions, and improve user experience for seamless interaction.</p>
+        </div>
+    </div>
+</a>
+<a href="/easy-dropdown-menus-with-next-js-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/easy-dropdown-menus-with-next-js-and-tailwind-css/cover.jpg?w=400&q=75" alt="Easy Dropdown Menus With Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Easy Dropdown Menus With Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this article, I'm going to show you how to create a very simple, yet elegant, dropdown menu using nothing but Next.js and Tailwind CSS.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/creating-a-basic-authentication-provider-in-next-js">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-a-basic-authentication-provider-in-next-js/cover.jpg?w=400&q=75" alt="Creating a Basic Authentication Provider in Next.js" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating a Basic Authentication Provider in Next.js</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we'll walk you through the process of creating a basic authentication provider in Next.js.</p>
+        </div>
+    </div>
+</a>
+<a href="/building-a-universal-form-controller-using-next-js-and-yup">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/building-a-universal-form-controller-using-next-js-and-yup/cover.jpg?w=400&q=75" alt="Building a Universal Form Controller Using Next.js & Yup" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Building a Universal Form Controller Using Next.js & Yup</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn how you can create your own reusable universal form controller to use across your Next.js app.</p>
+        </div>
+    </div>
+</a>
+<a href="/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/facebook-users-have-until-august-to-claim-share-of-usd725-million-settlement/cover.jpg?w=400&q=75" alt="Facebook Users Have Until August to Claim Share of $725 Million Settlement" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Facebook Users Have Until August to Claim Share of $725 Million Settlement</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Facebook users can claim their share of $725M by Aug 25 in a class-action settlement for privacy violations. Meta settled without admitting guilt.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+    </div>
+    <div id="post-list-bottom"></div>
+</div>
+</div>
+<input id="post-id" type="hidden" value="5v7Xw8cgXMItfoIZtXtEFd" />
+<input id="reply-to" type="hidden" value="" />
+<input id="post-title" type="hidden" value="How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css" />
+<script>
+    function generateComment(commentData) {
+        const template = document.querySelector("#comment-template");
+        const clone = template.content.cloneNode(true);
+        const displayName = clone.querySelector(".comment-display-name");
+        displayName.textContent = commentData.displayName;
+        const commentAvatar = clone.querySelector(".comment-avatar");
+        commentAvatar.setAttribute("src", commentData.avatar);
+        const commentText = clone.querySelector(".comment-text");
+        commentText.textContent = commentData.comment;
+        const repliesContainer = clone.querySelector(".replies");
+        commentData.replies.forEach((reply) => {
+            const replyElement = generateComment(reply);
+            repliesContainer.appendChild(replyElement);
+        });
+        const replyButton = clone.querySelector(".reply-button");
+        replyButton.addEventListener("click", () => {
+            document.getElementById("reply-to").value = commentData._id;
+            loadUrl("/comment");
+        });
+        return clone;
+    }
+    const fetchComments = async () => {
+        const postId = document.getElementById("post-id").value;
+        try {
+            const result = await fetch(`https://blog-comments.designly.workers.dev/?postId=${postId}`);
+            const comments = await result.json();
+            const commentsContainer = document.querySelector("#comments");
+            if (Array.isArray(comments) && comments.length) {
+                commentsContainer.innerHTML = "";
+                comments.forEach((comment) => {
+                    const commentElement = generateComment(comment);
+                    commentsContainer.appendChild(commentElement);
+                });
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    setTimeout(async () => {
+        fetchComments();
+        document.getElementById("btn-post-comment").addEventListener("click", () => {
+            loadUrl(`/comment`);
+        });
+    }, 0);
+</script>
+</div>
+            <footer class="flex justify-around items-center py-2 bg-gradient-to-b from-blue-500 to-blue-700 text-white dark:from-zinc-500 dark:to-zinc-700 mt-auto">
+    <div>&copy; 2008 - 2023 Designly</div>
+</footer>
+        </main>
+        <div id="image-viewer" class="fixed top-0 right-0 bottom-0 left-0 z-50 hidden bg-zinc-900">
+            <button class="fixed top-4 left-4 btn-close-image-viewer">
+                <i class="fa-solid fa-times text-xl text-hover text-white"></i>
+            </button>
+            <img
+                id="image-viewer-img"
+                class="m-auto w-full btn-close-image-viewer cursor-zoom-out"
+                alt="Full Size Image"
+                src="/assets/img/pixel-black.png"
+                width="1920"
+                height="1080"
+            />
+        </div>
+        <div
+            id="loading"
+            class="fixed top-0 right-0 bottom-0 left-0 bg-black/80 flex justify-around items-center z-50"
+            style="display: none"
+        >
+            <div class="flex flex-col gap-4">
+                <img src="/assets/svg/notes-light.svg" alt="Bouncy Notes" width="200" height="200" />
+                <h1 class="text-zinc-100 text-2xl text-center font-semibold animate-pulse">Loading...</h1>
+            </div>
+        </div>
+        <div
+            id="layer"
+            class="fixed top-0 right-0 bottom-0 left-0 flex flex-col m-auto w-full bg-zinc-50 dark:bg-zinc-900 z-30 overflow-x-auto"
+            style="display: none"
+        ></div>
+        <script>
+    function loadLayer(html) {
+        const layer = document.getElementById("layer");
+        const parser = new DOMParser();
+        const parsed = parser.parseFromString(html, "text/html");
+        layer.innerHTML = parsed.body.innerHTML;
+        const scripts = parsed.body.querySelectorAll("script");
+        for (let i = 0; i < scripts.length; i++) {
+            const script = document.createElement("script");
+            for (let key in scripts[i].attributes) {
+                script.setAttribute(key, scripts[i].attributes[key].value);
+            }
+            script.innerHTML = scripts[i].innerHTML;
+            layer.appendChild(script);
+        }
+        layer.style.display = "flex";
+    }
+    function loadUrl(url) {
+        loadingOn();
+        fetch(url)
+            .then((res) => res.text())
+            .then((data) => {
+                loadLayer(data);
+            })
+            .catch((err) => {
+                console.error(err);
+            })
+            .finally(() => {
+                loadingOff();
+            });
+    }
+    function hideLayer() {
+        const layer = document.getElementById("layer");
+        layer.style.display = "none";
+    }
+    function loadingOn() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "flex";
+    }
+    function loadingOff() {
+        const loading = document.getElementById("loading");
+        loading.style.display = "none";
+    }
+</script>
+        <script src="/assets/js/index.js" defer></script>
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"></script>
+    </body>
+</html>

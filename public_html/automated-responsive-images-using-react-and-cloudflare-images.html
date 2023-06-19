@@ -70,7 +70,7 @@
 </header>
             <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
     <div class="col-span-3 px-4 md:px-20 py-10">
-        <article class="flex flex-col gap-10">
+        <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
                 <h1 class="text-colors text-xl md:text-3xl font-bold">Automated Responsive Images Using React and Cloudflare Images</h1>
                 <div class="flex gap-2 items-center tag-list"><a href="/tag/">#Graphics Design</a>
@@ -79,7 +79,7 @@
                 <img
                     class="rounded-md shadow-lg"
                     src="https://d340jo5zum8tsx.cloudfront.net/blog_files/react-cloudflare/banner.jpg?w=1200&q=75"
-                    srcset="https://d340jo5zum8tsx.cloudfront.net/blog_files/react-cloudflare/banner.jpg?w=1024&q=75 1024w, https://d340jo5zum8tsx.cloudfront.net/blog_files/react-cloudflare/banner.jpg?w=640&q=75 640w, https://d340jo5zum8tsx.cloudfront.net/blog_files/react-cloudflare/banner.jpg?w=320&q=75 320w"
+                    srcset="https://d340jo5zum8tsx.cloudfront.net/blog_files/react-cloudflare/banner.jpg?w=640&q=75 640w, https://d340jo5zum8tsx.cloudfront.net/blog_files/react-cloudflare/banner.jpg?w=320&q=75 320w"
                     alt="Automated Responsive Images Using React and Cloudflare Images"
                     width="1200"
                     height="675"
@@ -117,14 +117,14 @@
 <h4>Step 1: Set Up Cloudflare Images</h4>
 <p>Assuming you already have a registered Cloudflare account and your DNS hosted there. Create a subdomain like <strong>cdn.example.com</strong> and turn proxy on.</p>
 <p>Next, in the sidebar click <em>Speed &gt; Optimization</em> and turn on <em>Image Resizing</em>, and make sure <strong>Resize images from any origin</strong> is <strong>unchecked</strong>. If you leave it checked, anyone will be able to use your CDN url to resize images from any origin!</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image1.jpg?w=1200&amp;q=75" alt="Enable Resize Images" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/react-cloudflare/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image1.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image1.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image1.jpg?q=75" alt="Enable Resize Images" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/react-cloudflare/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image1.jpg?w=320&amp;q=75 320w"></p>
 <p>You'll need to have a billing account set up with CloudFlare to use the image resizer API. The billable usage is extremely cheap and you'll probably be charged very small amounts of money, unless you have a website with extremely high volume.</p>
 <h4>Step 2: Create a Service Worker API Endpoint</h4>
 <p>You can use the <strong>cdn_cgi</strong> url method to resize images, but that exposes your source origin and you have to enable <strong>Resize images from any origin</strong> for it to work, so we're not going to do that. Instead, we're going to create a CloudFlare worker to handle our image resizing requests.</p>
 <p>In the sidebar of your CloudFlare dashboard, click <strong>Workers</strong> and then click <strong>Create Service</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image2.jpg?w=1200&amp;q=75" alt="Create a New Service Worker" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/react-cloudflare/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image2.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image2.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image2.jpg?q=75" alt="Create a New Service Worker" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/react-cloudflare/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image2.jpg?w=320&amp;q=75 320w"></p>
 <p>Enter a <strong>Service Name</strong>. I chose "resizer", but you can name it whatever you want, then click <strong>Create Service</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image3.jpg?w=1200&amp;q=75" alt="Name and Create Your Service" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/react-cloudflare/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image3.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image3.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image3.jpg?q=75" alt="Name and Create Your Service" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/react-cloudflare/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image3.jpg?w=320&amp;q=75 320w"></p>
 <p>On the worker settings screen, click the <strong>Quick Edit</strong> button and delete the default code in the left-hand pane. Enter the following code and customize it for your environment:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js">addEventListener(<span class="hljs-string">"fetch"</span>, event =&gt; {
     event.respondWith(handleRequest(event.request))
@@ -230,11 +230,11 @@
 }
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>Change the <code>cdnUrl</code> constant to your CDN base URL. Make any other modifications you'd like and then click <strong>Save and Deploy</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image4.jpg?w=1200&amp;q=75" alt="Copy and Paste the Code" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/react-cloudflare/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image4.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image4.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image4.jpg?q=75" alt="Copy and Paste the Code" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/react-cloudflare/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image4.jpg?w=320&amp;q=75 320w"></p>
 <p>Go back to your service screen and click <strong>Triggers</strong> and click <strong>Add Route</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image5.jpg?w=1200&amp;q=75" alt="Add a Route to Your Service" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/react-cloudflare/image5.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image5.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image5.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image5.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image5.jpg?q=75" alt="Add a Route to Your Service" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/react-cloudflare/image5.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image5.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image5.jpg?w=320&amp;q=75 320w"></p>
 <p>Under <strong>Route</strong> you'll enter something like <code>https://cdn.example.com/resizer*</code>. What this does is intercept any URL with this prefix and runs it through the service worker. Any pathname after this prefix is extracted and your <code>cdnUrl</code> constant value is prepended to it. Any resizing options are configured via query parameters.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image6.jpg?w=1200&amp;q=75" alt="Create Your Route" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/react-cloudflare/image6.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image6.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image6.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image6.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image6.jpg?q=75" alt="Create Your Route" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/react-cloudflare/image6.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image6.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/react-cloudflare/image6.jpg?w=320&amp;q=75 320w"></p>
 <p>Ok! Let's try it out. Try requesting an image from your new service worker like this: <code>https://cdn.example.com/resizer/images/some-image.jpg?w=760</code>, where <code>/images/some-image.jpg</code> is the relative path to your CDN url.</p>
 <p>I've coded several of the available resizing options into this script, but there are more to choose from. For more information about using CloudFlare's image resizing API, please <a href="https://developers.cloudflare.com/images/image-resizing/resize-with-workers/" rel="noreferrer noopener" target="_blank">click here</a>.</p>
 <p>Now, you could stop here and use this service however you please, but if you're a React/NextJS developer, read on!</p>
@@ -440,10 +440,59 @@
         <i class="fa-solid fa-times text-2xl"></i>
     </button>
     <div id="post-sidebar-cont" class="flex flex-col gap-8">
-        <a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+        <a href="/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app">
     <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
         <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app/cover.jpg?w=400&q=75" alt="Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Step-by-step guide to creating an 'Add to Home Screen' prompt for Next.js PWAs, targeting major mobile browsers to enhance user experience.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg?w=400&q=75" alt="How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">By leveraging the strengths of React, Tailwind CSS, and Daisy UI, we can create a user-friendly and aesthetically pleasing file uploader.</p>
+        </div>
+    </div>
+</a>
+<a href="/react-and-tailwind-css-making-a-typewriter-animation-from-scratch">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg?w=400&q=75" alt="React and Tailwind CSS: Making a Typewriter Animation from Scratch" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">React and Tailwind CSS: Making a Typewriter Animation from Scratch</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn to create a typewriter animation using React and Tailwind CSS. Step-by-step guide to add a retro touch to your web design.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion/cover.jpg?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
         </div>
         <div class="p-4 flex flex-col gap-2">
             <h1 class="text-xl font-bold">Animating the Web: Route Transitions in Next.js with Framer Motion</h1>
@@ -538,61 +587,14 @@
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
-        </div>
-    </div>
-</a>
-<script
-    async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
-    crossorigin="anonymous"
-></script>
-<ins
-    class="adsbygoogle"
-    style="display: block"
-    data-ad-format="fluid"
-    data-ad-layout-key="+13+qh+1q+m+1y"
-    data-ad-client="ca-pub-8001907419576129"
-    data-ad-slot="2598499752"
-></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
     </div>
     <div id="post-list-bottom"></div>
 </div>
 </div>
 <input id="post-id" type="hidden" value="7AUo6la41VzKXMwST1YISx" />
 <input id="reply-to" type="hidden" value="" />
+<input id="post-title" type="hidden" value="Automated Responsive Images Using React and Cloudflare Images" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/automated-responsive-images-using-react-and-cloudflare-images" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");

@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://blog.designly.biz
+
+# Sitemaps
+Sitemap: https://blog.designly.biz/sitemap.xml

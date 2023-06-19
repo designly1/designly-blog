@@ -70,7 +70,7 @@
 </header>
             <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
     <div class="col-span-3 px-4 md:px-20 py-10">
-        <article class="flex flex-col gap-10">
+        <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
                 <h1 class="text-colors text-xl md:text-3xl font-bold">UI/UX Best Practices for Web Forms</h1>
                 <div class="flex gap-2 items-center tag-list"><a href="/tag/ui-ux">#UI / UX</a>
@@ -78,7 +78,7 @@
                 <img
                     class="rounded-md shadow-lg"
                     src="https://d340jo5zum8tsx.cloudfront.net/blog_files/forms/banner.webp?w=1200&q=75"
-                    srcset="https://d340jo5zum8tsx.cloudfront.net/blog_files/forms/banner.webp?w=1024&q=75 1024w, https://d340jo5zum8tsx.cloudfront.net/blog_files/forms/banner.webp?w=640&q=75 640w, https://d340jo5zum8tsx.cloudfront.net/blog_files/forms/banner.webp?w=320&q=75 320w"
+                    srcset="https://d340jo5zum8tsx.cloudfront.net/blog_files/forms/banner.webp?w=640&q=75 640w, https://d340jo5zum8tsx.cloudfront.net/blog_files/forms/banner.webp?w=320&q=75 320w"
                     alt="UI/UX Best Practices for Web Forms"
                     width="1200"
                     height="675"
@@ -114,7 +114,7 @@
 <div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js">$(<span class="hljs-string">"#phone-number"</span>).mask(<span class="hljs-string">'(000) 000-0000'</span>);
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p><strong>Result:</strong></p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/jquery-mask.gif?w=1200&amp;q=75" alt="jQuery Mask Code Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/jquery-mask.gif" srcset="https://cdn.designly.biz/imgr/blog_files/forms/jquery-mask.gif?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/jquery-mask.gif?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/jquery-mask.gif?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/jquery-mask.gif?q=75" alt="jQuery Mask Code Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/jquery-mask.gif" srcset="https://cdn.designly.biz/imgr/blog_files/forms/jquery-mask.gif?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/jquery-mask.gif?w=320&amp;q=75 320w"></p>
 <h4>Rule #2: Use Google Maps Autocomplete for Address Input</h4>
 <p>Address standardization is a common practice, especially by eCommerce companies. Ensuring that you&rsquo;ve received a deliverable address from your client is key to providing the best user experience.</p>
 <p>There are a number of address correction services out there. There is, of course <a href="https://postalpro.usps.com/address-quality" rel="noreferrer noopener" target="_blank">PostalPro</a>, by the USPS. But that costs a lot of money. I prefer to use the Google Places Autocomplete API to achieve both address standardization, as well as the autocomplete features, which further streamlines the user&rsquo;s form entry experience. The <a href="https://console.cloud.google.com/" rel="noreferrer noopener" target="_blank">Google Cloud API</a> is mostly free. The non-premium quota is up to 6,000 requests per minute and unlimited requests per day, so unless you&rsquo;re Amazon, the free version will most likely do!</p>
@@ -204,15 +204,15 @@ $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"
 });
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p><strong>Result</strong></p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/maps-autocomplete.gif?w=1200&amp;q=75" alt="Google Maps Autocomplete Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/maps-autocomplete.gif" srcset="https://cdn.designly.biz/imgr/blog_files/forms/maps-autocomplete.gif?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/maps-autocomplete.gif?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/maps-autocomplete.gif?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/maps-autocomplete.gif?q=75" alt="Google Maps Autocomplete Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/maps-autocomplete.gif" srcset="https://cdn.designly.biz/imgr/blog_files/forms/maps-autocomplete.gif?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/maps-autocomplete.gif?w=320&amp;q=75 320w"></p>
 <h4>Rule #3: Use the Appropriate HTML Type Attributes for Input Fields</h4>
 <p>HTML 5 has a variety of input element types that can be utilized to enhance the user experience. Some of them are rather clunky without using additional JavaScript libraries, while others work well out-of-the-box.</p>
 <p>Choosing the proper input type is particularly useful on mobile devices. For example, if you specify input type email, a mobile keyboard will pop up with functions conducive to entering an email address.</p>
 <h4>Mobile Email Example:</h4>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/mobile-email.webp?w=1200&amp;q=75" alt="Mobile Email Input Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/mobile-email.webp" srcset="https://cdn.designly.biz/imgr/blog_files/forms/mobile-email.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/mobile-email.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/mobile-email.webp?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/mobile-email.webp?q=75" alt="Mobile Email Input Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/mobile-email.webp" srcset="https://cdn.designly.biz/imgr/blog_files/forms/mobile-email.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/mobile-email.webp?w=320&amp;q=75 320w"></p>
 <p>As you can see, a customized soft keyboard appears on this iPhone. Note the @ symbol next to the spacebar. Had you used input type text, the user would have had to take additional steps to enter the @ symbol.</p>
 <h4>Mobile Phone Example:</h4>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/mobile-phone.webp?w=1200&amp;q=75" alt="Mobile Phone Input Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/mobile-phone.webp" srcset="https://cdn.designly.biz/imgr/blog_files/forms/mobile-phone.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/mobile-phone.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/mobile-phone.webp?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/mobile-phone.webp?q=75" alt="Mobile Phone Input Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/mobile-phone.webp" srcset="https://cdn.designly.biz/imgr/blog_files/forms/mobile-phone.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/mobile-phone.webp?w=320&amp;q=75 320w"></p>
 <p>Again, a custom keyboard appears with only digits. A modifier key also appears that allows entering other symbols such as &mdash; + # etc.</p>
 <p>You can use the tel input type for other types of input as well, such as zip codes or other numerical entries.</p>
 <h4>Rule #4: Handle the Operation of the Enter Key</h4>
@@ -257,12 +257,12 @@ $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"
 });
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p><strong>Result:</strong></p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/input-enter.gif?w=1200&amp;q=75" alt="Input On Enter Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/input-enter.gif" srcset="https://cdn.designly.biz/imgr/blog_files/forms/input-enter.gif?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/input-enter.gif?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/input-enter.gif?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/input-enter.gif?q=75" alt="Input On Enter Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/input-enter.gif" srcset="https://cdn.designly.biz/imgr/blog_files/forms/input-enter.gif?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/input-enter.gif?w=320&amp;q=75 320w"></p>
 <h4>Rule #5: Don&rsquo;t Use Overly-Complicated CAPTCHA Challenges</h4>
 <p>It&rsquo;s necessary these days to use a CAPTCHA challenge to keep the bots at bay. CAPTCHA stands for <em><strong>Completely Automated Public Turing Test To Tell Computers and Humans Apart</strong></em>. Alan Turing was a turn-of-the-century genius who is responsible for modern day computer science.</p>
 <p>Although we must use these types of checks to stop bots from flooding our inboxes and filling up our databases with garbage, your CAPTCHA test needn&rsquo;t be overly complex.</p>
 <p>Here is an example of what <strong>not</strong> to do:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/bad-captcha.webp?w=1200&amp;q=75" alt="Bad CAPTCHA Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/bad-captcha.webp" srcset="https://cdn.designly.biz/imgr/blog_files/forms/bad-captcha.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/bad-captcha.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/bad-captcha.webp?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/bad-captcha.webp?q=75" alt="Bad CAPTCHA Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/bad-captcha.webp" srcset="https://cdn.designly.biz/imgr/blog_files/forms/bad-captcha.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/bad-captcha.webp?w=320&amp;q=75 320w"></p>
 <p>The above text is indecipherable by both computer <em>and</em> humans alike! Having such an insurmountable hurdle on your website would be essentially UI/UX suicide.</p>
 <p>There are some really good CAPTCHA services out there that can help you balance between convenience and security. <a href="https://www.google.com/recaptcha/about/" rel="noreferrer noopener" target="_blank">Google reCaptcha</a> is one, but I stopped using it long ago due to Google&rsquo;s awful privacy practices. Instead, I now use <a href="https://www.hcaptcha.com/" rel="noreferrer noopener" target="_blank">hCaptcha</a>, which is super easy to set up and completely free.</p>
 <h4>hCaptcha Challenge Example:</h4>
@@ -281,9 +281,9 @@ $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"
 <span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">src</span>=<span class="hljs-string">"https://www.hCaptcha.com/1/api.js"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
 <p>####<strong>Result:</strong></p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha.gif?w=1200&amp;q=75" alt="hCAPTCHA Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/hcaptcha.gif" srcset="https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha.gif?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha.gif?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha.gif?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha.gif?q=75" alt="hCAPTCHA Example" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/hcaptcha.gif" srcset="https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha.gif?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha.gif?w=320&amp;q=75 320w"></p>
 <p>This particular hCaptcha challenge is set to easy mode. Higher-level challenges may have the user click on several series of images before approving the test. Unless you&rsquo;re a major site like Amazon or Google, this type of complexity is simply not required. And of course, if you start experiencing bot attacks, you can always log into hCaptcha and change your difficulty setting.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha-difficulty.webp?w=1200&amp;q=75" alt="hCAPTCHA Difficulty Setting" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/hcaptcha-difficulty.webp" srcset="https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha-difficulty.webp?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha-difficulty.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha-difficulty.webp?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha-difficulty.webp?q=75" alt="hCAPTCHA Difficulty Setting" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/forms/hcaptcha-difficulty.webp" srcset="https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha-difficulty.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/forms/hcaptcha-difficulty.webp?w=320&amp;q=75 320w"></p>
 <h4>Rule #6: Test, Test, Test and Test Again!</h4>
 <p>Once you&rsquo;ve designed your form, it&rsquo;s imperative that you test it on a variety of platforms and browsers. Both Google Chrome and Firefox have some nice web developer tools for testing your site on mobile devices. But it&rsquo;s also important you test your site on <em>actual</em> mobile devices as well, both Android and iOS.</p>
 <p>If you follow these rules when designing your web forms, you can be sure that your potential customers will be able to connect with you in a comfortable and user-friendly manner. After all, that&rsquo;s the whole point: getting new customer leads!</p>
@@ -413,10 +413,59 @@ $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"
         <i class="fa-solid fa-times text-2xl"></i>
     </button>
     <div id="post-sidebar-cont" class="flex flex-col gap-8">
-        <a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+        <a href="/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app">
     <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
         <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app/cover.jpg?w=400&q=75" alt="Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Step-by-step guide to creating an 'Add to Home Screen' prompt for Next.js PWAs, targeting major mobile browsers to enhance user experience.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg?w=400&q=75" alt="How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">By leveraging the strengths of React, Tailwind CSS, and Daisy UI, we can create a user-friendly and aesthetically pleasing file uploader.</p>
+        </div>
+    </div>
+</a>
+<a href="/react-and-tailwind-css-making-a-typewriter-animation-from-scratch">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg?w=400&q=75" alt="React and Tailwind CSS: Making a Typewriter Animation from Scratch" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">React and Tailwind CSS: Making a Typewriter Animation from Scratch</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn to create a typewriter animation using React and Tailwind CSS. Step-by-step guide to add a retro touch to your web design.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion/cover.jpg?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
         </div>
         <div class="p-4 flex flex-col gap-2">
             <h1 class="text-xl font-bold">Animating the Web: Route Transitions in Next.js with Framer Motion</h1>
@@ -511,61 +560,14 @@ $(<span class="hljs-built_in">document</span>).ready(<span class="hljs-function"
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
-        </div>
-    </div>
-</a>
-<script
-    async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
-    crossorigin="anonymous"
-></script>
-<ins
-    class="adsbygoogle"
-    style="display: block"
-    data-ad-format="fluid"
-    data-ad-layout-key="+13+qh+1q+m+1y"
-    data-ad-client="ca-pub-8001907419576129"
-    data-ad-slot="2598499752"
-></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
     </div>
     <div id="post-list-bottom"></div>
 </div>
 </div>
 <input id="post-id" type="hidden" value="6FC0iCvlinTinifZUAFg0g" />
 <input id="reply-to" type="hidden" value="" />
+<input id="post-title" type="hidden" value="UI/UX Best Practices for Web Forms" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/ui-ux-best-practices-for-web-forms" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");

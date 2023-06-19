@@ -70,8 +70,9 @@
             errorElem.innerHTML = "";
             const postId = document.getElementById("post-id").value;
             const replyTo = document.getElementById("reply-to").value;
+            const token = document.getElementById("ts-token").value;
             const body = {
-                token: document.getElementById("ts-token").value,
+                token,
                 comment: {
                     displayName: document.getElementById("comment-name").value,
                     email: document.getElementById("comment-email").value,
@@ -83,25 +84,30 @@
             loadingOn();
             try {
                 // Post comment to API
-                const result = await fetch(
-                    `https://blog-comments.designly.workers.dev/?postId=${postId}&replyTo=${replyTo}`,
-                    {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                        },
-                        body: JSON.stringify(body),
-                    }
-                );
+                const result = await fetch(`<?=$_ENV['COMMENTS_ENDPOINT'];?>/?postId=${postId}&replyTo=${replyTo}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(body),
+                });
                 const outcome = await result.text();
                 if (!result.ok) {
                     throw new Error(outcome);
                 }
 
-                // Post data to local back-end to remember in a cookie
+                // Post data to local back-end to remember in a cookie and send emails
                 const formData = new FormData();
+                const title = document.getElementById("post-title").value;
+                const url = document.getElementById("post-url").value;
                 formData.append("displayName", body.comment.displayName);
                 formData.append("email", body.comment.email);
+                formData.append("postId", body.comment.postId);
+                formData.append("replyTo", body.comment.replyTo);
+                formData.append("comment", body.comment.comment);
+                formData.append("title", title);
+                formData.append("url", url);
+                formData.append("token", outcome);
                 fetch("/comment", {
                     method: "POST",
                     body: formData,

@@ -72,7 +72,7 @@ In this tutorial, I'll show you how to authenticate a user against an Azure AD d
 </header>
             <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
     <div class="col-span-3 px-4 md:px-20 py-10">
-        <article class="flex flex-col gap-10">
+        <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
                 <h1 class="text-colors text-xl md:text-3xl font-bold">NextJS 13 / React Single Sign-On (SSO) Authentication Via Azure Active Directory (AD)</h1>
                 <div class="flex gap-2 items-center tag-list"><a href="/tag/nextjs">#Next.js</a>
@@ -81,7 +81,7 @@ In this tutorial, I'll show you how to authenticate a user against an Azure AD d
                 <img
                     class="rounded-md shadow-lg"
                     src="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/cover.jpg?w=1200&q=75"
-                    srcset="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/cover.jpg?w=1024&q=75 1024w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/cover.jpg?w=320&q=75 320w"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/cover.jpg?w=320&q=75 320w"
                     alt="NextJS 13 / React Single Sign-On (SSO) Authentication Via Azure Active Directory (AD)"
                     width="1200"
                     height="675"
@@ -123,13 +123,13 @@ In this tutorial, I'll show you how to authenticate a user against an Azure AD d
 <p>We're going to use a library called <code>next-auth</code> to handle our complete authentication flow. Next-Auth is a complete authentication library that aggregates several identity providers and standardizes the user object obtained from each provider to greatly simplify your code. To install, just run <code>npm i next-auth</code>.</p>
 <p>Before we get to coding, you're going to need to register your app in Azure AD. I'm going to assume that you already have a MS Azure account and an Active Directory Domain.</p>
 <p>From the Azure Console, navigate to Azure Active Directory. From the left sidebar, choose <code>App registrations</code>, and then click <code>New registration</code> from the top menu bar:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image1.jpg?w=1200&amp;q=75" alt="Create new registration" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image1.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image1.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image1.jpg?q=75" alt="Create new registration" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image1.jpg?w=320&amp;q=75 320w"></p>
 <p>Choose a customer-facing display name for your app (e.g. ACME Corp Intranet), then select "Default Directory  only Single-Tenant", unless you have more than one AD tenant and you want to be able to sign-in against any of them. Finally, for redirect URI, choose "Web" and then enter <code>http://localhost:3000/api/auth/callback/azure-ad</code>. Note that you can only have one callback URI here, so you'll need to change it to the production value when ready to deploy your app. Alternatively, you could create two app registrations, one for development, and one for production.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image2.jpg?w=1200&amp;q=75" alt="Create new registration" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image2.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image2.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image2.jpg?q=75" alt="Create new registration" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image2.jpg?w=320&amp;q=75 320w"></p>
 <p>After clicking Register, you should get a confirmation screen. Copy the <code>Client ID</code> and <code>Tenant ID</code> to a text file and then click <code>Add a certificate or secret</code>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image3.jpg?w=1200&amp;q=75" alt="Copy credentials" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image3.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image3.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image3.jpg?q=75" alt="Copy credentials" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image3.jpg?w=320&amp;q=75 320w"></p>
 <p>On the <em>Certificate &amp; secrets</em> screen, click the <code>+ New client secret</code> button on the top menu bar, enter a description (e.g. web app) and choose 180 days for expiration (unless you have a reason to make it shorter), then click <code>Add</code>. Once created, copy the <em>Value</em> to your credentials text file.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image4.jpg?w=1200&amp;q=75" alt="Copy credentials" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image4.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image4.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image4.jpg?q=75" alt="Copy credentials" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory/image4.jpg?w=320&amp;q=75 320w"></p>
 <p>That's it for configuration in Azure AD. Next, you'll need to create three environment variables for the three values you copied:</p>
 <div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">NEXT_PUBLIC_AZURE_AD_CLIENT_ID=f82a80c3-e18f-4947-b3df-349e2945c58d
 NEXT_PUBLIC_AZURE_AD_TENANT_ID=f7d2c8c2-77d9-4999-971b-756caf274c26
@@ -328,10 +328,59 @@ NEXT_PUBLIC_AZURE_AD_CLIENT_SECRET=uqf8Q~FX2DHkdI3zkQRAgYVg-cQrDu.ZrH9Zqdbi
         <i class="fa-solid fa-times text-2xl"></i>
     </button>
     <div id="post-sidebar-cont" class="flex flex-col gap-8">
-        <a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+        <a href="/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app">
     <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
         <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app/cover.jpg?w=400&q=75" alt="Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Step-by-step guide to creating an 'Add to Home Screen' prompt for Next.js PWAs, targeting major mobile browsers to enhance user experience.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg?w=400&q=75" alt="How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">By leveraging the strengths of React, Tailwind CSS, and Daisy UI, we can create a user-friendly and aesthetically pleasing file uploader.</p>
+        </div>
+    </div>
+</a>
+<a href="/react-and-tailwind-css-making-a-typewriter-animation-from-scratch">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg?w=400&q=75" alt="React and Tailwind CSS: Making a Typewriter Animation from Scratch" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">React and Tailwind CSS: Making a Typewriter Animation from Scratch</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn to create a typewriter animation using React and Tailwind CSS. Step-by-step guide to add a retro touch to your web design.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion/cover.jpg?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
         </div>
         <div class="p-4 flex flex-col gap-2">
             <h1 class="text-xl font-bold">Animating the Web: Route Transitions in Next.js with Framer Motion</h1>
@@ -426,61 +475,14 @@ NEXT_PUBLIC_AZURE_AD_CLIENT_SECRET=uqf8Q~FX2DHkdI3zkQRAgYVg-cQrDu.ZrH9Zqdbi
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
-        </div>
-    </div>
-</a>
-<script
-    async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
-    crossorigin="anonymous"
-></script>
-<ins
-    class="adsbygoogle"
-    style="display: block"
-    data-ad-format="fluid"
-    data-ad-layout-key="+13+qh+1q+m+1y"
-    data-ad-client="ca-pub-8001907419576129"
-    data-ad-slot="2598499752"
-></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
     </div>
     <div id="post-list-bottom"></div>
 </div>
 </div>
 <input id="post-id" type="hidden" value="4mWe1CUrdZR8oCKbaHY2SN" />
 <input id="reply-to" type="hidden" value="" />
+<input id="post-title" type="hidden" value="NextJS 13 / React Single Sign-On (SSO) Authentication Via Azure Active Directory (AD)" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/nextjs-13-react-single-sign-on-sso-authentication-via-azure-active-directory" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");

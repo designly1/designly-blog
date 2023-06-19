@@ -70,7 +70,7 @@
 </header>
             <div id="content"><div class="grid grid-cols-1 md:grid-cols-4">
     <div class="col-span-3 px-4 md:px-20 py-10">
-        <article class="flex flex-col gap-10">
+        <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
                 <h1 class="text-colors text-xl md:text-3xl font-bold">Send SMS Text Notifications Via Twilio API On the Cheap</h1>
                 <div class="flex gap-2 items-center tag-list"><a href="/tag/twilio">#Twilio</a>
@@ -80,7 +80,7 @@
                 <img
                     class="rounded-md shadow-lg"
                     src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/cover.jpg?w=1200&q=75"
-                    srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/cover.jpg?w=1024&q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/cover.jpg?w=320&q=75 320w"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/cover.jpg?w=320&q=75 320w"
                     alt="Send SMS Text Notifications Via Twilio API On the Cheap"
                     width="1200"
                     height="675"
@@ -110,30 +110,30 @@
 <h4>Step 1: Register Your Twilio Service</h4>
 <p>Ok, let's get started! Assuming you have registered an account and have selected a phone number, let's create a messaging service.</p>
 <p>In the search bar on the top right of the console, type <strong>messaging</strong> and select <strong>Messaging Services</strong> from the search results. Then click <strong>Create Messaging Service</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image1.jpg?w=1200&amp;q=75" alt="Go to Messaging Services" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image1.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image1.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image1.jpg?q=75" alt="Go to Messaging Services" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image1.jpg?w=320&amp;q=75 320w"></p>
 <p>Name your messaging service (I chose <strong>Notifications</strong>) and then make sure <strong>Notify my users</strong> is selected under <strong>Select what you want to use Messaging for</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image2.jpg?w=1200&amp;q=75" alt="Name Your Messaging Service" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image2.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image2.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image2.jpg?q=75" alt="Name Your Messaging Service" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image2.jpg?w=320&amp;q=75 320w"></p>
 <p>Next, click <strong>Add Senders</strong> to the sender pool, select <strong>Phone Number</strong> as <strong>Sender Type</strong> and click <strong>Continue</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image3.jpg?w=1200&amp;q=75" alt="Click Add Senders to Sender Pool" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image3.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image3.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image3.jpg?q=75" alt="Click Add Senders to Sender Pool" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image3.jpg?w=320&amp;q=75 320w"></p>
 <p>Now select your phone number and click <strong>Add Phone Numbers</strong>. Then click <strong>Step 3: Setup Integration</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image4.jpg?w=1200&amp;q=75" alt="Select Your Phone Number" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image4.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image4.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image4.jpg?q=75" alt="Select Your Phone Number" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image4.jpg?w=320&amp;q=75 320w"></p>
 <p>On the next screen, you can set up webhooks and callback URLs for inbound messages, but we're not going to do that now (tutorial forthcoming). Go ahead and leave these settings as-is and click <strong>Step 4: Add compliance info</strong>. Then click <strong>Register Business Profile</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image5.jpg?w=1200&amp;q=75" alt="Click Register Business Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image5.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image5.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image5.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image5.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image5.jpg?q=75" alt="Click Register Business Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image5.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image5.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image5.jpg?w=320&amp;q=75 320w"></p>
 <p>Under <strong>What type of profile do you need?</strong> select <strong>Starter customer profile</strong> and click <strong>Continue</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image6.jpg?w=1200&amp;q=75" alt="Select Starter Customer Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image6.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image6.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image6.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image6.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image6.jpg?q=75" alt="Select Starter Customer Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image6.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image6.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image6.jpg?w=320&amp;q=75 320w"></p>
 <p>Fill out your company information (be sure to use your company's legal business name) and then click <strong>Save and continue</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image7.jpg?w=1200&amp;q=75" alt="Fill Out Your Customer Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image7.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image7.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image7.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image7.jpg?w=320&amp;q=75 320w"></p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image8.jpg?w=1200&amp;q=75" alt="Fill Out Your Customer Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image8.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image8.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image8.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image8.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image7.jpg?q=75" alt="Fill Out Your Customer Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image7.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image7.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image7.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image8.jpg?q=75" alt="Fill Out Your Customer Profile" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image8.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image8.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image8.jpg?w=320&amp;q=75 320w"></p>
 <p>When your profile is complete, click <strong>Submit for Review</strong>. You should now see a screen confirming your messaging quota limits as shown. Click <strong>Continue</strong> twice to proceed.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image9.jpg?w=1200&amp;q=75" alt="Confirmation Screen" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image9.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image9.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image9.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image9.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image9.jpg?q=75" alt="Confirmation Screen" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image9.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image9.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image9.jpg?w=320&amp;q=75 320w"></p>
 <p>Now select your service <strong>Notifications</strong> under <strong>Select a Messaging Service to link to your campaign use case</strong> and click <strong>Continue</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image10.jpg?w=1200&amp;q=75" alt="Select Your Notification Service" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image10.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image10.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image10.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image10.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image10.jpg?q=75" alt="Select Your Notification Service" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image10.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image10.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image10.jpg?w=320&amp;q=75 320w"></p>
 <p>If everything looks good, click <strong>Register campaign use case</strong>. If all goes well, you should see the confetti screen. If so, you're good to go!</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image11.jpg?w=1200&amp;q=75" alt="Confetti Screen" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image11.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image11.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image11.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image11.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image11.jpg?q=75" alt="Confetti Screen" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image11.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image11.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image11.jpg?w=320&amp;q=75 320w"></p>
 <p>Now before we can get integrated, you'll need three things: your <strong>Account SID</strong>, <strong>Auth Token</strong> and <strong>Messaging Service SID</strong>. Navigate back to the main screen of your messaging service to get the SID:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image12.jpg?w=1200&amp;q=75" alt="Copy Your Messaging Service ID" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image12.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image12.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image12.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image12.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image12.jpg?q=75" alt="Copy Your Messaging Service ID" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image12.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image12.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image12.jpg?w=320&amp;q=75 320w"></p>
 <p>To get your <strong>Account SID</strong> and <strong>Auth Token</strong>, click your  company name in the top left corner to go back to your main dashboard screen and copy them from there:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image13.jpg?w=1200&amp;q=75" alt="Copy Your Account SID and Auth Token" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image13.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image13.jpg?w=1024&amp;q=75 1024w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image13.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image13.jpg?w=320&amp;q=75 320w"></p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image13.jpg?q=75" alt="Copy Your Account SID and Auth Token" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/twilio-notify/image13.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/twilio-notify/image13.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/twilio-notify/image13.jpg?w=320&amp;q=75 320w"></p>
 <h4>Step 2: Setup Your SDK Environment</h4>
 <p>Ok, now let's get integrated! I'll cover two development environments here, <strong>Node.JS</strong> and <strong>PHP</strong>.</p>
 <p>First install the <strong>Twilio SDK</strong>.</p>
@@ -307,10 +307,59 @@ $client-&gt;messages-&gt;create(
         <i class="fa-solid fa-times text-2xl"></i>
     </button>
     <div id="post-sidebar-cont" class="flex flex-col gap-8">
-        <a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+        <a href="/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app">
     <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
         <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/creating-an-install-to-home-screen-prompt-in-a-next-js-progressive-web-app/cover.jpg?w=400&q=75" alt="Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">Creating an "Install to Home Screen" Prompt in a Next.js Progressive Web App</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Step-by-step guide to creating an 'Add to Home Screen' prompt for Next.js PWAs, targeting major mobile browsers to enhance user experience.</p>
+        </div>
+    </div>
+</a>
+<a href="/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-an-attractive-file-upload-widget-with-react-nextjs-and-tailwind-css/cover.jpg?w=400&q=75" alt="How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">How to Create an Attractive File Upload Widget With React/Next.js and Tailwind CSS</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">By leveraging the strengths of React, Tailwind CSS, and Daisy UI, we can create a user-friendly and aesthetically pleasing file uploader.</p>
+        </div>
+    </div>
+</a>
+<a href="/react-and-tailwind-css-making-a-typewriter-animation-from-scratch">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/react-and-tailwind-css-making-a-typewriter-animation-from-scratch/cover.jpg?w=400&q=75" alt="React and Tailwind CSS: Making a Typewriter Animation from Scratch" loading="lazy" />
+        </div>
+        <div class="p-4 flex flex-col gap-2">
+            <h1 class="text-xl font-bold">React and Tailwind CSS: Making a Typewriter Animation from Scratch</h1>
+            <p class="text-zinc-600 text-lg md:text-sm">Learn to create a typewriter animation using React and Tailwind CSS. Step-by-step guide to add a retro touch to your web design.</p>
+        </div>
+    </div>
+</a>
+<script
+    async
+    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
+    crossorigin="anonymous"
+></script>
+<ins
+    class="adsbygoogle"
+    style="display: block"
+    data-ad-format="fluid"
+    data-ad-layout-key="+13+qh+1q+m+1y"
+    data-ad-client="ca-pub-8001907419576129"
+    data-ad-slot="2598499752"
+></ins>
+<script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+<a href="/animating-the-web-route-transitions-in-next-js-with-framer-motion">
+    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
+        <div class="relative overflow-hidden h-[250px]">
+            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/animating-the-web-route-transitions-in-next-js-with-framer-motion/cover.jpg?w=400&q=75" alt="Animating the Web: Route Transitions in Next.js with Framer Motion" loading="lazy" />
         </div>
         <div class="p-4 flex flex-col gap-2">
             <h1 class="text-xl font-bold">Animating the Web: Route Transitions in Next.js with Framer Motion</h1>
@@ -405,61 +454,14 @@ $client-&gt;messages-&gt;create(
 <script>
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
-<a href="/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/implementing-semantic-search-with-supabase-next-js-and-openai-a-tutorial/cover.jpg?w=400&q=75" alt="Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Implementing Semantic Search with Supabase, Next.js, and OpenAI: A Tutorial</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">Implement semantic search using Supabase/PostgreSQL, Next.js, and OpenAI. Improve search accuracy and relevance. Tutorial with code examples.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-custom-audio-player-component-using-react-next-js-tailwind-and">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-custom-audio-player-component-using-react-next-js-tailwind-and/cover.jpg?w=400&q=75" alt="Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create A Custom Audio Player Component Using React/Next.js, Tailwind & Howler</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this tutorial, we will explore how to create a custom React component that combines the power of Tailwind CSS for styling and Howler for audio playback.</p>
-        </div>
-    </div>
-</a>
-<a href="/create-a-google-login-button-with-no-dependencies-in-react-next-js">
-    <div class="flex flex-col rounded-lg overflow-hidden bg-zinc-100 dark:bg-zinc-800 shadow-md min-h-[400px]">
-        <div class="relative overflow-hidden h-[250px]">
-            <img class="w-full object-cover" src="https://cdn.designly.biz/imgr/blog_files/create-a-google-login-button-with-no-dependencies-in-react-next-js/cover.jpg?w=400&q=75" alt="Create a Google Login Button With No Dependencies in React / Next.js" loading="lazy" />
-        </div>
-        <div class="p-4 flex flex-col gap-2">
-            <h1 class="text-xl font-bold">Create a Google Login Button With No Dependencies in React / Next.js</h1>
-            <p class="text-zinc-600 text-lg md:text-sm">In this article, we'll be exploring how to create a Google login button in React without relying on any external dependencies.</p>
-        </div>
-    </div>
-</a>
-<script
-    async
-    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8001907419576129"
-    crossorigin="anonymous"
-></script>
-<ins
-    class="adsbygoogle"
-    style="display: block"
-    data-ad-format="fluid"
-    data-ad-layout-key="+13+qh+1q+m+1y"
-    data-ad-client="ca-pub-8001907419576129"
-    data-ad-slot="2598499752"
-></ins>
-<script>
-    (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
     </div>
     <div id="post-list-bottom"></div>
 </div>
 </div>
 <input id="post-id" type="hidden" value="5ML7b2Aqu1tAczlQ0oSnIx" />
 <input id="reply-to" type="hidden" value="" />
+<input id="post-title" type="hidden" value="Send SMS Text Notifications Via Twilio API On the Cheap" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/send-sms-text-notifications-via-twilio-api-on-the-cheap" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");
