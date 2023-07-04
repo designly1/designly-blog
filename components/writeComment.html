@@ -98,7 +98,7 @@
 
                 // Post data to local back-end to remember in a cookie and send emails
                 const formData = new FormData();
-                const title = document.getElementById("post-title").value;
+                const title = document.getElementById("post-title").innerHTML;
                 const url = document.getElementById("post-url").value;
                 formData.append("displayName", body.comment.displayName);
                 formData.append("email", body.comment.email);
