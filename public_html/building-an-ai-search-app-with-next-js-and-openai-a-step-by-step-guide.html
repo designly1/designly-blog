@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Create a Responsive Animated Sidebar Using React / Next.js and Tailwind CSS | Designly</title>
+        <title>Building an AI Search App with Next.js and OpenAI: A Step-by-step Guide | Designly</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="/assets/css/style.css" />
@@ -33,12 +33,12 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#ffffff" />
-        <meta name="description" content="In this tutorial, I'll show you how to leverage the power of Tailwind CSS and Next.js to create a simple yet elegant mobile-responsive sidebar using no other dependencies." />
-        <meta property="og:title" content="Create a Responsive Animated Sidebar Using React / Next.js and Tailwind CSS" />
-        <meta property="og:description" content="In this tutorial, I'll show you how to leverage the power of Tailwind CSS and Next.js to create a simple yet elegant mobile-responsive sidebar using no other dependencies." />
-        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/create-a-responsive-animated-sidebar-using-react-next-js-and-tailwind-css/cover.jpg" />
+        <meta name="description" content="Today, we're taking a deep dive into the realm of AI-driven searches, using a powerful tech stack comprising Next.js, Sequelize, PostgreSQL, pgvector, and the OpenAI API." />
+        <meta property="og:title" content="Building an AI Search App with Next.js and OpenAI: A Step-by-step Guide" />
+        <meta property="og:description" content="Today, we're taking a deep dive into the realm of AI-driven searches, using a powerful tech stack comprising Next.js, Sequelize, PostgreSQL, pgvector, and the OpenAI API." />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/building-an-ai-search-app-with-next-js-and-openai-a-step-by-step-guide/cover.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://blog.designly.biz/create-a-responsive-animated-sidebar-using-react-next-js-and-tailwind-css" />
+        <meta property="og:url" content="https://blog.designly.biz/building-an-ai-search-app-with-next-js-and-openai-a-step-by-step-guide" />
         <meta property="og:site_name" content="Designly Blog" />
         <meta property="fb:app_id" content="3419826058233420" />
     </head>
@@ -72,15 +72,15 @@
     <div class="col-span-3 px-4 md:px-20 py-10">
         <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
-                <h1 id="post-title" class="text-colors text-xl md:text-3xl font-bold">Create a Responsive Animated Sidebar Using React / Next.js and Tailwind CSS</h1>
+                <h1 id="post-title" class="text-colors text-xl md:text-3xl font-bold">Building an AI Search App with Next.js and OpenAI: A Step-by-step Guide</h1>
                 <div class="flex gap-2 items-center tag-list"><a href="/tag/nextjs">#Next.js</a>
-<a href="/tag/react">#React</a>
-<a href="/tag/tailwind-css">#Tailwind CSS</a></div>
+<a href="/tag/openai">#OpenAI</a>
+<a href="/tag/ai">#AI</a></div>
                 <img
                     class="rounded-md shadow-lg"
-                    src="https://cdn.designly.biz/imgr/blog_files/create-a-responsive-animated-sidebar-using-react-next-js-and-tailwind-css/cover.jpg?w=1200&q=75"
-                    srcset="https://cdn.designly.biz/imgr/blog_files/create-a-responsive-animated-sidebar-using-react-next-js-and-tailwind-css/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-a-responsive-animated-sidebar-using-react-next-js-and-tailwind-css/cover.jpg?w=320&q=75 320w"
-                    alt="Create a Responsive Animated Sidebar Using React / Next.js and Tailwind CSS"
+                    src="https://cdn.designly.biz/imgr/blog_files/building-an-ai-search-app-with-next-js-and-openai-a-step-by-step-guide/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/building-an-ai-search-app-with-next-js-and-openai-a-step-by-step-guide/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/building-an-ai-search-app-with-next-js-and-openai-a-step-by-step-guide/cover.jpg?w=320&q=75 320w"
+                    alt="Building an AI Search App with Next.js and OpenAI: A Step-by-step Guide"
                     width="1200"
                     height="675"
                 />
@@ -101,184 +101,236 @@
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
             </section>
-            <section class="post-content flex flex-col gap-6"><p>Most of the design systems, such as Material UI and Ant Design have drawer-like elements that allow you to create animated sliding sidebars, but many, myself included, find these design systems to be limiting. They also introduce a ton of overhead in dependency code base.</p>
-<p>During any web development project, I am always looking for places where layers of abstraction and dependencies can be eliminated, especially when the underlying task that the layer of abstraction is producing is relatively simple. Well, good news: a responsive sidebar is one of those things! &#129303;</p>
-<p>In this tutorial, I'll show you how to leverage the power of Tailwind CSS and Next.js to create a simple yet elegant mobile-responsive sidebar using no other dependencies. (I am using <code>react-icons</code> for this example, but you can use whatever you like.)</p>
-<hr>
-<p>The first thing we'll want to do is create a folder called Layout in our components folder. This folder will house all the components required to render our sidebar, mobile menu bar and the main layout component.</p>
-<p>Next, let's create our sidebar component:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-comment">// @/components/Layout/Sidebar.js</span>
-<span class="hljs-keyword">import</span> React, { useState, useEffect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
-<span class="hljs-keyword">import</span> Link <span class="hljs-keyword">from</span> <span class="hljs-string">'next/link'</span>
-<span class="hljs-keyword">import</span> { useRouter } <span class="hljs-keyword">from</span> <span class="hljs-string">'next/router'</span>
-<span class="hljs-keyword">import</span> { SlHome } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-icons/sl'</span>
-<span class="hljs-keyword">import</span> { BsInfoSquare, BsEnvelopeAt } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-icons/bs'</span>
-<span class="hljs-keyword">import</span> { FaTshirt, FaRedhat } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-icons/fa'</span>
-<span class="hljs-keyword">import</span> logo <span class="hljs-keyword">from</span> <span class="hljs-string">'@/img/logo.svg'</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Sidebar</span>(<span class="hljs-params">{ show, setter }</span>) </span>{
-    <span class="hljs-keyword">const</span> router = useRouter();
-    <span class="hljs-comment">// Define our base class</span>
-    <span class="hljs-keyword">const</span> className = <span class="hljs-string">"bg-black w-[250px] transition-[margin-left] ease-in-out duration-500 fixed md:static top-0 bottom-0 left-0 z-40"</span>;
-    <span class="hljs-comment">// Append class based on state of sidebar visiblity</span>
-    <span class="hljs-keyword">const</span> appendClass = show ? <span class="hljs-string">" ml-0"</span> : <span class="hljs-string">" ml-[-250px] md:ml-0"</span>;
-    <span class="hljs-comment">// Clickable menu items</span>
-    <span class="hljs-keyword">const</span> MenuItem = <span class="hljs-function">(<span class="hljs-params">{ icon, name, route }</span>) =&gt;</span> {
-        <span class="hljs-comment">// Highlight menu item based on currently displayed route</span>
-        <span class="hljs-keyword">const</span> colorClass = router.pathname === route ? <span class="hljs-string">"text-white"</span> : <span class="hljs-string">"text-white/50 hover:text-white"</span>;
-        <span class="hljs-keyword">return</span> (
-            <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Link</span>
-                <span class="hljs-attr">href</span>=<span class="hljs-string">{route}</span>
-                <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> {
-                    setter(oldVal =&gt; !oldVal);
-                }}
-                className={`flex gap-1 [&amp;&gt;*]:my-auto text-md pl-6 py-3 border-b-[1px] border-b-white/10 ${colorClass}`}
-            &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-xl flex [&amp;&gt;*]:mx-auto w-[30px]"</span>&gt;</span>
-                    {icon}
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>{name}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span></span>
-        )
-    }
-    <span class="hljs-comment">// Overlay to prevent clicks in background, also serves as our close button</span>
-    <span class="hljs-keyword">const</span> ModalOverlay = <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> (
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>
-            <span class="hljs-attr">className</span>=<span class="hljs-string">{</span>`<span class="hljs-attr">flex</span> <span class="hljs-attr">md:hidden</span> <span class="hljs-attr">fixed</span> <span class="hljs-attr">top-0</span> <span class="hljs-attr">right-0</span> <span class="hljs-attr">bottom-0</span> <span class="hljs-attr">left-0</span> <span class="hljs-attr">bg-black</span>/<span class="hljs-attr">50</span> <span class="hljs-attr">z-30</span>`}
-            <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> {
-                setter(oldVal =&gt; !oldVal);
-            }}
-        /&gt;</span>
-    )
-    <span class="hljs-keyword">return</span> (
-        <span class="xml"><span class="hljs-tag">&lt;&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">{</span>`${<span class="hljs-attr">className</span>}${<span class="hljs-attr">appendClass</span>}`}&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"p-2 flex"</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span>&gt;</span>
-                        {/*eslint-disable-next-line*/}
-                        <span class="hljs-tag">&lt;<span class="hljs-name">img</span> <span class="hljs-attr">src</span>=<span class="hljs-string">{logo.src}</span> <span class="hljs-attr">alt</span>=<span class="hljs-string">"Company Logo"</span> <span class="hljs-attr">width</span>=<span class="hljs-string">{300}</span> <span class="hljs-attr">height</span>=<span class="hljs-string">{300}</span> /&gt;</span>
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"flex flex-col"</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">MenuItem</span>
-                        <span class="hljs-attr">name</span>=<span class="hljs-string">"Home"</span>
-                        <span class="hljs-attr">route</span>=<span class="hljs-string">"/"</span>
-                        <span class="hljs-attr">icon</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">SlHome</span> /&gt;</span>}
-                    /&gt;
-                    <span class="hljs-tag">&lt;<span class="hljs-name">MenuItem</span>
-                        <span class="hljs-attr">name</span>=<span class="hljs-string">"T-Shirts"</span>
-                        <span class="hljs-attr">route</span>=<span class="hljs-string">"/t-shirts"</span>
-                        <span class="hljs-attr">icon</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">FaTshirt</span> /&gt;</span>}
-                    /&gt;
-                    <span class="hljs-tag">&lt;<span class="hljs-name">MenuItem</span>
-                        <span class="hljs-attr">name</span>=<span class="hljs-string">"Hats"</span>
-                        <span class="hljs-attr">route</span>=<span class="hljs-string">"/hats"</span>
-                        <span class="hljs-attr">icon</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">FaRedhat</span> /&gt;</span>}
-                    /&gt;
-                    <span class="hljs-tag">&lt;<span class="hljs-name">MenuItem</span>
-                        <span class="hljs-attr">name</span>=<span class="hljs-string">"About Us"</span>
-                        <span class="hljs-attr">route</span>=<span class="hljs-string">"/about"</span>
-                        <span class="hljs-attr">icon</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">BsInfoSquare</span> /&gt;</span>}
-                    /&gt;
-                    <span class="hljs-tag">&lt;<span class="hljs-name">MenuItem</span>
-                        <span class="hljs-attr">name</span>=<span class="hljs-string">"Contact"</span>
-                        <span class="hljs-attr">route</span>=<span class="hljs-string">"/contact"</span>
-                        <span class="hljs-attr">icon</span>=<span class="hljs-string">{</span>&lt;<span class="hljs-attr">BsEnvelopeAt</span> /&gt;</span>}
-                    /&gt;
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            {show ? <span class="hljs-tag">&lt;<span class="hljs-name">ModalOverlay</span> /&gt;</span> : <span class="hljs-tag">&lt;&gt;</span><span class="hljs-tag">&lt;/&gt;</span></span>}
-        &lt;<span class="hljs-regexp">/&gt;
-    )
-}
-</span></code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Ok, let's break this down. This component receives two props: <code>show</code> and <code>setter</code>. These are passed from the HOC <code>Layout</code>, which we will define later. The <code>show</code> prop is a boolean variable that toggles the state of the sidebar's visibility. The <code>setter</code> prop is the function to set that state.</p>
-<p>Next we define our base class and another variable called <code>appendClass</code>, which will be conditionally rendered based on our <code>show</code> state variable. When <code>show</code> is false, we set the left margin to -250px but we set it to 0 on medium screens or larger. We also set the transition property in our base class to a custom value of <code>[margin-left]</code>, which will cause the browser to automagically animate our sidebar as a slide animation! &#128513;</p>
-<p>Then we define a subcomponent called <code>&lt;MenuItem&gt;</code> which will be used for our links. We use <code>next/router</code> to determine which link we should highlight as active. Also, we toggle the setter function when a menu item is clicked to the sidebar closes. This is required because this is a single-page app, and it would be annoying if the sidebar stayed open when you click a link.</p>
-<p>Finally, we have <code>&lt;ModalOverlay&gt;</code>, which serves two purposes: 1.) it prevents clicking of anything in the background while the sidebar is open, and 2.) it serves as the close button for the sidebar. You could also add an additional visible close button as well, but I think that touching in the outside bound areas of modals on mobile UIs is a very intuitive and natural function, so I opted not to include one.</p>
-<hr>
-<p>Ok, now we'll create our mobile menu bar component that will only displayed on screens smaller than the medium breakpoint:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-comment">// @/components/Layout/MenuBarMobile.js</span>
-<span class="hljs-keyword">import</span> React <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
-<span class="hljs-keyword">import</span> Link <span class="hljs-keyword">from</span> <span class="hljs-string">'next/link'</span>
-<span class="hljs-keyword">import</span> { FiMenu <span class="hljs-keyword">as</span> Icon } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-icons/fi'</span>
-<span class="hljs-keyword">import</span> { FaUser } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-icons/fa'</span>
-<span class="hljs-keyword">import</span> logo <span class="hljs-keyword">from</span> <span class="hljs-string">'@/img/logo.svg'</span>
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">MenuBarMobile</span>(<span class="hljs-params">{ setter }</span>) </span>{
-    <span class="hljs-keyword">return</span> (
-        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">nav</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"md:hidden z-20 fixed top-0 left-0 right-0 h-[60px] bg-black flex [&amp;&gt;*]:my-auto px-2"</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
-                <span class="hljs-attr">className</span>=<span class="hljs-string">"text-4xl flex text-white"</span>
-                <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> {
-                    setter(oldVal =&gt; !oldVal);
-                }}
-            &gt;
-                <span class="hljs-tag">&lt;<span class="hljs-name">Icon</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">Link</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"/"</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"mx-auto"</span>&gt;</span>
-                {/*eslint-disable-next-line*/}
-                <span class="hljs-tag">&lt;<span class="hljs-name">img</span>
-                    <span class="hljs-attr">src</span>=<span class="hljs-string">{logo.src}</span>
-                    <span class="hljs-attr">alt</span>=<span class="hljs-string">"Company Logo"</span>
-                    <span class="hljs-attr">width</span>=<span class="hljs-string">{50}</span>
-                    <span class="hljs-attr">height</span>=<span class="hljs-string">{50}</span>
-                /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">Link</span>
-                <span class="hljs-attr">className</span>=<span class="hljs-string">"text-3xl flex text-white"</span>
-                <span class="hljs-attr">href</span>=<span class="hljs-string">"/login"</span>
-            &gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">FaUser</span> /&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">Link</span>&gt;</span>
-        <span class="hljs-tag">&lt;/<span class="hljs-name">nav</span>&gt;</span></span>
-    )
-}
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>This component has a fixed position at the top of the screen on mobile devices only. It serves primarily as a vehicle for our sidebar opener button. I put the login button there simply for illustration and symmetry. We need only to pass the <code>setter</code> function of our <code>showSidebar</code> state to this component.</p>
-<hr>
-<p>Lastly, let's create our <code>Layout</code> component that will bring it all together:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-comment">// @/components/Layout/index.js</span>
-<span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>
-<span class="hljs-keyword">import</span> Head <span class="hljs-keyword">from</span> <span class="hljs-string">'next/head'</span>
-<span class="hljs-keyword">import</span> Sidebar <span class="hljs-keyword">from</span> <span class="hljs-string">'./Sidebar'</span>;
-<span class="hljs-keyword">import</span> MenuBarMobile <span class="hljs-keyword">from</span> <span class="hljs-string">'./MenuBarMobile'</span>;
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">Layout</span>(<span class="hljs-params">{ pageTitle, children }</span>) </span>{
-    <span class="hljs-comment">// Concatenate page title (if exists) to site title</span>
-    <span class="hljs-keyword">let</span> titleConcat = <span class="hljs-string">"Responsive Sidebar Example"</span>;
-    <span class="hljs-keyword">if</span> (pageTitle) titleConcat = pageTitle + <span class="hljs-string">" | "</span> + titleConcat;
-    <span class="hljs-comment">// Mobile sidebar visibility state</span>
-    <span class="hljs-keyword">const</span> [showSidebar, setShowSidebar] = useState(<span class="hljs-literal">false</span>);
-    <span class="hljs-keyword">return</span> (
-        <span class="xml"><span class="hljs-tag">&lt;&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">Head</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span>{titleConcat}<span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">Head</span>&gt;</span>
-            <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"min-h-screen"</span>&gt;</span>
-                <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"flex"</span>&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">MenuBarMobile</span> <span class="hljs-attr">setter</span>=<span class="hljs-string">{setShowSidebar}</span> /&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">Sidebar</span> <span class="hljs-attr">show</span>=<span class="hljs-string">{showSidebar}</span> <span class="hljs-attr">setter</span>=<span class="hljs-string">{setShowSidebar}</span> /&gt;</span>
-                    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"flex flex-col flex-grow w-screen md:w-full min-h-screen"</span>&gt;</span>
-                        {children}
-                    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-            <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
-        <span class="hljs-tag">&lt;/&gt;</span></span>
-    )
-}
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>As you can see, this is where we define our <code>showSidebar</code> state variable. We then pass it to <code>&lt;MenuBarMobile&gt;</code> and <code>&lt;Sidebar&gt;</code>.</p>
-<hr>
-<p>Thank you for taking the time to read my article and I hope you found it useful (or at the very least, mildly entertaining). For more great information about web dev, systems administration and cloud computing, please read the <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Designly Blog</a>. Also, please leave your comments! I love to hear thoughts from my readers.</p>
-<p>Looking for a web developer? I'm available for hire! To inquire, please fill out a <a href="https://designly.biz/contact" rel="noreferrer noopener" target="_blank">contact form</a>.</p>
-<hr>
-<p>Resources for this tutorial:</p>
+            <section class="post-content flex flex-col gap-6"><p>In the burgeoning era of artificial intelligence and machine learning, harnessing the power of AI to enhance the capabilities of your web application is no longer a luxury, but a necessity. As developers and data scientists, the onus is on us to stay updated with the dynamic landscape of technology and to create the most efficient and effective tools for our end-users.</p>
+<p>Today, we're taking a deep dive into the realm of AI-driven searches, using a powerful tech stack comprising Next.js, Sequelize, PostgreSQL, pgvector, and the OpenAI API. This comprehensive guide aims to equip you with the know-how to build a Next.js application that leverages these robust technologies to deliver advanced, AI-powered searches.</p>
+<h2>Semantic Similarity</h2>
+<p>So how does a vector search work? Here are the steps:</p>
 <ol>
 <li>
-<a href="https://github.com/designly1/nextjs13-sidebar-example" rel="noreferrer noopener" target="_blank">GitHub Repo</a>
+<strong>Vectorization</strong>: First, the text (or other data) is converted into vectors. This process, also known as "embedding", uses algorithms such as Word2Vec, FastText, BERT, or other transformers that can capture the context and semantic meaning of words or phrases and represent it in a numerical format. Each unique word or phrase is assigned a unique vector, which is just a set of numbers in a high-dimensional space.</li>
+<li>
+<strong>Indexing</strong>: After converting the data to vectors, these vectors are stored in a vector database or a vector index. This index allows us to perform efficient nearest neighbor searches.</li>
+<li>
+<strong>Nearest Neighbor Search</strong>: When a new query comes in, it's also converted into a vector using the same process. Then, the system performs a nearest neighbor search to find vectors that are closest to the query vector. The logic behind this is that semantically similar items will be closer in the vector space. The system uses measures such as cosine similarity or Euclidean distance to determine which vectors (and therefore which objects) are most similar to the query.</li>
+<li>
+<strong>Return Results</strong>: The items associated with the nearest vectors are returned as the search results.</li>
+</ol>
+<h2>Project Requirements</h2>
+<p>We will need several packages to implement sematic search in our Next.js app:</p>
+<ol>
+<li>
+<code>pg</code>: the node.js Postgres library</li>
+<li>
+<code>pg-hstore</code>: A node package for serializing and deserializing JSON data to hstore format</li>
+<li>
+<code>pgvector</code>: a simple NPM package for handing the vector data type in <code>pg</code> and <code>sequelize</code>
 </li>
 <li>
-<a href="https://nextjs13-sidebar-example.vercel.app/" rel="noreferrer noopener" target="_blank">Demo Page</a>
+<code>sequelize</code>: a fantastic ORM (Object Relational Mapping) package</li>
+</ol>
+<p>The project is bootstrapped using <code>create-next-app@latest</code> with typescript, tailwind and app router.</p>
+<h2>Step 1 - Create our ORM model and seed the database</h2>
+<p>First we need to define our Sequelize model. We'll start by creating a utility function to initialize Sequelize with the Postgres dialect:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-comment">// sequelize.ts</span>
+<span class="hljs-keyword">import</span> { Sequelize } <span class="hljs-keyword">from</span> <span class="hljs-string">'sequelize'</span>;
+<span class="hljs-keyword">import</span> pg <span class="hljs-keyword">from</span> <span class="hljs-string">'pg'</span>;
+<span class="hljs-keyword">import</span> safe <span class="hljs-keyword">from</span> <span class="hljs-string">'colors'</span>;
+<span class="hljs-keyword">const</span> pgvector = <span class="hljs-built_in">require</span>(<span class="hljs-string">'pgvector/sequelize'</span>);
+pgvector.registerType(Sequelize);
+<span class="hljs-keyword">const</span> logQuery = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-params">query</span>: <span class="hljs-params">string</span>, <span class="hljs-params">options</span>: <span class="hljs-params">any</span></span>) =&gt;</span> {
+    <span class="hljs-built_in">console</span>.log(safe.bgGreen(<span class="hljs-keyword">new</span> <span class="hljs-built_in">Date</span>().toLocaleString()));
+    <span class="hljs-built_in">console</span>.log(safe.bgYellow(options.bind));
+    <span class="hljs-built_in">console</span>.log(safe.bgBlue(query));
+    <span class="hljs-keyword">return</span> options;
+}
+<span class="hljs-keyword">const</span> sequelize = <span class="hljs-keyword">new</span> Sequelize(
+    process.env.DB_NAME!, <span class="hljs-comment">// DB name</span>
+    process.env.DB_USER!, <span class="hljs-comment">// username</span>
+    process.env.DB_PASS!, <span class="hljs-comment">// password</span>
+    {
+        host: process.env.DB_HOST,
+        port: <span class="hljs-built_in">parseInt</span>(process.env.DB_PORT!, <span class="hljs-number">5432</span>),
+        dialect: <span class="hljs-string">'postgres'</span>,
+        dialectModule: pg,
+        dialectOptions: {
+            ssl: {
+                <span class="hljs-built_in">require</span>: <span class="hljs-literal">true</span>,
+                rejectUnauthorized: <span class="hljs-literal">false</span>
+            }
+        },
+        logging: process.env.NODE_ENV !== <span class="hljs-string">'production'</span> ? logQuery : <span class="hljs-literal">false</span>,
+    }
+);
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> sequelize;
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Note that we are calling <code>registerType</code> from the <code>pgvector</code> package. This gives the <code>VECTOR</code> data type to our model which we will define next:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-comment">// Product.model.ts</span>
+<span class="hljs-keyword">import</span> sequelize <span class="hljs-keyword">from</span> <span class="hljs-string">"@/utils/sequelize"</span>;
+<span class="hljs-keyword">import</span> { createEmbedding } <span class="hljs-keyword">from</span> <span class="hljs-string">"@/utils/openai"</span>;
+<span class="hljs-keyword">const</span> pgvector = <span class="hljs-built_in">require</span>(<span class="hljs-string">'pgvector/utils'</span>);
+<span class="hljs-comment">// Types</span>
+<span class="hljs-keyword">import</span> { DataTypes, Model } <span class="hljs-keyword">from</span> <span class="hljs-string">"sequelize"</span>;
+<span class="hljs-keyword">import</span> { T_Product } <span class="hljs-keyword">from</span> <span class="hljs-string">"./products"</span>;
+<span class="hljs-keyword">class</span> Product <span class="hljs-keyword">extends</span> Model <span class="hljs-keyword">implements</span> T_Product {
+    <span class="hljs-keyword">public</span> id!: <span class="hljs-built_in">number</span>;
+    <span class="hljs-keyword">public</span> name!: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">public</span> slug!: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">public</span> description!: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">public</span> price!: <span class="hljs-built_in">number</span>;
+    <span class="hljs-keyword">public</span> image!: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">public</span> category!: <span class="hljs-built_in">string</span>;
+    <span class="hljs-keyword">public</span> embedding!: <span class="hljs-built_in">number</span>[];
+    <span class="hljs-keyword">public</span> createdAt!: <span class="hljs-built_in">Date</span>;
+    <span class="hljs-keyword">public</span> updatedAt!: <span class="hljs-built_in">Date</span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">async</span> publicSearch(searchTerm: <span class="hljs-built_in">string</span>, skip: <span class="hljs-built_in">number</span> = <span class="hljs-number">0</span>, limit: <span class="hljs-built_in">number</span> = <span class="hljs-number">9999</span>) {
+        <span class="hljs-keyword">const</span> embedding = <span class="hljs-keyword">await</span> createEmbedding(searchTerm);
+        <span class="hljs-keyword">const</span> embSql = pgvector.toSql(embedding);
+        <span class="hljs-keyword">const</span> results = <span class="hljs-keyword">await</span> Product.findAll({
+            order: [
+                sequelize.literal(<span class="hljs-string">`"embedding" &lt;-&gt; '<span class="hljs-subst">${embSql}</span>'`</span>),
+            ],
+            offset: skip,
+            limit: limit,
+            attributes: {
+                exclude: [<span class="hljs-string">'embedding'</span>]
+            }
+        });
+        <span class="hljs-keyword">return</span> results;
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> initModel(): <span class="hljs-built_in">void</span> {
+        Product.init({
+            id: {
+                <span class="hljs-keyword">type</span>: DataTypes.UUID,
+                defaultValue: DataTypes.UUIDV4,
+                primaryKey: <span class="hljs-literal">true</span>,
+            },
+            name: {
+                <span class="hljs-keyword">type</span>: DataTypes.STRING,
+                allowNull: <span class="hljs-literal">false</span>,
+            },
+            slug: {
+                <span class="hljs-keyword">type</span>: DataTypes.STRING,
+                allowNull: <span class="hljs-literal">false</span>,
+            },
+            description: {
+                <span class="hljs-keyword">type</span>: DataTypes.TEXT,
+                allowNull: <span class="hljs-literal">false</span>,
+            },
+            price: {
+                <span class="hljs-keyword">type</span>: DataTypes.INTEGER,
+                allowNull: <span class="hljs-literal">false</span>,
+            },
+            image: {
+                <span class="hljs-keyword">type</span>: DataTypes.TEXT,
+                allowNull: <span class="hljs-literal">false</span>,
+            },
+            category: {
+                <span class="hljs-keyword">type</span>: DataTypes.STRING,
+                allowNull: <span class="hljs-literal">false</span>,
+            },
+            embedding: {
+                <span class="hljs-comment">// @ts-ignore</span>
+                <span class="hljs-keyword">type</span>: DataTypes.VECTOR(<span class="hljs-number">1536</span>),
+                allowNull: <span class="hljs-literal">true</span>,
+                defaultValue: <span class="hljs-literal">null</span>
+            }
+        }, {
+            sequelize,
+            tableName: <span class="hljs-string">'products'</span>,
+            timestamps: <span class="hljs-literal">true</span>,
+            paranoid: <span class="hljs-literal">true</span>,
+            underscored: <span class="hljs-literal">true</span>,
+        });
+    }
+}
+Product.initModel();
+Product.addHook(<span class="hljs-string">'beforeCreate'</span>, <span class="hljs-keyword">async</span> (product: Product) =&gt; {
+    <span class="hljs-keyword">const</span> input = product.name + <span class="hljs-string">'\n'</span> + product.category + <span class="hljs-string">'\n'</span> + product.description;
+    <span class="hljs-keyword">const</span> embedding = <span class="hljs-keyword">await</span> createEmbedding(input);
+    product.embedding = embedding;
+    <span class="hljs-keyword">if</span> (product.price) {
+        product.price = <span class="hljs-built_in">parseInt</span>(product.price.toString().replace(<span class="hljs-string">'.'</span>, <span class="hljs-string">''</span>));
+    }
+});
+Product.addHook(<span class="hljs-string">'beforeUpdate'</span>, <span class="hljs-keyword">async</span> (product: Product) =&gt; {
+    <span class="hljs-keyword">const</span> input = product.name + <span class="hljs-string">'\n'</span> + product.category + <span class="hljs-string">'\n'</span> + product.description;
+    <span class="hljs-keyword">const</span> embedding = <span class="hljs-keyword">await</span> createEmbedding(input);
+    product.embedding = embedding;
+    <span class="hljs-keyword">if</span> (product.changed(<span class="hljs-string">'price'</span>)) {
+        product.price = <span class="hljs-built_in">parseInt</span>(product.price.toString().replace(<span class="hljs-string">'.'</span>, <span class="hljs-string">''</span>));
+    }
+});
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> Product;
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>Here, we've established a unique column named 'embedding', which has a type of <code>VECTOR</code>. Subsequently, we design a method called <code>search</code> that takes our query and transforms it into an embedding vector. Utilizing the <code>toSql</code> helper function from <code>pgvector</code>, we formulate our query. Instead of applying a <code>where</code> clause, we sort the outcomes using the <code>&lt;-&gt;</code> operator, an operator for comparing Euclidean distances. As a result, the results most pertinent semantically will appear first. We have the option to add pagination or limit the results, but our mock store contains only 20 products.</p>
+<p>Additionally, we establish a <code>beforeCreate</code> and <code>beforeUpdate</code> hook that forms an embedding. We string together the product name, category, and description, and feed it into our OpenAI helper function, <code>createEmbedding</code>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-comment">// openai.ts</span>
+<span class="hljs-keyword">import</span> { Configuration, OpenAIApi } <span class="hljs-keyword">from</span> <span class="hljs-string">"openai"</span>;
+<span class="hljs-keyword">const</span> config = <span class="hljs-keyword">new</span> Configuration({
+    apiKey: process.env.OPENAI_KEY,
+    organization: process.env.OPENAI_ORG,
+});
+<span class="hljs-comment">// Create embedding from string</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> createEmbedding = <span class="hljs-keyword">async</span> (text: <span class="hljs-built_in">string</span>) =&gt; {
+    <span class="hljs-keyword">const</span> openai = <span class="hljs-keyword">new</span> OpenAIApi(config);
+    <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> openai.createEmbedding({
+        model: <span class="hljs-string">'text-embedding-ada-002'</span>,
+        input: text,
+    });
+    <span class="hljs-keyword">return</span> response.data.data[<span class="hljs-number">0</span>].embedding;
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>In this approach, we employ the <code>openai</code> library to send a request to the <code>text-embedding-ada-002</code> model, which is considered the superior embeddings model at the time of this writing. The process is fairly quick, typically requiring less than a second.</p>
+<p>Now let's write a script to seed our database. We will be using fakestoreapi.com to get our data:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-keyword">import</span> Product <span class="hljs-keyword">from</span> <span class="hljs-string">"@/models/Products.model"</span>;
+<span class="hljs-keyword">import</span> { createSlug } <span class="hljs-keyword">from</span> <span class="hljs-string">"./format"</span>;
+<span class="hljs-keyword">const</span> seedProducts = <span class="hljs-keyword">async</span> (): <span class="hljs-built_in">Promise</span>&lt;<span class="hljs-built_in">void</span>&gt; =&gt; {
+    <span class="hljs-keyword">try</span> {
+        <span class="hljs-keyword">const</span> response = <span class="hljs-keyword">await</span> fetch(<span class="hljs-string">'https://fakestoreapi.com/products'</span>);
+        <span class="hljs-keyword">if</span> (!response.ok) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-built_in">Error</span>(<span class="hljs-string">'Failed to fetch products'</span>);
+        }
+        <span class="hljs-keyword">const</span> products = <span class="hljs-keyword">await</span> response.json();
+        <span class="hljs-keyword">const</span> productsData = products.map(<span class="hljs-function">(<span class="hljs-params"><span class="hljs-params">product</span>: <span class="hljs-params">any</span></span>) =&gt;</span> ({
+            name: product.title,
+            slug: createSlug(product.title),
+            description: product.description,
+            price: <span class="hljs-built_in">parseInt</span>(product.price.toString().replace(<span class="hljs-string">'.'</span>, <span class="hljs-string">''</span>)),
+            image: product.image,
+            category: product.category,
+        }));
+        <span class="hljs-keyword">await</span> Product.sync({ alter: <span class="hljs-literal">true</span> });
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Product model synced!'</span>);
+        <span class="hljs-keyword">await</span> Product.destroy({
+            where: {},
+            force: <span class="hljs-literal">true</span>,
+        });
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'All products deleted!'</span>);
+        <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> product of productsData) {
+            <span class="hljs-keyword">await</span> Product.create(product);
+        }
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Products seeded!'</span>);
+    } <span class="hljs-keyword">catch</span> (err) {
+        <span class="hljs-built_in">console</span>.log(err);
+    }
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> seedProducts;
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>This process will retrieve all 20 products from the mock store API. Afterward, it will initialize and/or empty our table, and then create a record for each product. Via our customized Sequelize hooks, an embedding will be automatically computed for each product!</p>
+<p>And there you have it - quite straightforward! For the complete code of this sample project, you can check out the repository link provided below. Don't hesitate to clone it and give it a try!</p>
+<h2>Resources</h2>
+<ol>
+<li>
+<a href="https://github.com/designly1/next-vector-search-example" rel="noreferrer noopener" target="_blank">GitHub Repo</a>
+</li>
+<li>
+<a href="https://next-vector-search-example.vercel.app/" rel="noreferrer noopener" target="_blank">Demo Site</a>
 </li>
 </ol>
+<hr>
+<p>Thank you for taking the time to read my article and I hope you found it useful (or at the very least, mildly entertaining). For more great information about web dev, systems administration and cloud computing, please read the <a href="https://blog.designly.biz" rel="noreferrer noopener" target="_blank">Designly Blog</a>. Also, please leave your comments! I love to hear thoughts from my readers.</p>
+<p>I use <a href="https://hostinger.com?REFERRALCODE=1J11864" rel="noreferrer noopener" target="_blank">Hostinger</a> to host my clients' websites. You can get a business account that can host 100 websites at a price of $3.99/mo, which you can lock in for up to 48 months! It's the best deal in town. Services include PHP hosting (with extensions), MySQL, Wordpress and Email services.</p>
+<p>Looking for a web developer? I'm available for hire! To inquire, please fill out a <a href="https://designly.biz/contact" rel="noreferrer noopener" target="_blank">contact form</a>.</p>
 </section>
             <script
     async
@@ -299,20 +351,20 @@
             <div class="share-buttons text-2xl flex gap-4 mx-auto">
                 <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
                 <a
-                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fcreate-a-responsive-animated-sidebar-using-react-next-js-and-tailwind-css"
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fbuilding-an-ai-search-app-with-next-js-and-openai-a-step-by-step-guide"
                     target="_blank"
                     aria-label="Share on Facebook"
                 >
                     <i class="fab fa-facebook text-blue-700"></i>
                 </a>
                 <a
-                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fcreate-a-responsive-animated-sidebar-using-react-next-js-and-tailwind-css"
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fbuilding-an-ai-search-app-with-next-js-and-openai-a-step-by-step-guide"
                     target="_blank"
                     aria-label="Share on LinkedIn"
                 >
                     <i class="fab fa-linkedin text-indigo-700"></i>
                 </a>
-                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fcreate-a-responsive-animated-sidebar-using-react-next-js-and-tailwind-css" target="_blank">
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fbuilding-an-ai-search-app-with-next-js-and-openai-a-step-by-step-guide" target="_blank">
                     <i class="fab fa-twitter text-sky-700"></i>
                 </a>
             </div>
@@ -555,9 +607,9 @@
     <div id="post-list-bottom"></div>
 </div>
 </div>
-<input id="post-id" type="hidden" value="6cPcWxKbBfhM7HIKAXKx3g" />
+<input id="post-id" type="hidden" value="yesZ8UJhUWuSwV86JmU3T" />
 <input id="reply-to" type="hidden" value="" />
-<input id="post-url" type="hidden" value="https://blog.designly.biz/create-a-responsive-animated-sidebar-using-react-next-js-and-tailwind-css" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/building-an-ai-search-app-with-next-js-and-openai-a-step-by-step-guide" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");
