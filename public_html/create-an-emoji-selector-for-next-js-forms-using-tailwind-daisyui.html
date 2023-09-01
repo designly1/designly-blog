@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>How to Use AWS CloudFront to Create Your Own Free CDN | Designly</title>
+        <title>Create an Emoji Selector for Next.js Forms using Tailwind + DaisyUI | Designly</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="/assets/css/style.css" />
@@ -33,12 +33,12 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#ffffff" />
-        <meta name="description" content="You can have your own free CDN by using AWS CloudFront and S3. I'll show you how!" />
-        <meta property="og:title" content="How to Use AWS CloudFront to Create Your Own Free CDN" />
-        <meta property="og:description" content="You can have your own free CDN by using AWS CloudFront and S3. I'll show you how!" />
-        <meta property="og:image" content="https://d340jo5zum8tsx.cloudfront.net/blog_files/cloudfront/cloudfront-banner.webp" />
+        <meta name="description" content="In this blog post, we're diving deep into the cosmos of code to guide you on creating an emoji selector for your Next.js forms that's both functional and fabulous." />
+        <meta property="og:title" content="Create an Emoji Selector for Next.js Forms using Tailwind + DaisyUI" />
+        <meta property="og:description" content="In this blog post, we're diving deep into the cosmos of code to guide you on creating an emoji selector for your Next.js forms that's both functional and fabulous." />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/create-an-emoji-selector-for-next-js-forms-using-tailwind-daisyui/cover.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://blog.designly.biz/how-to-use-aws-cloudfront-to-create-your-own-free-cdn" />
+        <meta property="og:url" content="https://blog.designly.biz/create-an-emoji-selector-for-next-js-forms-using-tailwind-daisyui" />
         <meta property="og:site_name" content="Designly Blog" />
         <meta property="fb:app_id" content="3419826058233420" />
     </head>
@@ -72,15 +72,16 @@
     <div class="col-span-3 px-4 md:px-20 py-10">
         <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
-                <h1 id="post-title" class="text-colors text-xl md:text-3xl font-bold">How to Use AWS CloudFront to Create Your Own Free CDN</h1>
-                <div class="flex gap-2 items-center tag-list"><a href="/tag/cdn">#CDN</a>
-<a href="/tag/amazon-web-services">#Amazon Web Services</a>
-<a href="/tag/amazon-web-services">#Amazon Web Services</a></div>
+                <h1 id="post-title" class="text-colors text-xl md:text-3xl font-bold">Create an Emoji Selector for Next.js Forms using Tailwind + DaisyUI</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/nextjs">#Next.js</a>
+<a href="/tag/front-end">#Front End</a>
+<a href="/tag/tailwind-css">#Tailwind CSS</a>
+<a href="/tag/daisy-ui">#Daisy UI</a></div>
                 <img
                     class="rounded-md shadow-lg"
-                    src="https://d340jo5zum8tsx.cloudfront.net/blog_files/cloudfront/cloudfront-banner.webp?w=1200&q=75"
-                    srcset="https://d340jo5zum8tsx.cloudfront.net/blog_files/cloudfront/cloudfront-banner.webp?w=640&q=75 640w, https://d340jo5zum8tsx.cloudfront.net/blog_files/cloudfront/cloudfront-banner.webp?w=320&q=75 320w"
-                    alt="How to Use AWS CloudFront to Create Your Own Free CDN"
+                    src="https://cdn.designly.biz/imgr/blog_files/create-an-emoji-selector-for-next-js-forms-using-tailwind-daisyui/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/create-an-emoji-selector-for-next-js-forms-using-tailwind-daisyui/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-an-emoji-selector-for-next-js-forms-using-tailwind-daisyui/cover.jpg?w=320&q=75 320w"
+                    alt="Create an Emoji Selector for Next.js Forms using Tailwind + DaisyUI"
                     width="1200"
                     height="675"
                 />
@@ -101,73 +102,111 @@
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
             </section>
-            <section class="post-content flex flex-col gap-6"><p>CDN stands for <strong>Content Delivery Network</strong>. They are used by large platforms such as Facebook, Amazon, Twitter, etc. Traditionally, they were only in the market of companies with deep wallets, but now-a-days, you can have your own CDN solution for an affordable price.</p>
-<p>In years past, I used <a href="https://www.cloudflare.com/" rel="noreferrer noopener" target="_blank"><strong>CloudFlare</strong></a> to cache my websites and speed up delivery &mdash; and I still do. But recently I discovered <a href="https://console.aws.amazon.com/" rel="noreferrer noopener" target="_blank"><strong>Amazon Web Service</strong></a>&rsquo;s <a href="https://aws.amazon.com/cloudfront/pricing/" rel="noreferrer noopener" target="_blank"><strong>CloudFront</strong></a> product. Like many AWS services, CloudFront has a free tier! The free tier allows up to <strong>1TB</strong> of transfer out, <strong>10,000,000 HTTP or HTTPS Requests</strong>, and <strong>2,000,000 CloudFront Function Invocations</strong> per month. And the overage charges are just pennies. In the past, this type of service was only available to large-scale sites with millions of requests per day, but Amazon has made this service available to anyone &mdash; all you need is an AWS account and a credit card on file, but you&rsquo;re credit card will only be charged if you go over the free-tier quota.</p>
-<p>So, without further ado, let&rsquo;s get started! This guide assumes you already have an AWS account and are logged in.</p>
-<h4>Step 1: Create an S3 Bucket</h4>
-<p>S3 stands for <strong>Simple Storage Service</strong>. Unlike services, such as Google Drive or DropBox, S3 treats files stored as objects. This gives you greater control over management of your files, such as versioning, deletion protection and encryption option. In this tutorial, we are just going to create a standard S3 bucket with no bells and whistles.</p>
-<p>Ok, once you&rsquo;re logged into the <a href="https://console.aws.amazon.com/" rel="noreferrer noopener" target="_blank"><strong>AWS Console</strong></a>, click on the <strong>Services</strong> icon in the upper left corner, then click <strong>Storage</strong>, then click <strong>S3</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-1.webp?q=75" alt="Click Services &gt; Storage &gt; S3" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-1.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-1.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-1.webp?w=320&amp;q=75 320w"></p>
-<p>Next, click <strong>Create Bucket</strong> and enter a <strong>Bucket Name</strong>. The name you choose must be unique amongst all of AWS, so you may have to play around until you find one that works. You should choose a name that is DNS-compliant because this name will be part of your URI to access the bucket from the web.</p>
-<p>Now choose your <strong>AWS Region</strong>, which should be the same as any other AWS services you currently use. If this if your first AWS resource, choose a region that geographically close to where you live.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-2.webp?q=75" alt="Create a New Bucket and then enter a Bucket Name and choose your AWS Region" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-2.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-2.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-2.webp?w=320&amp;q=75 320w"></p>
-<p>Next, scroll down to the <strong>Block all Public Access</strong> checkbox and uncheck it. This bucket is intended to be accessible to the public so we can uncheck this option. Then check the <strong>&ldquo;I Acknowledge&rdquo;</strong> checkbox to continue.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-3.webp?q=75" alt="Uncheck Block all pubic access and check &ldquo;I Acknowledge&rdquo;" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-3.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-3.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-3.webp?w=320&amp;q=75 320w"></p>
-<h4>Step 2: Setup AWS CloudFront</h4>
-<p>Now that we have an S3 bucket, we can setup AWS CloudFront, which will use that bucket as back-end storage for your CDN.</p>
-<p>Click the <strong>Services</strong> icon and then choose <strong>Network &amp; Content Delivery &gt; CloudFront</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-4.webp?q=75" alt="Click Services &gt; Network &amp; Content Delivery &gt; CloudFront" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-4.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-4.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-4.webp?w=320&amp;q=75 320w"></p>
-<p>Once in the CloudFront console, click <strong>Create Distribution</strong>. Then click on <strong>Origin Domain</strong> and select your newly-created S3 bucket.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-5.webp?q=75" alt="Click Create Distribution and then click Origin Domain and select your bucket" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-5.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-5.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-5.webp?w=320&amp;q=75 320w"></p>
-<p>Next, scroll down to the <strong>Viewer</strong> section and select <strong>Redirect HTTP to HTTPS</strong> under <strong>Viewer protocol policy</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-6.webp?q=75" alt="Select Redirect HTTP to HTTPS under Viewer protocol Policy" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-6.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-6.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-6.webp?w=320&amp;q=75 320w"></p>
-<p>Leave all the other settings in their default state and then scroll down to the bottom and click <strong>Create Distribution</strong>.</p>
-<p>Now copy and paste the <strong>Distribution domain name</strong> into a place where you can reference it later. This is your new CDN&rsquo;s base url.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-7.webp?q=75" alt="Create Distribution" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-7.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-7.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-7.webp?w=320&amp;q=75 320w"></p>
-<h4>Step 3: Create an IAM User/Group to Manage your CDN</h4>
-<p>Now we need to create a service account user with appropriate permissions to manage your new CDN. In the <strong>Search Bar</strong> next to the <strong>Services</strong> icon type in <em><strong>Iam</strong></em> and then click <strong>Users</strong> under <strong>IAM</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-8.webp?q=75" alt="Search for IAM and then click Users" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-8.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-8.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-8.webp?w=320&amp;q=75 320w"></p>
-<p>Next, click <strong>Add Users</strong> and enter a username. Then check the box labeled <strong>Acces key</strong> under <strong>Seledct AWS credential type</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-10.webp?q=75" alt="Click Add Users and enter a Username then check Access Key" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-10.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-10.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-10.webp?w=320&amp;q=75 320w"></p>
-<p>Now you&rsquo;ll need to add your new user to a group. We&rsquo;re going to <strong>Create Group.</strong> Name the group whatever you like and the type <strong>S3</strong> in the search baar and check <strong>AmazonS3FullAcess</strong>. This will give this group full access to your S3 bucket for managing objects.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-11.webp?q=75" alt="Click Add User To Group and then search for S3 and check AmazonS3FullAccess" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-11.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-11.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-11.webp?w=320&amp;q=75 320w"></p>
-<p>Now search for <strong>cloudfront</strong> and check <strong>CloudFrontFullAccess</strong>. Then click <strong>Create Group</strong>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-12.webp?q=75" alt="Search for cloudfront and check CloudFrontFullAccess then click Create Group" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-12.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-12.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-12.webp?w=320&amp;q=75 320w"></p>
-<p>Click next, skip adding tags and then click <strong>Create User</strong>. Now copy and paste your <strong>Access key ID</strong> and <strong>Secret access key</strong> and store them in a safe place. Once you close this screen you will not be able to see your secret key again!</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-13.webp?q=75" alt="Copy your Access Key ID and Secret access key" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/cloudfront/cloudfront-13.webp" srcset="https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-13.webp?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/cloudfront/cloudfront-13.webp?w=320&amp;q=75 320w"></p>
-<h4>Step 4: Install the AWS Command Line Interface</h4>
-<p>We have our own free CDN! Yay! Now we need to be able to upload files to the S3 bucket and control our CloudFront cache. So we need to install the AWS CLI. I offer methods to install this on <strong>MacOS</strong> or <strong>Linux</strong>. I&rsquo;ve never used it on <strong>Windows</strong> because&hellip; well&hellip; I hate Windows! So sorry.</p>
-<h4>Install AWS CLI on MacOS</h4>
-<p>Assuming you alread have <a href="https://brew.sh/" rel="noreferrer noopener" target="_blank">Homebrew</a> installed on your Mac, run the following commands:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ brew update
-$ brew install awscli
+            <section class="post-content flex flex-col gap-6"><p>Emojis &#128515;&#127775;&#127752; have become an integral part of our digital conversations. They inject personality into our texts &#128221;, express emotions &#129392;&#128514;&#128546;, and sometimes even say more than words themselves could &#128588;. As developers, providing an avenue for users to seamlessly integrate these colorful characters into their input not only makes our applications more interactive but also more human &#128172;&#10084;&#65039;.</p>
+<p>In the vast universe of web development, the potent trio of Next.js, Tailwind CSS, and DaisyUI stands out as the constellation for modern, efficient, and stylish web components &#10024;&#128295;&#127912;. In this blog post, we're diving deep into the cosmos of code to guide you on creating an emoji selector for your Next.js forms that's both functional and fabulous &#128640;&#127760;.</p>
+<p>This tutorial project uses Next.js bootstrapped using <code>create-next-app@latest</code>. The full GitHub repo and demo site are linked at the bottom of the article. With that said, on to the code!</p>
+<p>The first thing we need to do is create our library of emojis. The ones listed below are abridged for sake of brevity:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">const</span> emojis = [
+  <span class="hljs-string">"&#128512;"</span>,
+  <span class="hljs-string">"&#128515;"</span>,
+  <span class="hljs-string">"&#128516;"</span>,
+  <span class="hljs-string">"&#128513;"</span>,
+  <span class="hljs-string">"&#128518;"</span>,
+  <span class="hljs-string">"&#128517;"</span>,
+  <span class="hljs-string">"&#128514;"</span>,
+  <span class="hljs-string">"&#129315;"</span>,
+  <span class="hljs-string">"&#128522;"</span>,
+];
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<h4>Install AWS CLI on Linux</h4>
-<p>Debian/Ubuntu</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ curl <span class="hljs-string">"https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip"</span> -o <span class="hljs-string">"awscliv2.zip"</span>$ unzip awscliv2.zip$ <span class="hljs-built_in">cd</span> aws$ sudo ./install
+<p>Next, let's create our reusable <code>EmojiSelector</code> component:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-keyword">import</span> React, { useState, useEffect, Dispatch, SetStateAction } <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+<span class="hljs-keyword">import</span> { emojis } <span class="hljs-keyword">from</span> <span class="hljs-string">"@/data/emojis"</span>;
+interface Props {
+  <span class="hljs-attr">setter</span>: Dispatch&lt;SetStateAction&lt;string&gt;&gt;;
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">EmojiSelector</span>(<span class="hljs-params">props: Props</span>) </span>{
+  <span class="hljs-keyword">const</span> { setter } = props;
+  <span class="hljs-keyword">const</span> [displayEmoji, setDisplayEmoji] = useState&lt;string&gt;(emojis[<span class="hljs-number">0</span>]);
+  <span class="hljs-keyword">const</span> [isOpen, setIsOpen] = useState&lt;boolean&gt;(<span class="hljs-literal">false</span>);
+  useEffect(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> interval = setInterval(<span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+      setDisplayEmoji(emojis[<span class="hljs-built_in">Math</span>.floor(<span class="hljs-built_in">Math</span>.random() * emojis.length)]);
+    }, <span class="hljs-number">1000</span>);
+    <span class="hljs-keyword">return</span> <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> clearInterval(interval);
+  }, []);
+  <span class="hljs-keyword">const</span> handleClick = <span class="hljs-function">(<span class="hljs-params">emoji: string</span>) =&gt;</span> {
+    setIsOpen(<span class="hljs-literal">false</span>);
+    setter(<span class="hljs-function">(<span class="hljs-params">old</span>) =&gt;</span> old + <span class="hljs-string">` <span class="hljs-subst">${emoji}</span>`</span>);
+  };
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"collapse bg-base-200 collapse-arrow"</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">input</span>
+        <span class="hljs-attr">type</span>=<span class="hljs-string">"checkbox"</span>
+        <span class="hljs-attr">checked</span>=<span class="hljs-string">{isOpen}</span>
+        <span class="hljs-attr">onChange</span>=<span class="hljs-string">{()</span> =&gt;</span> setIsOpen(!isOpen)}
+      /&gt;
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"collapse-title text-xl font-medium"</span>&gt;</span>{displayEmoji}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"collapse-content text-4xl grid grid-cols-6 md:grid-cols-8 lg:grid-cols-10"</span>&gt;</span>
+        {emojis.map((emoji, index) =&gt; (
+          <span class="hljs-tag">&lt;<span class="hljs-name">button</span>
+            <span class="hljs-attr">key</span>=<span class="hljs-string">{index}</span>
+            <span class="hljs-attr">className</span>=<span class="hljs-string">"hover:scale-125 transition-transform ease-in-out duration-200 p-4"</span>
+            <span class="hljs-attr">onClick</span>=<span class="hljs-string">{()</span> =&gt;</span> handleClick(emoji)}
+          &gt;
+            {emoji}
+          <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        ))}
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+  );
+}
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Once the installation completes you can test if it installed properly by running:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ aws --version
+<p>Lastly, we'll create a simple for with a <code>textarea</code> to demonstrate usage:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">"react"</span>;
+<span class="hljs-keyword">import</span> EmojiSelector <span class="hljs-keyword">from</span> <span class="hljs-string">"./EmojiSelector"</span>;
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">HomePageView</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">const</span> [text, setText] = useState&lt;string&gt;(<span class="hljs-string">""</span>);
+  <span class="hljs-keyword">const</span> handleChange = <span class="hljs-function">(<span class="hljs-params">event: React.ChangeEvent&lt;HTMLTextAreaElement&gt;</span>) =&gt;</span> {
+    setText(event.target.value);
+  };
+  <span class="hljs-keyword">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"mt-20 mx-auto bg-zinc-200 w-full max-w-2xl p-6 rounded-xl flex flex-col gap-6"</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"text-2xl font-bold text-center"</span>&gt;</span>
+          Welcome to the Next.js Emoji Selector!
+        <span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"form-control"</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">label</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label"</span>&gt;</span>
+            <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">className</span>=<span class="hljs-string">"label-text"</span>&gt;</span>Enter some text<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+          <span class="hljs-tag">&lt;/<span class="hljs-name">label</span>&gt;</span>
+          <span class="hljs-tag">&lt;<span class="hljs-name">textarea</span>
+            <span class="hljs-attr">className</span>=<span class="hljs-string">"textarea h-24 textarea-bordered textarea-lg"</span>
+            <span class="hljs-attr">placeholder</span>=<span class="hljs-string">"Enter some text"</span>
+            <span class="hljs-attr">value</span>=<span class="hljs-string">{text}</span>
+            <span class="hljs-attr">onChange</span>=<span class="hljs-string">{handleChange}</span>
+          /&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+        <span class="hljs-tag">&lt;<span class="hljs-name">EmojiSelector</span> <span class="hljs-attr">setter</span>=<span class="hljs-string">{setText}</span> /&gt;</span>
+      <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="hljs-tag">&lt;/&gt;</span></span>
+  );
+}
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>It should output something like:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">aws-cli/2.1.33 Python/3.8.8 Linux/5.4.0-70-generic exe/x86_64.ubuntu.20 prompt/off
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Next, we need to login using the <strong>Access key</strong> and <strong>Private key</strong> you so carefully wrote down. To do this, we&rsquo;ll run aws configure:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ aws configureAWS Access Key ID [None]: YOUR_ACCESS_KEYAWS Secret Access Key [None]: YOUR_SECRET_KEYDefault region name [None]: e.g: us-east-1Default output format [None]: LEAVE_BLANK
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>If all goes well, you are now logged in and may begin uploading files to your S3 bucket!</p>
-<p>There are two ways to get your file uploaded to your CDN. You can use the aws s3 cp command or the aws s3 sync command. Personally, I prefer the sync command as it works very similarly to <strong>rsync</strong>. So in this example, I&rsquo;m going to show you how to sync a local <strong>images</strong> directory to your CloudFront CDN:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">aws s3 sync /Users/johndoe/httpd/images/ s3://designly-test-cdn/images --delete --exclude <span class="hljs-string">".*"</span>
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>If you&rsquo;re familiar with <strong>rsync</strong> then this command should look very familiar. The --delete option tells the command to delete any files in the target directory that no longer exists. The --exclude directive tells sync to ignore any files that begin with a dot. Most likely, you won&rsquo;t want to upload any operating system hidden files like .DS_Store.</p>
-<p>Ok, you did it! You now have a globally-syndicated CDN for your website&rsquo;s assets! You should see huge gains in loading times on your site.</p>
-<p>To access your files, remember the <strong>Distribution domain name</strong> I asked you to note earlier. In my example it was <code>https://dmcgr6zwv04i4.cloudfront.net/</code>. So to get to a specific image fie we just uploaded you would enter <code>https://dmcgr6zwv04i4.cloudfront.net/images/your-image-file.jpg</code>.</p>
-<h4>Invalidating Your CDN Cache</h4>
-<p>CloudFront automatically caches your S3 files at the CloudFront edge server for lightning-fast delivery. If you are doing a lot go development and changing files regularly, it may be necessary to invalidate certain files from the cache. To do this run the following awscli command:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">$ aws cloudfront create-invalidation --distribution-id YOUR_DISTRIBUTION_ID --paths <span class="hljs-string">"/*"</span>
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Where <code>--distribution-id</code> is your CloudFront <strong>Distribution ID</strong> and <code>--paths</code> is the specific files you want to invalidate. If you enter <code>"/\*"</code>, it will invalidate everything.</p>
-<p>Well, that&rsquo;s it. I hope you found this tutorial as useful as I have! For more great information, please visit our <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank"><strong>Blog</strong></a>.</p>
+<p>And there you have it! By now, you should have a vibrant emoji selector seamlessly integrated into your Next.js forms, ready to capture the myriad emotions and expressions of your users. &#127775;&#129395; Through the power of Tailwind CSS and DaisyUI, not only did we create a functional feature but also a visually pleasing one. &#127912;&#128293;</p>
+<p>As we wrap up this guide, remember that the digital landscape is ever-evolving. Always strive to infuse your applications with elements that resonate with users, making their interactions memorable and enjoyable. &#127760;&#128150; Emojis are just the tip of the iceberg when it comes to enhancing UX; the possibilities are endless, bounded only by imagination and creativity. &#128640;&#127756;</p>
+<p>Keep coding, keep innovating, and most importantly, keep adding those delightful touches to your projects. Until next time, happy coding! &#128105;&zwj;&#128187;&#128104;&zwj;&#128187;&#127880;</p>
+<ol>
+<li>
+<a href="https://next-emoji-selector.vercel.app/" rel="noreferrer noopener" target="_blank">Demo Site</a>
+</li>
+<li>
+<a href="https://github.com/designly1/next-emoji-selector" rel="noreferrer noopener" target="_blank">GitHub Repo</a>
+</li>
+</ol>
+<hr>
+<p>Thank you for taking the time to read my article and I hope you found it useful (or at the very least, mildly entertaining). For more great information about web dev, systems administration and cloud computing, please read the <a href="https://blog.designly.biz" rel="noreferrer noopener" target="_blank">Designly Blog</a>. Also, please leave your comments! I love to hear thoughts from my readers.</p>
+<p>If you want to support me, then please <a href="https://open.spotify.com/artist/1iyy5yeUB398YUCSY20Zdc?si=0U5VXmGET3qFpyRsYz8FUg" rel="noreferrer noopener" target="_blank">Follow Me on Spotify!</a></p>
+<p>Looking for a web developer? I'm available for hire! To inquire, please fill out a <a href="https://designly.biz/contact" rel="noreferrer noopener" target="_blank">contact form</a>.</p>
 </section>
             <script
     async
@@ -188,20 +227,20 @@ $ brew install awscli
             <div class="share-buttons text-2xl flex gap-4 mx-auto">
                 <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
                 <a
-                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fhow-to-use-aws-cloudfront-to-create-your-own-free-cdn"
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fcreate-an-emoji-selector-for-next-js-forms-using-tailwind-daisyui"
                     target="_blank"
                     aria-label="Share on Facebook"
                 >
                     <i class="fab fa-facebook text-blue-700"></i>
                 </a>
                 <a
-                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-use-aws-cloudfront-to-create-your-own-free-cdn"
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fcreate-an-emoji-selector-for-next-js-forms-using-tailwind-daisyui"
                     target="_blank"
                     aria-label="Share on LinkedIn"
                 >
                     <i class="fab fa-linkedin text-indigo-700"></i>
                 </a>
-                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-use-aws-cloudfront-to-create-your-own-free-cdn" target="_blank">
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fcreate-an-emoji-selector-for-next-js-forms-using-tailwind-daisyui" target="_blank">
                     <i class="fab fa-twitter text-sky-700"></i>
                 </a>
             </div>
@@ -444,9 +483,9 @@ $ brew install awscli
     <div id="post-list-bottom"></div>
 </div>
 </div>
-<input id="post-id" type="hidden" value="5UsNi7nXvLjqxnOvPxM60B" />
+<input id="post-id" type="hidden" value="BKKbIh84v6SDXgPEYg0rx" />
 <input id="reply-to" type="hidden" value="" />
-<input id="post-url" type="hidden" value="https://blog.designly.biz/how-to-use-aws-cloudfront-to-create-your-own-free-cdn" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/create-an-emoji-selector-for-next-js-forms-using-tailwind-daisyui" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");

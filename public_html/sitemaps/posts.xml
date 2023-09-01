@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
+    <loc>https://blog.designly.biz/implementing-nprogress-in-the-next-js-13-app-router</loc>
+    <image:image>
+      <image:loc>https://cdn.designly.biz/blog_files/implementing-nprogress-in-the-next-js-13-app-router/cover.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.designly.biz/create-an-emoji-selector-for-next-js-forms-using-tailwind-daisyui</loc>
+    <image:image>
+      <image:loc>https://cdn.designly.biz/blog_files/create-an-emoji-selector-for-next-js-forms-using-tailwind-daisyui/cover.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.designly.biz/implementing-a-loading-overlay-with-next-router-events-in-next-js</loc>
+    <image:image>
+      <image:loc>https://cdn.designly.biz/blog_files/implementing-a-loading-overlay-with-next-router-events-in-next-js/cover.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://blog.designly.biz/building-an-ai-search-app-with-next-js-and-openai-a-step-by-step-guide</loc>
     <image:image>
       <image:loc>https://cdn.designly.biz/blog_files/building-an-ai-search-app-with-next-js-and-openai-a-step-by-step-guide/cover.jpg</image:loc>
