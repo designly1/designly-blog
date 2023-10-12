@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>Create a Telephone IVR Using ChatGPT, NextJS and Twilio | Designly</title>
+        <title>Making Typescript More Flexible: Generics and Discriminated Unions | Designly</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="/assets/css/style.css" />
@@ -33,12 +33,12 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#ffffff" />
-        <meta name="description" content="By using Twilio to build your IVR, ChatGPT as the AI backend, and NextJS for the middleware, you can get an AI-powered IVR set up in less than 20 minutes. And I'm going to show you how." />
-        <meta property="og:title" content="Create a Telephone IVR Using ChatGPT, NextJS and Twilio" />
-        <meta property="og:description" content="By using Twilio to build your IVR, ChatGPT as the AI backend, and NextJS for the middleware, you can get an AI-powered IVR set up in less than 20 minutes. And I'm going to show you how." />
-        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/cover.jpg" />
+        <meta name="description" content="Master TypeScript's key features—Generics, Discriminated Unions, and Type Guards—with hands-on examples. Boost your code's type safety and flexibility." />
+        <meta property="og:title" content="Making Typescript More Flexible: Generics and Discriminated Unions" />
+        <meta property="og:description" content="Master TypeScript's key features—Generics, Discriminated Unions, and Type Guards—with hands-on examples. Boost your code's type safety and flexibility." />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/making-typescript-more-flexible-generics-and-discriminated-unions/cover.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://blog.designly.biz/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio" />
+        <meta property="og:url" content="https://blog.designly.biz/making-typescript-more-flexible-generics-and-discriminated-unions" />
         <meta property="og:site_name" content="Designly Blog" />
         <meta property="fb:app_id" content="3419826058233420" />
     </head>
@@ -72,15 +72,15 @@
     <div class="col-span-3 px-4 md:px-20 py-10">
         <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
-                <h1 id="post-title" class="text-colors text-xl md:text-3xl font-bold">Create a Telephone IVR Using ChatGPT, NextJS and Twilio</h1>
-                <div class="flex gap-2 items-center tag-list"><a href="/tag/nextjs">#Next.js</a>
-<a href="/tag/twilio">#Twilio</a>
-<a href="/tag/chatgpt">#ChatGPT</a></div>
+                <h1 id="post-title" class="text-colors text-xl md:text-3xl font-bold">Making Typescript More Flexible: Generics and Discriminated Unions</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/typescript">#Typescript</a>
+<a href="/tag/react">#React</a>
+<a href="/tag/nextjs">#Next.js</a></div>
                 <img
                     class="rounded-md shadow-lg"
-                    src="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/cover.jpg?w=1200&q=75"
-                    srcset="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/cover.jpg?w=320&q=75 320w"
-                    alt="Create a Telephone IVR Using ChatGPT, NextJS and Twilio"
+                    src="https://cdn.designly.biz/imgr/blog_files/making-typescript-more-flexible-generics-and-discriminated-unions/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/making-typescript-more-flexible-generics-and-discriminated-unions/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/making-typescript-more-flexible-generics-and-discriminated-unions/cover.jpg?w=320&q=75 320w"
+                    alt="Making Typescript More Flexible: Generics and Discriminated Unions"
                     width="1200"
                     height="675"
                 />
@@ -101,145 +101,248 @@
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
             </section>
-            <section class="post-content flex flex-col gap-6"><p>ChatGPT is truly a dream come true for phone system programmers and designers. The AI is so smart, it feels like you're talking to a real person! Gone are the days of programming in hundreds of canned responses, or worse, paying a voice actor to read a list of prompts.</p>
-<p>By using Twilio to build your IVR, ChatGPT as the AI backend, and NextJS for the middleware, you can get an AI-powered IVR set up in less than 20 minutes.</p>
-<p>And I'm going to show you how.</p>
-<h4>Step 1 - Get an OpenAI API Key</h4>
-<p>You'll need to <a href="https://beta.openai.com/account/api-keys" rel="noreferrer noopener" target="_blank">create an OpenAI account</a> to get an API key. It's currently free, but that may change in the future. Once you're logged in, click on your profile image and select <code>View API Keys</code>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image1.jpg?q=75" alt="Get Your OpenAI Api Key" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image1.jpg?w=320&amp;q=75 320w"></p>
-<p>That's all you need to access ChatGPT.</p>
-<h4>Step 2 - Create a New NextJS Project</h4>
-<p>In this tutorial, I'm going to use NextJS solely for it's built in express API to be our middleman between Twilio and ChatGPT. This does slow down the time between asking a question and getting an answer and would not be suitable for a production environment, in my opinion, but it works!</p>
-<p>As always, we begin with <code>create-next-app</code>:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js">npx create-next-app chatApi
+            <section class="post-content flex flex-col gap-6"><p>In the evolving landscape of software development, TypeScript stands tall as a beacon of hope for developers seeking type safety amidst the wild west of JavaScript. However, as many delve deeper into the vast terrain of TypeScript, they often find themselves resorting to the "any" or "unknown" types when faced with complex typing scenarios. One might speculate that this fallback happens not due to TypeScript's limitations, but rather because developers might not be aware of some of the language's powerful features. Enter Generics and Discriminated Unions&mdash;two power-packed features of TypeScript that answer this challenge. These constructs not only enrich the language by providing a dynamic way to work with types but also push the boundaries of what's possible, eliminating the need for overly broad type definitions. In this guide, we'll embark on an enlightening journey to demystify these concepts, empowering you to make TypeScript more adaptable and precise than ever before.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/making-typescript-more-flexible-generics-and-discriminated-unions/img1.jpg?q=75" alt="Flow diagram showing the relationships between type guards, generics and discriminated untions" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/making-typescript-more-flexible-generics-and-discriminated-unions/img1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/making-typescript-more-flexible-generics-and-discriminated-unions/img1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/making-typescript-more-flexible-generics-and-discriminated-unions/img1.jpg?w=320&amp;q=75 320w"></p>
+<hr>
+<h2>Generics</h2>
+<p>Generics offer a way to create reusable components in TypeScript by allowing a type to be specified later, at the time of use, rather than being hardcoded. This provides the flexibility to work with any type while still preserving the benefits of strong typing. Essentially, generics allow you to write a function or a class that can operate on a variety of data types instead of being restricted to a single one.</p>
+<h3>Example:</h3>
+<p>Let's create a React component called <code>GenericForm</code>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-jsx hljs javascript" data-lang="jsx"><span class="hljs-keyword">import</span> React, { useState } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
+interface FormProps&lt;T&gt; {
+    <span class="hljs-attr">initialValues</span>: T;
+    onSubmit: <span class="hljs-function">(<span class="hljs-params">values: T</span>) =&gt;</span> <span class="hljs-keyword">void</span>;
+    children: <span class="hljs-function">(<span class="hljs-params">values: T, handleChange: (key: keyof T, value: any</span>) =&gt;</span> <span class="hljs-keyword">void</span>) =&gt; JSX.Element;
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GenericForm</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-params">props: FormProps&lt;T&gt;</span>) </span>{
+    <span class="hljs-keyword">const</span> [values, setValues] = useState&lt;T&gt;(props.initialValues);
+    <span class="hljs-keyword">const</span> handleChange = <span class="hljs-function">(<span class="hljs-params">key: keyof T, value: any</span>) =&gt;</span> {
+        setValues(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> ({ ...prev, [key]: value }));
+    };
+    <span class="hljs-keyword">const</span> handleSubmit = <span class="hljs-function">(<span class="hljs-params">e: React.FormEvent</span>) =&gt;</span> {
+        e.preventDefault();
+        props.onSubmit(values);
+    };
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">form</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{handleSubmit}</span>&gt;</span>
+            {props.children(values, handleChange)}
+            <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">"submit"</span>&gt;</span>Submit<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+        <span class="hljs-tag">&lt;/<span class="hljs-name">form</span>&gt;</span></span>
+    );
+}
+<span class="hljs-comment">// Usage</span>
+type FormData = {
+    <span class="hljs-attr">name</span>: string;
+    age: number;
+};
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">App</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">const</span> initialValues: FormData = { <span class="hljs-attr">name</span>: <span class="hljs-string">''</span>, <span class="hljs-attr">age</span>: <span class="hljs-number">0</span> };
+    <span class="hljs-keyword">const</span> handleSubmit = <span class="hljs-function">(<span class="hljs-params">values: FormData</span>) =&gt;</span> {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Submitted values:"</span>, values);
+    };
+    <span class="hljs-keyword">return</span> (
+        <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">GenericForm</span> <span class="hljs-attr">initialValues</span>=<span class="hljs-string">{initialValues}</span> <span class="hljs-attr">onSubmit</span>=<span class="hljs-string">{handleSubmit}</span>&gt;</span>
+            {(values, handleChange) =&gt; (
+                <span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> 
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">"text"</span> 
+                        <span class="hljs-attr">value</span>=<span class="hljs-string">{values.name}</span> 
+                        <span class="hljs-attr">onChange</span>=<span class="hljs-string">{e</span> =&gt;</span> handleChange('name', e.target.value)} 
+                        placeholder="Name"
+                    /&gt;
+                    <span class="hljs-tag">&lt;<span class="hljs-name">input</span> 
+                        <span class="hljs-attr">type</span>=<span class="hljs-string">"number"</span> 
+                        <span class="hljs-attr">value</span>=<span class="hljs-string">{values.age}</span> 
+                        <span class="hljs-attr">onChange</span>=<span class="hljs-string">{e</span> =&gt;</span> handleChange('age', Number(e.target.value))} 
+                        placeholder="Age"
+                    /&gt;
+                <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+            )}
+        <span class="hljs-tag">&lt;/<span class="hljs-name">GenericForm</span>&gt;</span></span>
+    );
+}
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> App;
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Turn on typescript and ESlint if you prefer and then run:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash"><span class="hljs-built_in">cd</span> chatApi
-npm i next-js-cors openai
-code .
+<h3>The Generic Component</h3>
+<p>The heart of this example is the <code>GenericForm</code> component. This component is defined to be generic, as denoted by the <code>&lt;T&gt;</code> after its name.</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">GenericForm</span>&lt;<span class="hljs-title">T</span>&gt;(<span class="hljs-params">props: FormProps&lt;T&gt;</span>) </span>{...}
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Create a new file in the project root called <code>.env.local</code> and add your OpenAI key:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-text">NEXT_PUBLIC_OPENAI_KEY=blahblahblahblahblah
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Also, we'll need to generate a token for accessing our API from twilio as well to prevent abuse. <a href="https://generate-random.org/api-key-generator?count=1&amp;length=64&amp;type=mixed-numbers&amp;prefix=" rel="noreferrer noopener" target="_blank">Click here</a> to get a secure randomly generated key. Then add it to <code>.env.local</code>:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-text">NEXT_PUBLIC_API_KEY=yoursecurerandomapikey
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Finally, open up your project in VS Code by typing:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">code .
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Ok, let's create our API route under <code>pages/api/chat.js</code>:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-js hljs javascript" data-lang="js"><span class="hljs-keyword">import</span> { Configuration, OpenAIApi } <span class="hljs-keyword">from</span> <span class="hljs-string">"openai"</span>;
-<span class="hljs-keyword">import</span> NextCors <span class="hljs-keyword">from</span> <span class="hljs-string">'nextjs-cors'</span>;
-<span class="hljs-keyword">const</span> configuration = <span class="hljs-keyword">new</span> Configuration({
-  <span class="hljs-attr">apiKey</span>: process.env.NEXT_PUBLIC_OPENAI_KEY,
-});
-<span class="hljs-keyword">const</span> openai = <span class="hljs-keyword">new</span> OpenAIApi(configuration);
-<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">handler</span>(<span class="hljs-params">req, res</span>) </span>{
-    <span class="hljs-comment">// Create our CORS policy to allow remote hosts</span>
-    <span class="hljs-keyword">await</span> NextCors(req, res, {
-    <span class="hljs-attr">methods</span>: [<span class="hljs-string">'POST'</span>, <span class="hljs-string">'HEAD'</span>],
-    <span class="hljs-attr">origin</span>: <span class="hljs-string">'*'</span>,
-    <span class="hljs-attr">optionsSuccessStatus</span>: <span class="hljs-number">200</span>,
-    });
-    <span class="hljs-comment">// Destruct request body</span>
-    <span class="hljs-keyword">const</span> { prompt, token } = req.body;
-    <span class="hljs-comment">// Validate our API token from Twilio</span>
-    <span class="hljs-keyword">if</span> (token !== process.env.NEXT_PUBLIC_API_KEY) {
-    res.status(<span class="hljs-number">403</span>).send(<span class="hljs-string">"HTTP 403 / Unauthorized"</span>);
-    <span class="hljs-keyword">return</span>;
-    }
-    <span class="hljs-comment">// Make our API request to ChatGPT and send the result to Twilio</span>
-    <span class="hljs-keyword">try</span> {
-    <span class="hljs-keyword">const</span> completion = <span class="hljs-keyword">await</span> openai.createCompletion({
-        <span class="hljs-attr">model</span>: <span class="hljs-string">"text-davinci-003"</span>, <span class="hljs-comment">// ChatGPT latest version</span>
-        <span class="hljs-attr">prompt</span>: prompt,
-        <span class="hljs-attr">max_tokens</span>: <span class="hljs-number">2048</span> <span class="hljs-comment">// Max length of response (2048 is highest)</span>
-    });
-    <span class="hljs-keyword">const</span> result = completion?.data?.choices[<span class="hljs-number">0</span>]?.text;
-    <span class="hljs-keyword">if</span> (result) {
-        res.status(<span class="hljs-number">200</span>).json({ <span class="hljs-attr">result</span>: result });
-    } <span class="hljs-keyword">else</span> {
-        <span class="hljs-keyword">const</span> error = completion?.data?.error;
-        <span class="hljs-built_in">console</span>.log(error);
-        res.status(<span class="hljs-number">200</span>).json({ <span class="hljs-attr">result</span>: <span class="hljs-string">"I'm sorry, an error occurred."</span> });
-    }
-    } <span class="hljs-keyword">catch</span> (e) {
-    <span class="hljs-built_in">console</span>.log(e)
-    res.status(<span class="hljs-number">200</span>).json({ <span class="hljs-attr">result</span>: <span class="hljs-string">"I'm sorry, an error occured."</span> });
-    }
-    <span class="hljs-keyword">return</span>;
+<p>This means that it can operate on any type <code>T</code>. The form doesn't need to know what this type is in advance, which is why it's so flexible.</p>
+<h3>FormProps Interface</h3>
+<p>The props for the <code>GenericForm</code> component are defined using the <code>FormProps</code> interface:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-keyword">interface</span> FormProps&lt;T&gt; {
+    initialValues: T;
+    onSubmit: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-params">values</span>: <span class="hljs-params">T</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>;
+    children: <span class="hljs-function">(<span class="hljs-params"><span class="hljs-params">values</span>: <span class="hljs-params">T</span>, <span class="hljs-params">handleChange</span>: (<span class="hljs-params">key</span>: <span class="hljs-params">keyof</span> <span class="hljs-params">T</span>, <span class="hljs-params">value</span>: <span class="hljs-params">any</span></span>) =&gt;</span> <span class="hljs-built_in">void</span>) =&gt; JSX.Element;
 }
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Now deploy your project to Vercel either by the Vercel command line tool or via GitHub. If you're not sure how to do this, <a href="https://vercel.com/guides/deploying-nextjs-with-vercel" rel="noreferrer noopener" target="_blank">check out this guide</a>.</p>
-<p>Remember to add your environment variables under the settings tab of your Vercel project:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image2.jpg?q=75" alt="Add your environment variables to your Vercel project" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image2.jpg?w=320&amp;q=75 320w"></p>
-<p>Also, you may want to change the default Vercel domain to something more memorable:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image3.jpg?q=75" alt="Customize your domain name" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image3.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image3.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image3.jpg?w=320&amp;q=75 320w"></p>
-<h4>Step 3 - Create a Twilio Account</h4>
-<p>Now head over to <a href="https://twilio.com" rel="noreferrer noopener" target="_blank">Twilio.com</a> and create a free account. You'll need to enter credit card info for your minute usage, but it's super cheap. Also, they give you $10 in credit to play around with, so you can mess around with this without paying any money. If you decide to take this all the way and use this as a solution, then I highly recommend Twilio as they are the most comprehensive and extensible telephony solution on the market. And they are very reasonably priced. I'd say I put $25 on every couple of months for my personal usage.</p>
-<p>Once you register your account, you'll need to requisition a phone number. To do this click on <code>Phone Numbers</code> &gt;&gt; <code>Manage</code> and <code>Buy a number</code>. In the search criteria, you can enter your area code to get a local number, or 888 to get a toll-free number (which costs a dollar more per month):</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image4.jpg?q=75" alt="Purchase a Twilio number" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image4.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image4.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image4.jpg?w=320&amp;q=75 320w"></p>
-<p>Ok, once you have your number, we need to create our IVR. There are many ways to accomplish this, but we are going to do it the easy way by using Twilio Studio. To get there, type <code>Studio</code> in the search bar at the top of your dashboard. Then click the <code>+</code> icon to create a new Studio flow and name it <code>Chat IVR</code> or something. Then click <code>Create from Scratch</code>.</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image5.jpg?q=75" alt="Create a new Studio flow" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image5.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image5.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image5.jpg?w=320&amp;q=75 320w"></p>
-<p>You should be presented with a blank grid. To create our flow, you simply drag a function from the right-hand column over to the grid area and then change its parameters. It's stupid easy! The first thing we'll want to do is greet the user when an incoming call comes in. To do this, we'll use the <code>Say / Play</code> function. Change the parameters as follows:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-text">WIDGET NAME: Greeting
-SAY OR PLAY MESSAGE OR DIGITS: Say a Message
-TEXT TO SAY: Hello, ask me anything!
-LANGUAGE: English
-MESSAGE VOICE: [Polly] Salli
-NUMBER OF LOOPS: 1
+<p>This interface describes:</p>
+<ul>
+<li>
+<code>initialValues</code>: This is the starting state of the form and will be of type <code>T</code>.</li>
+<li>
+<code>onSubmit</code>: A callback that will receive the current form values (of type <code>T</code>) when the form is submitted.</li>
+<li>
+<code>children</code>: A function, often termed a "render prop". It receives the current form values and a <code>handleChange</code> function to modify these values. It then returns JSX, which describes the form fields.</li>
+</ul>
+<h3>Form State &amp; Handlers</h3>
+<p>Inside the <code>GenericForm</code> component, we use the <code>useState</code> hook to maintain the current form values:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-keyword">const</span> [values, setValues] = useState&lt;T&gt;(props.initialValues);
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Click <code>save</code>.</p>
-<p>You can select whatever voice you like, but I'm using the Polly / Sally voice, which are provided by Amazon's Polly TTS engine. Now click and drag from <code>incoming call</code> from your triggers and connect it to your new widget. Now when a call comes in to this flow, the caller will be greeted by this voice. Your flow should look like this:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image6.jpg?q=75" alt="Create a greeting widget" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image6.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image6.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image6.jpg?w=320&amp;q=75 320w"></p>
-<p>Next, we'll route the call to another widget called <code>Gather Input on Call</code>. Configure it as follows:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-text">WIDGET NAME: ReadInput
-SPEECH RECOGNITION LANGUAGE: English
-PROFANTY FILTER: True | False (your choice)
+<p>The <code>handleChange</code> function allows any value within our state (of type <code>T</code>) to be changed:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-keyword">const</span> handleChange = <span class="hljs-function">(<span class="hljs-params"><span class="hljs-params">key</span>: <span class="hljs-params">keyof</span> <span class="hljs-params">T</span>, <span class="hljs-params">value</span>: <span class="hljs-params">any</span></span>) =&gt;</span> {
+    setValues(<span class="hljs-function"><span class="hljs-params">prev</span> =&gt;</span> ({ ...prev, [key]: value }));
+};
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Leave verything else in their default settings and click <code>save</code>. Then connect the <code>Audio Complete</code> node from <code>Greeting</code> to the input node on <code>ReadInput</code>. Your flow should look like this:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image7.jpg?q=75" alt="Create a read input widget" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image7.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image7.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image7.jpg?w=320&amp;q=75 320w"></p>
-<p>Since there is such a long delay from the time your speech is recognized to when the response is received from our API, it's necessary to indicate to the caller that their voice has been recognized and that it's being processed. To do this, we'll simply play a little tone. We'll use the <code>Say / Play</code> widget for this:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-text">WIDGET NAME: Acknowledge
-SAY OR PLAY MESSAGE OR DIGITS: Play a Message
-URL OF AUDIO FILE: https://chatendpoint.vercel.app/processing.mp3
-NUMBER OF LOOPS: 1
+<p>Here, <code>keyof T</code> ensures that the provided key is a valid property of our data type <code>T</code>.</p>
+<h3>Usage of the GenericForm</h3>
+<p>In the <code>App</code> component, we see an example of how to use the <code>GenericForm</code>:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-keyword">type</span> FormData = {
+    name: <span class="hljs-built_in">string</span>;
+    age: <span class="hljs-built_in">number</span>;
+};
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>You can download and add this file to your own Vercel project if you like, or simply use the one from my project. Click <code>save</code> and then connect the <code>User Said Something</code> node of <code>ReadInput</code> to the input node of <code>Acknowledge</code>.</p>
-<p>Now we'll create our HTTP request to our API. To do that, we need the, you guessed it, <code>Make HTTP Request</code> widget:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-text">WIDGET NAME: RequestAPI
-REQUEST METHOD: POST
-REQUEST URL: https://yourdomain.vercel.app/api/chat
-CONTENT TYPE: Form URL Encoded
-REQUEST BODY: [leave blank]
-HTTP Parameters:
-    prompt: 
-    token: yourgeneratedapitoken
+<p>Here, <code>FormData</code> is a specific type representing the structure of our form data.</p>
+<p>In the JSX for the <code>App</code> component, the <code>GenericForm</code> component is used with this specific <code>FormData</code> type. The form fields (name and age) are provided as children, and they interact with the form's state using the provided <code>handleChange</code> function.</p>
+<h3>Flexibility of the Component</h3>
+<p>The beauty of this setup is in its flexibility. You can use the <code>GenericForm</code> component with any data structure, not just <code>FormData</code>. If you had a different form structure, you'd define a new type, provide appropriate initial values, and adjust the form fields in the <code>children</code> function accordingly.</p>
+<hr>
+<h2>Discriminated Unions</h2>
+<p>Discriminated Unions, sometimes referred to as "tagged unions" or "algebraic data types", are an advanced feature in TypeScript that allows the creation of objects which could be of multiple types. However, unlike traditional unions, a discriminated union has a common key across all the types that lets you safely discriminate one type from the other.</p>
+<h3>Basic Concept:</h3>
+<p>A discriminated union requires:</p>
+<ol>
+<li>
+<strong>Types</strong> that have a common, singular property (the discriminant).</li>
+<li>A <strong>type alias</strong> that represents the union of these types.</li>
+<li>
+<strong>Type narrowing</strong> using the discriminant to differentiate between the types.</li>
+</ol>
+<h3>Example:</h3>
+<p>Suppose you are developing a chat application and you want to support various message types: text, image, and audio. Here's how you can represent this using discriminated unions in TypeScript:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-comment">// 1. Types with a common discriminant (`type` in this case)</span>
+<span class="hljs-keyword">type</span> TextMessage = {
+    <span class="hljs-keyword">type</span>: <span class="hljs-string">'text'</span>;
+    content: <span class="hljs-built_in">string</span>;
+}
+<span class="hljs-keyword">type</span> ImageMessage = {
+    <span class="hljs-keyword">type</span>: <span class="hljs-string">'image'</span>;
+    imageUrl: <span class="hljs-built_in">string</span>;
+    caption?: <span class="hljs-built_in">string</span>;
+}
+<span class="hljs-keyword">type</span> AudioMessage = {
+    <span class="hljs-keyword">type</span>: <span class="hljs-string">'audio'</span>;
+    audioUrl: <span class="hljs-built_in">string</span>;
+    duration: <span class="hljs-built_in">number</span>;
+}
+<span class="hljs-comment">// 2. Type alias for the union of message types</span>
+<span class="hljs-keyword">type</span> Message = TextMessage | ImageMessage | AudioMessage;
+<span class="hljs-comment">// 3. Type narrowing using the discriminant</span>
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">displayMessage</span>(<span class="hljs-params">message: Message</span>) </span>{
+    <span class="hljs-keyword">switch</span> (message.type) {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'text'</span>:
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Text Message: <span class="hljs-subst">${message.content}</span>`</span>);
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'image'</span>:
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Image Message with URL: <span class="hljs-subst">${message.imageUrl}</span>. Caption: <span class="hljs-subst">${message.caption || <span class="hljs-string">'None'</span>}</span>`</span>);
+            <span class="hljs-keyword">break</span>;
+        <span class="hljs-keyword">case</span> <span class="hljs-string">'audio'</span>:
+            <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Audio Message of duration <span class="hljs-subst">${message.duration}</span> seconds. URL: <span class="hljs-subst">${message.audioUrl}</span>`</span>);
+            <span class="hljs-keyword">break</span>;
+    }
+}
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Then click <code>save</code> and connect the <code>Audio Complete</code> node from <code>Acknowledge</code> to the input node of <code>RequestAPI</code>:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image8.jpg?q=75" alt="Create HTTP request widget" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image8.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image8.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image8.jpg?w=320&amp;q=75 320w"></p>
-<p>Next, we need to take the response from our API and say the text back to the caller. Again we'll use the <code>Say / Play</code> widget:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-text">WIDGET NAME: Response
-SAY OR PLAY MESSAGE OR DIGITS: Say a Message
-TEXT TO SAY: 
-LANGUAGE: English
-MESSAGE VOICE: [Polly] Salli
-NUMBER OF LOOPS: 1
+<p>In this example:</p>
+<ul>
+<li>
+<p>The <code>type</code> property acts as the discriminant. Each message type has a unique <code>type</code> value: 'text', 'image', or 'audio'.</p>
+</li>
+<li>
+<p>The <code>Message</code> type represents any message, but the discriminant ensures that you always know which specific type of message you are dealing with.</p>
+</li>
+<li>
+<p>The <code>displayMessage</code> function uses type narrowing with a <code>switch</code> statement on the <code>type</code> property. Inside each case block, TypeScript knows the exact type of <code>message</code>, allowing you to safely access properties specific to each type without any type errors.</p>
+</li>
+</ul>
+<p>In essence, discriminated unions provide a robust mechanism to handle variants, ensuring type safety while keeping the code elegant and error-free.</p>
+<hr>
+<h2>Type Guards</h2>
+<p>In TypeScript, while types help in establishing contracts across your code, it's also essential to verify or narrow down specific types during runtime, especially when dealing with conditional scenarios. This is where type guards come into play. A type guard is essentially a runtime check that guarantees the type in a particular scope.</p>
+<h3>Basic JavaScript Checks as Type Guards:</h3>
+<p>Before diving into advanced type guards, recognize that basic JavaScript checks often serve as type guards:</p>
+<p><code>typeof</code></p>
+<p>Works with primitive types such as strings, numbers, and booleans.</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">typeof</span> value === <span class="hljs-string">"string"</span>) {
+    <span class="hljs-built_in">console</span>.log(value.split(<span class="hljs-string">" "</span>));  <span class="hljs-comment">// TypeScript knows `value` is a string here.</span>
+}
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Click <code>save</code> and link the <code>Success</code> node from <code>RequestAPI</code> to its input.</p>
-<p>That largely completes our flow. But you'll probably want to do this in a loop. So after the response is read back to the caller, we'll want to play another tone to indicate that they should continue speaking. So grab another <code>Say / Play</code>:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-text">WIDGET NAME: Prompt
-SAY OR PLAY MESSAGE OR DIGITS: Play a Message
-URL OF AUDIO FILE: https://chatendpoint.vercel.app/prompt.mp3
-NUMBER OF LOOPS: 1
+<p><code>instanceof</code></p>
+<p>Works with class instances.</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-keyword">class</span> Car {
+    drive() {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Driving a car"</span>);
+    }
+}
+<span class="hljs-keyword">class</span> Boat {
+    sail() {
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">"Sailing a boat"</span>);
+    }
+}
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">move</span>(<span class="hljs-params">vehicle: Car | Boat</span>) </span>{
+    <span class="hljs-keyword">if</span> (vehicle <span class="hljs-keyword">instanceof</span> Car) {
+        vehicle.drive();
+    } <span class="hljs-keyword">else</span> {
+        vehicle.sail();
+    }
+}
 </code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Click <code>save</code> and link <code>Audio Complete</code> from <code>Response</code> to the input of <code>Prompt</code>. Then link <code>Audio Complete</code> from <code>Prompt</code> to the input of <code>ReadInput</code>. That should complete the loop.</p>
-<p>Here is what your final flow should look like:</p>
-<p><img src="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image9.jpg?q=75" alt="Complete the loop" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image9.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image9.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio/image9.jpg?w=320&amp;q=75 320w"></p>
-<p>Click the red <code>Publish</code> button to make your flow active.</p>
-<p>I know you're probably as eager as I was to try it out, but there's one more thing we must do. We must set the route of your new phone number to connect to this Studio flow. So go back to <code>Active Numbers</code> and click <code>Manage</code>. Then click your number. Scroll down until you find <code>Configure With</code> and select <code>Webhook, TwiML Bin, Function, Studio Flow, Proxy Service</code> and then select <code>Studio Flow</code> and <code>ChatIVR</code> under <code>A Call Comes In</code>. Then click save.</p>
-<p>Now call your number and have a pleasant conversation!</p>
-<p>I hope you enjoyed this article. Also, I hope the possibilities of ChatGPT excite you as much as me! For more great information about web dev, systems administration and telephony programming, please <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">visit the Designly Blog</a>.</p>
+<h3>User-defined Type Guards:</h3>
+<p>These are custom functions whose return type is a type predicate that narrows the type using the <code>is</code> keyword:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isFish</span>(<span class="hljs-params">pet: Fish | Bird</span>): <span class="hljs-title">pet</span> <span class="hljs-title">is</span> <span class="hljs-title">Fish</span> </span>{
+    <span class="hljs-keyword">return</span> (pet <span class="hljs-keyword">as</span> Fish).swim !== <span class="hljs-literal">undefined</span>;
+}
+<span class="hljs-comment">// Using the type guard</span>
+<span class="hljs-keyword">if</span> (isFish(myPet)) {
+    myPet.swim();
+} <span class="hljs-keyword">else</span> {
+    myPet.fly();
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>If <code>isFish</code> returns true, TypeScript knows the type of <code>myPet</code> is <code>Fish</code> within that block.</p>
+<h3>Literal Type Guards:</h3>
+<p>With discriminated unions, the unique property value (the discriminant) can serve as a literal type guard:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-keyword">type</span> Action =
+    | { <span class="hljs-keyword">type</span>: <span class="hljs-string">"increment"</span>, amount: <span class="hljs-built_in">number</span> }
+    | { <span class="hljs-keyword">type</span>: <span class="hljs-string">"decrement"</span>, amount: <span class="hljs-built_in">number</span> };
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">performAction</span>(<span class="hljs-params">action: Action</span>) </span>{
+    <span class="hljs-keyword">switch</span>(action.type) {
+        <span class="hljs-keyword">case</span> <span class="hljs-string">"increment"</span>:
+            <span class="hljs-comment">// action is of type { type: "increment", amount: number }</span>
+            <span class="hljs-keyword">return</span> counter + action.amount;
+        <span class="hljs-keyword">case</span> <span class="hljs-string">"decrement"</span>:
+            <span class="hljs-comment">// action is of type { type: "decrement", amount: number }</span>
+            <span class="hljs-keyword">return</span> counter - action.amount;
+    }
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<h3>Using <code>in</code> Operator as Type Guard:</h3>
+<p>The <code>in</code> operator can be used as a type guard to narrow down a type based on the presence of certain properties:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-ts hljs typescript" data-lang="ts"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">move</span>(<span class="hljs-params">animal: Bird | Fish</span>) </span>{
+    <span class="hljs-keyword">if</span> (<span class="hljs-string">"swim"</span> <span class="hljs-keyword">in</span> animal) {
+        animal.swim();
+    } <span class="hljs-keyword">else</span> {
+        animal.fly();
+    }
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<hr>
+<h2>Final Considerations</h2>
+<p>Mastering TypeScript's type system is both an art and a science. While the initial draw to TypeScript may be its static typing capabilities, developers soon realize that its true power is unlocked through features like generics, discriminated unions, and type guards. By understanding and utilizing these advanced concepts, developers can construct robust, maintainable, and type-safe applications, even in the face of intricate and complex use cases. With generics, you gain the ability to build reusable and type-flexible constructs; with discriminated unions, you can craft objects that might belong to multiple types but can be easily distinguished; and with type guards, you assure that types are what you expect them to be during runtime, enhancing both safety and clarity.</p>
+<p>However, as with all powerful tools, the key is in knowing when and how to use them. Over-reliance on any single tool can lead to over-complicated solutions. By combining these advanced TypeScript features with a thorough understanding of the problem space, developers can strike a balance, producing code that's both elegant and type-safe. As you continue your journey with TypeScript, may you leverage these features to their fullest, bringing precision, clarity, and robustness to all your projects.</p>
+<hr>
+<p>Thank you for taking the time to read my article and I hope you found it useful (or at the very least, mildly entertaining). For more great information about web dev, systems administration and cloud computing, please read the <a href="https://blog.designly.biz" rel="noreferrer noopener" target="_blank">Designly Blog</a>. Also, please leave your comments! I love to hear thoughts from my readers.</p>
+<p>If you want to support me, please follow me on <a href="https://open.spotify.com/album/2fq9S51ULwPmRM6EdCJAaJ?si=USeZDsmYSKSaGpcrSJJsGg" rel="noreferrer noopener" target="_blank">Spotify</a>!</p>
+<p>Looking for a web developer? I'm available for hire! To inquire, please fill out a <a href="https://designly.biz/contact" rel="noreferrer noopener" target="_blank">contact form</a>.</p>
 </section>
             <script
     async
@@ -260,20 +363,20 @@ NUMBER OF LOOPS: 1
             <div class="share-buttons text-2xl flex gap-4 mx-auto">
                 <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
                 <a
-                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fcreate-a-telephone-ivr-using-chatgpt-nextjs-and-twilio"
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fmaking-typescript-more-flexible-generics-and-discriminated-unions"
                     target="_blank"
                     aria-label="Share on Facebook"
                 >
                     <i class="fab fa-facebook text-blue-700"></i>
                 </a>
                 <a
-                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fcreate-a-telephone-ivr-using-chatgpt-nextjs-and-twilio"
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fmaking-typescript-more-flexible-generics-and-discriminated-unions"
                     target="_blank"
                     aria-label="Share on LinkedIn"
                 >
                     <i class="fab fa-linkedin text-indigo-700"></i>
                 </a>
-                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fcreate-a-telephone-ivr-using-chatgpt-nextjs-and-twilio" target="_blank">
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fmaking-typescript-more-flexible-generics-and-discriminated-unions" target="_blank">
                     <i class="fab fa-twitter text-sky-700"></i>
                 </a>
             </div>
@@ -516,9 +619,9 @@ NUMBER OF LOOPS: 1
     <div id="post-list-bottom"></div>
 </div>
 </div>
-<input id="post-id" type="hidden" value="2hpZHohNbS3iQNLH0Bp7F7" />
+<input id="post-id" type="hidden" value="v08EkUbJwcc9yh4ayeiyj" />
 <input id="reply-to" type="hidden" value="" />
-<input id="post-url" type="hidden" value="https://blog.designly.biz/create-a-telephone-ivr-using-chatgpt-nextjs-and-twilio" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/making-typescript-more-flexible-generics-and-discriminated-unions" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");

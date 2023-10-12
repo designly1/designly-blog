@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>How to Manipulate, Split and Concatenate PDF Files Server-Side | Designly</title>
+        <title>How to Get a Unix-Like Terminal Environment in Windows and Visual Studio Code | Designly</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes" />
         <meta charset="UTF-8" />
         <link rel="stylesheet" href="/assets/css/style.css" />
@@ -33,12 +33,12 @@
         <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000" />
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#ffffff" />
-        <meta name="description" content="In this article, I'll show you a free and easy way to manipulate, split and concatenate PDF documents on your web server using a software package called QPDF." />
-        <meta property="og:title" content="How to Manipulate, Split and Concatenate PDF Files Server-Side" />
-        <meta property="og:description" content="In this article, I'll show you a free and easy way to manipulate, split and concatenate PDF documents on your web server using a software package called QPDF." />
-        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/how-to-manipulate-split-and-concatenate-pdf-files-server-side/cover.jpg" />
+        <meta name="description" content="In this article, I'll show you how to integrate Cmder as your default terminal in Visual Studio Code to give you a Unix-like environment." />
+        <meta property="og:title" content="How to Get a Unix-Like Terminal Environment in Windows and Visual Studio Code" />
+        <meta property="og:description" content="In this article, I'll show you how to integrate Cmder as your default terminal in Visual Studio Code to give you a Unix-like environment." />
+        <meta property="og:image" content="https://cdn.designly.biz/imgr/blog_files/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio/cover.jpg" />
         <meta property="og:type" content="article" />
-        <meta property="og:url" content="https://blog.designly.biz/how-to-manipulate-split-and-concatenate-pdf-files-server-side" />
+        <meta property="og:url" content="https://blog.designly.biz/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio" />
         <meta property="og:site_name" content="Designly Blog" />
         <meta property="fb:app_id" content="3419826058233420" />
     </head>
@@ -72,13 +72,14 @@
     <div class="col-span-3 px-4 md:px-20 py-10">
         <article class="flex flex-col gap-10 md:px-10">
             <section class="post-header flex flex-col gap-4">
-                <h1 id="post-title" class="text-colors text-xl md:text-3xl font-bold">How to Manipulate, Split and Concatenate PDF Files Server-Side</h1>
-                <div class="flex gap-2 items-center tag-list"><a href="/tag/pdf">#PDF</a></div>
+                <h1 id="post-title" class="text-colors text-xl md:text-3xl font-bold">How to Get a Unix-Like Terminal Environment in Windows and Visual Studio Code</h1>
+                <div class="flex gap-2 items-center tag-list"><a href="/tag/integrated-development-environments">#Integrated Development Environments (IDEs)</a>
+<a href="/tag/command-line-interface-cli">#Command Line Interface (CLI)</a></div>
                 <img
                     class="rounded-md shadow-lg"
-                    src="https://cdn.designly.biz/imgr/blog_files/how-to-manipulate-split-and-concatenate-pdf-files-server-side/cover.jpg?w=1200&q=75"
-                    srcset="https://cdn.designly.biz/imgr/blog_files/how-to-manipulate-split-and-concatenate-pdf-files-server-side/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-manipulate-split-and-concatenate-pdf-files-server-side/cover.jpg?w=320&q=75 320w"
-                    alt="How to Manipulate, Split and Concatenate PDF Files Server-Side"
+                    src="https://cdn.designly.biz/imgr/blog_files/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio/cover.jpg?w=1200&q=75"
+                    srcset="https://cdn.designly.biz/imgr/blog_files/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio/cover.jpg?w=640&q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio/cover.jpg?w=320&q=75 320w"
+                    alt="How to Get a Unix-Like Terminal Environment in Windows and Visual Studio Code"
                     width="1200"
                     height="675"
                 />
@@ -99,54 +100,72 @@
     (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
             </section>
-            <section class="post-content flex flex-col gap-6"><p>The Portable Document Format (PDF) was first developed by Adobe Systems in 1993, with the aim of creating a file format that could be easily shared and printed across different computer systems, software applications, and devices. At the time, documents were typically created in proprietary file formats that were specific to the software application used to create them, making it difficult to share and view documents across different platforms.</p>
-<p>PDFs were designed to be a universal file format that could preserve the formatting, fonts, images, and other elements of a document, regardless of the software used to create it or the device used to view it. The format quickly gained popularity and became a standard for sharing documents online, particularly for academic journals, government reports, and other professional publications.</p>
-<p>Serving PDF files from a web server is very commonplace, and there is even paid PDF server software available, but is quite pricey. In this article, I'll show you a free and easy way to manipulate, split and concatenate PDF documents on your web server.</p>
-<p>The software library we are going to use is called <a href="https://qpdf.readthedocs.io/en/stable/overview.html" rel="noreferrer noopener" target="_blank">qpdf</a>, a very powerful C++ library for PDF manipulation. It also comes with a command-line binary tool which you can invoke via a system call from Node, NGINX, Apache, or whatever your weapon of choice may be.</p>
-<h2>Installing QPDF</h2>
-<p>You can download and compile the source code yourself, or if you can download the packages on Debian/Ubuntu or MacOS. There's no reliable Windows package currently, so you'd have to compile it manually.</p>
-<p>Install on Ubuntu:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">apt -y install qpdf
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Install on MacOS:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">brew install qpdf
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>If you don't have <a href="https://brew.sh/" rel="noreferrer noopener" target="_blank">Homebrew</a> installed, run this command:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">/bin/bash -c <span class="hljs-string">"<span class="hljs-variable">$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)</span>"</span>
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<h2>Examples</h2>
-<p>Ok, now that that's installed, here's some examples of what you might want to do with QPDF.</p>
-<p>Let's say you have a large PDF with hundreds or even thousands of pages and you want to be able to serve only one page, or a range of pages to the user. Here's how:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">qpdf --empty --pages input_file.pdf 50,60-69 -- output_file.pdf
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Or let's say you want to concatenate  (merge) two PDF files as one:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">qpdf --empty --pages input_file1.pdf input_file2.pdf -- output_file.pdf
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>You can even specify page ranges for multiple files:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">qpdf --empty --pages input_file1.pdf 50,60-69 input_file2.pdf 1-10 -- output_file.pdf
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Pretty neat huh? Let's say you have a password-protected file and you want to make a copy of it, decrypt it, and then send it to the client:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">qpdf --passsword=password --decrypt secure.pdf unsecure.pdf
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>As you can see, QPDF is an amazing tool. There are many more things you can do with it. These examples merely scratched the surface. Not only is QPDF great for automated manipulation of PDF files, but you should also have it installed on your workstation as well for everyday PDF editing.</p>
-<h2>More Examples</h2>
-<p>Rotate specific page to a specified angle (clockwise):</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">qpdf --rotate=90:2,4,6 --rotate=180:7-8 input.pdf output.pdf
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Split a PDF into individual enumerated pages:</p>
-<div class="code-wrapper shadow-lg"><pre><code class="language-bash hljs bash" data-lang="bash">qpdf --split-pages=n input.pdf out_%d.pdf
-</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
-<p>Well, I hope you enjoyed this article. If so, please give it a like and/or leave a comment. I'd love to hear your feedback. What PDF solutions do you use on your web server? Will you be utilizing this solution?</p>
-<p>For more great information about web dev, systems administration and more, please read the <a href="https://designly.biz/blog" rel="noreferrer noopener" target="_blank">Designly Blog</a>.</p>
-<p>Further Reading:</p>
+            <section class="post-content flex flex-col gap-6"><p>In the vast world of software development, the terminal is an indispensable tool for many developers. It offers a powerful and efficient way to interact with the system, run commands, and manage files. For those who have delved into the Unix or Linux environment, the allure of the Unix-like terminal is undeniable. Its flexibility, combined with a rich set of command-line utilities, makes it a favorite among many. But what if you're a Windows user? Do you have to miss out on this experience?</p>
+<p>Enter Cmder, a console emulator for Windows that brings the power and elegance of a Unix-like terminal to your Windows machine. And when combined with Visual Studio Code, one of the most popular code editors out there, you get an integrated development environment that feels seamless, efficient, and robust.</p>
+<p>You may be asking, why should I use Cmder instead of Windows cmd.exe or PowerShell? Well here are several reasons:</p>
 <ol>
 <li>
-<a href="https://www.mankier.com/1/qpdf" rel="noreferrer noopener" target="_blank">QPDF Man Page</a>
+<p><strong>Unified Experience:</strong><br>
+By integrating Cmder with VS Code, you can access the terminal directly within your editor. This means no more switching between windows or tabs, leading to a more streamlined and efficient workflow.</p>
 </li>
 <li>
-<a href="https://qpdf.readthedocs.io/en/stable/" rel="noreferrer noopener" target="_blank">QPDF Documentation</a>
+<p><strong>Powerful Command-Line Tools:</strong><br>
+Cmder brings a suite of Unix-like command-line tools to Windows. This allows developers to use familiar Unix commands, enhancing productivity and reducing the learning curve for those transitioning from Unix-based systems.</p>
+</li>
+<li>
+<p><strong>Customizability:</strong><br>
+Cmder is highly customizable, from its appearance to its functionality. When combined with the extensibility of VS Code, developers can tailor their environment to their exact preferences.</p>
+</li>
+<li>
+<p><strong>Enhanced Scripting Capabilities:</strong><br>
+With Cmder's Unix-like capabilities, developers can write and execute shell scripts directly in VS Code, even on a Windows system. This is especially beneficial for automation tasks and build processes.</p>
+</li>
+<li>
+<p><strong>Tabbed Interface:</strong><br>
+Cmder supports multiple tabs, allowing developers to run and manage multiple command-line sessions within a single terminal window. This is particularly useful for multitasking, such as monitoring logs in one tab while executing commands in another.</p>
+</li>
+<li>
+<p><strong>Portability:</strong><br>
+Cmder is portable, meaning you can carry your customized terminal environment on a USB stick or any external drive. When integrated with VS Code's portable version, you have a complete, portable development environment ready to go wherever you are.</p>
+</li>
+<li>
+<p><strong>Active Community and Support:</strong><br>
+Both Cmder and VS Code have active communities. This ensures regular updates, a plethora of resources, and a wide range of plugins and extensions to enhance functionality.</p>
 </li>
 </ol>
+<p>Incorporating Cmder into your VS Code setup not only elevates your terminal experience but also bridges the gap between Windows and Unix-like environments. The synergy of these tools provides a robust platform, ensuring that developers have all the resources they need at their fingertips.</p>
+<h2>Making it Happen</h2>
+<p>Assuming you already have Visual Studio Code installed, the first thing you'll want to do is <a href="https://cmder.app/" rel="noreferrer noopener" target="_blank">Download Cmder</a>. Extract the files to <code>C:\cmder</code>, or wherever you like.</p>
+<p>Next, open VS Code and hit the F1 key to open the command menu. Type in <em>settings</em> and then click <code>Preferences: Open User Settings [JSON]</code>.</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio/image1.jpg?q=75" alt="Edit settings.json" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio/image1.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio/image1.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio/image1.jpg?w=320&amp;q=75 320w"></p>
+<p>If you don't have any user settings, you'll be presented with an empty JSON file with an empty object: <code>{}</code>. If you have existing settings, then you'll simply add some new entries to the bottom:</p>
+<div class="code-wrapper shadow-lg"><pre><code class="language-json hljs json" data-lang="json">{
+    <span class="hljs-attr">"terminal.integrated.profiles.windows"</span>: {
+        <span class="hljs-attr">"Cmder"</span>: {
+            <span class="hljs-attr">"path"</span>: [
+                <span class="hljs-string">"${env:windir}\\Sysnative\\cmd.exe"</span>,
+                <span class="hljs-string">"${env:windir}\\System32\\cmd.exe"</span>
+            ],
+            <span class="hljs-attr">"env"</span>: {<span class="hljs-attr">"CMDER_ROOT"</span>: <span class="hljs-string">"C:\\cmder"</span>},
+            <span class="hljs-attr">"args"</span>: [
+                <span class="hljs-string">"/K"</span>,
+                <span class="hljs-string">"C:\\cmder\\vendor\\init.bat"</span>
+            ],
+            <span class="hljs-attr">"icon"</span>: <span class="hljs-string">"remote"</span>,
+        },
+    },
+    <span class="hljs-attr">"terminal.external.windowsExec"</span>: <span class="hljs-string">"C:\\cmder\\Cmder.exe"</span>,
+    <span class="hljs-attr">"terminal.integrated.defaultProfile.windows"</span>: <span class="hljs-string">"Cmder"</span>,
+}
+</code></pre><span class="mac1"></span><span class="mac2"></span><span class="mac3"></span><button class="code-button" aria-label="Copy to clipboard"><i class="fa-solid fa-copy code-copy-icon"></i></button></div>
+<p>What this does is create a custom terminal profile for all Windows environments. It tells VS Code to use cmd.exe to open <code>C:\cmder\vendor\init.bat</code>, which starts up Cmder. You can set the icon to any <a href="https://microsoft.github.io/vscode-codicons/dist/codicon.html" rel="noreferrer noopener" target="_blank">Codicon</a>.</p>
+<p>Save your settings file and then hit CTRL+SHIFT+`. You should see a new terminal with the Lambda (&lambda;) symbol:</p>
+<p><img src="https://cdn.designly.biz/imgr/blog_files/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio/image2.jpg?q=75" alt="Cmder as new terminal" class="blog-post-image" width="1920" height="1080" data-original="https://cdn.designly.biz/blog_files/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio/image2.jpg" srcset="https://cdn.designly.biz/imgr/blog_files/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio/image2.jpg?w=640&amp;q=75 640w, https://cdn.designly.biz/imgr/blog_files/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio/image2.jpg?w=320&amp;q=75 320w"></p>
+<p>That's it, now you have Cmder as your default terminal in VS Code! You get all of the classic GNU tools like <code>ls</code>, <code>grep</code>, <code>awk</code>, <code>sed</code>, <code>pico</code>, <code>vi</code>, etc. Enjoy!</p>
+<hr>
+<p>Thank you for taking the time to read my article and I hope you found it useful (or at the very least, mildly entertaining). For more great information about web dev, systems administration and cloud computing, please read the <a href="https://blog.designly.biz" rel="noreferrer noopener" target="_blank">Designly Blog</a>. Also, please leave your comments! I love to hear thoughts from my readers.</p>
+<p>If you want to support me, please follow me on <a href="https://open.spotify.com/album/2fq9S51ULwPmRM6EdCJAaJ?si=USeZDsmYSKSaGpcrSJJsGg" rel="noreferrer noopener" target="_blank">Spotify</a>!</p>
+<p>Looking for a web developer? I'm available for hire! To inquire, please fill out a <a href="https://designly.biz/contact" rel="noreferrer noopener" target="_blank">contact form</a>.</p>
 </section>
             <script
     async
@@ -167,20 +186,20 @@
             <div class="share-buttons text-2xl flex gap-4 mx-auto">
                 <h2 class="text-2xl font-bold text-colors">Please Share!</h2>
                 <a
-                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fhow-to-manipulate-split-and-concatenate-pdf-files-server-side"
+                    href="https://www.facebook.com/sharer.php?u=https%3A%2F%2Fblog.designly.biz%2Fhow-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio"
                     target="_blank"
                     aria-label="Share on Facebook"
                 >
                     <i class="fab fa-facebook text-blue-700"></i>
                 </a>
                 <a
-                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-manipulate-split-and-concatenate-pdf-files-server-side"
+                    href="https://www.linkedin.com/shareArticle?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio"
                     target="_blank"
                     aria-label="Share on LinkedIn"
                 >
                     <i class="fab fa-linkedin text-indigo-700"></i>
                 </a>
-                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-manipulate-split-and-concatenate-pdf-files-server-side" target="_blank">
+                <a href="https://twitter.com/share?url=https%3A%2F%2Fblog.designly.biz%2Fhow-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio" target="_blank">
                     <i class="fab fa-twitter text-sky-700"></i>
                 </a>
             </div>
@@ -423,9 +442,9 @@
     <div id="post-list-bottom"></div>
 </div>
 </div>
-<input id="post-id" type="hidden" value="iaGqMItCUdv9NnoOinfgs" />
+<input id="post-id" type="hidden" value="6MyGWEOCOmrqoBkkjwOrwm" />
 <input id="reply-to" type="hidden" value="" />
-<input id="post-url" type="hidden" value="https://blog.designly.biz/how-to-manipulate-split-and-concatenate-pdf-files-server-side" />
+<input id="post-url" type="hidden" value="https://blog.designly.biz/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio" />
 <script>
     function generateComment(commentData) {
         const template = document.querySelector("#comment-template");

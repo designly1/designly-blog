@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
+    <loc>https://blog.designly.biz/making-typescript-more-flexible-generics-and-discriminated-unions</loc>
+    <image:image>
+      <image:loc>https://cdn.designly.biz/blog_files/making-typescript-more-flexible-generics-and-discriminated-unions/cover.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.designly.biz/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio</loc>
+    <image:image>
+      <image:loc>https://cdn.designly.biz/blog_files/how-to-get-a-unix-like-terminal-environment-in-windows-and-visual-studio/cover.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
     <loc>https://blog.designly.biz/implementing-nprogress-in-the-next-js-13-app-router</loc>
     <image:image>
       <image:loc>https://cdn.designly.biz/blog_files/implementing-nprogress-in-the-next-js-13-app-router/cover.jpg</image:loc>
@@ -235,15 +247,15 @@
     </image:image>
   </url>
   <url>
-    <loc>https://blog.designly.biz/next-js-kick-ass-form-handling-using-react-hook-form-yup-and-bootstrap</loc>
-    <image:image>
-      <image:loc>https://cdn.designly.biz/blog_files/next-js-kick-ass-form-handling-using-react-hook-form-yup-and-bootstrap/cover.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>https://blog.designly.biz/simple-next-js-form-to-email-using-react-hook-form-and-gmail</loc>
     <image:image>
       <image:loc>https://cdn.designly.biz/blog_files/simple-next-js-form-to-email-using-react-hook-form-and-gmail/cover.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.designly.biz/next-js-kick-ass-form-handling-using-react-hook-form-yup-and-bootstrap</loc>
+    <image:image>
+      <image:loc>https://cdn.designly.biz/blog_files/next-js-kick-ass-form-handling-using-react-hook-form-yup-and-bootstrap/cover.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -253,15 +265,15 @@
     </image:image>
   </url>
   <url>
-    <loc>https://blog.designly.biz/react-markdown-how-to-create-a-copy-code-button</loc>
-    <image:image>
-      <image:loc>https://cdn.designly.biz/blog_files/react-copy-btn/cover.jpg</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>https://blog.designly.biz/medium-uploader-i-added-support-for-uploading-to-dev-to</loc>
     <image:image>
       <image:loc>https://cdn.designly.biz/blog_files/medium-uploader/cover.jpg</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.designly.biz/react-markdown-how-to-create-a-copy-code-button</loc>
+    <image:image>
+      <image:loc>https://cdn.designly.biz/blog_files/react-copy-btn/cover.jpg</image:loc>
     </image:image>
   </url>
   <url>
@@ -349,15 +361,15 @@
     </image:image>
   </url>
   <url>
-    <loc>https://blog.designly.biz/twilio-gets-an-a-in-voip-excellence</loc>
-    <image:image>
-      <image:loc>https://d340jo5zum8tsx.cloudfront.net/blog_files/twilio-banner.webp</image:loc>
-    </image:image>
-  </url>
-  <url>
     <loc>https://blog.designly.biz/how-to-install-a-production-lamp-server</loc>
     <image:image>
       <image:loc>https://d340jo5zum8tsx.cloudfront.net/blog_files/lamp-server-banner.webp</image:loc>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://blog.designly.biz/twilio-gets-an-a-in-voip-excellence</loc>
+    <image:image>
+      <image:loc>https://d340jo5zum8tsx.cloudfront.net/blog_files/twilio-banner.webp</image:loc>
     </image:image>
   </url>
   <url>
